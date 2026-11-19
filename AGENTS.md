@@ -15,7 +15,7 @@ This repo is the source of a skill framework. `skills/` is the folder the framew
 
 ## When a skill changes
 
-A skill added, renamed, removed, or changed in what it does updates, in the same PR:
+A skill added, renamed, removed, or changed in what it does updates, in the same PR (`tools/check.py` fails on a missing map node, plugin entry, README line, router command, or `openai.yaml`; the rest is on you):
 
 - `README.md`: its line in Reference, linked to its `SKILL.md`;
 - `skills/README.md`: its node and edges in the map;
