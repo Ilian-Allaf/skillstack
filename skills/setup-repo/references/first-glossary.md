@@ -1,6 +1,6 @@
 # A first glossary
 
-The first `GLOSSARY.md` of a repo, drafted from the code. Its shape and its rules are those of `shape-spec`'s [domain.md](../../shape-spec/references/domain.md): terms only, each with its meaning and the words to avoid.
+The first `GLOSSARY.md` of a repo that has no glossary yet, drafted from the code. Its shape and its rules are those of `shape-spec`'s [domain.md](../../shape-spec/references/domain.md): terms only, each with its meaning and the words to avoid.
 
 ## Where the terms are
 

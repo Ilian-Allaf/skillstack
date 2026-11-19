@@ -6,6 +6,7 @@ Framing costs a message; a misread task costs hours.
 
 - **Resume what exists.** When a branch or PR for this task already exists, read its state and resume at the first step of `ship` whose Done when fails.
 - **Reproduce a bug first.** Drive the symptom the user reported, as the first duty of the [bug-fix playbook](playbooks/bug-fix.md) says, before you write `done_when`.
+- **Read the accepted ADRs** whose Applies to covers the code you will touch. A task that goes against one says so in the message, with a superseding ADR for the user to decide: it is a one-way door.
 - **Collect the cases** as [coverage.md](../../constitution/references/coverage.md) describes, and the risk class and hard zones as proof.md does.
 
 ## What to send the user

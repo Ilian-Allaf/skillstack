@@ -12,7 +12,7 @@ Edit only the `drive-<app>` folder: its SKILL.md, `features/`, and its scripts. 
 2. **Source wave.** Spawn one read-only subagent per feature file, all at once. Each explains how the feature works from the source, flags drift from the file with `file:line`, and returns one live recipe. Subagents never drive the app and never edit files.
    Done when: every feature file has a returned summary.
 
-3. **Reconcile.** Merge overlapping recipes into as few app states as practical. Spot-check cited drift. Look at recent merged PRs for user-facing features missing from the map, and name a source path for each one you add.
+3. **Reconcile.** Merge overlapping recipes into as few app states as practical. Spot-check cited drift. Run the entry point check, and look at recent merged PRs for user-facing features missing from the map; name a source path for each one you add.
    Done when: every drift claim is confirmed or dropped, and every new feature has a source path.
 
 4. **Live pass.** Required even when the source looks clean. You alone drive the app, following the skill's own Launch. Drive every feature at least once. Run Doctor before the first drive and after any failed one. Evidence survives every cleanup. Nothing a drive started outlives it.

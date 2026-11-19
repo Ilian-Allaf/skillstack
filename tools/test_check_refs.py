@@ -20,7 +20,7 @@ class CheckRefsTest(unittest.TestCase):
     def setUp(self) -> None:
         self.tmp = tempfile.TemporaryDirectory()
         self.root = Path(self.tmp.name)
-        self.write("skills/constitution/SKILL.md", "# Constitution\n\n## Rules\n")
+        self.write("skills/constitution/README.md", "# Constitution\n\n## Rules\n")
         self.write("skills/constitution/references/principles.md", "| Id | Apply when | Rule |\n|---|---|---|\n| `fix-root-causes` | debugging | Fix the cause. |\n")
         self.write("skills/constitution/references/glossary.md", "| Term | Meaning | Avoid |\n|---|---|---|\n| `needs-human` | a label; `one-way` door | `escalated` |\n")
         self.write("skills/ship/SKILL.md", "# Ship\n\n## Before build: read `done_when`\n\nRun [the playbook](references/playbooks/bug-fix.md) and `fix-root-causes`.\n")
@@ -104,6 +104,12 @@ class CheckRefsTest(unittest.TestCase):
     def test_code_blocks_are_skipped(self) -> None:
         self.edit("skills/ship/SKILL.md", "`fix-root-causes`.\n", "`fix-root-causes`.\n\n```\n[x](missing.md) `probe`\n```\n")
         self.assertEqual(self.codes(), [])
+
+    def test_skill_missing_from_the_map(self) -> None:
+        self.write("skills/README.md", "# Skills\n\n```mermaid\nflowchart TB\n  a[other]\n```\n")
+        self.assertIn("R006", self.codes())
+        self.write("skills/README.md", "# Skills\n\n```mermaid\nflowchart TB\n  s[\"ship\"]\n```\n")
+        self.assertNotIn("R006", self.codes())
 
     def test_exit_codes(self) -> None:
         with contextlib.redirect_stdout(io.StringIO()):

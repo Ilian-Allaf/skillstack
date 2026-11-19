@@ -9,17 +9,17 @@ GLOSSARY.md          the domain terms of the repo
 docs/adr/0001-<slug>.md   one file per decision worth recording
 ```
 
-A repo with several contexts has a `GLOSSARY-MAP.md` at the root pointing at a `GLOSSARY.md` and a `docs/adr/` per context. Create files only when you have something to write.
+When the repo already keeps its glossary elsewhere and `AGENTS.md` names it, that file is the repo glossary: use it, and create no `GLOSSARY.md`. A repo with several contexts has a `GLOSSARY-MAP.md` at the root pointing at a `GLOSSARY.md` and a `docs/adr/` per context. Create files only when you have something to write.
 
 `GLOSSARY.md` holds terms and nothing else: no implementation details, no spec, no scratch notes. Each entry: the term, its meaning in one or two sentences, and the words to avoid for it.
 
 ## While you design
 
-- **Challenge against the glossary.** When the user uses a term that conflicts with `GLOSSARY.md`, say so at once: "Your glossary defines cancellation as X, but you seem to mean Y. Which is it?"
+- **Challenge against the glossary.** When the user uses a term that conflicts with the repo glossary, say so at once: "Your glossary defines cancellation as X, but you seem to mean Y. Which is it?"
 - **Sharpen fuzzy words.** For an overloaded word, propose one precise term: "By account, do you mean the Customer or the User?"
 - **Test with scenarios.** Invent concrete edge cases that force the boundaries between concepts.
 - **Check against the code.** When the user says how something works, read whether the code agrees, and surface a contradiction.
-- **Write as you go.** When a term is settled, update `GLOSSARY.md` right then, on a docs branch of its own. `GLOSSARY.md` and the ADRs land through one docs PR, linked from the spec, which the user merges like any other.
+- **Write as you go.** When a term is settled, update the repo glossary right then, on a docs branch of its own. The glossary and the ADRs land through one docs PR, linked from the spec, which the user merges like any other.
 
 ## ADRs, sparingly
 
@@ -29,4 +29,15 @@ Offer an ADR only when all three hold:
 2. **surprising without context**: a future reader would ask why;
 3. **a real trade-off**: there were real alternatives, and one was picked for a reason.
 
-An ADR states the context, the decision, the alternatives rejected and why, and the consequences. Later work reads the ADRs of the area it touches and does not propose again what an ADR rejected.
+An ADR is a dated record of a decision, not a description of the present. It holds:
+
+- **Status**: `proposed`, `accepted`, `deprecated`, or `superseded by ADR-NNNN`;
+- **Applies to**: the paths whose code the decision governs, such as `src/sync/`;
+- the context, the decision, the alternatives rejected and why, and the consequences;
+- **Enforced by**: the check that holds the decision, when one can.
+
+Keep it true in three ways:
+
+- **Never rewrite an accepted decision.** A new decision is a new ADR that supersedes the old one; the old one gets the status `superseded by ADR-NNNN` and stays as history, binding nothing.
+- **A decision a check can hold gets the check.** Propose it through `add-guardrail` when you write the ADR: the check fails when the code drifts, and the ADR keeps only the why.
+- **Read before you touch.** Work that touches a path an accepted ADR applies to reads that ADR first. To propose again what an ADR rejected, cite it and say what changed since; the user decides, and a yes becomes a superseding ADR.

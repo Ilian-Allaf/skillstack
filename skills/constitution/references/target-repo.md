@@ -10,7 +10,7 @@ What the framework keeps in the repo it works on, and who reads each piece. `set
 | `AGENTS.md` | a few navigation pointers, nothing more: how to build and test, and where the files below are; every agent pays for each line | every agent |
 | `docs/agent-rules.md` | the rule table of `add-guardrail`: each rule and what enforces it; the agent file points to it in one line | `add-guardrail`, `learn-from-mistakes`, the verifier |
 | `CODING_STANDARDS.md` | judgment calls only; a mechanical rule becomes a check instead | the verifier, in the `standards` lane, not the builder |
-| `GLOSSARY.md` and `docs/adr/` | domain terms and hard-to-reverse decisions, in the shape of `shape-spec`'s [domain.md](../../shape-spec/references/domain.md) | `shape-spec`, the builder, the verifier |
+| the repo glossary (`GLOSSARY.md`, or the file `AGENTS.md` names) and `docs/adr/` | domain terms and hard-to-reverse decisions, in the shape of `shape-spec`'s [domain.md](../../shape-spec/references/domain.md) | `shape-spec`, the builder, the verifier |
 | `.agents/skills/drive-<app>/` and its feature map | how to launch, drive, and observe the app; every user-facing feature and its entry points | the builder, the verifier |
 
 Standards belong to review because the builder carries the most context and the verifier the least.

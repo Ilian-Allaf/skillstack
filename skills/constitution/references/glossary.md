@@ -51,5 +51,6 @@ The target repo can have its own glossary of domain terms. The builder and the v
 | arena | arène | several runners on one artifact; the best is kept and improved with parts of the others | |
 | swarm | essaim | several workers on slices of one job, or racing on one brief; one report | |
 | decision log | journal de décisions | the append-only TSV of decisions of a long run | `audit trail` |
-| ADR | ADR | a file in `docs/adr/` recording a decision that is hard to reverse | |
+| repo glossary | glossaire du repo | the target repo's own domain terms: `GLOSSARY.md`, or the file `AGENTS.md` names as the glossary when the repo keeps it elsewhere | |
+| ADR | ADR | a dated file in `docs/adr/` recording a decision that is hard to reverse, with its status and the paths it applies to; superseded, never rewritten | |
 | playbook | playbook | the proof duties of `build` for one kind of task | |
