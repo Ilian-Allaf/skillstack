@@ -44,6 +44,13 @@ metadata:
    Done when: `done_when` is green.
 """
 
+CODEX_POLICY = """interface:
+  display_name: "{name}"
+  short_description: "A skill."
+policy:
+  allow_implicit_invocation: false
+"""
+
 GOOD_PROBE = """\
 ---
 name: probe
@@ -68,6 +75,8 @@ class LintTest(unittest.TestCase):
         self.write("skills/constitution/references/glossary.md", GLOSSARY)
         self.write("skills/ship/SKILL.md", GOOD_ENTRY)
         self.write("skills/probe/SKILL.md", GOOD_PROBE)
+        for name in ("ship", "probe"):
+            self.write(f"skills/{name}/agents/openai.yaml", CODEX_POLICY.format(name=name))
 
     def tearDown(self) -> None:
         self.tmp.cleanup()
@@ -126,6 +135,22 @@ class LintTest(unittest.TestCase):
     def test_invocation_flag_required(self) -> None:
         self.edit("skills/probe/SKILL.md", "disable-model-invocation: true\n", "")
         self.assertIn("F010", self.codes())
+
+    def test_model_invocation_must_be_disabled(self) -> None:
+        self.edit("skills/probe/SKILL.md", "disable-model-invocation: true", "disable-model-invocation: false")
+        self.assertIn("F017", self.codes())
+
+    def test_codex_policy_file_required(self) -> None:
+        (self.root / "skills/probe/agents/openai.yaml").unlink()
+        self.assertIn("F018", self.codes())
+
+    def test_codex_policy_must_keep_the_skill_for_the_user(self) -> None:
+        self.edit("skills/probe/agents/openai.yaml", "allow_implicit_invocation: false", "allow_implicit_invocation: true")
+        self.assertIn("F018", self.codes())
+
+    def test_codex_picker_fields_required(self) -> None:
+        self.edit("skills/probe/agents/openai.yaml", '  short_description: "A skill."\n', "")
+        self.assertIn("F018", self.codes())
 
     def test_unknown_kind(self) -> None:
         self.edit("skills/probe/SKILL.md", "kind: spine", "kind: helper")

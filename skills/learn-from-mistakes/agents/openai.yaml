@@ -1,0 +1,5 @@
+interface:
+  display_name: "Learn From Mistakes"
+  short_description: "Fix the layer that let a mistake through"
+policy:
+  allow_implicit_invocation: false

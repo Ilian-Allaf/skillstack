@@ -18,6 +18,30 @@ Coding agents fail the same ways, again and again. Each skill answers one of the
 
 The choices behind them are recorded as decisions in [`docs/adr/`](docs/adr/).
 
+## Install
+
+Pick one route per harness: installing both gives you every skill twice.
+
+**As a plugin**, which updates itself. In Claude Code 2.1.275 or later:
+
+```text
+/plugin install software-ai-skills-framework --marketplace Ilian-Allaf/software-ai-skills-framework
+```
+
+The skills then answer to `/software-ai-skills-framework:<skill>`. Codex and Copilot read the same marketplace file, `.claude-plugin/marketplace.json`; their install has not been tried yet. The repo is private, so the harness needs your GitHub access.
+
+**From a clone**, to edit the skills as you use them:
+
+```bash
+git clone https://github.com/Ilian-Allaf/software-ai-skills-framework.git
+cd software-ai-skills-framework
+python -I tools/link_skills.py
+```
+
+It links every skill into `~/.agents/skills` (Codex and most other harnesses) and `~/.claude/skills` (Claude Code). The links point into the clone, so a `git pull` updates the skills, and they follow the branch you have checked out. `--dry-run` shows what would change; `--unlink` removes the links.
+
+Skills install as whole folders beside [the constitution](skills/constitution/README.md), which they read by relative path. An installer that copies skills one at a time drops it, so it is not supported ([ADR 0005](docs/adr/0005-the-constitution-is-a-folder-not-a-skill.md)).
+
 ## Getting started
 
 1. Run `/setup-repo` once per repo. It sets up the issue tracker, the labels, the glossary, the coding standards, the agent file, and the app driver, and asks before each part.

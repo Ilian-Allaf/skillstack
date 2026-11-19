@@ -1,0 +1,5 @@
+interface:
+  display_name: "Babysit PR"
+  short_description: "Drive an open PR to ready, stop before merge"
+policy:
+  allow_implicit_invocation: false

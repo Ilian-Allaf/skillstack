@@ -1,0 +1,15 @@
+{
+  "name": "ilian-allaf",
+  "owner": {
+    "name": "Ilian Allaf"
+  },
+  "description": "The software AI skills framework, as an installable plugin.",
+  "plugins": [
+    {
+      "name": "software-ai-skills-framework",
+      "source": "./",
+      "description": "Skills that turn a task into a proven, ready-to-merge PR. You launch every task and merge every PR.",
+      "category": "engineering"
+    }
+  ]
+}

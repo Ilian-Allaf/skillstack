@@ -2,7 +2,7 @@
 
 - **Status**: accepted, 2026-11-19
 - **Applies to**: every `SKILL.md`: its frontmatter, `metadata.calls`, and `metadata.reads`
-- **Enforced by**: `tools/lint_skills.py` (F014 and F015: a link to another skill has a declared edge, and a declared call has its link by path)
+- **Enforced by**: `tools/lint_skills.py`: F017 and F018 (`disable-model-invocation: true`, and `allow_implicit_invocation: false` in `agents/openai.yaml`), F014 and F015 (a link to another skill has a declared edge, and a declared call has its link by path)
 
 ## Context
 

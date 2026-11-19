@@ -1,0 +1,5 @@
+interface:
+  display_name: "Setup Repo"
+  short_description: "Prepare a repo for the framework"
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,5 @@
+interface:
+  display_name: "Create App Driver"
+  short_description: "Write the skill that drives your app"
+policy:
+  allow_implicit_invocation: false
