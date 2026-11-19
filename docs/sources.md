@@ -31,6 +31,12 @@ When a skill changes, update its section here, in the same PR.
 
 - (pstack `poteto-mode`)
 
+## `skills/constitution/references/architecture.md`
+
+- Source: pstack principle skills `principle-foundational-thinking`, `principle-model-the-domain`, `principle-redesign-from-first-principles`, `principle-boundary-discipline`, `principle-type-system-discipline`, `principle-minimize-reader-load`, `principle-make-operations-idempotent`, `principle-separate-before-serializing-shared-state` (Lauren Tan), condensed; the opening assumption about the next contributor comes from pstack `architect` and `correct`.
+- Ours: the uniform shape (Apply when, Rule, How, Test, Sign it was skipped), so the builder applies each principle and the verifier judges it with the same test; and the type rules stated for any typed language, where pstack keeps them in its TypeScript skill.
+- Not taken: `principle-outcome-oriented-execution` (it accepts broken intermediate states; our units each land green, and a wide change uses expand, migrate, contract), and `principle-experience-first` (a product rule, not a code-shape one).
+
 ## `skills/constitution/references/coverage.md`
 
 - Source: Lauren Tan ("our code review process has now really shrunk into looking at verification artifacts instead. So things like videos, screenshots, diagrams"), pstack `create-verification-skill` (feature map), pstack `statechart`.
@@ -55,6 +61,7 @@ When a skill changes, update its section here, in the same PR.
 ## `skills/constitution/references/pr-format.md`
 
 - (pstack `opening-a-pr`)
+- 2026-11-20: the Design section, from pstack `architect`, whose rationale ships beside the sketch.
 
 ## `skills/constitution/references/principles.md`
 
@@ -84,6 +91,8 @@ When a skill changes, update its section here, in the same PR.
 - `separate-before-serializing-shared-state`: pstack
 - `never-block-on-the-human`: pstack
 - `keep-the-codebase-clean`: Lauren Tan
+- `foundational-thinking`, `redesign-from-first-principles`: pstack, added 2026-11-20.
+- 2026-11-20, architecture method brought closer to pstack (Lauren Tan, `knowledge/sources/repos/cursor-pstack/`): the architecture rows link to their full form in `architecture.md`.
 
 ## `skills/constitution/references/proof.md`
 
@@ -189,6 +198,16 @@ When a skill changes, update its section here, in the same PR.
 - 2026-11-19, completed from pstack `principle-model-the-domain`: the small module boundary for invariants, structures chosen by access pattern, lifecycle risk, and the phase-named modules sign. The rule that the data shape takes its names from `GLOSSARY.md` is ours: it ties Matt's vocabulary to Lauren's code-as-truth.
 - Source: pstack `principle-model-the-domain`, `architect` and its `design-red-flags.md` (Lauren Tan). Adapted: the arena runs as [parallel.md](../skills/constitution/references/parallel.md) describes, with the harness's model families instead of pstack's model config.
 
+- 2026-11-20, architecture method brought closer to pstack (Lauren Tan, `knowledge/sources/repos/cursor-pstack/`): the method gains grounding in the history of the current shape (pstack `architect` Phase A, which runs `why`), the runner brief (`sketch-brief.md`), the design note (`design-note.md`), building against the sketch, and the six tells and the procedure for scrapping it (pstack `architect` Phases D and E). The table of how much design a change needs adapts the ladder of pstack's guide page "Design before you write code". Ours: one scrap per task, then `needs-human`.
+
+## `skills/ship/references/design-note.md`
+
+- Source: pstack `architect/references/rationale-template.md` (Lauren Tan). Adapted: a Deviations section filled during the build, and "Next implementation step" dropped, since the builder goes on without a checkpoint after the go.
+
+## `skills/ship/references/sketch-brief.md`
+
+- Source: pstack `architect/references/runner-prompt.md` (Lauren Tan). Adapted: each rule names the principle id of `architecture.md`, and the runner screens its own sketch against the red flags.
+
 ## `skills/ship/references/frame.md`
 
 - Source: pstack `in-your-own-words`, Anthropic "harness design" (agree on what done means before building), Matt Pocock `tdd` (agree the seams first).
@@ -208,6 +227,7 @@ When a skill changes, update its section here, in the same PR.
 ## `skills/ship/references/playbooks/feature.md`
 
 - Source: Matt Pocock `tdd`, pstack `principle-sequence-verifiable-units`.
+- 2026-11-20: duty 2 from pstack `principle-redesign-from-first-principles` and `principle-foundational-thinking`.
 
 ## `skills/ship/references/playbooks/perf.md`
 
@@ -216,6 +236,7 @@ When a skill changes, update its section here, in the same PR.
 ## `skills/ship/references/playbooks/refactoring.md`
 
 - Source: pstack `poteto-mode` refactoring playbook, `principle-minimize-reader-load`, `principle-migrate-callers-then-delete-legacy-apis` (Lauren Tan).
+- 2026-11-20: the target shape per pstack `principle-redesign-from-first-principles`, as the pstack playbook's step 3 names it.
 
 ## `skills/ship/references/playbooks/visual-parity.md`
 
@@ -237,6 +258,7 @@ When a skill changes, update its section here, in the same PR.
 - Source: pstack `interrogate`.
 - Source: Matt Pocock `code-review` (Spec axis), `tdd`, pstack refactoring playbook.
 - Source: Matt Pocock `code-review` (Standards axis, Fowler smells).
+- 2026-11-20: the standards lane checks the shape against the red flags, the architecture principles, and the PR's design note, as pstack `architect` holds an implementation to its sketch.
 
 ## `skills/verify-pr/references/verdict.md`
 

@@ -22,6 +22,7 @@ Shared rules, not a skill: no harness lists this folder, and no one launches it.
 | [references/proof.md](references/proof.md) | before you write `done_when`, prove a change, give a verdict, or size the verification to the risk class |
 | [references/coverage.md](references/coverage.md) | before you list the cases in `frame`, build the coverage table or the demo video, or check coverage as the verifier |
 | [references/principles.md](references/principles.md) | when a step names a principle by its id, or a decision is not covered by a skill |
+| [references/architecture.md](references/architecture.md) | before you name a data shape, sketch or pick a design, or judge the shape of a diff as the verifier |
 | [references/glossary.md](references/glossary.md) | before you write a skill, a PR, or a verdict, and whenever a term is ambiguous |
 | [references/pr-format.md](references/pr-format.md) | before you open or edit a PR body |
 | the target repo's `docs/agents/issue-tracker.md` | before you create, read, comment on, label, link, or close an issue; it says how in this repo's tracker. When it is missing, ask the user to run `/setup-repo` |

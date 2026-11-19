@@ -4,6 +4,7 @@ One entry per merged PR that changes what a skill does, or how the framework is 
 
 ## Unreleased (v0)
 
+- `ship` designs with a method: a table of how much design a change needs, grounding in the history of the current shape, a brief for every sketch runner (`sketch-brief.md`), a design note in the PR's new Design section (`design-note.md`), building against the sketch, and six tells for scrapping it. The architecture principles get their full form, with a test and a sign each, in `constitution/references/architecture.md`, which adds `foundational-thinking` and `redesign-from-first-principles`. The feature playbook names the bolt-on it rejected, and `verify-pr`'s standards lane checks the shape against the red flags and the design note.
 - Every list of the skills is checked: `plugin.json` lists exactly the skills (R007), the README links each one (R008), and `choose-skill` names each one as a command (R009).
 - Install routes: a plugin (`.claude-plugin/plugin.json` and `marketplace.json`, version 0.1.0), or `tools/link_skills.py` from a clone. Every skill carries `agents/openai.yaml`, so Codex keeps it for the user to launch too; the linter checks both harnesses (F017, F018). `setup-repo` installs the merge guard as `harness.md` describes, instead of an `install.py` that was never built.
 - Repo standardized: English README, `SCOPE.md`, this changelog, decisions as ADRs in `docs/adr/`, the first design notes frozen in `docs/history/`, attribution moved to `docs/sources.md`, an issue template for a skill failure, and the roadmap moved to issues #4 to #12.

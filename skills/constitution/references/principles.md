@@ -2,7 +2,7 @@
 
 The principles this framework applies, each with when it applies. Skills name a principle by its id. When a principle changes a choice, its id goes with that choice in the PR's Decisions section or the decision log.
 
-Each rule is a short summary, so every skill can read it.
+Each rule is a short summary, so every skill can read it. The principles that shape code have a full form in [architecture.md](architecture.md): how to apply each, the test that shows you did, and the sign that someone skipped it. Read it there before you pick or judge a shape.
 
 ## Evidence and verification
 
@@ -22,12 +22,14 @@ Each rule is a short summary, so every skill can read it.
 | `attack-the-premise` | when two fixes that share a premise failed the same check | Write the premise down and test it directly before a third fix. |
 | `encode-lessons-in-structure` | when the same correction comes back | Turn it into structure, in this order of preference: architecture, a type, a lint whose message names the fix, a test, and docs last. |
 | `build-the-lever` | before repetitive or error-prone work | Build the script, codemod, or check that does it or proves it. |
-| `model-the-domain` | before writing logic or stateful code, and when code branches a lot or repeats a shape assumption across files | Name the data structure that encodes the domain first: a state machine, a typed model, a table. It must delete branches or invalid states, not add indirection. |
+| `foundational-thinking` | when a change adds logic, a type, or a module, and when you order the work | Data structures first, scaffold first: trace every read and write through the core types before any logic. [Full form](architecture.md#foundational-thinking). |
+| `model-the-domain` | before writing logic or stateful code, and when code branches a lot or repeats a shape assumption across files | Name the data structure that encodes the domain first: a state machine, a typed model, a table. It must delete branches or invalid states, not add indirection. [Full form](architecture.md#model-the-domain). |
+| `redesign-from-first-principles` | when a new requirement lands in an existing design, and when a sketch is scrapped | Build as if the requirement had been there from day one, instead of bolting it on. [Full form](architecture.md#redesign-from-first-principles). |
 | `design-it-twice` | when a change adds or changes a type, a signature, or a module boundary | Sketch two structurally different shapes, screen both against the red flags in `ship/references/design.md`, then pick one. |
 | `migrate-callers-then-delete` | when an API changes shape | Move every caller and delete the old API in the same PR. No shim; the next agent would copy the old path. One exception: a wide change that cannot land green in one PR uses expand, migrate, contract (the `bespoke` playbook), and the old form lives only until the contract PR. |
-| `minimize-reader-load` | when shaping or reviewing code | Count the layers between a question and its answer, and the state a reader must hold. A change that lowers neither is reverted. |
-| `type-system-discipline` | when designing types or signatures | Make illegal states unrepresentable. |
-| `boundary-discipline` | when wiring validation or error handling | Guard at system boundaries: CLI, config, network, external APIs. Trust the inside. |
+| `minimize-reader-load` | when shaping or reviewing code | Count the layers between a question and its answer, and the state a reader must hold. A change that lowers neither is reverted. [Full form](architecture.md#minimize-reader-load). |
+| `type-system-discipline` | when designing types or signatures | Make illegal states unrepresentable: tagged unions, branded primitives, types derived from the owning schema, exhaustive switches. [Full form](architecture.md#type-system-discipline). |
+| `boundary-discipline` | when wiring validation or error handling | Guard at system boundaries: CLI, config, network, external APIs. Trust the inside, and keep business logic in pure functions. [Full form](architecture.md#boundary-discipline). |
 
 ## Scope and change size
 
@@ -43,7 +45,7 @@ Each rule is a short summary, so every skill can read it.
 | Id | Apply when | Rule |
 |---|---|---|
 | `guard-the-context-window` | when output is large or reads repeat | Send bulk work to subagents or scripts and keep summaries in the main thread. |
-| `make-operations-idempotent` | for every step that can be retried | Read the current state and apply only the difference, so a rerun converges. |
-| `separate-before-serializing-shared-state` | when parallel runs could write the same file, branch, or key | Remove the sharing first. Serialize only what cannot be separated. |
+| `make-operations-idempotent` | for every step that can be retried | Read the current state and apply only the difference, so a rerun converges. [Full form](architecture.md#make-operations-idempotent). |
+| `separate-before-serializing-shared-state` | when parallel runs or concurrent actors could write the same file, branch, row, or key | Remove the sharing first. Serialize only what cannot be separated, by structure. [Full form](architecture.md#separate-before-serializing-shared-state). |
 | `never-block-on-the-human` | on reversible work | Make the reversible choice, note it under `Decisions`, and move on. Irreversible choices and merges stay with the user. |
 | `keep-the-codebase-clean` | before you open a PR | The next agent copies what you leave. Remove slop, stale comments, and workarounds. |

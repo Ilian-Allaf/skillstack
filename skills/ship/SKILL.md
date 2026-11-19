@@ -28,8 +28,8 @@ The light path: for a `low` task, keep step 1 to the restatement and `done_when`
 1. **Frame.** Restate the task, fix `done_when`, list the cases, and name the risk class, the hard zones, and the playbook, as [references/frame.md](references/frame.md) describes. Run `done_when` on the base and show it red. Then ask the user to say go.
    Done when: the user said go, and `done_when` ran red on the base.
 
-2. **Build.** In a worktree and a branch of your own, made from the base (see [harness.md](../constitution/references/harness.md)). Name the data shape before any logic, and sketch twice when the code crosses a boundary, as [references/design.md](references/design.md) describes. Follow the playbook from [the list](references/frame.md#playbooks). The budget is 3 attempts; after the second failure, write down the premise your attempts share and test it before the third.
-   Done when: `done_when` is green and every duty of the playbook is met, or the budget ran out and the PR is `needs-human`.
+2. **Build.** In a worktree and a branch of your own, made from the base (see [harness.md](../constitution/references/harness.md)). Design before any logic, as [references/design.md](references/design.md) describes: name the data shape, and when the code crosses a boundary, ground, sketch twice, write the design note, and build against the sketch. Follow the playbook from [the list](references/frame.md#playbooks). The budget is 3 attempts; after the second failure, write down the premise your attempts share and test it before the third.
+   Done when: `done_when` is green, every duty of the playbook is met, and a change that crossed a boundary has its design note with its Deviations filled; or the budget ran out and the PR is `needs-human`.
 
 3. **Clean.** Remove slop, then spawn the comment hunter and fix each `MUST KILL` at the root, as [references/clean.md](references/clean.md) describes. A mistake you made twice in this task, and each constraint comment, goes to the user as a candidate for `/add-guardrail`.
    Done when: lint, types, and tests are green, and every `MUST KILL` is fixed or has an issue.
