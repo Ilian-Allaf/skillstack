@@ -13,7 +13,7 @@ Checks every skills/<name>/ folder:
     is linked from somewhere in the skill;
   - prose: no words from the banned vocabulary, no term from the glossary's Avoid
     column, no em dash, no curly quotes (code is skipped), and no external
-    attribution (sources live in design/sources.md);
+    attribution (sources live in docs/sources.md);
   - size: SKILL.md over the word budget is a warning.
 
 Exit code: 0 when there is no error (warnings allowed), 1 on errors, 2 on bad usage.
@@ -75,7 +75,7 @@ BANNED_WORDS = {
 EM_DASH = "—"
 CURLY = {"‘": "'", "’": "'", "“": '"', "”": '"'}
 # An agent that reads "Matt Pocock `grilling`" may go and run that skill instead of ours.
-# Attribution lives in design/sources.md, outside the skills.
+# Attribution lives in docs/sources.md, outside the skills.
 EXTERNAL = re.compile(r"\b(pstack|tstack|cursor-pstack|poteto|Matt Pocock|Lauren Tan|Ray Amjad|Anthropic)\b|\bSources?( for [a-z ]+)?:", re.IGNORECASE)
 LINK_RE = re.compile(r"\[[^\]]*\]\(([^)\s]+)(?:\s+\"[^\"]*\")?\)")
 INLINE_CODE_RE = re.compile(r"`[^`]*`")
@@ -198,7 +198,7 @@ def check_prose(path: Path, lines: list[str], avoid: list[tuple[str, str]], is_g
                 break
         match = EXTERNAL.search(raw)
         if match:
-            out.append(Finding(path, number, "error", "P005", f"external attribution {match.group(0)!r} in a skill: an agent may follow it out of the framework. Fix: move it to design/sources.md and keep only the rule here."))
+            out.append(Finding(path, number, "error", "P005", f"external attribution {match.group(0)!r} in a skill: an agent may follow it out of the framework. Fix: move it to docs/sources.md and keep only the rule here."))
     for number, text in strip_code(lines):
         for word in re.findall(r"[A-Za-z]+", text):
             plain = BANNED_WORDS.get(word.lower())

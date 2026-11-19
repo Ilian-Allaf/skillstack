@@ -1,5 +1,7 @@
 # Architecture 02 — Le framework de skills (v2)
 
+> **Frozen on 2026-11-19.** History only, in French: names, decisions, and paths are those of their time and bind nothing. Decisions in force: [docs/adr/](../adr/). How the framework works today: [skills/README.md](../../skills/README.md).
+
 > **Statut** : v2, validée le 2026-11-17. Aucun skill n'est construit.
 > **Version 2** : elle intègre la [revue 03](03-revue-principes.md), qui a confronté la v1 aux grands principes de `knowledge/`, et tes deux décisions :
 >
@@ -7,7 +9,7 @@
 > - le merge sans toi (N4) est un écart assumé, mais repoussé, et débloqué par des preuves.
 >
 > **Question** : quelle architecture permet de livrer beaucoup de PR, sereinement ?
-> **Entrées** : le [brainstorm 01](01-brainstorm-pr-sereines.md), la [revue 03](03-revue-principes.md) et la base [`knowledge/`](../knowledge/README.md).
+> **Entrées** : le [brainstorm 01](01-brainstorm-pr-sereines.md), la [revue 03](03-revue-principes.md) et la base [`knowledge/`](../../knowledge/README.md).
 > **Reste ouvert** : le repo cobaye (section 14). Sans lui, l'étape 1 ne peut pas commencer.
 
 ---
@@ -548,7 +550,7 @@ Règles d'écriture :
 | `tools/graph.py` | 3 | génère le graphe depuis `metadata.calls` | nœud orphelin, lecture d'un skill sans arête déclarée, arête sans condition, cycle sans budget |
 | `tools/install.py` | 1 (Claude), puis par harnais | installe les skills et traduit les champs propres à chaque harnais | — |
 
-`graph.py` partira de [`knowledge/tools/build_skill_catalog.py`](../knowledge/tools/build_skill_catalog.py).
+`graph.py` partira de [`knowledge/tools/build_skill_catalog.py`](../../knowledge/tools/build_skill_catalog.py).
 
 ### 10.3 La méta-boucle
 

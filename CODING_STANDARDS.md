@@ -16,6 +16,8 @@ Judgment calls only: what `tools/check.py` already enforces is not repeated here
 - **Every rule of a tool has a test that makes it fail.** A check never seen red proves nothing. Example: `tools/test_lint_skills.py:227` writes an external attribution into a skill and expects P005.
 - **A tool's message says how to fix what it found**, so an agent reading only the message can act on it. Example: the `Fix:` part of every finding in `tools/check_refs.py`.
 
-## Writing design docs
+## Writing docs and ADRs
 
-- **Every idea in a design doc names its source**, or says it is ours. In the skills, sources never appear; they live in `design/sources.md`.
+- **Every idea in a doc or an ADR names its source**, or says it is ours. In the skills, sources never appear; they live in `docs/sources.md`.
+- **A doc is executed or dated.** A new doc either has a check that fails when it disagrees with the code, or is a dated record nobody rewrites. Example: `docs/adr/0013-a-doc-stays-fresh-by-running-or-by-date.md`.
+- **An ADR records one decision that is hard to reverse, surprising without context, and a real trade-off.** It carries Status, Applies to, and Enforced by, and names the alternatives it rejected. Example: `docs/adr/0001-the-user-always-merges.md`.
