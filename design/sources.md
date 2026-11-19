@@ -1,0 +1,243 @@
+# Sources des skills
+
+Les skills de `skills/` ne nomment aucune source externe : un agent qui lirait « Matt Pocock `grilling` » pourrait aller chercher ce skill et sortir du framework. La lint l'interdit (règle P005). La traçabilité vit ici : pour chaque fichier, le texte d'attribution retiré le 2026-11-19, tel quel. Les originaux sont dans `knowledge/sources/`.
+
+Quand un skill change, mets à jour sa ligne ici, pas dans le skill.
+
+## `skills/add-guardrail/SKILL.md`
+
+- Source: pstack `correct`, Lauren Tan's inverted pyramid.
+- (Matt Pocock `retro`)
+
+## `skills/add-guardrail/references/levels.md`
+
+- Source: pstack `correct`, Lauren Tan.
+
+## `skills/analyze-impact/SKILL.md`
+
+- Source: pstack `blast-radius`.
+
+## `skills/analyze-impact/references/where-grep-stops.md`
+
+- Source: pstack `blast-radius`.
+
+## `skills/babysit-pr/SKILL.md`
+
+- Source: tstack `babysit-pr`, pstack `shipping`.
+- (pstack `babysit`)
+- (tstack `full-send`)
+
+## `skills/constitution/README.md`
+
+- (pstack `poteto-mode`)
+
+## `skills/constitution/references/coverage.md`
+
+- Source: Lauren Tan ("our code review process has now really shrunk into looking at verification artifacts instead. So things like videos, screenshots, diagrams"), pstack `create-verification-skill` (feature map), pstack `statechart`.
+- (pstack `ketchup-video`)
+
+## `skills/constitution/references/decision-log.md`
+
+- Source: pstack `show-me-your-work` (Lauren Tan).
+
+## `skills/constitution/references/harness.md`
+
+- (tstack)
+
+## `skills/constitution/references/languages/typescript.md`
+
+- Source: pstack `typescript-best-practices` (Lauren Tan).
+
+## `skills/constitution/references/parallel.md`
+
+- Source: pstack `arena` and `swarm` (Lauren Tan). Adapted: runners come from the harness's model families (see [harness.md](../skills/constitution/references/harness.md)), not from a model config file.
+
+## `skills/constitution/references/pr-format.md`
+
+- (pstack `opening-a-pr`)
+
+## `skills/constitution/references/principles.md`
+
+- each with when it applies and where it comes from.
+- Most ids come from pstack (Lauren Tan, `cursor-pstack`), where each one is a full skill. The text here is our summary, kept short so every skill can read it.
+- `prove-it-works`: pstack
+- `tight-loop`: Matt Pocock `diagnosing-bugs`
+- `test-behavior-not-implementation`: pstack, Matt Pocock `tdd`
+- `explain-the-number`: pstack
+- `verify-at-the-edge`: Ray Amjad, Anthropic "harness design"
+- `fix-root-causes`: pstack
+- `attack-the-premise`: pstack
+- `encode-lessons-in-structure`: pstack, Lauren Tan
+- `build-the-lever`: pstack
+- `model-the-domain`: pstack
+- `design-it-twice`: pstack `architect`
+- `migrate-callers-then-delete`: pstack
+- `minimize-reader-load`: pstack
+- `type-system-discipline`: pstack
+- `boundary-discipline`: pstack
+- `laziness-protocol`: pstack
+- `subtract-before-you-add`: pstack
+- `sequence-verifiable-units`: pstack
+- `scope-stays-put`: tstack `council`, pstack
+- `guard-the-context-window`: pstack
+- `make-operations-idempotent`: pstack
+- `separate-before-serializing-shared-state`: pstack
+- `never-block-on-the-human`: pstack
+- `keep-the-codebase-clean`: Lauren Tan
+
+## `skills/constitution/references/proof.md`
+
+- Sources: tstack `full-send` (proof), pstack `principle-prove-it-works` and `blast-radius` (certainty levels), Matt Pocock `diagnosing-bugs` (red loop), Ray Amjad and Anthropic "harness design" (verify where the model is weakest).
+- (pstack: "a small, obvious edit doesn't" need full rigor)
+- (Ray Amjad: "you don't really need a verifier to like verify that the contact form submits"; Anthropic "harness design": the evaluator "is worth the cost when the task sits beyond what the current model does reliably solo")
+
+## `skills/constitution/references/target-repo.md` (où vivent skills et instructions, 2026-11-19)
+
+- Agent Skills, « How to add skills support to your agent » : « The `.agents/skills/` paths have emerged as a widely-adopted convention for cross-client skill sharing. While the Agent Skills specification does not mandate where skill directories live… » <https://agentskills.io/client-implementation/adding-skills-support>
+- Claude Code, Skills : project skills in `.claude/skills/`; « a `<skill-name>` entry in the enterprise, personal, or project location can be a symlink to a directory elsewhere on disk ». <https://code.claude.com/docs/en/skills>
+- Claude Code, Memory : reads `AGENTS.md` when no `CLAUDE.md` exists (v2.1.277+), and « Not read: … anything under a `.agents/` directory ». <https://code.claude.com/docs/en/memory>
+- Codex, Build skills : « Codex scans `.agents/skills` in every directory from your current working directory up to the repository root », « supports symlinked skill folders », and `agents/openai.yaml` `policy.allow_implicit_invocation`. <https://learn.chatgpt.com/docs/build-skills>
+
+## `skills/constitution/references/statechart.md`
+
+- Source: pstack `statechart` (Lauren Tan). Adapted: pstack ships a script that runs TLC and draws the chart; here the method is described and the tool is the repo's, or TLC run directly.
+
+## `skills/create-app-driver/SKILL.md`
+
+- Source: pstack `create-verification-skill`, `maintain-verification-skill`, and the formal variants.
+
+## `skills/create-app-driver/references/feature-map.md`
+
+- Source: pstack `create-verification-skill`, example `create-note.md`.
+
+## `skills/create-app-driver/references/formal.md`
+
+- Source: pstack `create-formal-verification-skill` and `maintain-formal-verification-skill` (Lauren Tan).
+
+## `skills/create-app-driver/references/maintain.md`
+
+- Source: pstack `maintain-verification-skill`.
+
+## `skills/investigate/SKILL.md`
+
+- Sources: pstack `poteto-mode` investigation, runtime-forensics, trace-forensics, and prototype playbooks, `how`, `why` (Lauren Tan). Grouping them in one skill is ours: they share an answer as output, and none of the steps that lead `ship` to a PR.
+
+## `skills/investigate/references/diagnosis.md`
+
+- Source: pstack `poteto-mode` runtime-forensics and trace-forensics playbooks (Lauren Tan), merged here.
+
+## `skills/investigate/references/prototype.md`
+
+- Source: pstack `poteto-mode` prototype playbook and `principle-exhaust-the-design-space` (Lauren Tan).
+
+## `skills/investigate/references/question.md`
+
+- Source: pstack `poteto-mode` investigation playbook, `how`, and `why` (Lauren Tan).
+
+## `skills/learn-from-mistakes/SKILL.md`
+
+- Sources: pstack `reflect` (three lenses, a synthesizer, approval before any edit), Matt Pocock `retro` (categories of improvement; standards belong to the review agent), Lauren Tan (a correction becomes a check, not a rule).
+
+## `skills/learn-from-mistakes/references/reviewers.md`
+
+- Source: pstack `reflect` reviewer prompts; the tooling lens also takes Matt Pocock `retro` categories.
+
+## `skills/learn-from-mistakes/references/routes.md`
+
+- Source: our verification layers (`design/02`, section 5); Matt Pocock `retro` for the target repo files.
+- (Matt Pocock `retro`)
+
+## `skills/learn-from-mistakes/references/synthesis.md`
+
+- Source: pstack `reflect` synthesizer.
+
+## `skills/setup-repo/references/trackers/` (suivi des issues indépendant de l'outil, 2026-11-19)
+
+- Matt Pocock `setup-matt-pocock-skills` : « Those files are the only thing that varies between repos. The skills themselves are identical everywhere. They read `docs/agents/issue-tracker.md` at run time and do what it says. » Templates GitHub, GitLab, local markdown, et l'option « Other » en prose pour Jira, Linear… (`knowledge/sources/repos/mattpocock-skills/repo/docs/engineering/setup-matt-pocock-skills.md`).
+- Matt Pocock, ADR 0001 : pointeur explicite vers le setup seulement pour les skills qui en dépendent vraiment (`.agents/adr/0001-explicit-setup-pointer-only-for-hard-dependencies.md`). Repris pour `shape-spec` et `learn-from-mistakes`.
+- Les commandes `gh` et `glab` des modèles sont adaptées de ses templates `issue-tracker-github.md` et `issue-tracker-gitlab.md`.
+
+## `skills/shape-spec/SKILL.md`
+
+- Source: Ray Amjad (splitting a spec into parallel units gives worse results, the work is tangled in ways nobody expected), Anthropic "harness design" (planner kept, sprints dropped).
+- Sources for the modes: Matt Pocock `grilling`, `domain-modeling`, `grill-with-docs`, `to-spec`, `wayfinder`.
+- (Anthropic kept its planner for this reason)
+
+## `skills/shape-spec/references/domain.md`
+
+- Source: Matt Pocock `domain-modeling`.
+
+## `skills/shape-spec/references/grill.md`
+
+- Source: Matt Pocock `grilling` and `grill-with-docs`.
+
+## `skills/shape-spec/references/map.md`
+
+- Source: Matt Pocock `wayfinder`.
+- That keeps the map clear of the problem Ray Amjad describes: implementation split across agents that turn out to be tangled.
+
+## `skills/shape-spec/references/spec.md`
+
+- Source: Matt Pocock `to-spec`; the link between user stories and cases is ours.
+
+## `skills/ship/references/clean.md`
+
+- Source: pstack `no-comments` and its `comment-sicko` agent (Lauren Tan). Adapted: constraint encodings go to `/add-guardrail` instead of an inline approval.
+
+## `skills/ship/references/design.md`
+
+- Source: pstack `principle-model-the-domain`, `architect` and its `design-red-flags.md` (Lauren Tan). Adapted: the arena runs as [parallel.md](../skills/constitution/references/parallel.md) describes, with the harness's model families instead of pstack's model config.
+
+## `skills/ship/references/frame.md`
+
+- Source: pstack `in-your-own-words`, Anthropic "harness design" (agree on what done means before building), Matt Pocock `tdd` (agree the seams first).
+- Source: pstack `poteto-mode` playbooks (Lauren Tan).
+
+## `skills/ship/references/playbooks/bespoke.md`
+
+- Source: pstack `figure-it-out` (Lauren Tan); the wide-change sequence comes from Matt Pocock `to-tickets`.
+- (Ray Amjad; Anthropic "harness design" dropped sprints once the model could hold the whole build)
+- (pstack `opening-a-pr`)
+
+## `skills/ship/references/playbooks/bug-fix.md`
+
+- Source: Matt Pocock `diagnosing-bugs`, pstack `poteto-mode` bug-fix playbook.
+- (pstack)
+
+## `skills/ship/references/playbooks/feature.md`
+
+- Source: Matt Pocock `tdd`, pstack `principle-sequence-verifiable-units`.
+
+## `skills/ship/references/playbooks/perf.md`
+
+- Source: pstack `poteto-mode` perf-issue playbook and `benchmark-checklist` (Lauren Tan).
+
+## `skills/ship/references/playbooks/refactoring.md`
+
+- Source: pstack `poteto-mode` refactoring playbook, `principle-minimize-reader-load`, `principle-migrate-callers-then-delete-legacy-apis` (Lauren Tan).
+
+## `skills/ship/references/playbooks/visual-parity.md`
+
+- Source: pstack `poteto-mode` visual-parity playbook (Lauren Tan).
+
+## `skills/verify-pr/SKILL.md`
+
+- Anthropic found that an untuned evaluator finds real issues, then talks itself into approving the work anyway ("harness design").
+
+## `skills/verify-pr/references/calibration.md`
+
+- (pstack `create-formal-verification-skill`)
+
+## `skills/verify-pr/references/lanes.md`
+
+- Source: tstack `full-send`.
+- Source: Anthropic "harness design" (the evaluator drives the live app), pstack `create-verification-skill`.
+- Source: pstack `blast-radius`.
+- Source: pstack `interrogate`.
+- Source: Matt Pocock `code-review` (Spec axis), `tdd`, pstack refactoring playbook.
+- Source: Matt Pocock `code-review` (Standards axis, Fowler smells).
+
+## `skills/verify-pr/references/verdict.md`
+
+- Source: tstack severity scale, pstack blocking rule.
+- Source: Matt Pocock `code-review` ("documented-standard breaches can be hard"), pstack ("a doc line the PR made wrong").

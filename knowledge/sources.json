@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-16",
+  "description": "Registre des sources de la base de connaissance. Source de vérité pour la provenance, les révisions et les chemins locaux.",
+  "sources": [
+    {
+      "id": "mattpocock-skills",
+      "type": "skill-repo",
+      "title": "Skills For Real Engineers",
+      "author": "Matt Pocock",
+      "url": "https://github.com/mattpocock/skills",
+      "license": "MIT",
+      "retrieved_at": "2026-11-16",
+      "revision": "5863806dd4e15c63174bee4e7515a4256792ecfa",
+      "revision_date": "2026-11-12",
+      "local_path": "sources/repos/mattpocock-skills/repo",
+      "summary_path": "sources/repos/mattpocock-skills/SOURCE.md",
+      "catalog_path": "sources/repos/mattpocock-skills/catalog.json",
+      "notes": "39 skills répartis en engineering, productivity, misc et in-progress. Routage explicite via ask-matt, task graph via to-tickets/implement-spec."
+    },
+    {
+      "id": "cursor-pstack",
+      "type": "skill-repo",
+      "title": "pstack (plugin Cursor)",
+      "author": "Lauren Tan (poteto)",
+      "url": "https://github.com/cursor/plugins/tree/main/pstack",
+      "license": "MIT",
+      "retrieved_at": "2026-11-16",
+      "revision": "bf0c7cd80abdbf7fe47b634978a7d1b4071f71a7",
+      "revision_date": "2026-11-14",
+      "local_path": "sources/repos/cursor-pstack/repo",
+      "summary_path": "sources/repos/cursor-pstack/SOURCE.md",
+      "catalog_path": "sources/repos/cursor-pstack/catalog.json",
+      "notes": "61 skills. Orchestrateur poteto-mode, 23 playbooks, 24 principles, 2 subagents. Le corpus le plus proche d'un graphe de skills abouti."
+    },
+    {
+      "id": "t3dotgg-tstack",
+      "type": "skill-repo",
+      "title": "tstack",
+      "author": "Theo Browne (t3dotgg)",
+      "url": "https://github.com/t3dotgg/tstack",
+      "license": "MIT",
+      "retrieved_at": "2026-11-16",
+      "revision": "11e37a74d0a6868c121cd0910ab2b3bd9873b92a",
+      "revision_date": "2026-11-11",
+      "local_path": "sources/repos/t3dotgg-tstack/repo",
+      "summary_path": "sources/repos/t3dotgg-tstack/SOURCE.md",
+      "catalog_path": "sources/repos/t3dotgg-tstack/catalog.json",
+      "notes": "9 skills orientés cycle de vie PR et autonomie. Dépendances inter-skills documentées explicitement dans le README."
+    },
+    {
+      "id": "video-all-code-is-slop",
+      "type": "video",
+      "title": "All Code Is Slop (Except Mine) — Lauren Tan, SpaceXSI",
+      "author": "Lauren Tan (poteto), publiée par AI Engineer",
+      "url": "https://www.youtube.com/watch?v=O_zcc6Xl12g",
+      "published_at": "2026-11-14",
+      "duration": "17:31",
+      "language": "en",
+      "transcript": "auto-generated, cleaned",
+      "local_path": "sources/videos/2026-11-14-all-code-is-slop-lauren-tan",
+      "notes": "Conférence sur le passage d'un agent de faible confiance à un agent de haute confiance : codebase, checks déterministes, vérification, puis prose."
+    },
+    {
+      "id": "video-after-loops",
+      "type": "video",
+      "title": "OpenAI and Anthropic Agree on What Comes After Loops",
+      "author": "Ray Amjad",
+      "url": "https://www.youtube.com/watch?v=yrRpnx_iugY",
+      "published_at": "2026-11-04",
+      "duration": "23:11",
+      "language": "en",
+      "transcript": "auto-generated, cleaned",
+      "local_path": "sources/videos/2026-11-04-what-comes-after-loops-ray-amjad",
+      "notes": "Synthèse de la conférence OpenAI DevDay Tokyo et du research post Anthropic sur les systèmes multi-agents. Échelle à 7 barreaux."
+    },
+    {
+      "id": "article-always-on-agents",
+      "type": "article",
+      "title": "Building always-on agents",
+      "author": "William Hu (Anthropic)",
+      "url": "https://claude.com/fr/resources/articles/building-always-on-agents",
+      "published_at": "2026-11-13",
+      "reading_time": "14 min",
+      "language": "en",
+      "local_path": "sources/articles/2026-11-13-building-always-on-agents",
+      "notes": "Cinq primitives d'architecture pour agents persistants : event inbox, timers, memory, permissions, outbox."
+    }
+  ]
+}

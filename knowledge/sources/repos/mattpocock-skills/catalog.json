@@ -1,0 +1,1211 @@
+{
+  "repo": "mattpocock-skills",
+  "title": "Skills For Real Engineers",
+  "url": "https://github.com/mattpocock/skills",
+  "author": "Matt Pocock",
+  "license": "MIT",
+  "revision": "5863806dd4e15c63174bee4e7515a4256792ecfa",
+  "retrieved_at": "2026-11-16",
+  "generated_at": "2026-11-16",
+  "skill_count": 39,
+  "skills": [
+    {
+      "repo": "mattpocock-skills",
+      "name": "ask-matt",
+      "description": "Ask which skill or flow fits your situation. A router over the skills in this repo.",
+      "category": "engineering",
+      "invocation": "user",
+      "path": "sources/repos/mattpocock-skills/repo/skills/engineering/ask-matt/SKILL.md",
+      "words": 1935,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 2,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "PHASE-BOUNDARIES.md",
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [
+        {
+          "target": "grill-with-docs",
+          "mentions": 11
+        },
+        {
+          "target": "implement",
+          "mentions": 8
+        },
+        {
+          "target": "handoff",
+          "mentions": 5
+        },
+        {
+          "target": "to-tickets",
+          "mentions": 5
+        },
+        {
+          "target": "code-review",
+          "mentions": 4
+        },
+        {
+          "target": "grill-me",
+          "mentions": 4
+        },
+        {
+          "target": "improve-codebase-architecture",
+          "mentions": 4
+        },
+        {
+          "target": "tdd",
+          "mentions": 4
+        },
+        {
+          "target": "retro",
+          "mentions": 3
+        },
+        {
+          "target": "to-spec",
+          "mentions": 3
+        },
+        {
+          "target": "codebase-design",
+          "mentions": 2
+        },
+        {
+          "target": "grilling",
+          "mentions": 2
+        },
+        {
+          "target": "implement-spec",
+          "mentions": 2
+        },
+        {
+          "target": "prototype",
+          "mentions": 2
+        },
+        {
+          "target": "triage",
+          "mentions": 2
+        },
+        {
+          "target": "wayfinder",
+          "mentions": 2
+        },
+        {
+          "target": "diagnosing-bugs",
+          "mentions": 1
+        },
+        {
+          "target": "domain-modeling",
+          "mentions": 1
+        },
+        {
+          "target": "pr",
+          "mentions": 1
+        },
+        {
+          "target": "research",
+          "mentions": 1
+        },
+        {
+          "target": "setup-matt-pocock-skills",
+          "mentions": 1
+        },
+        {
+          "target": "teach",
+          "mentions": 1
+        },
+        {
+          "target": "to-questionnaire",
+          "mentions": 1
+        },
+        {
+          "target": "wait-what",
+          "mentions": 1
+        },
+        {
+          "target": "wizard",
+          "mentions": 1
+        },
+        {
+          "target": "writing-for-agents",
+          "mentions": 1
+        }
+      ],
+      "referenced_by": []
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "code-review",
+      "description": "Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes: Standards (does the code follow this repo's documented coding standards?) and Spec (does the code match what the originating issue/spec asked for?). Runs both reviews in parallel sub-agents and reports them side by side. Use when the user wants to review a branch, a PR, work-in-progress changes, or asks to \\\"review since X\\\".",
+      "category": "engineering",
+      "invocation": "model",
+      "path": "sources/repos/mattpocock-skills/repo/skills/engineering/code-review/SKILL.md",
+      "words": 1021,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 1,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [
+        {
+          "target": "setup-matt-pocock-skills",
+          "mentions": 1
+        }
+      ],
+      "referenced_by": [
+        "ask-matt",
+        "implement-spec",
+        "tdd"
+      ]
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "codebase-design",
+      "description": "Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, find deepening opportunities, decide where a seam goes, make code more testable or AI-navigable, or when another skill needs the deep-module vocabulary.",
+      "category": "engineering",
+      "invocation": "model",
+      "path": "sources/repos/mattpocock-skills/repo/skills/engineering/codebase-design/SKILL.md",
+      "words": 806,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 3,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "DEEPENING.md",
+          "DESIGN-IT-TWICE.md",
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [],
+      "referenced_by": [
+        "ask-matt",
+        "improve-codebase-architecture"
+      ]
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "diagnosing-bugs",
+      "description": "Diagnosis loop for hard bugs and performance regressions. Use when the user says \"diagnose\"/\"debug this\", or reports something broken/throwing/failing/slow.",
+      "category": "engineering",
+      "invocation": "model",
+      "path": "sources/repos/mattpocock-skills/repo/skills/engineering/diagnosing-bugs/SKILL.md",
+      "words": 1403,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 2,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": true,
+        "has_assets": false,
+        "files": [
+          "agents/openai.yaml",
+          "scripts/hitl-loop.template.sh"
+        ]
+      },
+      "references": [],
+      "referenced_by": [
+        "ask-matt"
+      ]
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "domain-modeling",
+      "description": "Build and sharpen a project's domain model. Use when discussing codebase terminology, writing or editing a GLOSSARY.md, or recording or editing an ADR.",
+      "category": "engineering",
+      "invocation": "model",
+      "path": "sources/repos/mattpocock-skills/repo/skills/engineering/domain-modeling/SKILL.md",
+      "words": 465,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 3,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "ADR-FORMAT.md",
+          "GLOSSARY-FORMAT.md",
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [],
+      "referenced_by": [
+        "ask-matt"
+      ]
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "grill-with-docs",
+      "description": "A relentless interview to sharpen a plan or design, which also creates docs (ADR's and glossary) as we go.",
+      "category": "engineering",
+      "invocation": "user",
+      "path": "sources/repos/mattpocock-skills/repo/skills/engineering/grill-with-docs/SKILL.md",
+      "words": 9,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 1,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [],
+      "referenced_by": [
+        "ask-matt"
+      ]
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "implement",
+      "description": "Implement a piece of work based on a spec or set of tickets.",
+      "category": "engineering",
+      "invocation": "user",
+      "path": "sources/repos/mattpocock-skills/repo/skills/engineering/implement/SKILL.md",
+      "words": 83,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 1,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [],
+      "referenced_by": [
+        "ask-matt"
+      ]
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "implement-spec",
+      "description": "Implement the result of /to-spec and /to-tickets in code.",
+      "category": "engineering",
+      "invocation": "user",
+      "path": "sources/repos/mattpocock-skills/repo/skills/engineering/implement-spec/SKILL.md",
+      "words": 429,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 1,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [
+        {
+          "target": "code-review",
+          "mentions": 1
+        },
+        {
+          "target": "setup-matt-pocock-skills",
+          "mentions": 1
+        },
+        {
+          "target": "tdd",
+          "mentions": 1
+        },
+        {
+          "target": "to-spec",
+          "mentions": 1
+        },
+        {
+          "target": "to-tickets",
+          "mentions": 1
+        }
+      ],
+      "referenced_by": [
+        "ask-matt",
+        "chief-of-staff"
+      ]
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "improve-codebase-architecture",
+      "description": "Scan a codebase for deepening opportunities, present them as a visual HTML report, then grill through whichever one you pick.",
+      "category": "engineering",
+      "invocation": "user",
+      "path": "sources/repos/mattpocock-skills/repo/skills/engineering/improve-codebase-architecture/SKILL.md",
+      "words": 877,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 2,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "HTML-REPORT.md",
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [
+        {
+          "target": "codebase-design",
+          "mentions": 1
+        }
+      ],
+      "referenced_by": [
+        "ask-matt"
+      ]
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "pr",
+      "description": "Use when writing a PR body.",
+      "category": "engineering",
+      "invocation": "model",
+      "path": "sources/repos/mattpocock-skills/repo/skills/engineering/pr/SKILL.md",
+      "words": 546,
+      "frontmatter_extra": {
+        "metadata": "",
+        "credits": "",
+        "skill": "show-me",
+        "author": "Dex Horthy",
+        "organisation": "Humanlayer",
+        "url": "https://github.com/humanlayer/skills/blob/main/plugins/show-me/skills/show-me/SKILL.md"
+      },
+      "support": {
+        "file_count": 2,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "CREDITS.md",
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [],
+      "referenced_by": [
+        "ask-matt"
+      ]
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "prototype",
+      "description": "Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model or logic feels right, or explore what a UI should look like.",
+      "category": "engineering",
+      "invocation": "model",
+      "path": "sources/repos/mattpocock-skills/repo/skills/engineering/prototype/SKILL.md",
+      "words": 450,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 3,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "LOGIC.md",
+          "UI.md",
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [],
+      "referenced_by": [
+        "ask-matt",
+        "wayfinder"
+      ]
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "research",
+      "description": "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use when the user wants a topic researched, docs or API facts gathered, or reading legwork delegated to a background agent.",
+      "category": "engineering",
+      "invocation": "model",
+      "path": "sources/repos/mattpocock-skills/repo/skills/engineering/research/SKILL.md",
+      "words": 94,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 1,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [],
+      "referenced_by": [
+        "ask-matt",
+        "wayfinder"
+      ]
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "retro",
+      "description": "Conduct a retrospective on a coding session.",
+      "category": "engineering",
+      "invocation": "user",
+      "path": "sources/repos/mattpocock-skills/repo/skills/engineering/retro/SKILL.md",
+      "words": 665,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 1,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [
+        {
+          "target": "writing-for-agents",
+          "mentions": 2
+        }
+      ],
+      "referenced_by": [
+        "ask-matt",
+        "chief-of-staff"
+      ]
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "setup-matt-pocock-skills",
+      "description": "Configure this repo for the engineering skills: set up its issue tracker, triage label vocabulary, and domain doc layout. Run once before first use of the other engineering skills.",
+      "category": "engineering",
+      "invocation": "user",
+      "path": "sources/repos/mattpocock-skills/repo/skills/engineering/setup-matt-pocock-skills/SKILL.md",
+      "words": 1090,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 6,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "domain.md",
+          "issue-tracker-github.md",
+          "issue-tracker-gitlab.md",
+          "issue-tracker-local.md",
+          "triage-labels.md",
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [
+        {
+          "target": "triage",
+          "mentions": 10
+        },
+        {
+          "target": "to-spec",
+          "mentions": 1
+        },
+        {
+          "target": "to-tickets",
+          "mentions": 1
+        }
+      ],
+      "referenced_by": [
+        "ask-matt",
+        "code-review",
+        "implement-spec",
+        "to-spec",
+        "to-tickets",
+        "triage",
+        "wayfinder"
+      ]
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "tdd",
+      "description": "Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions \"red-green-refactor\", or wants integration tests.",
+      "category": "engineering",
+      "invocation": "model",
+      "path": "sources/repos/mattpocock-skills/repo/skills/engineering/tdd/SKILL.md",
+      "words": 549,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 3,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "mocking.md",
+          "tests.md",
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [
+        {
+          "target": "code-review",
+          "mentions": 1
+        }
+      ],
+      "referenced_by": [
+        "ask-matt",
+        "implement-spec"
+      ]
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "to-spec",
+      "description": "Turn the current conversation into a spec and publish it to the project issue tracker: no interview, just synthesis of what you've already discussed.",
+      "category": "engineering",
+      "invocation": "user",
+      "path": "sources/repos/mattpocock-skills/repo/skills/engineering/to-spec/SKILL.md",
+      "words": 462,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 1,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [
+        {
+          "target": "setup-matt-pocock-skills",
+          "mentions": 1
+        }
+      ],
+      "referenced_by": [
+        "ask-matt",
+        "chief-of-staff",
+        "implement-spec",
+        "setup-matt-pocock-skills"
+      ]
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "to-tickets",
+      "description": "Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, published to the configured tracker (edges as text in one file per ticket locally, or native blocking links on a real tracker).",
+      "category": "engineering",
+      "invocation": "user",
+      "path": "sources/repos/mattpocock-skills/repo/skills/engineering/to-tickets/SKILL.md",
+      "words": 869,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 1,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [
+        {
+          "target": "setup-matt-pocock-skills",
+          "mentions": 2
+        }
+      ],
+      "referenced_by": [
+        "ask-matt",
+        "chief-of-staff",
+        "implement-spec",
+        "setup-matt-pocock-skills"
+      ]
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "triage",
+      "description": "Move issues and external PRs through a state machine of triage roles, categorise, verify, grill if needed, and write agent-ready briefs.",
+      "category": "engineering",
+      "invocation": "user",
+      "path": "sources/repos/mattpocock-skills/repo/skills/engineering/triage/SKILL.md",
+      "words": 962,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 3,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "AGENT-BRIEF.md",
+          "OUT-OF-SCOPE.md",
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [
+        {
+          "target": "setup-matt-pocock-skills",
+          "mentions": 1
+        }
+      ],
+      "referenced_by": [
+        "ask-matt",
+        "setup-matt-pocock-skills"
+      ]
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "wayfinder",
+      "description": "Plan a huge chunk of work (more than one agent session can hold) as a shared map of decision tickets on your issue tracker, and resolve them one at a time until the way to the destination is clear.",
+      "category": "engineering",
+      "invocation": "user",
+      "path": "sources/repos/mattpocock-skills/repo/skills/engineering/wayfinder/SKILL.md",
+      "words": 2034,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 1,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [
+        {
+          "target": "research",
+          "mentions": 2
+        },
+        {
+          "target": "grilling",
+          "mentions": 1
+        },
+        {
+          "target": "prototype",
+          "mentions": 1
+        },
+        {
+          "target": "setup-matt-pocock-skills",
+          "mentions": 1
+        }
+      ],
+      "referenced_by": [
+        "ask-matt"
+      ]
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "wizard",
+      "description": "Generate an interactive bash wizard that walks a human through steps only they can perform. Use when provisioning infrastructure, setting up credentials or CI secrets, walking an unfamiliar third-party dashboard, or running a one-off migration or cutover. Don't invoke this for steps the agent can perform itself.",
+      "category": "engineering",
+      "invocation": "model",
+      "path": "sources/repos/mattpocock-skills/repo/skills/engineering/wizard/SKILL.md",
+      "words": 621,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 2,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "template.sh",
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [],
+      "referenced_by": [
+        "ask-matt"
+      ]
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "chief-of-staff",
+      "description": "Pursue a long-running goal in a single session by co-ordinating subagents.",
+      "category": "in-progress",
+      "invocation": "user",
+      "path": "sources/repos/mattpocock-skills/repo/skills/in-progress/chief-of-staff/SKILL.md",
+      "words": 729,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 1,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [
+        {
+          "target": "implement-spec",
+          "mentions": 3
+        },
+        {
+          "target": "retro",
+          "mentions": 3
+        },
+        {
+          "target": "to-spec",
+          "mentions": 2
+        },
+        {
+          "target": "to-tickets",
+          "mentions": 2
+        },
+        {
+          "target": "writing-for-agents",
+          "mentions": 1
+        }
+      ],
+      "referenced_by": []
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "claude-handoff",
+      "description": "Hand the current conversation off to a fresh background agent that picks up the work immediately.",
+      "category": "in-progress",
+      "invocation": "user",
+      "path": "sources/repos/mattpocock-skills/repo/skills/in-progress/claude-handoff/SKILL.md",
+      "words": 190,
+      "frontmatter_extra": {
+        "argument-hint": "What will the next session be used for?"
+      },
+      "support": {
+        "file_count": 1,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [],
+      "referenced_by": []
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "loop-me",
+      "description": "Grill me about specs for the workflows I want to build, within this workspace.",
+      "category": "in-progress",
+      "invocation": "user",
+      "path": "sources/repos/mattpocock-skills/repo/skills/in-progress/loop-me/SKILL.md",
+      "words": 383,
+      "frontmatter_extra": {
+        "argument-hint": "A workflow to design, or nothing to go find one"
+      },
+      "support": {
+        "file_count": 1,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [
+        {
+          "target": "grilling",
+          "mentions": 1
+        }
+      ],
+      "referenced_by": []
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "setup-ts-deep-modules",
+      "description": "Wire dependency-cruiser into a TypeScript repo so each package is a deep module, with implementation hidden in subfolders and reachable only through its entry-point files. User-invoked.",
+      "category": "in-progress",
+      "invocation": "user",
+      "path": "sources/repos/mattpocock-skills/repo/skills/in-progress/setup-ts-deep-modules/SKILL.md",
+      "words": 1077,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 2,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "dependency-cruiser.config.cjs",
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [],
+      "referenced_by": []
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "software-factory",
+      "description": "Shared language for designing a software factory: the tasks it runs and the services it plugs into.",
+      "category": "in-progress",
+      "invocation": "user",
+      "path": "sources/repos/mattpocock-skills/repo/skills/in-progress/software-factory/SKILL.md",
+      "words": 922,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 5,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "EXAMPLE-TASKS.md",
+          "GIT-HOSTS.md",
+          "OBSERVABILITY-PLATFORMS.md",
+          "RUNNERS.md",
+          "TICKET-TRACKERS.md"
+        ]
+      },
+      "references": [],
+      "referenced_by": []
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "writing-beats",
+      "description": "Writing, exploit; assemble raw material into a journey of beats, grounding each term before a beat leans on it.",
+      "category": "in-progress",
+      "invocation": "user",
+      "path": "sources/repos/mattpocock-skills/repo/skills/in-progress/writing-beats/SKILL.md",
+      "words": 826,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 1,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [],
+      "referenced_by": []
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "writing-fragments",
+      "description": "Writing, explore: mine raw fragments, no structure yet.",
+      "category": "in-progress",
+      "invocation": "user",
+      "path": "sources/repos/mattpocock-skills/repo/skills/in-progress/writing-fragments/SKILL.md",
+      "words": 580,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 1,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [],
+      "referenced_by": []
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "writing-shape",
+      "description": "Writing, exploit: shape raw material into an article, paragraph by paragraph.",
+      "category": "in-progress",
+      "invocation": "user",
+      "path": "sources/repos/mattpocock-skills/repo/skills/in-progress/writing-shape/SKILL.md",
+      "words": 1008,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 1,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [],
+      "referenced_by": []
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "git-guardrails-claude-code",
+      "description": "Set up Claude Code hooks to block dangerous git commands (push, reset --hard, clean, branch -D, etc.) before they execute. Use when user wants to prevent destructive git operations, add git safety hooks, or block git push/reset in Claude Code.",
+      "category": "misc",
+      "invocation": "model",
+      "path": "sources/repos/mattpocock-skills/repo/skills/misc/git-guardrails-claude-code/SKILL.md",
+      "words": 257,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 2,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": true,
+        "has_assets": false,
+        "files": [
+          "agents/openai.yaml",
+          "scripts/block-dangerous-git.sh"
+        ]
+      },
+      "references": [],
+      "referenced_by": []
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "migrate-to-shoehorn",
+      "description": "Migrate test files from `as` type assertions to @total-typescript/shoehorn. Use when user mentions shoehorn, wants to replace `as` in tests, or needs partial test data.",
+      "category": "misc",
+      "invocation": "model",
+      "path": "sources/repos/mattpocock-skills/repo/skills/misc/migrate-to-shoehorn/SKILL.md",
+      "words": 385,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 1,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [],
+      "referenced_by": []
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "scaffold-exercises",
+      "description": "Create exercise directory structures with sections, problems, solutions, and explainers that pass linting. Use when user wants to scaffold exercises, create exercise stubs, or set up a new course section.",
+      "category": "misc",
+      "invocation": "model",
+      "path": "sources/repos/mattpocock-skills/repo/skills/misc/scaffold-exercises/SKILL.md",
+      "words": 407,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 1,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [],
+      "referenced_by": []
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "setup-pre-commit",
+      "description": "Set up Husky pre-commit hooks with lint-staged (Prettier), type checking, and tests in the current repo. Use when user wants to add pre-commit hooks, set up Husky, configure lint-staged, or add commit-time formatting/typechecking/testing.",
+      "category": "misc",
+      "invocation": "model",
+      "path": "sources/repos/mattpocock-skills/repo/skills/misc/setup-pre-commit/SKILL.md",
+      "words": 294,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 1,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [],
+      "referenced_by": []
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "grill-me",
+      "description": "A relentless interview to sharpen a plan or design.",
+      "category": "productivity",
+      "invocation": "user",
+      "path": "sources/repos/mattpocock-skills/repo/skills/productivity/grill-me/SKILL.md",
+      "words": 6,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 1,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [],
+      "referenced_by": [
+        "ask-matt"
+      ]
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "grilling",
+      "description": "Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or uses any 'grill' trigger phrases.",
+      "category": "productivity",
+      "invocation": "model",
+      "path": "sources/repos/mattpocock-skills/repo/skills/productivity/grilling/SKILL.md",
+      "words": 303,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 1,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [],
+      "referenced_by": [
+        "ask-matt",
+        "loop-me",
+        "wayfinder"
+      ]
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "handoff",
+      "description": "Compact the current conversation into a handoff document for another agent to pick up.",
+      "category": "productivity",
+      "invocation": "user",
+      "path": "sources/repos/mattpocock-skills/repo/skills/productivity/handoff/SKILL.md",
+      "words": 114,
+      "frontmatter_extra": {
+        "argument-hint": "What will the next session be used for?"
+      },
+      "support": {
+        "file_count": 1,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [],
+      "referenced_by": [
+        "ask-matt"
+      ]
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "teach",
+      "description": "Teach the user a new skill or concept, within this workspace.",
+      "category": "productivity",
+      "invocation": "user",
+      "path": "sources/repos/mattpocock-skills/repo/skills/productivity/teach/SKILL.md",
+      "words": 1496,
+      "frontmatter_extra": {
+        "argument-hint": "What would you like to learn about?"
+      },
+      "support": {
+        "file_count": 5,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "GLOSSARY-FORMAT.md",
+          "LEARNING-RECORD-FORMAT.md",
+          "MISSION-FORMAT.md",
+          "RESOURCES-FORMAT.md",
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [],
+      "referenced_by": [
+        "ask-matt"
+      ]
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "to-questionnaire",
+      "description": "Turn a decision you can't fully answer into a questionnaire for someone else to fill in.",
+      "category": "productivity",
+      "invocation": "user",
+      "path": "sources/repos/mattpocock-skills/repo/skills/productivity/to-questionnaire/SKILL.md",
+      "words": 447,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 1,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [],
+      "referenced_by": [
+        "ask-matt"
+      ]
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "wait-what",
+      "description": "Stop. That last message did not land: re-pitch it.",
+      "category": "productivity",
+      "invocation": "user",
+      "path": "sources/repos/mattpocock-skills/repo/skills/productivity/wait-what/SKILL.md",
+      "words": 44,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 1,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [],
+      "referenced_by": [
+        "ask-matt"
+      ]
+    },
+    {
+      "repo": "mattpocock-skills",
+      "name": "writing-for-agents",
+      "description": "Writing documents for agents. Use when creating or editing skills, or modifying AGENTS.md or CLAUDE.md.",
+      "category": "productivity",
+      "invocation": "model",
+      "path": "sources/repos/mattpocock-skills/repo/skills/productivity/writing-for-agents/SKILL.md",
+      "words": 1757,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 2,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "SKILL-MECHANICS.md",
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [],
+      "referenced_by": [
+        "ask-matt",
+        "chief-of-staff",
+        "retro"
+      ]
+    }
+  ]
+}
