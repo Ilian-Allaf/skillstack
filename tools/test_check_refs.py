@@ -22,6 +22,7 @@ class CheckRefsTest(unittest.TestCase):
         self.root = Path(self.tmp.name)
         self.write("skills/constitution/README.md", "# Constitution\n\n## Rules\n")
         self.write("skills/constitution/references/principles.md", "| Id | Apply when | Rule |\n|---|---|---|\n| `fix-root-causes` | debugging | Fix the cause. |\n")
+        self.write("skills/constitution/references/principles/fix-root-causes.md", "# fix-root-causes\n")
         self.write("skills/constitution/references/glossary.md", "| Term | Meaning | Avoid |\n|---|---|---|\n| `needs-human` | a label; `one-way` door | `escalated` |\n")
         self.write("skills/ship/SKILL.md", "# Ship\n\n## Before build: read `done_when`\n\nRun [the playbook](references/playbooks/bug-fix.md) and `fix-root-causes`.\n")
         self.write("skills/ship/references/playbooks/bug-fix.md", "# Bug fix\n\nSee [ship](../../SKILL.md#before-build-read-done_when) and `ship/SKILL.md`.\n")
@@ -134,6 +135,14 @@ class CheckRefsTest(unittest.TestCase):
         self.assertNotIn("R009", self.codes())
         self.write("skills/choose-skill/SKILL.md", "# Choose\n\n| a bug | `/shipping` |\n")
         self.assertIn("R009", self.codes())
+
+    def test_principle_without_its_full_form(self) -> None:
+        (self.root / "skills/constitution/references/principles/fix-root-causes.md").unlink()
+        self.assertIn("R010", self.codes())
+
+    def test_full_form_without_its_row(self) -> None:
+        self.write("skills/constitution/references/principles/old-name.md", "# old-name\n")
+        self.assertIn("R010", self.codes())
 
     def test_exit_codes(self) -> None:
         with contextlib.redirect_stdout(io.StringIO()):

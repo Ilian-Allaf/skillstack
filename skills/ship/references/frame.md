@@ -21,7 +21,8 @@ Evidence: <demo video, state chart, screenshots, or command output, and why>
 Out of scope: <what this PR will not do>
 Risk: <low | medium | high>, because <path or reason>. Hard zones: <list, or none>.
 Playbook: <one from the list below>. Seams under test: <public interfaces>.
-Go?
+Design: <none | two sketches | two sketches, shown to you before code>, because <the row of design.md's table>.
+Go? (Say "go, show me the design" to see it before code.)
 ```
 
 ## `done_when`
