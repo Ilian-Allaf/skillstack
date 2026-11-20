@@ -28,7 +28,7 @@ You do not cut the spec into implementation slices for parallel agents. One buil
    - work too big for one session, where the way to the goal is not visible yet: **map**;
    - a map issue: **map**, working its next decision.
 
-   A question a quick experiment can answer is not the user's to decide: run [investigate](../investigate/SKILL.md) in prototype mode for it.
+   A question of fact a run can answer, such as a timing or whether an approach works, is not the user's to decide: run [investigate](../investigate/SKILL.md) in prototype mode, and the observation decides. A question of look or feel gets a prototype too, but the user picks from its variants.
    Done when: the mode is named to the user with the reason.
 
 2. **Grill.** Interview the user in rounds, as [references/grill.md](references/grill.md) describes, and keep the repo's domain model up to date as [references/domain.md](references/domain.md) describes. Facts are your job; decisions are the user's.

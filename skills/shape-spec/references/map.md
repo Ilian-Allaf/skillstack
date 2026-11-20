@@ -34,11 +34,11 @@ Each issue holds one question, sized to one session, and a label for its type:
 | Label | Type | Resolved by |
 |---|---|---|
 | `decision:grill` | a conversation with the user, the default | [grill.md](grill.md) with [domain.md](domain.md), user present |
-| `decision:prototype` | "how should it look or behave?" | [investigate](../../investigate/SKILL.md) in prototype mode, user present |
+| `decision:prototype` | "how should it look or behave?" | [investigate](../../investigate/SKILL.md) in prototype mode; the observation decides a question of fact, the user picks for a question of look or feel |
 | `decision:research` | a fact outside the repo | a fresh subagent, alone; findings on a branch that is never merged |
 | `decision:task` | manual work that blocks a decision: an account, an access, a data export | the agent alone when it can, else the user |
 
-A grill or prototype decision resolves only with the user. An agent never answers its own questions.
+A grill decision, and a prototype decision of look or feel, resolve only with the user. A prototype decision of fact resolves by its observation, recorded with its evidence. An agent never answers its own questions without one or the other.
 
 Blocking uses the tracker's own blocking link, as the tracker file says, so the user sees in the tracker what can start now. The **frontier** is the open, unblocked, unassigned decisions. A session claims one by assigning it first.
 

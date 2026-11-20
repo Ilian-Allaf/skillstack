@@ -5,17 +5,17 @@ Shared rules, not a skill: no harness lists this folder, and no one launches it.
 ## Rules that always apply
 
 1. **The agent never merges.** Work ends at a PR that is ready to merge. The user merges, always. Stop before `gh pr merge`, `--auto`, or a merge queue.
-2. **The author is never the judge.** A fresh verifier with no write access judges the work. The builder's own checks are evidence for the verifier, never the verdict.
+2. **The author is never the judge.** A fresh verifier with no write access judges the work. The builder's own checks are evidence for the verifier, never the verdict. Every PR a skill opens goes through a verdict and `babysit-pr` to `ready`, as `ship` steps 7 and 8 describe; without them, a PR is not ready.
 3. **Only what ran counts.** A claim carries its certainty level, from 1 (said) to 5 (reproduced in the running app).
 4. **A finding blocks only when it is proven**, with its run on the head of the PR or a quote of the repo standard it breaks; [verdict.md](../verify-pr/references/verdict.md) defines a FAIL. Anything else is a note, listed in the verdict comment; it becomes an issue only when the user asks.
 5. **Done means `done_when` is green.** `done_when` is observable, comes from the user's request, and was red on the base before any code changed.
 6. **Cover every case, and say what was not.** The user reviews the evidence, not the code. Every case in the task's case list has evidence in the PR's coverage table, or a line under `Not verified` that tells the user why no run could prove it. Never report done on an unproven change.
-7. **Every loop has a budget.** Inside it, a plateau means change the approach, not stop. When it runs out, test the premise the attempts shared, replan once, then stop with a summary and a recommendation. Never relax `done_when` to declare the work done.
+7. **Every loop has a budget.** Inside it, a plateau means change the approach, not stop. Before the last attempt, write the premise the attempts shared, test it, and replan once. When the budget runs out, stop with a summary and a recommendation. Never relax `done_when` to declare the work done.
 8. **State lives in the code host and the issue tracker**: PRs, issues, labels, comments. Read it before acting, and apply only the difference, so a rerun converges.
 9. **Follow every step.** Before the first step, copy the skill's steps into your todo list. A step you skip stays in the list as `skip: <reason>`.
 10. **Reply in the user's language.** Skills, code, commits, and PRs stay in English unless the repo says otherwise.
 11. **Launching is the go.** The user starts every task; nothing starts on a timer or on its own. Once started, run to the end without asking. Stop only for a one-way door, a product or preference call no run can settle, evidence that rules out what the user asked for, or a dead end after rule 7. Decide everything else, record it under Decisions, and report it.
-12. **What serves the goal is yours.** A flaky check, a broken tool, a related bug, or a review thread met on the way: fix it, in its own PR when it is outside the task's diff. What does not serve the goal becomes an issue (`scope-stays-put`). On a long run, log each unit in the decision log as it lands. When your context or the usage limit is about to run out, pause as [pause-task](../pause-task/SKILL.md) describes, so a fresh session resumes the task.
+12. **What serves the goal is yours.** A flaky check, a broken tool, or a bug met on the way that blocks the goal: fix it. Outside the task's diff, the fix is its own PR, through `ship` like any task. Anything else met on the way becomes an issue (`scope-stays-put`). On a long run, log each unit in the decision log as it lands. When your context or the usage limit is about to run out, pause as [pause-task](../pause-task/SKILL.md) describes, so a fresh session resumes the task.
 13. **A skill that is wrong is fixed, not worked around.** A project-local skill (`drive-<app>`, `prove-<area>`, the repo's agent file) is fixed in its own PR. A skill of this framework is named in the reply and the decision log as a candidate for `/learn-from-mistakes`. Either way, the task goes on.
 
 ## Reference, read when the condition applies
@@ -28,7 +28,7 @@ Shared rules, not a skill: no harness lists this folder, and no one launches it.
 | [references/glossary.md](references/glossary.md) | before you write a skill, a PR, or a verdict, and whenever a term is ambiguous |
 | [references/pr-format.md](references/pr-format.md) | before you open or edit a PR body |
 | [references/writing.md](references/writing.md) | before you write what a person reads: a PR body, a commit message, an issue, a reply, a doc, a skill |
-| the target repo's `docs/agents/issue-tracker.md` | before you create, read, comment on, label, link, or close an issue; it says how in this repo's tracker. When it is missing, ask the user to run `/setup-repo` |
+| the target repo's `docs/agents/issue-tracker.md` | before you create, read, comment on, label, link, or close an issue; it says how in this repo's tracker. When it is missing, do not stop a running task: list the issues you would have opened in your reply and the decision log, and recommend `/setup-repo` |
 | [references/target-repo.md](references/target-repo.md) | before you create or edit the agent file, the glossary, the coding standards, the rule table, or a label in the target repo |
 | [references/harness.md](references/harness.md) | before you spawn a subagent, ask the user a question, wait on a PR, or read a session transcript |
 | [references/parallel.md](references/parallel.md) | before you run several subagents on one job |
@@ -50,8 +50,8 @@ A subagent gets a brief and the path of the skill it runs, never the parent's re
 
 The index gives each principle in one line. Before you apply a principle, or judge work by it, read its full form, `references/principles/<id>.md`: one file per principle you apply, when you apply it. Never read the whole folder or a whole group of the index.
 
-A principle you cite, under Decisions or in a decision log, is one whose full form you read in this session.
+A principle you cite under Decisions is one whose full form you read in this session.
 
 ## Principles in the record
 
-The reply does not list principles. When a principle changed a choice, write its id and the choice it changed where the choice is recorded: the PR's Decisions section, or the decision log of a long run.
+The reply does not list principles. When a principle changed a choice, write its id and the choice it changed in the PR's Decisions section. In a decision log, say the principle in plain words, not as an id: the log is read by a person catching up.

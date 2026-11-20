@@ -23,7 +23,7 @@ Three modes:
 ## Steps
 
 1. **Name the class.** State the mistake as a class, not an instance: "a component reads the store directly" rather than "line 40 of `Editor.tsx`". Find every occurrence in the repo, and the past commits, reverts, and review comments where it appeared.
-   Done when: the class is one sentence, with its occurrences counted and two real examples cited by commit or `file:line`.
+   Done when: the class is one sentence, with its occurrences counted and two real examples cited by commit or `file:line`; in a correction, one real occurrence is enough, or a recreated one when the mistake was caught before it landed.
 
 2. **Pick the highest level that works.** Try each in order, and stop at the first that makes the mistake impossible or loud. See [references/levels.md](references/levels.md).
    Done when: you chose a level, and you wrote why each higher level does not work for this class.
@@ -38,7 +38,8 @@ Three modes:
    Done when: the table has the row, and no row says "nothing" in its enforcer column without an open issue.
 
 6. **Open the PR.** One PR per class, in [the PR format](../constitution/references/pr-format.md). Judgment calls that no check can hold go to `CODING_STANDARDS.md`, which the verifier's `standards` lane reads.
-   Done when: the PR is open with both runs from step 4 as its proof.
+   Then get a verdict and run `babysit-pr`, as rule 2 of the constitution says.
+   Done when: the PR is open with both runs from step 4 as its proof, and carries `ready` or `needs-human`.
 
 ## Reply
 

@@ -45,7 +45,7 @@ Required levels:
 Level 5 needs the running app, driven the way a user does. The repo's drivers live in `.agents/skills/drive-*/SKILL.md`, one per surface: a repo with a web app and a CLI has two. Look there, not only in the harness's skill list, which a subagent may not have.
 
 - Use the driver whose surface the change touches. A change across surfaces is proven on each surface, with its driver.
-- Only when no driver exists for a touched surface, prove at level 4 and write the gap under Not verified.
+- When no driver exists for a touched surface, prove what you can at level 4 and write the gap under Not verified. A missing driver is not a pass: for a `medium` or `high` task the `live` lane is INCONCLUSIVE, so the PR ends `needs-human`, with `/create-app-driver` as the recommendation.
 
 ## `done_when`
 
@@ -54,7 +54,7 @@ Level 5 needs the running app, driven the way a user does. The repo's drivers li
 - **observable**: a command, a test, or an app journey that answers yes or no. "Works correctly" is not observable; "the e2e double-click test passes and the notes table holds one row" is;
 - **red on the base**: run it before any code changes, and confirm it fails. A `done_when` that is already green proves nothing: the task is misread or already done, so ask. A refactoring adds a behavior pin that is green on both the base and the head;
 - **from the user**: taken from the request or the issue. The builder never sets the bar for its own judge. When it has to sharpen the wording, it shows the sharpened version and the user corrects it;
-- **narrow**: one task, one condition. Several conditions mean several tasks: one unit and one PR each;
+- **narrow**: one task, one condition. Several conditions mean several units of the task: one PR each, stacked, as `frame` describes;
 - **shown**: it is in the frame, where the user can correct it at any time. For `high`, or a task that touches a hard zone, the verifier reads it before `build` and flags it if it cannot be checked.
 
 ## Risk classes
@@ -73,7 +73,7 @@ The class sets how deep verification goes:
 |---|---|---|---|
 | `frame` | short | full; `done_when` read by the verifier when a hard zone is touched | full, `done_when` read by the verifier |
 | red to green loop | when code changes | yes | yes, plus the hard zones `frame` marked |
-| proof on the app | docs render | before and after | before and after, every touched path |
+| proof on the app | before and after when `done_when` is user-facing; otherwise the docs render | before and after | before and after, every touched path |
 | `analyze-impact` | no | yes, without widening | yes, widened to several subagents |
 | `verify-pr` lanes | `replay`, `spec`, `standards` | adds `live`; `breakage` when a hard zone is touched | adds `breakage` and `adversarial` |
 

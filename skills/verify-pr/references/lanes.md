@@ -6,7 +6,7 @@ Each lane answers one question. The risk class picks the lanes (see [proof.md](.
 
 ### `replay`: does the builder's proof hold?
 
-Run every command in the PR's Proof section on the head SHA, the demo scripts included, and those of its Breakage section once your own `breakage` lane has run. Compare the output with what the PR claims. A claim whose command fails or prints something else is a finding. Check the coverage table against the evidence: a row whose evidence is missing, or a demo chapter that does not show the expected result, is a finding.
+Run every command in the PR's Proof section on the head SHA, the demo scripts included, and those of its Breakage section: after your own `breakage` lane when you run it, at the end of this lane when you do not. Compare the output with what the PR claims. A claim whose command fails or prints something else is a finding. Check the coverage table against the evidence: a row whose evidence is missing, or a demo chapter that does not show the expected result, is a finding.
 
 ### `live`: does the app do what `done_when` says?
 

@@ -27,14 +27,15 @@ This is the one skill that deletes the user's local state with no PR to review i
    |---|---|---|
    | in use | the current session's worktree, a task still running, an owner of a running `ship-queue`, a file changed in the last 24 hours, or a process running in it | keep |
    | open | its PR is open and not merged | keep |
-   | unsaved | it holds uncommitted tracked edits | ask the user, showing the diff |
-   | scratch | only untracked files, and otherwise safe | remove; name the files in the reply |
+   | unsaved | it holds uncommitted tracked edits, or untracked files that git does not ignore | ask the user, showing the diff and the files |
+   | paused | its branch is not merged, has no PR, and its last commit starts with `wip:` | keep: `/resume-task` picks it up |
    | safe | its branch is merged or its PR closed, and the tree is clean | remove |
+   | abandoned | its branch is not merged, has no PR, its last commit is not `wip:`, and the tree is clean | remove the worktree, keep the branch |
 
    The main checkout is never a candidate.
    Done when: every worktree has one group, with the fact that put it there.
 
-3. **Ask about the unsaved ones.** For each, show the diff and ask through the harness's question tool whether to commit it to its branch, keep the worktree, or drop the edits. This is an irreversible choice: it is the user's.
+3. **Ask about the unsaved ones.** For each, show the diff and the untracked files, and ask through the harness's question tool whether to commit it to its branch, keep the worktree, or drop the edits. This is an irreversible choice: it is the user's.
    Done when: every unsaved worktree has the user's answer.
 
 4. **Remove.** For each worktree to remove, run `git worktree remove --force <path>`; if the folder survives on ignored build files, delete it. Then `git worktree prune`. Keep every branch: its commits stay reachable.

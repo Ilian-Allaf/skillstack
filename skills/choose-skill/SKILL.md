@@ -46,7 +46,9 @@ You are the index of this framework, so the user only has to remember you. You p
 | an agent made the same mistake twice | `/add-guardrail <the mistake>` |
 | what the code already enforces, before agents work on it at scale | `/add-guardrail audit` |
 | your disk fills up with the worktrees of past tasks | `/clean-worktrees` |
+| the agent cannot drive your app, or a PR is `needs-human` for lack of a driver | `/create-app-driver` |
 | the app changed and the agent drives it the old way | `/create-app-driver`, maintain mode |
+| a hard zone needs a check over every order of steps, or a `prove-<area>` check is stale | `/create-app-driver`, formal mode |
 | you changed a skill and want to know whether it helps before you keep it | `/test-skill-change <the skill and the change>` |
 | you are about to send a prompt and want it aimed deeper | `/sharpen-prompt <your prompt>` |
 | the last reply was too dense to act on | `/say-it-plainly` |

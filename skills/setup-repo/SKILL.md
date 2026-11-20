@@ -39,7 +39,8 @@ You prepare this repo so every later task starts from facts, not guesses. Each p
    Done when: every standard is a candidate check or a judgment call with its example, and the user confirmed the judgment calls.
 
 7. **Write the agent file and open the docs PR.** Give `AGENTS.md` the commands from step 1 and the paths of the files above, as target-repo.md describes, and move skills kept in a harness folder if the user chose it. Open one PR with the tracker file, the glossary, the standards, and the agent file, in [the PR format](../constitution/references/pr-format.md).
-   Done when: the docs PR is open, or the user chose none of steps 5 to 7.
+   Then a verdict and `babysit-pr`, per rule 2 of the constitution.
+   Done when: the docs PR carries `ready` or `needs-human`, or the user chose none of steps 5 to 7.
 
 8. **Build the app driver, if the user chose it.** Run [create-app-driver](../create-app-driver/SKILL.md). It asks for what it needs, such as a test account.
    Done when: its PR is open, or its blocker is in the report, or the user declined it.

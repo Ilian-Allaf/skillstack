@@ -27,6 +27,11 @@ When a skill changes, update its section here, in the same PR.
 - Source: tstack `babysit-pr`, pstack `shipping`.
 - (pstack `babysit`)
 - (tstack `full-send`)
+- 2026-11-20, from the coherence audit: a verdict requested when none covers the head, and `ready` removed when the patch id moved, from pstack `shipping` ("verify each PR independently before it lands", "Compare git patch-id at the verdict SHA with the current head"). The stack rules moved to `references/stack.md`.
+
+## `skills/babysit-pr/references/stack.md` (2026-11-20)
+
+- Source: pstack `poteto-mode` babysit playbook: the frontier, one babysitter per stack, the owner who babysits its own PR and rebases its own branch ("An Autopilot owner babysitting its own PR is that owner"), and the rebase reported to the owner (Lauren Tan).
 
 ## `skills/catch-me-up/SKILL.md` and its references (2026-11-20)
 
@@ -41,6 +46,7 @@ When a skill changes, update its section here, in the same PR.
 - (pstack `poteto-mode`)
 - 2026-11-20, rules 11 to 13 (ADR 0014): pstack `poteto-mode` Autonomy and Non-negotiables ("don't wait for confirmation", "broken skill mid-task"), and its `autonomous-run` playbook (mid-run discoveries are yours, out-of-band fixes in their own PR, a plateau is not a stop, never relax the predicate). Adapted: a framework skill that is wrong goes to `/learn-from-mistakes`, since a target repo cannot edit the installed plugin.
 - 2026-11-20, Reading a principle: pstack `poteto-mode` ("Read the leaf skill in full for any principle you apply", "Cite only principles whose leaf SKILL.md you read this session") and `poteto-agent` ("Navigate to a leaf principle skill whenever you apply that principle"). Ours: never a whole group of the index, and the W002 budget in `tools/lint_skills.py`, since our full forms are longer than pstack's.
+- 2026-11-20, from the coherence audit: rule 12 narrowed to what blocks the goal, from pstack `orchestrate` ("Keep only the fixes that block the program, and park the rest as follow-ups"); rule 2 extended to every PR a skill opens, from pstack `shipping`; principles in plain words in the decision log, from pstack `show-me-your-work` (ADR 0015).
 
 ## `skills/constitution/references/languages/typescript.md` (examples, 2026-11-20)
 
@@ -117,6 +123,7 @@ When a skill changes, update its section here, in the same PR.
 - Sources: tstack `full-send` (proof), pstack `principle-prove-it-works` and `blast-radius` (certainty levels), Matt Pocock `diagnosing-bugs` (red loop), Ray Amjad and Anthropic "harness design" (verify where the model is weakest).
 - (pstack: "a small, obvious edit doesn't" need full rigor)
 - (Ray Amjad: "you don't really need a verifier to like verify that the contact form submits"; Anthropic "harness design": the evaluator "is worth the cost when the task sits beyond what the current model does reliably solo")
+- 2026-11-20, from the coherence audit: a missing driver is not a pass, from pstack "'Inconclusive' or wrong-surface is not a pass" and `autopilot-full` ("The verdict is not clean without the live lane"); a user-facing `low` change is proven on the app, from pstack `poteto-mode` ("Shipping UI: the matching control skill").
 
 ## `skills/constitution/references/target-repo.md` (where skills and instructions live, 2026-11-19)
 
@@ -182,6 +189,7 @@ When a skill changes, update its section here, in the same PR.
 ## `skills/pause-task/SKILL.md` (2026-11-20)
 
 - Source: pstack `poteto-mode` pause-safely playbook (Lauren Tan). Adapted: the resume note goes in the `wip:` commit body and on the open PR, where a later session finds it, instead of a temporary file; the pause also triggers on a usage limit, since the user runs on a subscription.
+- 2026-11-20, from the coherence audit: a task with no branch writes its note to a file outside the repo, as pstack `pause-safely` does ("write it to a file like /tmp/<slug>-resume.md"); the decision log's rows go into the note, since the log lives out of git.
 
 ## `skills/recall-context/SKILL.md` (2026-11-20)
 
@@ -194,6 +202,7 @@ When a skill changes, update its section here, in the same PR.
 ## `skills/ship-queue/SKILL.md` (2026-11-20)
 
 - Source: pstack `poteto-mode` autopilot-stack and autopilot-full playbooks, and orchestrate for the supervision rules: start with one unit, judge agents by side effects, replace a stuck one with a consolidated brief (Lauren Tan). Adapted: no merge and no merge prep; each owner runs `ship`, whose fresh verifier gives the verdict, instead of a root swarm; at most three owners at once, for a subscription; no cloud agents.
+- 2026-11-20, from the coherence audit: two replacements per task, then `needs-human`, from pstack `orchestrate` ("After two retries, drop the unit and replan around it"); each owner babysits its own PR, from pstack `babysit`.
 
 ## `skills/say-it-plainly/SKILL.md` (2026-11-20)
 
@@ -214,6 +223,7 @@ When a skill changes, update its section here, in the same PR.
 - Source: Ray Amjad (splitting a spec into parallel units gives worse results, the work is tangled in ways nobody expected), Anthropic "harness design" (planner kept, sprints dropped).
 - Sources for the modes: Matt Pocock `grilling`, `domain-modeling`, `grill-with-docs`, `to-spec`, `wayfinder`.
 - (Anthropic kept its planner for this reason)
+- 2026-11-20, from the coherence audit: a question of fact is settled by a run, one of look or feel by the user, from pstack `poteto-mode` ("If the answer is a fact you could observe by running something, it is not the human's to answer").
 
 ## `skills/shape-spec/references/domain.md`
 

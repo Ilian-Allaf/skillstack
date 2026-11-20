@@ -35,7 +35,7 @@ The codebase is the word list: write the real symbol, file, flag, or command, no
 | "-ing" tails: "ensuring safety", "highlighting the risk" | a sentence that says what does it |
 | a vague origin: "experts say", "it is known" | name who said it, or cut |
 | hedges: "could potentially", "it might be argued" | "may", or the fact |
-| metaphor nouns: north star, flywheel, substrate, wedge, surface, paradigm | the concrete word |
+| metaphor nouns: north star, flywheel, substrate, wedge, "API surface", paradigm | the concrete word; a surface the user touches, such as a web app or a CLI, is a term here, not a metaphor |
 | feelings instead of mechanisms: "SQL you can read" | what it does: "`.toSQL()` returns the exact query" |
 | adverbs propping a weak verb: "significantly improves" | the measured delta |
 | bold labels that restate the line; title case headings; emojis in headings | prose; sentence case; none |

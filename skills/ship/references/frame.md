@@ -51,4 +51,4 @@ Pick one playbook per task, from the first column. A playbook names principles b
 | the UI must look exactly the same after a migration | [visual-parity](playbooks/visual-parity.md) | a PR per component or batch |
 | none of the above: a wide migration, a change in several parts, a long unattended run | [bespoke](playbooks/bespoke.md) | an ordered series of PRs and a decision log |
 
-A task that matches two rows is two tasks: run them as two units, one PR each, the first one first. Every playbook ends in a PR. A question, a diagnosis, or a prototype is not a playbook: it is `investigate`.
+A task that matches two rows is two units of this task: one PR each, the second stacked on the first, each through steps 2 to 7 of `ship`, then `babysit-pr` once over the stack, as the `bespoke` playbook does. Every playbook ends in a PR. A question, a diagnosis, or a prototype is not a playbook: it is `investigate`.

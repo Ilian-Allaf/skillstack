@@ -6,7 +6,8 @@ argument-hint: "<the tasks or issue numbers, one per line>"
 metadata:
   kind: entry
   role: coordinator
-  calls: "ship, catch-me-up"
+  calls: "ship"
+  reads: "catch-me-up"
   consumes: "a list of tasks or issues from the user"
   produces: "one PR per task, each labeled ready or needs-human"
   budget: "2 replacements per owner, then the task is needs-human"
@@ -29,10 +30,10 @@ The tasks come from the user. You do not split one task into several (ADR 0011):
 2. **Start one task first.** Spawn its owner, as below, and watch it through its frame and its first build. A flaw in the brief then costs one agent, not all of them.
    Done when: the first owner has pushed a build, or its flaw is fixed in the brief.
 
-3. **Spawn the other owners.** One fresh subagent per task, each in its own worktree and branch from its base, at most three running at once; start the next as one finishes. Pick each owner's model as the harness's Model per role says. Each brief holds: the user's goal in their words, the task, its base, the path of `ship/SKILL.md` to follow from step 1 to step 8, the paths it may write, and "never merge, never push to another owner's branch". When an owner cannot spawn its own verifier, it says so, and you spawn a fresh verifier for its PR yourself.
+3. **Spawn the other owners.** One fresh subagent per task, each in its own worktree and branch from its base, at most three running at once; start the next as one finishes. Pick each owner's model as the harness's Model per role says. Each brief holds: the user's goal in their words, the task, its base, the path of `ship/SKILL.md` to follow from step 1 to step 8, the paths it may write, and "never merge, never push to another owner's branch; babysit only your own PR, and when your PR is stacked on another task's, rebase your own branch on its new head and report to me what the branch below needs". When an owner cannot spawn its own verifier, it says so, and you spawn a fresh verifier for its PR yourself.
    Done when: every task has an owner running, or waiting on the task it builds on.
 
-4. **Watch by side effects.** Wake on PR events, or on a periodic check while the queue runs (ADR 0014); the wake ends with the queue. On each wake, judge each owner by its pushes, its PR, and its decision log, not by its status text. An owner that errors or shows nothing new for twice its usual time is stuck: replace it with a fresh owner whose brief holds the first brief, every later directive, and the stuck owner's branch and report. Answer an owner that waits on you. Pass a call only the user can make to the user, with its evidence.
+4. **Watch by side effects.** Wake on PR events, or on a periodic check while the queue runs (ADR 0014); the wake ends with the queue. On each wake, judge each owner by its pushes, its PR, and its decision log, not by its status text. An owner that errors or shows nothing new for twice its usual time is stuck: replace it with a fresh owner whose brief holds the first brief, every later directive, and the stuck owner's branch and report. After two replacements for one task, stop replacing: the task is `needs-human`, and you replan the tasks that build on it. When an owner reports what a branch below needs, hand it to that branch's owner. Answer an owner that waits on you. Pass a call only the user can make to the user, with its evidence.
    Done when: every owner is running, done, or replaced, and no owner waits on you.
 
 5. **Check what each owner hands back.** Read the PR, not the owner's summary: its coverage table, its demo, its Verdict line on the head's patch id, and its label. A PR labeled `ready` without a passing verdict on its head is not ready: send it back to its owner.
@@ -43,4 +44,4 @@ The tasks come from the user. You do not split one task into several (ADR 0011):
 
 ## Reply
 
-The catch-up shape of [catch-me-up](../catch-me-up/SKILL.md): one opening sentence, the PRs' demos and screenshots, then one bullet per PR with its link, what it changes, its verdict, and its risk, riskiest first, in the order the stacked ones must merge. Then the `needs-human` PRs with what each needs from the user.
+The shape of [catch-me-up's reply](../catch-me-up/references/reply.md): one opening sentence, the PRs' demos and screenshots, then one bullet per PR with its link, what it changes, its verdict, and its risk. Stacked PRs come in the order they must merge; independent PRs come riskiest first. Then the `needs-human` PRs with what each needs from the user.

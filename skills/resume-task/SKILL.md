@@ -19,7 +19,7 @@ The earlier session's trail is your input, and it is authoritative: you continue
 
 ## Steps
 
-1. **Find the trail.** Without an argument, take the most recent branch whose last commit starts with `wip:`. Read, in this order: the `wip:` commit body (the resume note that `pause-task` writes), the PR and its comments, the decision log, and the session transcript when the harness keeps one (see [harness.md](../constitution/references/harness.md)). Read a long transcript in a subagent and keep only its timeline of decisions and open points.
+1. **Find the trail.** Without an argument, take the most recent resume note `pause-task` left: a branch whose last commit starts with `wip:`, or a file `<repo>-*-resume.md` in the system's temporary folder, whichever is newer. Read, in this order: the resume note, the PR or the issue and its comments, the decision log, and the session transcript when the harness keeps one (see [harness.md](../constitution/references/harness.md)). Read a long transcript in a subagent and keep only its timeline of decisions and open points.
    Done when: you can state the goal, the skill, and the step the earlier session stopped at.
 
 2. **Rebuild the state.** The branch and its worktree, what landed against the base (`git log`, `git diff`), the PR's checks, labels, and threads, the decisions made, and the questions still open.

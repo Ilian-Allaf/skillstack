@@ -61,7 +61,7 @@ One deviation is information; a pattern means the shape is wrong. The tells:
 
 Complexity in the data is not complexity in the design: a few edge cases do not condemn a shape.
 
-To scrap, trace what was built, then redesign as if the new constraints had been there from day one (`redesign-from-first-principles`). Cut before you grow: the new sketch is smaller than the old one before it gets bigger (`subtract-before-you-add`). Run step 3 again, with the tells in the grounding notes. A task scraps once. A second scrap means the frame was wrong: stop with `needs-human`, and give the user what the sketches taught.
+To scrap, trace what was built, then redesign as if the new constraints had been there from day one (`redesign-from-first-principles`). Cut before you grow: the new sketch is smaller than the old one before it gets bigger (`subtract-before-you-add`). Run step 3 again, with the tells in the grounding notes. A task scraps once. A second scrap means the frame was wrong: stop with `needs-human`, as `ship` says for a stop before its step 6, and give the user what the sketches taught.
 
 ## Red flags
 

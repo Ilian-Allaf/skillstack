@@ -39,7 +39,7 @@ You answer; you do not change the product. No branch, no commit, no PR. Scratch 
 4. **Answer.** In the shape the mode's file gives. Say what the evidence does not answer.
    Done when: every part of the question restated in step 1 is answered, or named as open with what would answer it.
 
-5. **Propose the change, if one is due.** Write it as a task the user can launch with `/ship`: the goal, the `done_when` the evidence suggests, the playbook, and the evidence to reuse. Launch nothing yourself.
+5. **Propose the change, if one is due.** When a skill called you mid-task, such as `ship`'s design or bug fix, return the observation and your pick to it instead, and skip this step. Otherwise write the change as a task the user can launch with `/ship`: the goal, the `done_when` the evidence suggests, the playbook, and the evidence to reuse. Launch nothing yourself.
    Done when: the user has the proposed task, or the reply says no change is needed.
 
 ## Reply

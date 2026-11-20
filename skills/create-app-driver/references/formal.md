@@ -21,4 +21,4 @@ Run it after `drive-<app>` exists, when the repo has a hard zone: sync, retries,
 
 ## Maintain
 
-When covered files changed after the recorded commit, `analyze-impact` reports the model as stale and opens an issue. The user runs this pass: reread those changes, update the model or the proof, rerun the check, and move the recorded commit forward only once the model matches the code again.
+When covered files changed after the recorded commit, `analyze-impact` reports the model as stale, and the builder opens an issue (the verifier only notes it). The user runs this pass: reread those changes, update the model or the proof, rerun the check, and move the recorded commit forward only once the model matches the code again.

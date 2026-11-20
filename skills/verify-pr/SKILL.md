@@ -44,7 +44,7 @@ For a `high` task, or one that touches a hard zone, the builder spawns you once 
 
 ## When the builder disputes a FAIL
 
-The builder may answer a FAIL once, with evidence, and always to a new fresh verifier whose brief holds the FAIL comment and the builder's counter-run. That verifier reruns both. If the counter-run proves the FAIL wrong, it withdraws the FAIL in a new comment; otherwise the FAIL stands, and the PR gets `needs-human` with both runs.
+The builder may answer a FAIL once, with evidence, and always to a new fresh verifier whose brief holds the FAIL comment and the builder's counter-run. That verifier reruns both. If the counter-run proves the FAIL wrong, it posts a full verdict in the format of verdict.md, which the builder links on the Verdict line; otherwise the FAIL stands, and the PR gets `needs-human` with both runs.
 
 ## Calibration
 
