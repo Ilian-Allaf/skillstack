@@ -1,0 +1,275 @@
+{
+  "repo": "t3dotgg-tstack",
+  "title": "tstack",
+  "url": "https://github.com/t3dotgg/tstack",
+  "author": "Theo Browne (t3dotgg)",
+  "license": "MIT",
+  "revision": "11e37a74d0a6868c121cd0910ab2b3bd9873b92a",
+  "retrieved_at": "2026-11-16",
+  "generated_at": "2026-11-16",
+  "skill_count": 9,
+  "skills": [
+    {
+      "repo": "t3dotgg-tstack",
+      "name": "babysit-pr",
+      "description": "Monitor a pull request through review and CI. Use when the user asks to monitor, watch, or babysit a PR.",
+      "category": "skills",
+      "invocation": "model",
+      "path": "sources/repos/t3dotgg-tstack/repo/skills/babysit-pr/SKILL.md",
+      "words": 865,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 1,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": true,
+        "has_assets": false,
+        "files": [
+          "scripts/pr-wait"
+        ]
+      },
+      "references": [
+        {
+          "target": "leaving-pr-comments",
+          "mentions": 1
+        }
+      ],
+      "referenced_by": [
+        "file-pr",
+        "full-send",
+        "takeover"
+      ]
+    },
+    {
+      "repo": "t3dotgg-tstack",
+      "name": "council",
+      "description": "Trigger this if the user says 'council'.",
+      "category": "skills",
+      "invocation": "model",
+      "path": "sources/repos/t3dotgg-tstack/repo/skills/council/SKILL.md",
+      "words": 429,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 0,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": []
+      },
+      "references": [],
+      "referenced_by": []
+    },
+    {
+      "repo": "t3dotgg-tstack",
+      "name": "file-pr",
+      "description": "File a concise pull request. Use when the user asks to file, open, or create a PR.",
+      "category": "skills",
+      "invocation": "model",
+      "path": "sources/repos/t3dotgg-tstack/repo/skills/file-pr/SKILL.md",
+      "words": 325,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 0,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": []
+      },
+      "references": [
+        {
+          "target": "babysit-pr",
+          "mentions": 1
+        },
+        {
+          "target": "leaving-pr-comments",
+          "mentions": 1
+        }
+      ],
+      "referenced_by": [
+        "full-send",
+        "takeover"
+      ]
+    },
+    {
+      "repo": "t3dotgg-tstack",
+      "name": "full-send",
+      "description": "Trigger this if the user says 'full send'.",
+      "category": "skills",
+      "invocation": "model",
+      "path": "sources/repos/t3dotgg-tstack/repo/skills/full-send/SKILL.md",
+      "words": 916,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 1,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [
+        {
+          "target": "babysit-pr",
+          "mentions": 2
+        },
+        {
+          "target": "file-pr",
+          "mentions": 1
+        },
+        {
+          "target": "sol-loop",
+          "mentions": 1
+        }
+      ],
+      "referenced_by": [
+        "full-stop"
+      ]
+    },
+    {
+      "repo": "t3dotgg-tstack",
+      "name": "full-stop",
+      "description": "Trigger this if the user says 'full stop', even as a closing \"Full stop.\" that reads like emphasis.",
+      "category": "skills",
+      "invocation": "model",
+      "path": "sources/repos/t3dotgg-tstack/repo/skills/full-stop/SKILL.md",
+      "words": 327,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 1,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [
+        {
+          "target": "full-send",
+          "mentions": 3
+        }
+      ],
+      "referenced_by": []
+    },
+    {
+      "repo": "t3dotgg-tstack",
+      "name": "leaving-pr-comments",
+      "description": "Use whenever leaving comments on GitHub.",
+      "category": "skills",
+      "invocation": "model",
+      "path": "sources/repos/t3dotgg-tstack/repo/skills/leaving-pr-comments/SKILL.md",
+      "words": 241,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 1,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [],
+      "referenced_by": [
+        "babysit-pr",
+        "file-pr",
+        "modernize",
+        "takeover"
+      ]
+    },
+    {
+      "repo": "t3dotgg-tstack",
+      "name": "modernize",
+      "description": "For getting old prs up to date. Use when asked to rebase a pr or \"modernize\".",
+      "category": "skills",
+      "invocation": "model",
+      "path": "sources/repos/t3dotgg-tstack/repo/skills/modernize/SKILL.md",
+      "words": 697,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 1,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": [
+          "agents/openai.yaml"
+        ]
+      },
+      "references": [
+        {
+          "target": "leaving-pr-comments",
+          "mentions": 1
+        }
+      ],
+      "referenced_by": [
+        "takeover"
+      ]
+    },
+    {
+      "repo": "t3dotgg-tstack",
+      "name": "sol-loop",
+      "description": "Use when the user says \"sol loop\".",
+      "category": "skills",
+      "invocation": "model",
+      "path": "sources/repos/t3dotgg-tstack/repo/skills/sol-loop/SKILL.md",
+      "words": 855,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 0,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": []
+      },
+      "references": [],
+      "referenced_by": [
+        "full-send"
+      ]
+    },
+    {
+      "repo": "t3dotgg-tstack",
+      "name": "takeover",
+      "description": "Take over existing work. Use when the user asks to take over a PR, branch, or agent thread, or requests a takeover.",
+      "category": "skills",
+      "invocation": "model",
+      "path": "sources/repos/t3dotgg-tstack/repo/skills/takeover/SKILL.md",
+      "words": 284,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 0,
+        "has_playbooks": false,
+        "has_references": false,
+        "has_scripts": false,
+        "has_assets": false,
+        "files": []
+      },
+      "references": [
+        {
+          "target": "babysit-pr",
+          "mentions": 1
+        },
+        {
+          "target": "file-pr",
+          "mentions": 1
+        },
+        {
+          "target": "leaving-pr-comments",
+          "mentions": 1
+        },
+        {
+          "target": "modernize",
+          "mentions": 1
+        }
+      ],
+      "referenced_by": []
+    }
+  ]
+}
