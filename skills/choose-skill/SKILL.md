@@ -37,6 +37,7 @@ You are the index of this framework, so the user only has to remember you. You p
 | an idea with open decisions, or work too big for one session | `/shape-spec <the idea>` |
 | a question about the code, a symptom you cannot reproduce, or a choice an experiment can settle | `/investigate <the question>` |
 | you must stop now, or the session is about to end, and want to resume later | `/pause-task` |
+| you start or come back to a topic and want what happened around it first | `/recall-context <the topic, and a window>` |
 | a task an earlier session left mid-way | `/resume-task <branch or PR, or nothing for the last paused task>` |
 | you were away: what changed, and what waits on you | `/catch-me-up`, or `/catch-me-up video` for a short video |
 | an open PR stuck on conflicts, review comments, or CI | `/babysit-pr <PR number>` |

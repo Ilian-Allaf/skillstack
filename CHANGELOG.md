@@ -4,6 +4,7 @@ One entry per merged PR that changes what a skill does, or how the framework is 
 
 ## Unreleased (v0)
 
+- New skill `/recall-context`: a brief of where things stand on a topic, from past sessions and the repo's record. New user guide `docs/guide.md`: what to put in a prompt, prompts to copy per kind of work, the costly mistakes; R011 checks that each command it names is a skill.
 - `create-app-driver` grows the driver into a small control CLI when the drive outgrows a script: composable commands, `--dry-run`, `--help`, JSON output, errors that say what to do, one command for the environment. New skill `/clean-worktrees` removes the worktrees of finished tasks and asks before any uncommitted work is lost.
 - Faster review: `babysit-pr` pushes once per round and babysits a stack from its lowest PR, one babysitter per stack, keeping the stack's shape; `constitution/references/writing.md` sets how PR bodies, commits, replies, and docs are written; a PR's Why opens with who notices the change and what the next maintainer inherits.
 - New skills: `/test-skill-change` runs the old and the new version of a skill on the same task, blind, judged on neutral labels, and recommends; `/sharpen-prompt` rewrites a prompt to ask for deeper work; `/say-it-plainly` restates the last reply in plain words.

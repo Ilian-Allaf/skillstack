@@ -182,6 +182,10 @@ When a skill changes, update its section here, in the same PR.
 
 - Source: pstack `poteto-mode` pause-safely playbook (Lauren Tan). Adapted: the resume note goes in the `wip:` commit body and on the open PR, where a later session finds it, instead of a temporary file; the pause also triggers on a usage limit, since the user runs on a subscription.
 
+## `skills/recall-context/SKILL.md` (2026-11-20)
+
+- Source: pstack `recall` (Lauren Tan): the two records, the scope fixed first, the fan-out over transcripts, the sweep of the shared record, the brief's contract and its tags. Adapted: transcripts found where the harness keeps them, the bulk-reading model of the Model per role, the repo's issue tracker.
+
 ## `skills/resume-task/SKILL.md` (2026-11-20)
 
 - Source: pstack `poteto-mode` session-pickup playbook (Lauren Tan). Adapted: the trail starts from the `wip:` commit and the PR; the task continues without asking (ADR 0014).
@@ -310,6 +314,10 @@ When a skill changes, update its section here, in the same PR.
 
 - Source: tstack severity scale, pstack blocking rule.
 - Source: Matt Pocock `code-review` ("documented-standard breaches can be hard"), pstack ("a doc line the PR made wrong").
+
+## `docs/guide.md` (2026-11-20)
+
+- Source: pstack `poteto-help` references `prompting.md` and `recipes.md`, and the guide pages "Route work through /poteto-mode" and "Recipes and pitfalls" (Lauren Tan), rewritten for these skills. Checked by R011, as ADR 0013 asks of a doc.
 
 ## The layout of this repo (2026-11-19)
 
