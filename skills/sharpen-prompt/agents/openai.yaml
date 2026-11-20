@@ -1,0 +1,5 @@
+interface:
+  display_name: "Sharpen prompt"
+  short_description: "A deeper prompt, ready to send"
+policy:
+  allow_implicit_invocation: false

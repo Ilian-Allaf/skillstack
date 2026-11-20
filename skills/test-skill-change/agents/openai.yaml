@@ -1,0 +1,5 @@
+interface:
+  display_name: "Test skill change"
+  short_description: "Old vs new skill, judged blind"
+policy:
+  allow_implicit_invocation: false

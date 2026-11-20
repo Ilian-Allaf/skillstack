@@ -22,6 +22,9 @@ flowchart TB
     guard["add-guardrail<br/><i>mistake → check</i>"]
     cva["create-app-driver<br/><i>teach the agent your app</i>"]
     learn["learn-from-mistakes<br/><i>bug got through → fix the layer</i>"]
+    testskill["test-skill-change<br/><i>old vs new skill, judged blind</i>"]
+    sharpen["sharpen-prompt<br/><i>a deeper prompt</i>"]
+    plain["say-it-plainly<br/><i>last reply, plain words</i>"]
   end
 
   subgraph task ["Inside a task"]
@@ -64,6 +67,8 @@ flowchart TB
   resume -->|carries on| ship
   queue -->|one owner per task| ship
   catchup -->|reads| pr
+  learn -.->|test a proposed fix| testskill
+  sharpen -.->|you send it| ship
   pr --> merge
   cva --> drive
   cva -->|formal mode| prove
@@ -78,7 +83,7 @@ flowchart TB
   classDef repoNode fill:#faf5ff,stroke:#7c3aed,color:#4c1d95,stroke-dasharray:4 3
   classDef shared fill:#f4f4f5,stroke:#71717a,color:#27272a
   class you,merge person
-  class choose,setup,shape,investigate,ship,queue,pause,resume,catchup,guard,cva,learn entry
+  class choose,setup,shape,investigate,ship,queue,pause,resume,catchup,guard,cva,learn,testskill,sharpen,plain entry
   class impact,verify,babysit inner
   class drive,prove,checks,tracker,pr repoNode
   class constitution shared

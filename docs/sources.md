@@ -179,6 +179,14 @@ When a skill changes, update its section here, in the same PR.
 
 - Source: pstack `poteto-mode` autopilot-stack and autopilot-full playbooks, and orchestrate for the supervision rules: start with one unit, judge agents by side effects, replace a stuck one with a consolidated brief (Lauren Tan). Adapted: no merge and no merge prep; each owner runs `ship`, whose fresh verifier gives the verdict, instead of a root swarm; at most three owners at once, for a subscription; no cloud agents.
 
+## `skills/say-it-plainly/SKILL.md` (2026-11-20)
+
+- Source: pstack `bro` (Lauren Tan).
+
+## `skills/sharpen-prompt/SKILL.md` (2026-11-20)
+
+- Source: pstack `sharpen` (Lauren Tan), nearly as is.
+
 ## `skills/setup-repo/references/trackers/` (an issue tracker of any kind, 2026-11-19)
 
 - Matt Pocock `setup-matt-pocock-skills`: "Those files are the only thing that varies between repos. The skills themselves are identical everywhere. They read `docs/agents/issue-tracker.md` at run time and do what it says." Templates for GitHub, GitLab, and local markdown, and an "Other" option in prose for Jira, Linear, and the rest (`knowledge/sources/repos/mattpocock-skills/repo/docs/engineering/setup-matt-pocock-skills.md`).
@@ -264,6 +272,10 @@ When a skill changes, update its section here, in the same PR.
 ## `skills/ship/references/playbooks/visual-parity.md`
 
 - Source: pstack `poteto-mode` visual-parity playbook (Lauren Tan).
+
+## `skills/test-skill-change/SKILL.md` (2026-11-20)
+
+- Source: pstack `poteto-mode` eval playbook (Lauren Tan): the blinding rules, the organic prompt, the judge on neutral labels, chain-following graded from what the agent read. Adapted: every run and the judge on the session's model, with no panel of models (ADR 0014 lifts ADR 0002's removal of `eval`).
 
 ## `skills/verify-pr/SKILL.md`
 

@@ -25,6 +25,9 @@
     "./skills/create-app-driver",
     "./skills/add-guardrail",
     "./skills/learn-from-mistakes",
+    "./skills/test-skill-change",
+    "./skills/sharpen-prompt",
+    "./skills/say-it-plainly",
     "./skills/analyze-impact",
     "./skills/verify-pr",
     "./skills/babysit-pr"

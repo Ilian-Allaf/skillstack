@@ -1,0 +1,5 @@
+interface:
+  display_name: "Say it plainly"
+  short_description: "Last reply in plain words"
+policy:
+  allow_implicit_invocation: false
