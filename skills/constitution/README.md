@@ -27,6 +27,7 @@ Shared rules, not a skill: no harness lists this folder, and no one launches it.
 | [references/principles.md](references/principles.md), then the full form in `references/principles/<id>.md` | when a step names a principle by its id, when you pick or judge the shape of code, or when a decision is not covered by a skill |
 | [references/glossary.md](references/glossary.md) | before you write a skill, a PR, or a verdict, and whenever a term is ambiguous |
 | [references/pr-format.md](references/pr-format.md) | before you open or edit a PR body |
+| [references/writing.md](references/writing.md) | before you write what a person reads: a PR body, a commit message, an issue, a reply, a doc, a skill |
 | the target repo's `docs/agents/issue-tracker.md` | before you create, read, comment on, label, link, or close an issue; it says how in this repo's tracker. When it is missing, ask the user to run `/setup-repo` |
 | [references/target-repo.md](references/target-repo.md) | before you create or edit the agent file, the glossary, the coding standards, the rule table, or a label in the target repo |
 | [references/harness.md](references/harness.md) | before you spawn a subagent, ask the user a question, wait on a PR, or read a session transcript |

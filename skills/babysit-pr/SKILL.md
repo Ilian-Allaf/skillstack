@@ -17,7 +17,9 @@ Read [the constitution](../constitution/README.md) first.
 
 Take an open PR from "opened" to `ready`: no conflict, every thread answered, CI green, every fix reproven. The merge is the user's.
 
-A round is one pass through steps 2 to 5 after something changed on the PR. The budget is 5 rounds.
+A round is one pass through steps 2 to 5 after something changed on the PR. It ends in one push that holds every fix of the round, so the checks and the verifier restart once, not once per fix. The budget is 5 rounds.
+
+A PR in a stack is babysat with its stack, as [A stack](#a-stack) says.
 
 ## Steps
 
@@ -42,6 +44,15 @@ A round is one pass through steps 2 to 5 after something changed on the PR. The 
 ## Waiting
 
 Wait with the harness's PR watcher, one per PR, from the thread that owns the PR (see [harness.md](../constitution/references/harness.md)); a polling or `sleep` loop burns the session. A wake is news; read the state again from step 1. When an event needs no action, stay silent. Stop watching when you hand off.
+
+## A stack
+
+A stack is a chain of open PRs, each based on the branch of the one below. One babysitter per stack: before you start, check the lowest PR's comments for a `Babysitting this stack` comment from another session in the last hour; if there is none, post yours.
+
+- **Work the lowest PR that is not `ready`.** It is the only one whose checks matter until it is ready. Read the threads of the PRs above and batch their fixes, but push nothing to them while the lowest PR's checks run.
+- **A fix goes in the PR that owns the code**, never in the top PR.
+- **Keep the stack's shape.** Never retarget a base, reorder the stack, or squash across PRs: the order is the builder's. When the lowest PR is rebased on its base, rebase each PR above on the new head of the one below. A PR whose patch id did not change keeps its verdict; the others go back to `verify-pr`.
+- **Stop at the line.** The stack is done when every PR is `ready` or `needs-human`. The user merges from the bottom.
 
 ## After the user merges
 

@@ -4,6 +4,7 @@ One entry per merged PR that changes what a skill does, or how the framework is 
 
 ## Unreleased (v0)
 
+- Faster review: `babysit-pr` pushes once per round and babysits a stack from its lowest PR, one babysitter per stack, keeping the stack's shape; `constitution/references/writing.md` sets how PR bodies, commits, replies, and docs are written; a PR's Why opens with who notices the change and what the next maintainer inherits.
 - New skills: `/test-skill-change` runs the old and the new version of a skill on the same task, blind, judged on neutral labels, and recommends; `/sharpen-prompt` rewrites a prompt to ask for deeper work; `/say-it-plainly` restates the last reply in plain words.
 - New skill `/ship-queue`: a list of independent tasks becomes as many PRs, one `ship` owner per task, each with its own verifier, watched by its side effects, stopped before every merge. New `ship` playbook `hillclimb`: one metric pushed to a target, one measured attempt at a time. `harness.md` gains Model per role, within one subscription. The constitution gains the coordinator role.
 - New skills: `/pause-task` stops a task at a safe point with a resume note in a `wip:` commit (and on the PR), also on its own when the context or the usage limit runs low; `/resume-task` carries a stopped task on without redoing it; `/catch-me-up` reports what changed with its screenshots and videos, and every call waiting on you, or as a short video.

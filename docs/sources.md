@@ -23,6 +23,7 @@ When a skill changes, update its section here, in the same PR.
 
 ## `skills/babysit-pr/SKILL.md`
 
+- 2026-11-20: one push per round and the stack rules (the lowest PR first, one babysitter per stack, fixes in the owning PR, the stack's shape kept), from pstack `poteto-mode` babysit playbook. Adapted: rebasing the PRs above after the lowest one is rebased stays the babysitter's job, since our builder owns the stack.
 - Source: tstack `babysit-pr`, pstack `shipping`.
 - (pstack `babysit`)
 - (tstack `full-send`)
@@ -39,6 +40,10 @@ When a skill changes, update its section here, in the same PR.
 ## `skills/constitution/references/languages/typescript.md` (examples, 2026-11-20)
 
 - The Examples section condenses pstack `typescript-best-practices/references/patterns.md` (Lauren Tan).
+
+## `skills/constitution/references/writing.md` (2026-11-20)
+
+- Source: pstack `technical-writing` (its three top rules, Google developer style, STE, Global English, the Diataxis modes, and its worked example) and `unslop` (the pattern catalog), condensed (Lauren Tan).
 
 ## `skills/constitution/references/coverage.md`
 
@@ -65,6 +70,7 @@ When a skill changes, update its section here, in the same PR.
 
 ## `skills/constitution/references/pr-format.md`
 
+- 2026-11-20: Why opens with who notices and what the next maintainer inherits, from pstack `poteto-mode` "Frame impact for the consumer and the maintainer".
 - (pstack `opening-a-pr`)
 - 2026-11-20: the Design section, from pstack `architect`, whose rationale ships beside the sketch.
 
