@@ -18,6 +18,9 @@ The user's problem, from the user's side.
 ## Solution
 The solution, from the user's side.
 
+## Done when
+The observable condition that says the whole spec is delivered, agreed with the user in the grill: a command, a test, or an app journey that answers yes or no. `ship` takes it as the task's `done_when`.
+
 ## User stories
 1. As a <actor>, I want <feature>, so that <benefit>.
 (A long list that covers every part of the feature, edge cases included.)

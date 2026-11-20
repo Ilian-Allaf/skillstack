@@ -54,5 +54,6 @@ Created with <model> in <harness> (+ subagent models, never guessed)
 - **No case is dropped from Coverage.** A case the agent could not prove stays in the table and points to Not verified.
 - **A `one-way` door** names the irreversible choice on the Risk line, outside the folded part, so the user sees it before merging.
 - **Captures and videos** go through a secret scan before upload, frames included. They are attached to the PR so they play in the page when the harness can upload; otherwise they live in CI artifacts and the body links them.
-- **Out of scope findings** become issues, linked from the PR. They never grow the PR.
+- **Out of scope findings** of the builder become issues, linked from the PR. They never grow the PR. The verifier's notes stay notes until the user asks (rule 4).
+- **A docs PR**, such as `setup-repo`'s or `shape-spec`'s, has as `done_when` that each file holds what the step that wrote it asks, and one case per file; its Proof is the runs of those steps.
 - **Model names** come from the session, never from a guess.

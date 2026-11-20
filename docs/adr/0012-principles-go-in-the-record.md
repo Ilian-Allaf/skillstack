@@ -1,6 +1,6 @@
 # 0012. Principles go in the record, not in the reply
 
-- **Status**: accepted, 2026-11-19
+- **Status**: superseded by [0015](0015-principle-ids-in-the-pr-plain-words-in-the-log.md), 2026-11-20; accepted 2026-11-19
 - **Applies to**: `skills/constitution/README.md` ("Principles in the record"), `skills/constitution/references/principles.md`
 - **Enforced by**: review
 

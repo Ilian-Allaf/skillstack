@@ -23,8 +23,8 @@ Every run spends the user's quota. Say the number of runs and their rough cost i
 1. **Frame.** Name the variant under test, the behavior that counts as success, and the task that exercises it: one a user would really give. Write 3 to 6 criteria the judge scores; the agents never see them. Pick the number of runs per variant, two by default, all on the session's model (see [harness.md](../constitution/references/harness.md)).
    Done when: the variant, the task, the criteria, and the run count are written.
 
-2. **Blind the setup.** One working copy per run, each in its own directory with a name a user might pick, holding the project and the skill version of its variant. No `eval`, `test`, `judge`, `experiment`, `rubric`, `score`, `compare`, `benchmark`, or `candidate` in any path, file, or prompt an agent sees.
-   Done when: each run has its own copy, and a search for those words in the copies finds nothing.
+2. **Blind the setup.** One working copy per run, each in its own directory with a name a user might pick, holding the project and the whole skills folder of its variant, the constitution included, where the harness reads the project's skills. When the user's own install of the framework would also load in that copy, say so in your first message: both variants then see it. Leave `test-skill-change` itself out of the copies. In what the experiment adds (directory names, the prompt, any file you write), no `eval`, `test`, `judge`, `experiment`, `rubric`, `score`, `compare`, `benchmark`, or `candidate`; the skills' own text is the variant and stays as it is.
+   Done when: each run has its own copy, and a search for those words in what you added finds nothing.
 
 3. **Write one prompt** that reads like a real request: the goal, never what is measured. Do not ask the agent to list the skills, principles, or files it used.
    Done when: the same prompt is ready for every run.

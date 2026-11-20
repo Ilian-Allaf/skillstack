@@ -18,7 +18,7 @@ Issues live in this repo's GitHub Issues. Use the `gh` CLI; it finds the repo fr
 `gh issue edit <n> --add-label "<label>"`, or `--remove-label "<label>"`
 
 ## Create a label
-`gh label create "<label>" --force`. It leaves an existing label as it is.
+`gh label create "<label>"`, without `--force`, which would overwrite an existing label's color and description. When the label already exists, the command fails and the label stays as it is.
 
 ## Close an issue
 Comment with the reason first, then `gh issue close <n>`.

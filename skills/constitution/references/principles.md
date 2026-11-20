@@ -1,6 +1,6 @@
 # Principles
 
-The index of the principles this framework applies. Skills name a principle by its id. When a principle changes a choice, its id goes with that choice in the PR's Decisions section or the decision log.
+The index of the principles this framework applies. Skills name a principle by its id. When a principle changes a choice, its id goes with that choice in the PR's Decisions section; in a decision log, the principle is said in plain words.
 
 Each row gives when the principle applies and its rule in one line. Its full form is `principles/<id>.md`: how to apply it, the test that shows you did, the sign that someone skipped it, and an example when it shapes code. Read the full form of a principle before you apply it or judge someone else's work by it. Examples are in TypeScript; their shape carries to any language.
 

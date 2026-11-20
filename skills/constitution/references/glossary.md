@@ -7,7 +7,7 @@ The target repo can have its own glossary of domain terms. The builder and the v
 | Term | Français | Meaning | Avoid |
 |---|---|---|---|
 | task | tâche | what the user asks for and launches, in one `/ship` | `ticket` |
-| unit | unité | one PR of a task, green on its own check; a small task is one unit, a `bespoke` task several | `work item` |
+| unit | unité | one PR of a task, green on its own check; a task is one unit, or several when it spans several PRs, stacked | `work item` |
 | issue tracker | issue tracker | the tool where tasks, specs, maps, and bugs live, such as GitHub Issues, GitLab, Linear, or markdown files; the repo's `docs/agents/issue-tracker.md` says which and how | `ticket tracker` |
 | issue | issue | one item in the issue tracker | |
 | code host | code host | where the repo, its pull requests, and its CI live, such as GitHub | |
@@ -20,14 +20,14 @@ The target repo can have its own glossary of domain terms. The builder and the v
 | certainty level | niveau de certitude | 1 said, 2 pointed, 3 reasoned, 4 ran, 5 reproduced | `confidence score` |
 | safety fact | fait de sûreté | the one fact a change is safe because of | |
 | risk class | classe de risque | `low`, `medium`, or `high`; sets how deep verification goes | `risk level` |
-| hard zone | zone difficile | where models fail most: concurrency, sync, data loss, security, migrations | |
+| hard zone | zone difficile | where models fail most; the one list is in `proof.md` | |
 | lane | lane | one question the verifier answers, such as `live` or `spec` | `check type` |
 | verdict | verdict | PASS, FAIL, or INCONCLUSIVE, per axis, on one patch | `LGTM` |
 | axis | axe | behavior or code; each gets its own verdict | |
 | note | note | a finding that does not block; listed in the verdict comment, an issue only when the user asks | |
 | ready | prête | the PR needs nothing but the user's merge; label `ready` | `merge-ready` |
 | round | round | one pass of `babysit-pr` after something changed on the PR | |
-| `needs-human` | needs-human | the run stopped and needs a decision; a label | `escalated` |
+| `needs-human` | needs-human | a label: the run stopped on a call only the user can make; the user's answer, in their own words, restarts it | `escalated` |
 | escaped | échappé | a bug found after merge; label `escaped` | |
 | door | porte | `two-way` if a choice can be undone cheaply, `one-way` if not | `reversibility` |
 | case | cas | one situation the evidence must show: an entry point, an edge case, the main path | `scenario` |

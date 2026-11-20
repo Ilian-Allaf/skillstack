@@ -40,7 +40,8 @@ Three modes:
    Done when: one full run passed, the evidence survived cleanup, and nothing the run started is still running.
 
 6. **Open the PR.** Use [the PR format](../constitution/references/pr-format.md). Proof holds the end to end run and its evidence. Not verified lists the features the map names but this run did not drive.
-   Done when: the PR is open with the run's evidence attached, and the user knows to merge it.
+   Then get a verdict and run `babysit-pr`, as rule 2 of the constitution says.
+   Done when: the PR is open with the run's evidence attached, and carries `ready` or `needs-human`.
 
 ## Reply
 

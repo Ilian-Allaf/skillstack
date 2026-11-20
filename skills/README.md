@@ -57,6 +57,9 @@ flowchart TB
   shape -->|spec issue| tracker
   shape -.->|"you run /ship #spec"| ship
   ship -->|medium, high| impact
+  ship -->|diagnose, or prototype a choice| investigate
+  ship -.->|too big, open decisions| shape
+  verify -->|breakage lane| impact
   ship --> verify
   ship --> babysit
   babysit -->|patch changed| verify
@@ -67,9 +70,14 @@ flowchart TB
   ship -.->|context or quota runs low| pause
   pause -.->|next session| resume
   resume -->|carries on| ship
+  resume -->|carries on| investigate
+  resume -->|carries on| shape
+  resume -->|carries on| babysit
+  resume -->|carries on| queue
   recall -.->|one stopped task| resume
   queue -->|one owner per task| ship
   queue -.->|leaves worktrees| cleanwt
+  queue -.->|reply shape| catchup
   catchup -->|reads| pr
   learn -.->|test a proposed fix| testskill
   sharpen -.->|you send it| ship
@@ -98,30 +106,34 @@ flowchart TB
 ```mermaid
 flowchart TB
   go(("You:<br/>/ship task"))
-  frame["1 · Frame, shown to you<br/><i>done_when red on the base,<br/>cases, risk, design</i>"]
-  design{"One-way door,<br/>or you asked?"}
+  frame["1 · Frame, shown to you<br/><i>done_when red on the base,<br/>cases, risk; high or hard zone:<br/>a verifier reads done_when first</i>"]
+  design["2a · Design<br/><i>data shape; two sketches<br/>and a note when it crosses<br/>a function boundary</i>"]
+  door{"One-way door,<br/>or you asked?"}
   shown{"You approve<br/>the design?"}
-  build["2 · Build<br/><i>playbook, red → green</i>"]
+  build["2b · Build<br/><i>playbook, red → green,<br/>3 attempts</i>"]
   clean["3 · Clean<br/><i>comment hunter</i>"]
   proofs["4 · Prove every case<br/><i>base and head, on the app</i>"]
-  impact["5 · Analyze impact"]
+  impact["5 · Analyze impact<br/><i>medium, high</i>"]
   open["6 · Open the PR"]
   verdict{"7 · Fresh verifier:<br/>PASS?"}
   babysit["8 · Babysit<br/><i>conflicts, review, CI</i>"]
   ready[["ready"]]
   merge(("You<br/>merge"))
-  human[["needs-human"]]
+  human[["PR open, needs-human<br/><i>the call, a default,<br/>and what you could say</i>"]]
 
-  go --> frame --> design
-  design -->|no| build
-  design -->|yes| shown
+  go --> frame --> design --> door
+  door -->|no| build
+  door -->|yes| shown
   shown -->|yes| build
-  shown -->|change it| frame
+  shown -->|change it| design
+  build -->|scrap the sketch, once| design
   build --> clean --> proofs --> impact --> open --> verdict
-  verdict -->|"FAIL, 2 at most"| build
+  build -->|"3 attempts spent,<br/>or a second scrap"| human
+  verdict -->|first FAIL| build
   verdict -->|PASS| babysit --> ready --> merge
-  verdict -->|budget spent| human
-  babysit -->|5 rounds spent| human
+  verdict -->|"2 FAILs, FAIL upheld,<br/>or INCONCLUSIVE"| human
+  babysit -->|"5 rounds, FAIL budget spent,<br/>INCONCLUSIVE, or a call for you"| human
+  human -.->|your answer, in your words| build
 
   classDef you fill:#16a34a,stroke:#16a34a,color:#fff
   classDef stop fill:#fef2f2,stroke:#dc2626,color:#7f1d1d
@@ -129,4 +141,6 @@ flowchart TB
   class human stop
 ```
 
-Green is you: you launch, you approve a design only when it goes through a one-way door or you asked to see it, and you merge. Nothing else waits on you, and nothing starts without you.
+Green is you: you launch, you approve a design only when it goes through a one-way door or you asked to see it, and you merge. The task also stops for what only you can decide: a product or preference call no run can settle, or evidence that rules out what you asked for (rule 11 of the constitution). Nothing starts without you.
+
+Every PR a skill opens, not only `ship`'s, goes through `verify-pr` and `babysit-pr` before it is `ready` (rule 2).

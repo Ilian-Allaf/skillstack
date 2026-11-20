@@ -14,7 +14,7 @@ The skill supplies the steps, so a few plain sentences beat a spec. Put in:
 
 Leave out:
 
-- **The how.** Say what to achieve, and leave the agent room to find a better way.
+- **The how.** Say what to achieve, and leave the agent room to find a better way. `/sharpen-prompt` names the methods an expert would use as the bar the result must reach, not as steps to follow.
 - **A list of skills or steps.** The skill already orders them; a hand-written order drops or reorders steps. Name a skill only to override one choice.
 - **Your theory of the cause, at first.** A stated guess narrows the search to where you pointed. Let the agent restate the problem, then share your hunch.
 
@@ -23,6 +23,14 @@ Once a task runs, it does not wait for a go: it shows you its frame and goes on 
 ## Prompts to copy
 
 Swap in the real paths, numbers, and checks.
+
+### Start in a repo, or from an idea
+
+```text
+/setup-repo
+/create-app-driver
+/shape-spec let users share a read-only link to a board
+```
 
 ### Understand
 
@@ -80,6 +88,7 @@ You merge. A stack merges from the bottom.
 
 ```text
 /add-guardrail agents keep calling the database client directly instead of the repository layer
+/add-guardrail
 /learn-from-mistakes 123
 /test-skill-change the new feature playbook in branch better-feature-playbook
 /clean-worktrees

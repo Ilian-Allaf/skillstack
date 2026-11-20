@@ -2,7 +2,7 @@
 
 A test checks the cases someone thought of. Formal verification checks every case in a stated scope: every order of steps in a model, or every input up to a bound. This mode finds where that matters most in the target repo, verifies one property there, and writes a project-local skill `prove-<area>` so the next agent can check a change against that property.
 
-Run it after `drive-<app>` exists, when the repo has a hard zone: sync, retries, payments, locking, a protocol, a data structure invariant. Once the skill exists, `analyze-impact` runs its check whenever a change touches a covered file, in the builder's run and in the verifier's `breakage` lane.
+Run it after `drive-<app>` exists, when the repo has a hard zone, as [proof.md](../../constitution/references/proof.md) lists them, or a data structure invariant, whose breaking case tests rarely reach. Once the skill exists, `analyze-impact` runs its check whenever a change touches a covered file, in the builder's run and in the verifier's `breakage` lane.
 
 ## Steps
 
@@ -21,4 +21,4 @@ Run it after `drive-<app>` exists, when the repo has a hard zone: sync, retries,
 
 ## Maintain
 
-When covered files changed after the recorded commit, `analyze-impact` reports the model as stale and opens an issue. The user runs this pass: reread those changes, update the model or the proof, rerun the check, and move the recorded commit forward only once the model matches the code again.
+When covered files changed after the recorded commit, `analyze-impact` reports the model as stale, and the builder opens an issue (the verifier only notes it). The user runs this pass: reread those changes, update the model or the proof, rerun the check, and move the recorded commit forward only once the model matches the code again.

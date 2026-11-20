@@ -25,7 +25,7 @@ You make the prompt deeper, not bigger. You do not do the task.
    - What, other than the agent or the user, would show that the result is right?
    Done when: each question has a concrete answer for this task, not a general one.
 
-2. **Rewrite the prompt** to ask for exactly that. The rewrite asks the agent to settle by a prototype any choice an experiment can settle, and to recommend from what it observed. It leaves to the user the product and preference choices no experiment can settle. It keeps the user's goal and words where they were precise.
+2. **Rewrite the prompt** to ask for exactly that: the depth and the evidence an expert would reach, with their methods named as the bar the result must meet, not as steps the agent must follow. The rewrite asks the agent to settle by a prototype any choice an experiment can settle, and to recommend from what it observed. It leaves to the user the product and preference choices no experiment can settle. It keeps the user's goal and words where they were precise.
    Done when: the rewritten prompt can be sent as it is.
 
 ## Reply

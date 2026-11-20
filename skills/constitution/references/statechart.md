@@ -7,7 +7,7 @@ How to draw and check the state chart that [coverage.md](coverage.md) asks for. 
 | Depth | When | What |
 |---|---|---|
 | drawn | every stateful journey a PR touches | a Mermaid chart written from the code and the cases |
-| checked | hard zones: sync, retries, payments, concurrency, connection lifecycles | a TLA+ model checked by TLC, and the chart drawn from the model's states |
+| checked | a hard zone of [proof.md](proof.md) that moves between states, such as sync, retries, or a connection lifecycle | a TLA+ model checked by TLC, and the chart drawn from the model's states |
 
 A drawn chart can be wrong; only a checked one shows that no order of steps breaks a rule.
 

@@ -35,7 +35,7 @@ For a `high` task, or one that touches a hard zone, spawn a fresh verifier to re
 
 ## When the task is unclear
 
-Read the code, the issue, and the history first: most questions answer themselves there. Ask only what is the user's to decide, through the harness's question tool, one question at a time with your recommended answer, and stop asking once you can write an observable `done_when`. When the task needs one design decision first, say so and settle it with the smallest prototype, in the prototype mode of [investigate](../../investigate/SKILL.md). When it needs several decisions, or is too big to frame, propose running [shape-spec](../../shape-spec/SKILL.md) first.
+Read the code, the issue, and the history first: most questions answer themselves there. Ask only what is the user's to decide, through the harness's question tool, one question at a time with your recommended answer, and stop asking once you can write an observable `done_when`. When the task needs one design decision first, say so and settle it with the smallest prototype, in the prototype mode of [investigate](../../investigate/SKILL.md). When it needs several decisions, or is too big to frame, stop and propose `/shape-spec`: those decisions are the user's.
 
 ## Playbooks
 
@@ -51,4 +51,4 @@ Pick one playbook per task, from the first column. A playbook names principles b
 | the UI must look exactly the same after a migration | [visual-parity](playbooks/visual-parity.md) | a PR per component or batch |
 | none of the above: a wide migration, a change in several parts, a long unattended run | [bespoke](playbooks/bespoke.md) | an ordered series of PRs and a decision log |
 
-A task that matches two rows is two tasks: run them as two units, one PR each, the first one first. Every playbook ends in a PR. A question, a diagnosis, or a prototype is not a playbook: it is `investigate`.
+A task that matches two rows is two units of this task: one PR each, the second stacked on the first, each through steps 2 to 7 of `ship`, then `babysit-pr` once over the stack, as the `bespoke` playbook does. Every playbook ends in a PR. A question, a diagnosis, or a prototype is not a playbook: it is `investigate`.
