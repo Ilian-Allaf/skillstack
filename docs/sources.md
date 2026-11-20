@@ -31,6 +31,10 @@ When a skill changes, update its section here, in the same PR.
 
 - (pstack `poteto-mode`)
 
+## `skills/constitution/references/languages/typescript.md` (examples, 2026-11-20)
+
+- The Examples section condenses pstack `typescript-best-practices/references/patterns.md` (Lauren Tan).
+
 ## `skills/constitution/references/coverage.md`
 
 - Source: Lauren Tan ("our code review process has now really shrunk into looking at verification artifacts instead. So things like videos, screenshots, diagrams"), pstack `create-verification-skill` (feature map), pstack `statechart`.
@@ -51,17 +55,20 @@ When a skill changes, update its section here, in the same PR.
 ## `skills/constitution/references/parallel.md`
 
 - Source: pstack `arena` and `swarm` (Lauren Tan). Adapted: runners come from the harness's model families (see [harness.md](../skills/constitution/references/harness.md)), not from a model config file.
+- 2026-11-20: the arena removed. The user runs on one subscription, not a panel of models, so the builder sketches a design twice itself.
 
 ## `skills/constitution/references/pr-format.md`
 
 - (pstack `opening-a-pr`)
+- 2026-11-20: the Design section, from pstack `architect`, whose rationale ships beside the sketch.
 
-## `skills/constitution/references/principles.md`
+## `skills/constitution/references/principles.md` and `principles/`
 
-- each with when it applies and where it comes from.
-- Most ids come from pstack (Lauren Tan, `cursor-pstack`), where each one is a full skill. The text here is our summary, kept short so every skill can read it.
+- Most ids come from pstack (Lauren Tan, `cursor-pstack`), where each one is a full skill (`principle-<name>`). Since 2026-11-20, `principles.md` is the one-line index and `principles/<id>.md` holds the full form, condensed from the pstack skill.
+- Ours: the uniform shape of every full form (Apply when, Rule, How, Test, Sign it was skipped, Example), so the builder applies a principle and the verifier judges it with the same test; and the ids renamed to say what they do, as skill names do.
+- Renamed on 2026-11-20, with the pstack name each came from: `design-the-data-first` (pstack `foundational-thinking`), `validate-at-the-boundary` (pstack `boundary-discipline`), `make-illegal-states-unrepresentable` (pstack `type-system-discipline`), `make-the-smallest-change` (pstack `laziness-protocol`), `design-for-the-consumer` (pstack `experience-first`, added), `build-a-tight-loop` (ours, was `tight-loop`).
 - `prove-it-works`: pstack
-- `tight-loop`: Matt Pocock `diagnosing-bugs`
+- `build-a-tight-loop`: Matt Pocock `diagnosing-bugs`
 - `test-behavior-not-implementation`: pstack, Matt Pocock `tdd`
 - `explain-the-number`: pstack
 - `verify-at-the-edge`: Ray Amjad, Anthropic "harness design"
@@ -69,13 +76,14 @@ When a skill changes, update its section here, in the same PR.
 - `attack-the-premise`: pstack
 - `encode-lessons-in-structure`: pstack, Lauren Tan
 - `build-the-lever`: pstack
+- `design-the-data-first`, `redesign-from-first-principles`, `design-for-the-consumer`: pstack, added 2026-11-20
 - `model-the-domain`: pstack
-- `design-it-twice`: pstack `architect`
+- `design-it-twice`: pstack `architect` and `principle-exhaust-the-design-space`
 - `migrate-callers-then-delete`: pstack
 - `minimize-reader-load`: pstack
-- `type-system-discipline`: pstack
-- `boundary-discipline`: pstack
-- `laziness-protocol`: pstack
+- `make-illegal-states-unrepresentable`: pstack, with the examples of its TypeScript skill
+- `validate-at-the-boundary`: pstack
+- `make-the-smallest-change`: pstack
 - `subtract-before-you-add`: pstack
 - `sequence-verifiable-units`: pstack
 - `scope-stays-put`: tstack `council`, pstack
@@ -84,6 +92,8 @@ When a skill changes, update its section here, in the same PR.
 - `separate-before-serializing-shared-state`: pstack
 - `never-block-on-the-human`: pstack
 - `keep-the-codebase-clean`: Lauren Tan
+- Not taken: pstack `principle-outcome-oriented-execution`, which accepts broken intermediate states; our units each land green, and a wide change uses expand, migrate, contract.
+- The opening assumption of the red flags, an agent that sees only the files it opened, comes from pstack `architect` and `correct`.
 
 ## `skills/constitution/references/proof.md`
 
@@ -188,6 +198,15 @@ When a skill changes, update its section here, in the same PR.
 
 - 2026-11-19, completed from pstack `principle-model-the-domain`: the small module boundary for invariants, structures chosen by access pattern, lifecycle risk, and the phase-named modules sign. The rule that the data shape takes its names from `GLOSSARY.md` is ours: it ties Matt's vocabulary to Lauren's code-as-truth.
 - Source: pstack `principle-model-the-domain`, `architect` and its `design-red-flags.md` (Lauren Tan). Adapted: the arena runs as [parallel.md](../skills/constitution/references/parallel.md) describes, with the harness's model families instead of pstack's model config.
+- 2026-11-20, architecture method brought closer to pstack (Lauren Tan, `knowledge/sources/repos/cursor-pstack/`): the method gains grounding in the history of the current shape (pstack `architect` Phase A, which runs `why`), the rules of a sketch (`sketch.md`), the design note (`design-note.md`), the design shown to the user for a one-way door or on request (pstack `architect` Phase C, opt-in there), building against the sketch, and the six tells and the procedure for scrapping it (pstack `architect` Phases D and E). The table of how much design a change needs adapts pstack's guide page "Design before you write code", and designs every feature, as pstack's feature playbook runs `architect` on every feature. Ours: the builder writes both sketches itself instead of an arena of models, and a task scraps once, then `needs-human`.
+
+## `skills/ship/references/design-note.md`
+
+- Source: pstack `architect/references/rationale-template.md` (Lauren Tan). Adapted: Synthesis becomes Choice between the builder's two sketches, a Deviations section is filled during the build, and "Next implementation step" is dropped.
+
+## `skills/ship/references/sketch.md`
+
+- Source: pstack `architect/references/runner-prompt.md` (Lauren Tan). Adapted: the builder follows it for both of its sketches, each rule names its principle id, and rule 12 comes from `principle-laziness-protocol`.
 
 ## `skills/ship/references/frame.md`
 
@@ -208,6 +227,7 @@ When a skill changes, update its section here, in the same PR.
 ## `skills/ship/references/playbooks/feature.md`
 
 - Source: Matt Pocock `tdd`, pstack `principle-sequence-verifiable-units`.
+- 2026-11-20: duty 2 from pstack `principle-redesign-from-first-principles` and `principle-foundational-thinking`.
 
 ## `skills/ship/references/playbooks/perf.md`
 
@@ -216,6 +236,7 @@ When a skill changes, update its section here, in the same PR.
 ## `skills/ship/references/playbooks/refactoring.md`
 
 - Source: pstack `poteto-mode` refactoring playbook, `principle-minimize-reader-load`, `principle-migrate-callers-then-delete-legacy-apis` (Lauren Tan).
+- 2026-11-20: the target shape per pstack `principle-redesign-from-first-principles`, as the pstack playbook's step 3 names it.
 
 ## `skills/ship/references/playbooks/visual-parity.md`
 
@@ -237,6 +258,7 @@ When a skill changes, update its section here, in the same PR.
 - Source: pstack `interrogate`.
 - Source: Matt Pocock `code-review` (Spec axis), `tdd`, pstack refactoring playbook.
 - Source: Matt Pocock `code-review` (Standards axis, Fowler smells).
+- 2026-11-20: the standards lane checks the shape against the red flags, the architecture principles, and the PR's design note, as pstack `architect` holds an implementation to its sketch.
 
 ## `skills/verify-pr/references/verdict.md`
 

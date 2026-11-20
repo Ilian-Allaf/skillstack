@@ -13,7 +13,9 @@ A reference is any place where one text names another thing:
   - R006 a skill missing from the map in skills/README.md, so the diagram cannot fall behind the skills;
   - R007 .claude-plugin/plugin.json not listing exactly the skills, so the plugin ships every skill and no ghost;
   - R008 a skill the top-level README.md does not link, so the reference list stays whole;
-  - R009 a skill the router, choose-skill, never names as a command, so it cannot point at a skill it forgot.
+  - R009 a skill the router, choose-skill, never names as a command, so it cannot point at a skill it forgot;
+  - R010 a principle id in principles.md without its full form in principles/<id>.md, or a full form without its row,
+         so an agent that reads an id always finds the whole rule.
 
 Scanned: skills/, the root docs (README, AGENTS, SCOPE, CHANGELOG, CODING_STANDARDS), docs/ and evals/.
 Not scanned: knowledge/ (third-party sources) and docs/history/ (frozen design notes),
@@ -35,6 +37,7 @@ DOCS = ["README.md", "AGENTS.md", "SCOPE.md", "CHANGELOG.md", "CODING_STANDARDS.
 DOC_DIRS = ["evals", "docs/adr", "docs/agents"]
 FRAMEWORK_DIRS = {"skills", "design", "tools", "evals", "knowledge", ".github"}
 PRINCIPLES = Path("skills/constitution/references/principles.md")
+PRINCIPLE_DIR = Path("skills/constitution/references/principles")
 GLOSSARY = Path("skills/constitution/references/glossary.md")
 PLAYBOOKS = Path("skills/ship/references/playbooks")
 
@@ -121,13 +124,20 @@ def anchors(path: Path) -> set[str]:
     return _anchors[path]
 
 
-def vocabulary(root: Path) -> set[str]:
-    names = {p.name for p in (root / "skills").iterdir() if (p / "SKILL.md").exists()}
+def principle_ids(root: Path) -> dict[str, int]:
+    """The ids of the principle index, each with its line: the first cell of a table row, in backticks."""
+    ids: dict[str, int] = {}
     if (root / PRINCIPLES).exists():
-        for line in (root / PRINCIPLES).read_text(encoding="utf-8").splitlines():
+        for number, line in enumerate((root / PRINCIPLES).read_text(encoding="utf-8").splitlines(), 1):
             m = re.match(r"^\| `([a-z0-9-]+)` \|", line)
             if m:
-                names.add(m.group(1))
+                ids[m.group(1)] = number
+    return ids
+
+
+def vocabulary(root: Path) -> set[str]:
+    names = {p.name for p in (root / "skills").iterdir() if (p / "SKILL.md").exists()}
+    names |= set(principle_ids(root))
     if (root / PLAYBOOKS).is_dir():
         names |= {p.stem for p in (root / PLAYBOOKS).glob("*.md")}
     if (root / GLOSSARY).exists():
@@ -230,6 +240,20 @@ def check_lists(root: Path, out: list[Finding]) -> None:
                 out.append(Finding(router, 1, "R009", f"the router never names `/{name}`, so it can never send the user there. Fix: add the situations that call for it to the table."))
 
 
+def check_principles(root: Path, out: list[Finding]) -> None:
+    """The index and the folder of full forms list the same principles, so neither can fall behind the other."""
+    ids = principle_ids(root)
+    if not ids:
+        return
+    folder = root / PRINCIPLE_DIR
+    files = {p.stem for p in folder.glob("*.md")} if folder.is_dir() else set()
+    for name, number in ids.items():
+        if name not in files:
+            out.append(Finding(root / PRINCIPLES, number, "R010", f"the principle `{name}` has no full form. Fix: write {PRINCIPLE_DIR.as_posix()}/{name}.md, or remove its row."))
+    for name in sorted(files - ids.keys()):
+        out.append(Finding(folder / f"{name}.md", 1, "R010", f"the principle `{name}` has no row in principles.md. Fix: add its row, or rename the file to the id of an existing row."))
+
+
 def check(root: Path) -> list[Finding]:
     if not (root / "skills").is_dir():
         return [Finding(root / "skills", 1, "R000", "no skills/ folder.")]
@@ -246,6 +270,7 @@ def check(root: Path) -> list[Finding]:
         check_file(path, root, vocab, False, out)
     check_map(root, out)
     check_lists(root, out)
+    check_principles(root, out)
     return out
 
 

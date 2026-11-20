@@ -21,13 +21,13 @@ Shared rules, not a skill: no harness lists this folder, and no one launches it.
 |---|---|
 | [references/proof.md](references/proof.md) | before you write `done_when`, prove a change, give a verdict, or size the verification to the risk class |
 | [references/coverage.md](references/coverage.md) | before you list the cases in `frame`, build the coverage table or the demo video, or check coverage as the verifier |
-| [references/principles.md](references/principles.md) | when a step names a principle by its id, or a decision is not covered by a skill |
+| [references/principles.md](references/principles.md), then the full form in `references/principles/<id>.md` | when a step names a principle by its id, when you pick or judge the shape of code, or when a decision is not covered by a skill |
 | [references/glossary.md](references/glossary.md) | before you write a skill, a PR, or a verdict, and whenever a term is ambiguous |
 | [references/pr-format.md](references/pr-format.md) | before you open or edit a PR body |
 | the target repo's `docs/agents/issue-tracker.md` | before you create, read, comment on, label, link, or close an issue; it says how in this repo's tracker. When it is missing, ask the user to run `/setup-repo` |
 | [references/target-repo.md](references/target-repo.md) | before you create or edit the agent file, the glossary, the coding standards, the rule table, or a label in the target repo |
 | [references/harness.md](references/harness.md) | before you spawn a subagent, ask the user a question, wait on a PR, or read a session transcript |
-| [references/parallel.md](references/parallel.md) | before you run several subagents on one job: an arena for one artifact, a swarm for many slices |
+| [references/parallel.md](references/parallel.md) | before you run several subagents on one job |
 | [references/decision-log.md](references/decision-log.md) | before a long or unattended run, and before handing one back |
 | [references/statechart.md](references/statechart.md) | when a touched journey moves between states, or a hard zone needs a checked model |
 | [references/languages/typescript.md](references/languages/typescript.md) | when the diff touches a `.ts` or `.tsx` file, as builder or verifier |

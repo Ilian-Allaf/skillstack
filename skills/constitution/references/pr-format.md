@@ -36,6 +36,9 @@ The safety fact and its certainty level, or `unproven`.
 Confirmed risks with their evidence. Cleared risks with the reason.
 (`medium` and `high` only.)
 
+## Design
+The design note, when the change crossed a boundary and was sketched, as `ship`'s [design-note.md](../../ship/references/design-note.md) shapes it. Omit the section otherwise.
+
 ## Decisions
 Choices made without the user, if any, each with the id of the principle that drove it when one did.
 

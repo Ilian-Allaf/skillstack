@@ -50,6 +50,18 @@ Skills install as whole folders beside [the constitution](skills/constitution/RE
 
 The map of every skill and the path of one task, in a diagram: [`skills/README.md`](skills/README.md).
 
+## Steer with principle names
+
+Every skill applies the same principles, each with an id that says what it does: `design-the-data-first`, `validate-at-the-boundary`, `subtract-before-you-add`. The agent has read the full rule behind each id, so naming one redirects it more precisely than a paragraph of instructions:
+
+```text
+subtract-before-you-add: delete the obsolete adapters first, then design what is left.
+prove-it-works: run the real import and show me the written rows, not the test output.
+design-it-twice: show me a second shape before you pick this one.
+```
+
+The agent says which principle changed which choice, under Decisions in the PR. The list, one line each: [`principles.md`](skills/constitution/references/principles.md).
+
 ## Reference
 
 Every skill is launched by you; none is picked by the model on its own. Each one reads [the constitution](skills/constitution/README.md) first: the shared rules on proof, coverage, the glossary, and the PR format.
