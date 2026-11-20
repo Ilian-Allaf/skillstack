@@ -27,6 +27,10 @@ When a skill changes, update its section here, in the same PR.
 - (pstack `babysit`)
 - (tstack `full-send`)
 
+## `skills/catch-me-up/SKILL.md` and its references (2026-11-20)
+
+- Source: pstack `ketchup`, and `ketchup-video` for the video mode (Lauren Tan), condensed. Adapted: the window can be a set of PRs or a new session, since our tasks end in PRs; the reply leads with the PRs' demo videos.
+
 ## `skills/constitution/README.md`
 
 - (pstack `poteto-mode`)
@@ -161,6 +165,14 @@ When a skill changes, update its section here, in the same PR.
 ## `skills/learn-from-mistakes/references/synthesis.md`
 
 - Source: pstack `reflect` synthesizer.
+
+## `skills/pause-task/SKILL.md` (2026-11-20)
+
+- Source: pstack `poteto-mode` pause-safely playbook (Lauren Tan). Adapted: the resume note goes in the `wip:` commit body and on the open PR, where a later session finds it, instead of a temporary file; the pause also triggers on a usage limit, since the user runs on a subscription.
+
+## `skills/resume-task/SKILL.md` (2026-11-20)
+
+- Source: pstack `poteto-mode` session-pickup playbook (Lauren Tan). Adapted: the trail starts from the `wip:` commit and the PR; the task continues without asking (ADR 0014).
 
 ## `skills/setup-repo/references/trackers/` (an issue tracker of any kind, 2026-11-19)
 

@@ -1,0 +1,5 @@
+interface:
+  display_name: "Pause task"
+  short_description: "Stop cleanly, leave a resume note"
+policy:
+  allow_implicit_invocation: false
