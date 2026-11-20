@@ -111,6 +111,30 @@ class CheckRefsTest(unittest.TestCase):
         self.write("skills/README.md", "# Skills\n\n```mermaid\nflowchart TB\n  s[\"ship\"]\n```\n")
         self.assertNotIn("R006", self.codes())
 
+    def test_plugin_lists_exactly_the_skills(self) -> None:
+        self.write(".claude-plugin/plugin.json", '{"name": "x", "skills": ["./skills/ship"]}')
+        self.assertNotIn("R007", self.codes())
+        self.write(".claude-plugin/plugin.json", '{"name": "x", "skills": []}')
+        self.assertIn("R007", self.codes())
+        self.write(".claude-plugin/plugin.json", '{"name": "x", "skills": ["./skills/ship", "./skills/gone"]}')
+        self.assertIn("R007", self.codes())
+
+    def test_invalid_plugin_json(self) -> None:
+        self.write(".claude-plugin/plugin.json", '{"skills": [}')
+        self.assertIn("R007", self.codes())
+
+    def test_skill_missing_from_the_readme(self) -> None:
+        self.write("skills/verify-pr/SKILL.md", "# Verify\n")
+        self.assertIn("R008", self.codes())
+        self.edit("README.md", "See [ship]", "See [verify-pr](skills/verify-pr/SKILL.md), [ship]")
+        self.assertNotIn("R008", self.codes())
+
+    def test_router_names_every_skill(self) -> None:
+        self.write("skills/choose-skill/SKILL.md", "# Choose\n\n| a bug | `/ship <task>` |\n")
+        self.assertNotIn("R009", self.codes())
+        self.write("skills/choose-skill/SKILL.md", "# Choose\n\n| a bug | `/shipping` |\n")
+        self.assertIn("R009", self.codes())
+
     def test_exit_codes(self) -> None:
         with contextlib.redirect_stdout(io.StringIO()):
             self.assertEqual(check_refs.main(["--root", str(self.root)]), 0)

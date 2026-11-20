@@ -10,7 +10,10 @@ A reference is any place where one text names another thing:
   - R004 a kebab-case name in backticks in a skill, such as `fix-root-causes`, that is not a skill,
          a principle id, a playbook, a glossary term, or a generated skill;
   - R005 a skill name that was retired by a rename, so an agent never looks for a skill that is gone;
-  - R006 a skill missing from the map in skills/README.md, so the diagram cannot fall behind the skills.
+  - R006 a skill missing from the map in skills/README.md, so the diagram cannot fall behind the skills;
+  - R007 .claude-plugin/plugin.json not listing exactly the skills, so the plugin ships every skill and no ghost;
+  - R008 a skill the top-level README.md does not link, so the reference list stays whole;
+  - R009 a skill the router, choose-skill, never names as a command, so it cannot point at a skill it forgot.
 
 Scanned: skills/, the root docs (README, AGENTS, SCOPE, CHANGELOG, CODING_STANDARDS), docs/ and evals/.
 Not scanned: knowledge/ (third-party sources) and docs/history/ (frozen design notes),
@@ -22,6 +25,7 @@ Exit code: 0 when every reference resolves, 1 otherwise, 2 on bad usage. Standar
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import sys
 from dataclasses import dataclass
@@ -187,9 +191,43 @@ def check_map(root: Path, out: list[Finding]) -> None:
     if not readme.exists():
         return
     diagram = " ".join(re.findall(r"```mermaid\r?\n(.*?)```", readme.read_text(encoding="utf-8"), re.S))
-    for skill in sorted(p.name for p in (root / "skills").iterdir() if (p / "SKILL.md").exists()):
+    for skill in skill_names(root):
         if not re.search(rf"(?<![\w-]){re.escape(skill)}(?![\w-])", diagram):
             out.append(Finding(readme, 1, "R006", f"the skill {skill!r} is missing from the map. Fix: add its node and its edges to the first mermaid diagram."))
+
+
+def skill_names(root: Path) -> list[str]:
+    return sorted(p.name for p in (root / "skills").iterdir() if (p / "SKILL.md").exists())
+
+
+def check_lists(root: Path, out: list[Finding]) -> None:
+    """Every list of the skills names all of them, so adding or renaming a skill cannot leave one behind."""
+    skills = skill_names(root)
+    plugin = root / ".claude-plugin" / "plugin.json"
+    if plugin.exists():
+        try:
+            listed = json.loads(plugin.read_text(encoding="utf-8")).get("skills", [])
+        except json.JSONDecodeError as error:
+            out.append(Finding(plugin, error.lineno, "R007", f"plugin.json is not valid JSON: {error.msg}. Fix: correct it, then run `claude plugin validate . --strict`."))
+            listed = None
+        if listed is not None:
+            expected = {f"./skills/{name}" for name in skills}
+            for path in sorted(expected - set(listed)):
+                out.append(Finding(plugin, 1, "R007", f"the skill {path[9:]!r} is missing from plugin.json, so the plugin does not ship it. Fix: add {path!r} to skills."))
+            for path in sorted(set(listed) - expected):
+                out.append(Finding(plugin, 1, "R007", f"plugin.json lists {path!r}, which is not a skill folder. Fix: remove it, or correct the path."))
+    readme = root / "README.md"
+    if readme.exists():
+        text = readme.read_text(encoding="utf-8")
+        for name in skills:
+            if f"(skills/{name}/SKILL.md)" not in text:
+                out.append(Finding(readme, 1, "R008", f"the skill {name!r} is missing from the README. Fix: add its line to Reference, linked to skills/{name}/SKILL.md."))
+    router = root / "skills" / "choose-skill" / "SKILL.md"
+    if router.exists():
+        text = router.read_text(encoding="utf-8")
+        for name in skills:
+            if name != "choose-skill" and not re.search(rf"`/{re.escape(name)}(?![\w-])", text):
+                out.append(Finding(router, 1, "R009", f"the router never names `/{name}`, so it can never send the user there. Fix: add the situations that call for it to the table."))
 
 
 def check(root: Path) -> list[Finding]:
@@ -207,6 +245,7 @@ def check(root: Path) -> list[Finding]:
     for path in docs:
         check_file(path, root, vocab, False, out)
     check_map(root, out)
+    check_lists(root, out)
     return out
 
 
