@@ -35,6 +35,7 @@ You do not cut the spec into implementation slices for parallel agents. One buil
    Done when: no open decision is left, every resolved term is in the repo glossary, and the user confirmed you share the same understanding.
 
 3. **Write the spec.** Follow [references/spec.md](references/spec.md): problem, solution, user stories, the seams to test at, decisions, testing decisions, out of scope. Check the seams with the user, then publish it as an issue labeled `spec`.
+   The docs PR goes through a verdict and `babysit-pr`, as rule 2 of the constitution says.
    Done when: the issue exists and links the docs PR that holds the glossary terms and ADRs, the user approved the seams, and each user story can become a case in `frame`.
 
 4. **Map.** For work too big for one session, chart or work the map as [references/map.md](references/map.md) describes. Resolve at most one decision per session, except research.

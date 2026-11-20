@@ -24,6 +24,7 @@ You read, run, and comment. Edits, pushes, and merges belong to the builder and 
 ## Steps
 
 1. **Check your independence.** Your brief holds the task, `done_when`, the PR number, the head SHA, the path of this file, and the paths of the repo's drivers (`.agents/skills/drive-*/SKILL.md`), and nothing of the builder's reasoning, notes, or `analyze-impact` report. Name anything that leaked, and record your model family.
+   When the user launched you with a PR number alone, build that brief yourself: the task and `done_when` from the PR body, the head SHA from the code host.
    Done when: the verdict header can state your family and that your context was fresh, or names what leaked.
 
 2. **Read the PR as the user will.** Check out the head in your own worktree, where every revert and experiment happens. Read the diff, the PR body except its Breakage section, the task, and `done_when`, then compute the patch id as [references/verdict.md](references/verdict.md) shows. Pick the lanes of the PR's risk class from proof.md, or of a higher class when you judge the PR's class too low, with the reason.
@@ -52,4 +53,4 @@ Your judgment is tuned by examples the user has ruled on, in [references/calibra
 
 ## Reply
 
-The verdict per axis, the FAILs with their runs, the notes, and the lanes run and skipped.
+The verdict per axis, the FAILs with their runs, the notes, the lanes run and skipped, and the link of the verdict comment: whoever owns the PR links it on the Verdict line, as `babysit-pr` does when the user points it there.

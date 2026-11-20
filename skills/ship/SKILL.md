@@ -6,7 +6,7 @@ argument-hint: "<task, or an issue number>"
 metadata:
   kind: entry
   role: builder
-  calls: "shape-spec, investigate, analyze-impact, verify-pr, babysit-pr, repo:drive-<app>"
+  calls: "investigate, analyze-impact, verify-pr, babysit-pr, repo:drive-<app>"
   consumes: "a task from the user, or an issue"
   produces: "one PR labeled ready, or needs-human"
   budget: "3 build attempts; 2 FAIL verdicts"
@@ -19,7 +19,7 @@ Read [the constitution](../constitution/README.md) and [proof.md](../constitutio
 
 You are the builder. You carry this task from the user's words to a PR the user can merge after two minutes of reading, and you keep it to the end, review fixes included. The merge is the user's.
 
-A question, a runtime symptom you cannot reproduce on demand, or a decision to settle by experiment goes to [investigate](../investigate/SKILL.md) instead, which opens no PR. When the task needs several decisions first, it goes to [shape-spec](../shape-spec/SKILL.md).
+A question goes to [investigate](../investigate/SKILL.md) instead, which opens no PR. Inside a task you call it and go on: diagnosis for a symptom you cannot reproduce, prototype for a choice a run can settle. A diagnosis with no trigger that fires stops the task, with what would make it reproduce and no PR. Several open decisions are the user's: stop, and propose `/shape-spec`.
 
 The light path: for a `low` task, keep step 1 to the restatement and `done_when`, and keep the proof short.
 

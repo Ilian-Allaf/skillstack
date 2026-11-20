@@ -23,12 +23,13 @@ The user runs on one subscription, so each role takes the model of that subscrip
 
 | Role | Claude subscription | Codex subscription |
 |---|---|---|
-| builder, coordinator, the verifier's verdict | the session's model | the session's model |
+| builder, coordinator | the session's model | the session's model |
+| the verifier's verdict, the adversarial lane | a family other than the builder's when the harness offers one (ADR 0003 of the framework), else the session's model | the same |
 | a design through a one-way door, a scrapped sketch | the strongest model, at its highest reasoning effort | the strongest model, highest reasoning effort |
 | the verifier's lanes, swarm workers, the comment hunter | a mid-size model, such as Sonnet | the session's model, medium reasoning effort |
 | bulk reading: a transcript, logs, a sweep of the codebase | the smallest model, such as Haiku | the session's model, low reasoning effort |
 
-Raise the effort one step for the subtlest work, lower it for routine work, and keep the family: a role never moves to another provider's model.
+Raise the effort one step for the subtlest work, and lower it for routine work. Every role but the verifier's keeps the session's family.
 
 ## Rules
 

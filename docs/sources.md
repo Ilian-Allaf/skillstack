@@ -28,6 +28,7 @@ When a skill changes, update its section here, in the same PR.
 - (pstack `babysit`)
 - (tstack `full-send`)
 - 2026-11-20, from the coherence audit: a verdict requested when none covers the head, and `ready` removed when the patch id moved, from pstack `shipping` ("verify each PR independently before it lands", "Compare git patch-id at the verdict SHA with the current head"). The stack rules moved to `references/stack.md`.
+- 2026-11-20, second coherence audit: a FAIL during babysit is fixed or disputed within the PR's 2-FAIL budget; without a PR watcher, a bounded check every 5 to 10 minutes for 2 hours, as pstack's `watch-pr` polls (ours: the bound).
 
 ## `skills/babysit-pr/references/stack.md` (2026-11-20)
 
@@ -69,6 +70,7 @@ When a skill changes, update its section here, in the same PR.
 
 - 2026-11-20, Model per role: pstack `setup-pstack` and the "Match the model to the job" rules of `poteto-mode` (Lauren Tan). Adapted: roles map to the models of one subscription, Claude or Codex, never across providers; an override is a line in the user's agent file instead of a generated rule file.
 - (tstack)
+- 2026-11-20, second coherence audit: the verifier's verdict keeps ADR 0003's other family when the harness offers one.
 
 ## `skills/constitution/references/languages/typescript.md`
 
@@ -265,6 +267,7 @@ When a skill changes, update its section here, in the same PR.
 - 2026-11-20: the frame is shown and the build goes on, as pstack `poteto-mode` restates the goal without waiting (ADR 0014).
 - Source: pstack `in-your-own-words`, Anthropic "harness design" (agree on what done means before building), Matt Pocock `tdd` (agree the seams first).
 - Source: pstack `poteto-mode` playbooks (Lauren Tan).
+- 2026-11-20, second coherence audit: a symptom that will not reproduce goes through `investigate`'s diagnosis and the task goes on or stops, as pstack's bug-fix playbook does ("synthesize the trigger, tighten conditions, or instrument until it fires"); several open decisions stop the task and propose `/shape-spec`, since they are the user's (pstack `poteto-mode`: "Reserve the question for a genuine product or preference call").
 
 ## `skills/ship/references/playbooks/bespoke.md`
 

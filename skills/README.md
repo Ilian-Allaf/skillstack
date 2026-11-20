@@ -73,6 +73,7 @@ flowchart TB
   resume -->|carries on| investigate
   resume -->|carries on| shape
   resume -->|carries on| babysit
+  resume -->|carries on| queue
   recall -.->|one stopped task| resume
   queue -->|one owner per task| ship
   queue -.->|leaves worktrees| cleanwt
@@ -128,7 +129,7 @@ flowchart TB
   build -->|scrap the sketch, once| design
   build --> clean --> proofs --> impact --> open --> verdict
   build -->|"3 attempts spent,<br/>or a second scrap"| human
-  verdict -->|"FAIL, 2 at most"| build
+  verdict -->|first FAIL| build
   verdict -->|PASS| babysit --> ready --> merge
   verdict -->|"2 FAILs, FAIL upheld,<br/>or INCONCLUSIVE"| human
   babysit -->|5 rounds spent| human
@@ -139,4 +140,6 @@ flowchart TB
   class human stop
 ```
 
-Green is you: you launch, you approve a design only when it goes through a one-way door or you asked to see it, and you merge. Nothing else waits on you, and nothing starts without you.
+Green is you: you launch, you approve a design only when it goes through a one-way door or you asked to see it, and you merge. The task also stops for what only you can decide: a product or preference call no run can settle, or evidence that rules out what you asked for (rule 11 of the constitution). Nothing starts without you.
+
+Every PR a skill opens, not only `ship`'s, goes through `verify-pr` and `babysit-pr` before it is `ready` (rule 2).

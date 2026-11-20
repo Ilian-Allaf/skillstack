@@ -73,7 +73,7 @@ Every skill is launched by you; none is picked by the model on its own. Each one
 - **[shape-spec](skills/shape-spec/SKILL.md)**: Turns a loose idea into a spec issue through an interview, or into a map of decisions when the work is too big for one session.
 - **[investigate](skills/investigate/SKILL.md)**: Answers a question about the code, diagnoses a runtime symptom, or settles a decision with a throwaway prototype. Opens no PR.
 - **[ship](skills/ship/SKILL.md)**: Turns one task into a ready-to-merge PR, proven on the real app and judged by an independent verifier.
-- **[ship-queue](skills/ship-queue/SKILL.md)**: Turns a list of independent tasks into as many ready-to-merge PRs, one owner per task, each with its own verifier. Stops before every merge.
+- **[ship-queue](skills/ship-queue/SKILL.md)**: Turns a list of tasks into as many ready-to-merge PRs, one owner per task, each with its own verifier; tasks that touch the same files are stacked. Stops before every merge.
 - **[pause-task](skills/pause-task/SKILL.md)**: Stops the running task at a safe point and leaves a resume note, so a fresh session picks it up with nothing lost.
 - **[resume-task](skills/resume-task/SKILL.md)**: Picks up a task an earlier session left mid-way, and carries it on without redoing what was done.
 - **[recall-context](skills/recall-context/SKILL.md)**: Rebuilds where things stand on a topic from your past sessions and the repo's record, before you start or resume work.
@@ -86,7 +86,7 @@ Every skill is launched by you; none is picked by the model on its own. Each one
 - **[sharpen-prompt](skills/sharpen-prompt/SKILL.md)**: Rewrites a prompt you are about to send so it asks for deeper work, not more work.
 - **[say-it-plainly](skills/say-it-plainly/SKILL.md)**: Says the agent's last reply again in plain words, shorter, with no jargon.
 
-**Inside a task** (`ship` runs them; you can also launch them on an open PR)
+**Inside a task** (every PR a skill opens goes through them; you can also launch them on an open PR)
 
 - **[analyze-impact](skills/analyze-impact/SKILL.md)**: Finds what a change breaks outside its diff, and proves by a run the one fact it is safe because of.
 - **[verify-pr](skills/verify-pr/SKILL.md)**: Tries to break a pull request and gives a verdict per axis, behavior and code, each FAIL with the run that proves it.

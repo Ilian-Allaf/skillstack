@@ -37,7 +37,7 @@ The skills read and write these labels. `setup-repo` creates the issue labels wi
 | Label | Set by | Means |
 |---|---|---|
 | `ready` | `babysit-pr` | on a PR: it needs nothing but the user's merge |
-| `needs-human` | `ship`, `babysit-pr` | on a PR: the run stopped and needs a decision |
+| `needs-human` | `ship`, `babysit-pr`, `ship-queue` | on a PR: the run stopped and needs a decision |
 | `escaped` | the user | a bug found after merge |
 | `spec` | `shape-spec` | an issue that holds a spec |
 | `map` | `shape-spec` | an issue that charts decisions for a large effort |

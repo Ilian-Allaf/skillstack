@@ -7,7 +7,7 @@ The target repo can have its own glossary of domain terms. The builder and the v
 | Term | Français | Meaning | Avoid |
 |---|---|---|---|
 | task | tâche | what the user asks for and launches, in one `/ship` | `ticket` |
-| unit | unité | one PR of a task, green on its own check; a small task is one unit, a `bespoke` task several | `work item` |
+| unit | unité | one PR of a task, green on its own check; a task is one unit, or several when it spans several PRs, stacked | `work item` |
 | issue tracker | issue tracker | the tool where tasks, specs, maps, and bugs live, such as GitHub Issues, GitLab, Linear, or markdown files; the repo's `docs/agents/issue-tracker.md` says which and how | `ticket tracker` |
 | issue | issue | one item in the issue tracker | |
 | code host | code host | where the repo, its pull requests, and its CI live, such as GitHub | |
@@ -20,7 +20,7 @@ The target repo can have its own glossary of domain terms. The builder and the v
 | certainty level | niveau de certitude | 1 said, 2 pointed, 3 reasoned, 4 ran, 5 reproduced | `confidence score` |
 | safety fact | fait de sûreté | the one fact a change is safe because of | |
 | risk class | classe de risque | `low`, `medium`, or `high`; sets how deep verification goes | `risk level` |
-| hard zone | zone difficile | where models fail most: concurrency, sync, data loss, security, migrations | |
+| hard zone | zone difficile | where models fail most; the one list is in `proof.md` | |
 | lane | lane | one question the verifier answers, such as `live` or `spec` | `check type` |
 | verdict | verdict | PASS, FAIL, or INCONCLUSIVE, per axis, on one patch | `LGTM` |
 | axis | axe | behavior or code; each gets its own verdict | |
