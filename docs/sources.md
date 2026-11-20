@@ -32,6 +32,10 @@ When a skill changes, update its section here, in the same PR.
 
 - Source: pstack `ketchup`, and `ketchup-video` for the video mode (Lauren Tan), condensed. Adapted: the window can be a set of PRs or a new session, since our tasks end in PRs; the reply leads with the PRs' demo videos.
 
+## `skills/clean-worktrees/SKILL.md` (2026-11-20)
+
+- Source: pstack `poteto-mode` worktree-cleanup playbook and its `worktree-audit.sh` (Lauren Tan). Adapted: the generic part only, without iOS simulators and editor caches; a worktree touched in the last 24 hours counts as in use, since our harnesses have no list of pinned chats.
+
 ## `skills/constitution/README.md`
 
 - (pstack `poteto-mode`)
@@ -126,6 +130,7 @@ When a skill changes, update its section here, in the same PR.
 
 ## `skills/create-app-driver/SKILL.md`
 
+- 2026-11-20: the control CLI (`references/drivers.md`) and the template's "add a command, not a throwaway script", from pstack guide page "Verify the result and open a PR" (Lauren Tan).
 - Source: pstack `create-verification-skill`, `maintain-verification-skill`, and the formal variants.
 
 ## `skills/create-app-driver/references/feature-map.md`

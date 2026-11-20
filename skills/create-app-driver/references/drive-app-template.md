@@ -56,4 +56,5 @@ A proof that drives one convenient entry point is incomplete when the map lists 
 
 - **Ready means usable.** A database health check can pass while its init scripts still run.
 - **A short-lived CLI has no server.** Launch builds the binary once; each drive starts its own isolated session.
+- **Add a command, not a throwaway script.** When a drive needs a step the CLI lacks, add it as a command with `--help` and JSON output, so the next run reuses it.
 - **Scaffolding is marked.** When an unrelated missing asset blocks startup, the skill may create it, labeled as verification scaffolding, and Cleanup removes it.
