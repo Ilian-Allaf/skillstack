@@ -17,6 +17,19 @@ Skills name a capability, never a tool. This table maps each capability to the t
 | block the merge | a `PreToolUse` hook | a `PreToolUse` hook | to confirm |
 | cap the cost of a run | to confirm | to confirm | to confirm |
 
+## Model per role
+
+The user runs on one subscription, so each role takes the model of that subscription that fits the job: the strongest where judgment decides, a faster one where the work is broad and checked. A line `model for <role>: <model>` in the user's agent file overrides the table. When the harness cannot pick a subagent's model, every role runs on the session's model.
+
+| Role | Claude subscription | Codex subscription |
+|---|---|---|
+| builder, coordinator, the verifier's verdict | the session's model | the session's model |
+| a design through a one-way door, a scrapped sketch | the strongest model, at its highest reasoning effort | the strongest model, highest reasoning effort |
+| the verifier's lanes, swarm workers, the comment hunter | a mid-size model, such as Sonnet | the session's model, medium reasoning effort |
+| bulk reading: a transcript, logs, a sweep of the codebase | the smallest model, such as Haiku | the session's model, low reasoning effort |
+
+Raise the effort one step for the subtlest work, lower it for routine work, and keep the family: a role never moves to another provider's model.
+
 ## Rules
 
 - **A fresh context means a new subagent**, not a continued one. Codex can fork the parent context; check that a Codex verifier starts empty before you trust its independence.

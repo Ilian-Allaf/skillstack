@@ -73,6 +73,7 @@ Every skill is launched by you; none is picked by the model on its own. Each one
 - **[shape-spec](skills/shape-spec/SKILL.md)**: Turns a loose idea into a spec issue through an interview, or into a map of decisions when the work is too big for one session.
 - **[investigate](skills/investigate/SKILL.md)**: Answers a question about the code, diagnoses a runtime symptom, or settles a decision with a throwaway prototype. Opens no PR.
 - **[ship](skills/ship/SKILL.md)**: Turns one task into a ready-to-merge PR, proven on the real app and judged by an independent verifier.
+- **[ship-queue](skills/ship-queue/SKILL.md)**: Turns a list of independent tasks into as many ready-to-merge PRs, one owner per task, each with its own verifier. Stops before every merge.
 - **[pause-task](skills/pause-task/SKILL.md)**: Stops the running task at a safe point and leaves a resume note, so a fresh session picks it up with nothing lost.
 - **[resume-task](skills/resume-task/SKILL.md)**: Picks up a task an earlier session left mid-way, and carries it on without redoing what was done.
 - **[catch-me-up](skills/catch-me-up/SKILL.md)**: Tells you what changed while you were away, with the screenshots and videos the work produced, and every call waiting on you.

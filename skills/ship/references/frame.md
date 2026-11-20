@@ -27,7 +27,7 @@ Going on now. Stop me, or say "show me the design", at any time.
 
 ## `done_when`
 
-The rules live in [proof.md](../../constitution/references/proof.md): observable, red on the base, from the user, narrow, shown. A playbook can give `done_when` two parts; [refactoring](playbooks/refactoring.md), [visual-parity](playbooks/visual-parity.md), and [perf](playbooks/perf.md) say how.
+The rules live in [proof.md](../../constitution/references/proof.md): observable, red on the base, from the user, narrow, shown. A playbook can give `done_when` two parts; [refactoring](playbooks/refactoring.md), [visual-parity](playbooks/visual-parity.md), [perf](playbooks/perf.md), and [hillclimb](playbooks/hillclimb.md) say how.
 
 ## Before you build
 
@@ -47,6 +47,7 @@ Pick one playbook per task, from the first column. A playbook names principles b
 | a behavior is missing | [feature](playbooks/feature.md) | a PR |
 | the structure changes, the behavior does not | [refactoring](playbooks/refactoring.md) | a PR |
 | a path is too slow or uses too much | [perf](playbooks/perf.md) | a PR |
+| one metric must reach a target over many attempts | [hillclimb](playbooks/hillclimb.md) | a PR, one commit per kept change |
 | the UI must look exactly the same after a migration | [visual-parity](playbooks/visual-parity.md) | a PR per component or batch |
 | none of the above: a wide migration, a change in several parts, a long unattended run | [bespoke](playbooks/bespoke.md) | an ordered series of PRs and a decision log |
 

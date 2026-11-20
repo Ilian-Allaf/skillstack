@@ -15,6 +15,7 @@ flowchart TB
     shape["shape-spec<br/><i>idea → spec</i>"]
     investigate["investigate<br/><i>answer, no PR</i>"]
     ship["ship<br/><i>task → ready PR</i>"]
+    queue["ship-queue<br/><i>tasks → ready PRs, one owner each</i>"]
     pause["pause-task<br/><i>stop cleanly</i>"]
     resume["resume-task<br/><i>pick up where it stopped</i>"]
     catchup["catch-me-up<br/><i>what changed, what waits on you</i>"]
@@ -61,6 +62,7 @@ flowchart TB
   ship -.->|context or quota runs low| pause
   pause -.->|next session| resume
   resume -->|carries on| ship
+  queue -->|one owner per task| ship
   catchup -->|reads| pr
   pr --> merge
   cva --> drive
@@ -76,7 +78,7 @@ flowchart TB
   classDef repoNode fill:#faf5ff,stroke:#7c3aed,color:#4c1d95,stroke-dasharray:4 3
   classDef shared fill:#f4f4f5,stroke:#71717a,color:#27272a
   class you,merge person
-  class choose,setup,shape,investigate,ship,pause,resume,catchup,guard,cva,learn entry
+  class choose,setup,shape,investigate,ship,queue,pause,resume,catchup,guard,cva,learn entry
   class impact,verify,babysit inner
   class drive,prove,checks,tracker,pr repoNode
   class constitution shared

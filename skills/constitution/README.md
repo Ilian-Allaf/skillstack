@@ -41,6 +41,7 @@ Shared rules, not a skill: no harness lists this folder, and no one launches it.
 |---|---|---|
 | builder | carries one PR from `frame` to ready, review fixes included | the session's model |
 | verifier | tries to break the PR and gives a verdict per axis, without editing code | a family other than the builder's when the harness offers one (see harness.md), else a fresh agent of the same family |
+| coordinator | runs a queue of tasks through one owner each, and checks what each hands back; never writes code | the session's model |
 
 A subagent gets a brief and the path of the skill it runs, never the parent's reasoning. Skills here are read by path, not found by name. The verifier's brief never holds the builder's notes or its `analyze-impact` report; step 1 of the `verify-pr` skill lists what it holds.
 
