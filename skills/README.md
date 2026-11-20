@@ -80,8 +80,9 @@ flowchart TB
 ```mermaid
 flowchart TB
   go(("You:<br/>/ship task"))
-  frame["1 · Frame<br/><i>done_when red on the base,<br/>cases, risk</i>"]
-  ok{"You<br/>say go?"}
+  frame["1 · Frame, shown to you<br/><i>done_when red on the base,<br/>cases, risk, design</i>"]
+  design{"One-way door,<br/>or you asked?"}
+  shown{"You approve<br/>the design?"}
   build["2 · Build<br/><i>playbook, red → green</i>"]
   clean["3 · Clean<br/><i>comment hunter</i>"]
   proofs["4 · Prove every case<br/><i>base and head, on the app</i>"]
@@ -93,9 +94,12 @@ flowchart TB
   merge(("You<br/>merge"))
   human[["needs-human"]]
 
-  go --> frame --> ok
-  ok -->|yes| build --> clean --> proofs --> impact --> open --> verdict
-  ok -->|change it| frame
+  go --> frame --> design
+  design -->|no| build
+  design -->|yes| shown
+  shown -->|yes| build
+  shown -->|change it| frame
+  build --> clean --> proofs --> impact --> open --> verdict
   verdict -->|"FAIL, 2 at most"| build
   verdict -->|PASS| babysit --> ready --> merge
   verdict -->|budget spent| human
@@ -103,8 +107,8 @@ flowchart TB
 
   classDef you fill:#16a34a,stroke:#16a34a,color:#fff
   classDef stop fill:#fef2f2,stroke:#dc2626,color:#7f1d1d
-  class go,ok,merge you
+  class go,shown,merge you
   class human stop
 ```
 
-Green is you: you launch, you say go, you merge. Nothing else waits on you, and nothing starts without you.
+Green is you: you launch, you approve a design only when it goes through a one-way door or you asked to see it, and you merge. Nothing else waits on you, and nothing starts without you.

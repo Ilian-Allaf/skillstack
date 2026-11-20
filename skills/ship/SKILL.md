@@ -25,8 +25,8 @@ The light path: for a `low` task, keep step 1 to the restatement and `done_when`
 
 ## Steps
 
-1. **Frame.** Restate the task, fix `done_when`, list the cases, and name the risk class, the hard zones, and the playbook, as [references/frame.md](references/frame.md) describes. Run `done_when` on the base and show it red. Then ask the user to say go.
-   Done when: the user said go, and `done_when` ran red on the base.
+1. **Frame.** Restate the task, fix `done_when`, list the cases, and name the risk class, the hard zones, and the playbook, as [references/frame.md](references/frame.md) describes. Run `done_when` on the base and show it red. Show the frame to the user and go on: launching was the go (rule 11 of the constitution).
+   Done when: the frame is in your first message, and `done_when` ran red on the base.
 
 2. **Build.** In a worktree and a branch of your own, made from the base (see [harness.md](../constitution/references/harness.md)). Design before any logic, as [references/design.md](references/design.md) describes: name the data shape, and for a feature or a change that crosses a function boundary, ground, sketch twice, write the design note, show it when the table there asks, and build against the sketch. Follow the playbook from [the list](references/frame.md#playbooks). The budget is 3 attempts; after the second failure, write down the premise your attempts share and test it before the third.
    Done when: `done_when` is green, every duty of the playbook is met, and a sketched change has its design note with its Deviations filled; or the budget ran out and the PR is `needs-human`.

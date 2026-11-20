@@ -45,7 +45,7 @@ Skills install as whole folders beside [the constitution](skills/constitution/RE
 ## Getting started
 
 1. Run `/setup-repo` once per repo. It sets up the issue tracker, the labels, the glossary, the coding standards, the agent file, and the app driver, and asks before each part.
-2. Run `/ship <task>` for each task. You say go before any code, and you merge the PR it labels `ready`.
+2. Run `/ship <task>` for each task. It shows you its frame and runs to a PR labeled `ready`, stopping only for what is yours to decide. You merge.
 3. Not sure which skill fits? Run `/choose-skill` and describe your situation.
 
 The map of every skill and the path of one task, in a diagram: [`skills/README.md`](skills/README.md).

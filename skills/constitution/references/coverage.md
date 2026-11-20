@@ -6,7 +6,7 @@ Exhaustive in coverage, not in footage: every case has evidence, and each case g
 
 ## The case list
 
-`frame` writes the list before any code changes, and the user sees it with the go. It holds:
+`frame` writes the list before any code changes, and the user sees it in the frame. It holds:
 
 - the main case from `done_when`;
 - one case per entry point of the touched feature: those its feature file's Declared in points to, and those the file lists by hand (button, shortcut, command, import, API call);
@@ -15,7 +15,7 @@ Exhaustive in coverage, not in footage: every case has evidence, and each case g
 - for a bug, the reported case on the base and on the head;
 - the property of each `prove-<area>` check that covers a touched file, with its check run as evidence.
 
-A feature file whose code changed after the commit it was last driven at may be stale: say so to the user with the go, and drive its entry points before you trust it. Cases that what the code already forbids (a type, a lint) need no evidence; name the check instead. `analyze-impact` and the verifier may add cases; each one added goes in the table.
+A feature file whose code changed after the commit it was last driven at may be stale: say so in the frame, and drive its entry points before you trust it. Cases that what the code already forbids (a type, a lint) need no evidence; name the check instead. `analyze-impact` and the verifier may add cases; each one added goes in the table.
 
 ## The coverage table
 

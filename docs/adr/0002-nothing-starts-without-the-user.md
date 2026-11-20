@@ -1,6 +1,6 @@
 # 0002. Nothing starts without the user
 
-- **Status**: accepted, 2026-11-19
+- **Status**: superseded by [0014](0014-a-launched-task-runs-to-a-ready-pr.md), 2026-11-20; accepted 2026-11-19
 - **Applies to**: every skill; `skills/ship/SKILL.md` (the go), `skills/create-app-driver/references/maintain.md`
 - **Enforced by**: `tools/lint_skills.py` keeps every skill for the user to launch (F017 for Claude Code, F018 for Codex); the rest by review
 
