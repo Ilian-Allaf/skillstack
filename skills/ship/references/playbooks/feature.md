@@ -2,7 +2,7 @@
 
 Proof duties for a feature. Each duty is met, or skipped with its reason written in the PR.
 
-1. **Seams agreed.** The public interfaces under test were named in `frame` and the user said go.
+1. **Seams named.** The public interfaces under test are named in the frame.
 2. **Integrated, not bolted on** (`redesign-from-first-principles`). When the feature lands in an existing design, the design note's Alternatives rejected names the bolt-on and why it lost. The shared types and the test harness the slices need come first (`design-the-data-first`).
 3. **One vertical slice at a time.** One test at one seam, then the least code that passes it, then the next slice. Each slice responds to what the last one taught you. Never all tests first, then all code.
 4. **Tests that can fail** (`test-behavior-not-implementation`). No mocks of internal collaborators. Revert the implementation once and watch each new test fail.

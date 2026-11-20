@@ -18,7 +18,7 @@ A new skill enters only when the same failure was seen twice and no existing ski
 |---|---|
 | The agent merging, in any form | [ADR 0001](docs/adr/0001-the-user-always-merges.md) |
 | A trust ladder, a `.trust/` folder, a CI gate of the framework's own | [ADR 0001](docs/adr/0001-the-user-always-merges.md) |
-| Tasks that start without the user: scheduled runs, crons, a queue worked overnight | [ADR 0002](docs/adr/0002-nothing-starts-without-the-user.md) |
+| Tasks that start without the user: scheduled runs, crons, a queue started by a timer | [ADR 0014](docs/adr/0014-a-launched-task-runs-to-a-ready-pr.md) |
 | Splitting a spec into tickets for parallel agents | [ADR 0011](docs/adr/0011-no-split-into-tickets.md) |
 | Deploying | The framework stops at a PR labeled `ready`. |
 | A server, a database, a message queue | The code host, the issue tracker, and the harness hold all the state. |

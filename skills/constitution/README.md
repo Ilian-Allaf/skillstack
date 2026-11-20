@@ -10,10 +10,13 @@ Shared rules, not a skill: no harness lists this folder, and no one launches it.
 4. **A finding blocks only when it is proven**, with its run on the head of the PR or a quote of the repo standard it breaks; [verdict.md](../verify-pr/references/verdict.md) defines a FAIL. Anything else is a note, listed in the verdict comment; it becomes an issue only when the user asks.
 5. **Done means `done_when` is green.** `done_when` is observable, comes from the user's request, and was red on the base before any code changed.
 6. **Cover every case, and say what was not.** The user reviews the evidence, not the code. Every case in the task's case list has evidence in the PR's coverage table, or a line under `Not verified` that tells the user why no run could prove it. Never report done on an unproven change.
-7. **Every loop has a budget.** When it runs out, test the premise the attempts shared, replan once, then stop with a summary and a recommendation.
+7. **Every loop has a budget.** Inside it, a plateau means change the approach, not stop. When it runs out, test the premise the attempts shared, replan once, then stop with a summary and a recommendation. Never relax `done_when` to declare the work done.
 8. **State lives in the code host and the issue tracker**: PRs, issues, labels, comments. Read it before acting, and apply only the difference, so a rerun converges.
 9. **Follow every step.** Before the first step, copy the skill's steps into your todo list. A step you skip stays in the list as `skip: <reason>`.
 10. **Reply in the user's language.** Skills, code, commits, and PRs stay in English unless the repo says otherwise.
+11. **Launching is the go.** The user starts every task; nothing starts on a timer or on its own. Once started, run to the end without asking. Stop only for a one-way door, a product or preference call no run can settle, evidence that rules out what the user asked for, or a dead end after rule 7. Decide everything else, record it under Decisions, and report it.
+12. **What serves the goal is yours.** A flaky check, a broken tool, a related bug, or a review thread met on the way: fix it, in its own PR when it is outside the task's diff. What does not serve the goal becomes an issue (`scope-stays-put`). On a long run, log each unit in the decision log as it lands.
+13. **A skill that is wrong is fixed, not worked around.** A project-local skill (`drive-<app>`, `prove-<area>`, the repo's agent file) is fixed in its own PR. A skill of this framework is named in the reply and the decision log as a candidate for `/learn-from-mistakes`. Either way, the task goes on.
 
 ## Reference, read when the condition applies
 

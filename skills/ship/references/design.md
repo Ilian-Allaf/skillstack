@@ -8,7 +8,7 @@ The codebase is the largest input of the next agent, and that agent copies the n
 |---|---|
 | local to one function body: no new type, and nothing changes in what a function takes or returns | 1 |
 | a feature, or any change that crosses a function boundary: a new or changed type, signature, or module | 1 to 5, then 7 and 8 |
-| the same, through a one-way door (a public API, a schema, a storage or wire format), or when the user asked at the go to see the design | 1 to 8 |
+| the same, through a one-way door (a public API, a schema, a storage or wire format), or when the user asked to see the design | 1 to 8 |
 
 ## 1. Name the data shape
 
@@ -42,7 +42,7 @@ Write the design note as [design-note.md](design-note.md) shapes it; it goes in 
 
 ## 6. Show the design
 
-For a one-way door, or when the user asked at the go, stop before any body is filled. Show the user the note's Usage, Shape, Alternatives rejected, and Questions before the merge, and ask for a go on the design through the harness's question tool. Their pushback is grounding: go back to step 2 with it.
+For a one-way door, or when the user asked to see the design, stop before any body is filled. Show the user the note's Usage, Shape, Alternatives rejected, and Questions before the merge, and ask for a go on the design through the harness's question tool. Their pushback is grounding: go back to step 2 with it.
 
 ## 7. Build against the sketch
 

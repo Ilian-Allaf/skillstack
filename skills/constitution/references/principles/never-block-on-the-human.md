@@ -1,6 +1,6 @@
 # never-block-on-the-human
 
-**Apply when** you are about to ask the user "should I do X?" during a task they launched and gave a go to.
+**Apply when** you are about to ask the user "should I do X?" during a task they launched.
 
 **Rule.** On reversible work, make the choice, note it under `Decisions`, and move on. Irreversible choices, product direction, and merges stay with the user.
 

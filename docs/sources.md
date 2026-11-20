@@ -30,6 +30,7 @@ When a skill changes, update its section here, in the same PR.
 ## `skills/constitution/README.md`
 
 - (pstack `poteto-mode`)
+- 2026-11-20, rules 11 to 13 (ADR 0014): pstack `poteto-mode` Autonomy and Non-negotiables ("don't wait for confirmation", "broken skill mid-task"), and its `autonomous-run` playbook (mid-run discoveries are yours, out-of-band fixes in their own PR, a plateau is not a stop, never relax the predicate). Adapted: a framework skill that is wrong goes to `/learn-from-mistakes`, since a target repo cannot edit the installed plugin.
 
 ## `skills/constitution/references/languages/typescript.md` (examples, 2026-11-20)
 
@@ -210,6 +211,7 @@ When a skill changes, update its section here, in the same PR.
 
 ## `skills/ship/references/frame.md`
 
+- 2026-11-20: the frame is shown and the build goes on, as pstack `poteto-mode` restates the goal without waiting (ADR 0014).
 - Source: pstack `in-your-own-words`, Anthropic "harness design" (agree on what done means before building), Matt Pocock `tdd` (agree the seams first).
 - Source: pstack `poteto-mode` playbooks (Lauren Tan).
 
