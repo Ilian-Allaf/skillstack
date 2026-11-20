@@ -14,6 +14,9 @@ Checks every skills/<name>/ folder:
   - prose: no words from the banned vocabulary, no term from the glossary's Avoid
     column, no em dash, no curly quotes (code is skipped), and no external
     attribution (sources live in docs/sources.md);
+  - invocation: every skill is launched by the user (docs/adr/0006), in every harness:
+    disable-model-invocation is true, and agents/openai.yaml sets Codex's
+    policy.allow_implicit_invocation to false, with the picker's display name and description;
   - size: SKILL.md over the word budget is a warning.
 
 Exit code: 0 when there is no error (warnings allowed), 1 on errors, 2 on bad usage.
@@ -283,6 +286,9 @@ def lint_skill(skill_dir: Path, names: set[str], avoid: list[tuple[str, str]], r
         invocation = fm.fields.get("disable-model-invocation")
         if invocation not in {"true", "false"}:
             out.append(Finding(skill_md, line_of("disable-model-invocation"), "error", "F010", "disable-model-invocation must be true or false. Fix: set it explicitly; internal nodes use true."))
+        elif invocation == "false":
+            out.append(Finding(skill_md, line_of("disable-model-invocation"), "error", "F017", "disable-model-invocation is false, so the model may launch this skill on its own. Fix: set it to true; every skill is launched by the user (docs/adr/0006)."))
+        check_codex_policy(skill_dir, out)
         kind = fm.metadata.get("kind", "")
         if kind not in KINDS:
             out.append(Finding(skill_md, line_of("metadata.kind"), "error", "F011", f"metadata.kind is {kind!r}. Fix: use one of {', '.join(sorted(KINDS))}."))
@@ -352,6 +358,21 @@ def check_edges(skill_dir: Path, skill_md: Path, fm: "Frontmatter", calls: list[
 
 def split_list(value: str) -> list[str]:
     return [item.strip() for item in value.split(",") if item.strip()]
+
+
+def check_codex_policy(skill_dir: Path, out: list[Finding]) -> None:
+    """Codex ignores disable-model-invocation; agents/openai.yaml is how it keeps a skill for the user alone."""
+    path = skill_dir / "agents" / "openai.yaml"
+    if not path.exists():
+        out.append(Finding(skill_dir / "SKILL.md", 1, "error", "F018", "no agents/openai.yaml, so Codex may launch this skill on its own. Fix: add one with interface.display_name, interface.short_description, and policy.allow_implicit_invocation: false."))
+        return
+    text = path.read_text(encoding="utf-8")
+    for key in ("display_name", "short_description"):
+        if not re.search(rf"^\s+{key}:\s*\S", text, re.M):
+            out.append(Finding(path, 1, "error", "F018", f"missing interface.{key}. Fix: add it; Codex shows it in its skill picker."))
+    policy = re.search(r"^\s+allow_implicit_invocation:\s*(\S+)\s*$", text, re.M)
+    if policy is None or policy.group(1) != "false":
+        out.append(Finding(path, 1, "error", "F018", "policy.allow_implicit_invocation is not false, so Codex may launch this skill on its own. Fix: set it to false, as disable-model-invocation is true."))
 
 
 def lint_shared(folder: Path, avoid: list[tuple[str, str]], root: Path) -> list[Finding]:

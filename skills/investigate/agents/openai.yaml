@@ -1,0 +1,5 @@
+interface:
+  display_name: "Investigate"
+  short_description: "Answer, diagnose, or prototype; no PR"
+policy:
+  allow_implicit_invocation: false

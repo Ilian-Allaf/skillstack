@@ -1,0 +1,5 @@
+interface:
+  display_name: "Choose Skill"
+  short_description: "Find which skill to launch, and how"
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,5 @@
+interface:
+  display_name: "Shape Spec"
+  short_description: "Turn an idea into a spec through an interview"
+policy:
+  allow_implicit_invocation: false

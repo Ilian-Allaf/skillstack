@@ -1,0 +1,28 @@
+{
+  "name": "software-ai-skills-framework",
+  "version": "0.1.0",
+  "description": "Skills that turn a task into a PR you can merge without worry: proven on the real app, checked for what it breaks, judged by a verifier that did not write it. You launch every task and merge every PR.",
+  "author": {
+    "name": "Ilian Allaf"
+  },
+  "repository": "https://github.com/Ilian-Allaf/software-ai-skills-framework",
+  "keywords": [
+    "skills",
+    "verification",
+    "pull-requests",
+    "code-review"
+  ],
+  "skills": [
+    "./skills/choose-skill",
+    "./skills/setup-repo",
+    "./skills/shape-spec",
+    "./skills/investigate",
+    "./skills/ship",
+    "./skills/create-app-driver",
+    "./skills/add-guardrail",
+    "./skills/learn-from-mistakes",
+    "./skills/analyze-impact",
+    "./skills/verify-pr",
+    "./skills/babysit-pr"
+  ]
+}

@@ -19,6 +19,7 @@ A skill added, renamed, removed, or changed in what it does updates, in the same
 
 - `README.md`: its line in Reference, linked to its `SKILL.md`;
 - `skills/README.md`: its node and edges in the map;
+- `.claude-plugin/plugin.json`: its path in `skills`, and `agents/openai.yaml` beside its `SKILL.md`;
 - `skills/choose-skill/SKILL.md`: the situations that route to it;
 - `docs/sources.md`: its section;
 - `CHANGELOG.md`: one entry. A rename or removal names what replaced it, and the old name goes to `RETIRED` in `tools/check_refs.py`.

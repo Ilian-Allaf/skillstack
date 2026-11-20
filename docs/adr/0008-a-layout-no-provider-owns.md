@@ -18,4 +18,4 @@ Each harness reads skills and instructions from its own place: `.claude/skills/`
 
 ## Consequences
 
-A harness-specific file, such as Codex's `agents/openai.yaml`, sits beside the `SKILL.md` and says the same thing as its frontmatter.
+A harness-specific file, such as Codex's `agents/openai.yaml`, sits beside the `SKILL.md` and says the same thing as its frontmatter; `tools/lint_skills.py` checks that they agree (F018).

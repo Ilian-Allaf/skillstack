@@ -51,7 +51,6 @@ GENERATED_RE = re.compile(r"^(drive|prove)-<[a-z]+>$")
 # Files the design names before they are built. Remove a line once its file exists.
 PLANNED = {
     "tools/graph.py": "roadmap step 4",
-    "tools/install.py": "roadmap step 2",
     "evals/e2e/": "end-to-end cases, decided on the testbed",
 }
 # Literal names from code that are not framework vocabulary, each with why it is here.

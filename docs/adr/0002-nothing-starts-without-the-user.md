@@ -2,7 +2,7 @@
 
 - **Status**: accepted, 2026-11-19
 - **Applies to**: every skill; `skills/ship/SKILL.md` (the go), `skills/create-app-driver/references/maintain.md`
-- **Enforced by**: review; every skill is launched by the user (ADR 0006)
+- **Enforced by**: `tools/lint_skills.py` keeps every skill for the user to launch (F017 for Claude Code, F018 for Codex); the rest by review
 
 ## Context
 
