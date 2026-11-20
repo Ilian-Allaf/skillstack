@@ -48,7 +48,7 @@ Skills install as whole folders beside [the constitution](skills/constitution/RE
 2. Run `/ship <task>` for each task. It shows you its frame and runs to a PR labeled `ready`, stopping only for what is yours to decide. You merge.
 3. Not sure which skill fits? Run `/choose-skill` and describe your situation.
 
-The map of every skill and the path of one task, in a diagram: [`skills/README.md`](skills/README.md).
+The map of every skill and the path of one task, in a diagram: [`skills/README.md`](skills/README.md). How to write a prompt, prompts to copy, and the mistakes that cost the most: [`docs/guide.md`](docs/guide.md).
 
 ## Steer with principle names
 
@@ -76,6 +76,7 @@ Every skill is launched by you; none is picked by the model on its own. Each one
 - **[ship-queue](skills/ship-queue/SKILL.md)**: Turns a list of independent tasks into as many ready-to-merge PRs, one owner per task, each with its own verifier. Stops before every merge.
 - **[pause-task](skills/pause-task/SKILL.md)**: Stops the running task at a safe point and leaves a resume note, so a fresh session picks it up with nothing lost.
 - **[resume-task](skills/resume-task/SKILL.md)**: Picks up a task an earlier session left mid-way, and carries it on without redoing what was done.
+- **[recall-context](skills/recall-context/SKILL.md)**: Rebuilds where things stand on a topic from your past sessions and the repo's record, before you start or resume work.
 - **[catch-me-up](skills/catch-me-up/SKILL.md)**: Tells you what changed while you were away, with the screenshots and videos the work produced, and every call waiting on you.
 - **[clean-worktrees](skills/clean-worktrees/SKILL.md)**: Frees disk by removing the worktrees of finished or abandoned tasks, and never loses uncommitted work.
 - **[create-app-driver](skills/create-app-driver/SKILL.md)**: Writes the repo's driver, a skill that launches, drives, and observes the app like a user, with its feature map.

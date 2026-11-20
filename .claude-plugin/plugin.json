@@ -21,6 +21,7 @@
     "./skills/ship-queue",
     "./skills/pause-task",
     "./skills/resume-task",
+    "./skills/recall-context",
     "./skills/catch-me-up",
     "./skills/clean-worktrees",
     "./skills/create-app-driver",

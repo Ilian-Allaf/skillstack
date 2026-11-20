@@ -1,0 +1,5 @@
+interface:
+  display_name: "Recall context"
+  short_description: "Where things stand on a topic"
+policy:
+  allow_implicit_invocation: false

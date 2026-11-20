@@ -144,6 +144,12 @@ class CheckRefsTest(unittest.TestCase):
         self.write("skills/constitution/references/principles/old-name.md", "# old-name\n")
         self.assertIn("R010", self.codes())
 
+    def test_guide_commands_name_skills(self) -> None:
+        self.write("docs/guide.md", "# Guide\n\n```text\n/ship the export writes twice\n```\n\nSee `skills/ship/SKILL.md`, and run `/ship`.\n")
+        self.assertNotIn("R011", self.codes())
+        self.write("docs/guide.md", "# Guide\n\n```text\n/shipping the export writes twice\n```\n")
+        self.assertIn("R011", self.codes())
+
     def test_exit_codes(self) -> None:
         with contextlib.redirect_stdout(io.StringIO()):
             self.assertEqual(check_refs.main(["--root", str(self.root)]), 0)

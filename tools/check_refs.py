@@ -15,7 +15,9 @@ A reference is any place where one text names another thing:
   - R008 a skill the top-level README.md does not link, so the reference list stays whole;
   - R009 a skill the router, choose-skill, never names as a command, so it cannot point at a skill it forgot;
   - R010 a principle id in principles.md without its full form in principles/<id>.md, or a full form without its row,
-         so an agent that reads an id always finds the whole rule.
+         so an agent that reads an id always finds the whole rule;
+  - R011 a command in the user guide, docs/guide.md, code blocks included, that names no skill,
+         so a prompt the user copies always launches something.
 
 Scanned: skills/, the root docs (README, AGENTS, SCOPE, CHANGELOG, CODING_STANDARDS), docs/ and evals/.
 Not scanned: knowledge/ (third-party sources) and docs/history/ (frozen design notes),
@@ -33,7 +35,9 @@ import sys
 from dataclasses import dataclass
 from pathlib import Path
 
-DOCS = ["README.md", "AGENTS.md", "SCOPE.md", "CHANGELOG.md", "CODING_STANDARDS.md", "docs/sources.md"]
+DOCS = ["README.md", "AGENTS.md", "SCOPE.md", "CHANGELOG.md", "CODING_STANDARDS.md", "docs/sources.md", "docs/guide.md"]
+GUIDE = Path("docs/guide.md")
+COMMAND_RE = re.compile(r"(?:^|[\s`(])/([a-z][a-z0-9-]*)(?![\w/.-])")
 DOC_DIRS = ["evals", "docs/adr", "docs/agents"]
 FRAMEWORK_DIRS = {"skills", "design", "tools", "evals", "knowledge", ".github"}
 PRINCIPLES = Path("skills/constitution/references/principles.md")
@@ -254,6 +258,18 @@ def check_principles(root: Path, out: list[Finding]) -> None:
         out.append(Finding(folder / f"{name}.md", 1, "R010", f"the principle `{name}` has no row in principles.md. Fix: add its row, or rename the file to the id of an existing row."))
 
 
+def check_guide(root: Path, out: list[Finding]) -> None:
+    """Every command in the guide launches a skill, code blocks included, since those are the prompts the user copies."""
+    guide = root / GUIDE
+    if not guide.exists():
+        return
+    skills = set(skill_names(root))
+    for number, line in enumerate(guide.read_text(encoding="utf-8").splitlines(), 1):
+        for name in COMMAND_RE.findall(line):
+            if name not in skills:
+                out.append(Finding(guide, number, "R011", f"`/{name}` names no skill. Fix: use the name of a skill in skills/, or remove the command."))
+
+
 def check(root: Path) -> list[Finding]:
     if not (root / "skills").is_dir():
         return [Finding(root / "skills", 1, "R000", "no skills/ folder.")]
@@ -271,6 +287,7 @@ def check(root: Path) -> list[Finding]:
     check_map(root, out)
     check_lists(root, out)
     check_principles(root, out)
+    check_guide(root, out)
     return out
 
 
