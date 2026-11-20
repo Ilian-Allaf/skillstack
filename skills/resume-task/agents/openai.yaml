@@ -1,0 +1,5 @@
+interface:
+  display_name: "Resume task"
+  short_description: "Pick up a task where it stopped"
+policy:
+  allow_implicit_invocation: false

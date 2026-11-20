@@ -1,0 +1,5 @@
+interface:
+  display_name: "Catch me up"
+  short_description: "What changed, what waits on you"
+policy:
+  allow_implicit_invocation: false

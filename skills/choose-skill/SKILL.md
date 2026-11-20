@@ -35,6 +35,9 @@ You are the index of this framework, so the user only has to remember you. You p
 | a bug you can reproduce, a missing feature, a refactoring, a slow path, a UI migration, a change across many files | `/ship <the task, or an issue number>` |
 | an idea with open decisions, or work too big for one session | `/shape-spec <the idea>` |
 | a question about the code, a symptom you cannot reproduce, or a choice an experiment can settle | `/investigate <the question>` |
+| you must stop now, or the session is about to end, and want to resume later | `/pause-task` |
+| a task an earlier session left mid-way | `/resume-task <branch or PR, or nothing for the last paused task>` |
+| you were away: what changed, and what waits on you | `/catch-me-up`, or `/catch-me-up video` for a short video |
 | an open PR stuck on conflicts, review comments, or CI | `/babysit-pr <PR number>` |
 | an independent check of a PR, yours or anyone's | `/verify-pr <PR number>`, in a fresh session |
 | what a change could break before you merge it | `/analyze-impact <PR number or diff>` |
