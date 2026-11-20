@@ -9,7 +9,8 @@ A reference is any place where one text names another thing:
          that names a framework file that does not exist;
   - R004 a kebab-case name in backticks in a skill, such as `fix-root-causes`, that is not a skill,
          a principle id, a playbook, a glossary term, or a generated skill;
-  - R005 a skill name that was retired by a rename, so an agent never looks for a skill that is gone.
+  - R005 a skill name that was retired by a rename, so an agent never looks for a skill that is gone;
+  - R006 a skill missing from the map in skills/README.md, so the diagram cannot fall behind the skills.
 
 Scanned: skills/, README.md, design/02-architecture.md, design/sources.md, evals/.
 Not scanned: knowledge/ (third-party sources) and the historical design notes (01, 03, archive/),
@@ -181,6 +182,17 @@ def check_file(path: Path, root: Path, vocab: set[str], in_skills: bool, out: li
                 out.append(Finding(path, number, "R004", f"`{token}` is a command for a skill that does not exist. Fix: use the name of a skill in skills/."))
 
 
+def check_map(root: Path, out: list[Finding]) -> None:
+    """The diagram in skills/README.md names every skill, so it is checked like code, not trusted like prose."""
+    readme = root / "skills" / "README.md"
+    if not readme.exists():
+        return
+    diagram = " ".join(re.findall(r"```mermaid\r?\n(.*?)```", readme.read_text(encoding="utf-8"), re.S))
+    for skill in sorted(p.name for p in (root / "skills").iterdir() if (p / "SKILL.md").exists()):
+        if not re.search(rf"(?<![\w-]){re.escape(skill)}(?![\w-])", diagram):
+            out.append(Finding(readme, 1, "R006", f"the skill {skill!r} is missing from the map. Fix: add its node and its edges to the first mermaid diagram."))
+
+
 def check(root: Path) -> list[Finding]:
     if not (root / "skills").is_dir():
         return [Finding(root / "skills", 1, "R000", "no skills/ folder.")]
@@ -195,6 +207,7 @@ def check(root: Path) -> list[Finding]:
             docs += sorted((root / d).rglob("*.md"))
     for path in docs:
         check_file(path, root, vocab, False, out)
+    check_map(root, out)
     return out
 
 

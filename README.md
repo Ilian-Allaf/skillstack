@@ -7,6 +7,7 @@ Created in [T3 Code](https://t3.codes).
 ## Contenu
 
 - [`knowledge/`](knowledge/README.md) : base de connaissance (repos de skills, transcripts vidéo, articles, synthèses) qui sert d'inspiration au futur graphe de skills.
+- **Vue d'ensemble en un coup d'œil : [`skills/README.md`](skills/README.md)**, la carte des skills et le parcours d'une tâche.
 - **Tu ne sais pas quel skill lancer ? Lance `/choose-skill` et décris ta situation.**
 - [`skills/`](skills/) : les skills du framework, en anglais. Version 0, écrits mais pas encore prouvés sur un vrai repo : [`constitution`](skills/constitution/README.md) (règles communes, lues par tous ; ce n'est pas un skill), [`choose-skill`](skills/choose-skill/SKILL.md) (le routeur), [`setup-repo`](skills/setup-repo/SKILL.md) (à lancer en premier dans un repo), [`create-app-driver`](skills/create-app-driver/SKILL.md), [`add-guardrail`](skills/add-guardrail/SKILL.md), [`shape-spec`](skills/shape-spec/SKILL.md), [`investigate`](skills/investigate/SKILL.md), [`learn-from-mistakes`](skills/learn-from-mistakes/SKILL.md), [`ship`](skills/ship/SKILL.md), [`analyze-impact`](skills/analyze-impact/SKILL.md), [`verify-pr`](skills/verify-pr/SKILL.md), [`babysit-pr`](skills/babysit-pr/SKILL.md).
 - [`tools/`](tools/) : les vérifications du framework.

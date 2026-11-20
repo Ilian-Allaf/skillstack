@@ -97,47 +97,9 @@ Plus un script dès l'étape 0 : `tools/lint_skills.py`.
 
 ### 4.3 Le graphe
 
-`constitution`, lue par tous, est omise. Chaque flèche pleine est un `calls` du frontmatter : le skill appelant lit le `SKILL.md` appelé par son chemin (routage pstack). Les pointillés sont les lectures d'un fichier d'un autre skill (`reads`). La lint vérifie que le texte et le frontmatter disent la même chose (règles F014 et F015).
+Le graphe fait foi dans [`skills/README.md`](../skills/README.md) : la carte des skills et le parcours d'une tâche, en Mermaid. `tools/check_refs.py` échoue (règle R006) si un skill y manque, pour qu'il ne se périme pas.
 
-```mermaid
-flowchart LR
-  subgraph entrees [Lancés par toi]
-    ship
-    investigate
-    shape["shape-spec"]
-    reflect["learn-from-mistakes"]
-    correct["add-guardrail"]
-    cva["create-app-driver"]
-    setup["setup-repo"]
-  end
-  setup -- "si tu le choisis" --> cva
-  setup -- "audit" --> correct
-  probe["analyze-impact"]
-  verify["verify-pr"]
-  babysit["babysit-pr"]
-  ship -- "si plusieurs décisions ouvertes" --> shape
-  ship -- "une décision à tester" --> investigate
-  shape -- "decision:prototype" --> investigate
-  investigate -- "diagnosis" --> vapp
-  ship -- "prove" --> vapp["drive-monapp, dans le repo"]
-  ship -- "medium et high" --> probe
-  ship -- "PR ouverte ; FAIL prouvé, 2 max, retour au build" --> verify
-  ship -- "verdict PASS" --> babysit
-  babysit -- "patch changé" --> verify
-  babysit -- "reprouver un fix" --> vapp
-  verify --> vapp
-  verify -- "lane breakage" --> probe
-  probe -- "niveau 5" --> vapp
-  probe -- "fichier couvert" --> formal["prove-zone, dans le repo"]
-  cva -- "mode formal" --> formal
-  babysit -- "prête" --> toi((toi : merge))
-  cva --> vapp
-  reflect --> correct
-  reflect -- "feature map" --> cva
-  correct --> checks["lints, types, tests du repo"]
-  verify -.-> playbooks["playbooks de ship"]
-  reflect -.-> calib["calibration de verify-pr"]
-```
+Chaque flèche pleine est un `calls` du frontmatter : le skill appelant lit le `SKILL.md` appelé par son chemin (routage pstack). Les lectures d'un fichier d'un autre skill sont des `reads`. La lint vérifie que le texte et le frontmatter disent la même chose (règles F014 et F015).
 
 ## 5. Le cœur : comment l'agent vérifie et trouve les problèmes
 

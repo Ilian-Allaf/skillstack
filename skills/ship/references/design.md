@@ -10,13 +10,17 @@ Before any logic, name the structure that encodes the domain:
 - a typed model instead of loose parameters or repeated shape assumptions;
 - a map, registry, lookup table, or discriminated union instead of branches spread across files;
 - a reducer or command and event model instead of ad hoc mutations;
-- a module grouped around one body of domain knowledge, not around execution order (load, validate, transform, save).
+- a module grouped around one body of domain knowledge, not around execution order (load, validate, transform, save);
+- a small module boundary that gathers repeated behavior, ownership, or invariants;
+- a queue, cache, index, graph, tree, or normalized collection, when the way the data is read calls for it.
 
 When none fits, write what the code must never allow and how the data is read, then pick the structure that encodes exactly that.
 
-Keep boring code when the current shape is already clear, local, and unlikely to grow. A structure earns its place by deleting branches, duplicated rules, or invalid states, never by adding indirection.
+Keep boring code when the current shape is already clear, local, and unlikely to grow. A structure earns its place by deleting branches, duplicated rules, invalid states, or lifecycle risk, never by adding indirection.
 
-The sign this step was skipped: a new feature grows an existing if/else chain by one branch, or adds a second boolean that must stay in sync with the first.
+Name the shape in the domain's words. Its types, states, and events take their names from the repo glossary, so the vocabulary settled with the user is the one the code carries. A domain concept the glossary lacks is added to it in the same PR, as `shape-spec`'s domain.md describes.
+
+The sign this step was skipped: a new feature grows an existing if/else chain by one branch, adds a second boolean that must stay in sync with the first, or repeats the same domain rule in modules named after steps.
 
 ## 2. Sketch twice when the code crosses a boundary
 

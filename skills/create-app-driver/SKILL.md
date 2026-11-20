@@ -33,8 +33,8 @@ Three modes:
 3. **Write the skill.** Create `.agents/skills/drive-<app>/SKILL.md`, with the links target-repo.md asks for, from [references/drive-app-template.md](references/drive-app-template.md). Pick the driver from [references/drivers.md](references/drivers.md) only when the repo has no harness of its own. Use the repo's real commands and stable handles (accessible names, test ids, prompt strings, routes). Scripts the skill ships are executable, and the skill shows how to call them.
    Done when: Launch, Doctor, Drive, Evidence, Demo, and Cleanup hold no placeholder, and every command in them ran once.
 
-4. **Seed the feature map.** Find the top 3 to 5 user-facing features from routes, commands, menus, and docs. Write one file each, in the shape of [references/feature-map.md](references/feature-map.md). List every entry point a user has to each feature.
-   Done when: every feature file names its entry points, its drive steps, and the observable end state that proves it works.
+4. **Seed the feature map, and its check.** Find the top 3 to 5 user-facing features from routes, commands, menus, and docs, and write one file each in the shape of [references/feature-map.md](references/feature-map.md). Where the code declares entry points, add a check that fails when one has no feature file, run it in CI, and see it fail once by hiding a file.
+   Done when: every feature file names where its entry points are declared, the ones no file declares, its drive steps, and the end state that proves it; and the check failed once and passes, or the report says the code declares no entry points.
 
 5. **Prove the generated skill.** Follow its own instructions end to end: launch, doctor, drive one mapped feature, capture evidence, clean up. Then check that the evidence still exists where the skill says. Fix what fails, and run the cleanup after every failed attempt. When a precondition is missing, the journey fails and the reason goes under Gotchas. Never weaken a journey to make it pass.
    Done when: one full run passed, the evidence survived cleanup, and nothing the run started is still running.

@@ -4,7 +4,7 @@ Synthesize what the interview settled; do not interview again.
 
 ## Before writing
 
-1. Read the code the spec touches, the repo's `GLOSSARY.md`, and the ADRs of the area. Use the glossary's terms throughout.
+1. Read the code the spec touches, the repo glossary, and the ADRs of the area. Use the glossary's terms throughout.
 2. Choose the seams the feature will be tested at: existing seams before new ones, the highest seam possible, as few as possible; one is ideal. Check them with the user.
 
 ## Template

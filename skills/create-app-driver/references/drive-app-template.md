@@ -48,7 +48,7 @@ Evidence stays where Evidence put it.
 
 ## Features
 
-The [feature map](features/README.md) lists every user-facing feature, its entry points, and the end state that proves it.
+The [feature map](features/README.md) lists every user-facing feature, where the code declares its entry points, the ones no file declares, and the end state that proves it. `<check command>` fails when a declared entry point has no feature file.
 A proof that drives one convenient entry point is incomplete when the map lists others.
 ```
 
