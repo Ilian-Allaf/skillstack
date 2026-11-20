@@ -16,7 +16,7 @@ Read [the constitution](../constitution/README.md) and [proof.md](../constitutio
 
 Find what a change breaks somewhere else, before the user merges it. Listing the callers is not the job: grep does that in a second. The job is the breakage grep does not show.
 
-Two callers use this skill. The builder runs it in `ship` for `medium` and `high` tasks. The verifier runs it in its `breakage` lane, without seeing the builder's report. Both follow the same steps.
+Three callers use this skill. The builder runs it in `ship` for `medium` and `high` tasks. The verifier runs it in its `breakage` lane, without seeing the builder's report. The user can launch it on a PR; then, as for the verifier, it reports and opens no issue. All follow the same steps.
 
 ## Steps
 

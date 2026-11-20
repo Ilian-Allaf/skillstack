@@ -45,7 +45,7 @@ A stop before step 6, when the build budget runs out or a second sketch is scrap
 6. **Open the PR.** Push and open it in [the PR format](../constitution/references/pr-format.md), every claim with its certainty level.
    Done when: the PR is open and its body has every section of the format.
 
-7. **Get a verdict.** Spawn a fresh verifier (see Roles in the constitution) to run [verify-pr](../verify-pr/SKILL.md) with the brief its step 1 lists, and write the outcome on the PR's Verdict line. On a FAIL, go back to step 2 with its run, or dispute it once as verify-pr describes. An axis INCONCLUSIVE means `needs-human`, with what would make the lane runnable: for a surface with no driver, `/create-app-driver`. The budget is 2 FAIL verdicts.
+7. **Get a verdict.** Spawn a fresh verifier (see Roles in the constitution) to run [verify-pr](../verify-pr/SKILL.md) with the brief its step 1 lists, and write the outcome on the PR's Verdict line. On a FAIL, go back to step 2 with its run, or dispute it as verify-pr describes, once per PR. An axis INCONCLUSIVE means `needs-human`, with what would make the lane runnable: for a surface with no driver, `/create-app-driver`. The budget is 2 FAIL verdicts.
    Done when: both axes pass on the head's patch id, or the PR is `needs-human`: budget spent, FAIL upheld, or an axis INCONCLUSIVE.
 
 8. **Hand over to babysit-pr.** Run [babysit-pr](../babysit-pr/SKILL.md) on the PR until it is `ready` or `needs-human`.

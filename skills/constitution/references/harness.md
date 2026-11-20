@@ -29,7 +29,7 @@ The user runs on one subscription, so each role takes the model of that subscrip
 | the verifier's lanes, swarm workers, the comment hunter | a mid-size model, such as Sonnet | the session's model, medium reasoning effort |
 | bulk reading: a transcript, logs, a sweep of the codebase | the smallest model, such as Haiku | the session's model, low reasoning effort |
 
-Raise the effort one step for the subtlest work, and lower it for routine work. Every role but the verifier's keeps the session's family.
+Raise the effort one step for the subtlest work, and lower it for routine work. When the harness offers another family, it serves the roles that judge or search: the verifier's verdict and lanes, the swarms, a widened impact analysis, and the reader of a decision log. Every other role keeps the session's family.
 
 ## Rules
 

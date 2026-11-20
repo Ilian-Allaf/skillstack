@@ -24,6 +24,14 @@ Once a task runs, it does not wait for a go: it shows you its frame and goes on 
 
 Swap in the real paths, numbers, and checks.
 
+### Start in a repo, or from an idea
+
+```text
+/setup-repo
+/create-app-driver
+/shape-spec let users share a read-only link to a board
+```
+
 ### Understand
 
 ```text
@@ -80,6 +88,7 @@ You merge. A stack merges from the bottom.
 
 ```text
 /add-guardrail agents keep calling the database client directly instead of the repository layer
+/add-guardrail
 /learn-from-mistakes 123
 /test-skill-change the new feature playbook in branch better-feature-playbook
 /clean-worktrees

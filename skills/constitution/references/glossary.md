@@ -27,7 +27,7 @@ The target repo can have its own glossary of domain terms. The builder and the v
 | note | note | a finding that does not block; listed in the verdict comment, an issue only when the user asks | |
 | ready | prête | the PR needs nothing but the user's merge; label `ready` | `merge-ready` |
 | round | round | one pass of `babysit-pr` after something changed on the PR | |
-| `needs-human` | needs-human | the run stopped and needs a decision; a label | `escalated` |
+| `needs-human` | needs-human | a label: the run stopped on a call only the user can make; the user's answer, in their own words, restarts it | `escalated` |
 | escaped | échappé | a bug found after merge; label `escaped` | |
 | door | porte | `two-way` if a choice can be undone cheaply, `one-way` if not | `reversibility` |
 | case | cas | one situation the evidence must show: an entry point, an edge case, the main path | `scenario` |

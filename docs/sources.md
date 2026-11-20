@@ -48,6 +48,7 @@ When a skill changes, update its section here, in the same PR.
 - 2026-11-20, rules 11 to 13 (ADR 0014): pstack `poteto-mode` Autonomy and Non-negotiables ("don't wait for confirmation", "broken skill mid-task"), and its `autonomous-run` playbook (mid-run discoveries are yours, out-of-band fixes in their own PR, a plateau is not a stop, never relax the predicate). Adapted: a framework skill that is wrong goes to `/learn-from-mistakes`, since a target repo cannot edit the installed plugin.
 - 2026-11-20, Reading a principle: pstack `poteto-mode` ("Read the leaf skill in full for any principle you apply", "Cite only principles whose leaf SKILL.md you read this session") and `poteto-agent` ("Navigate to a leaf principle skill whenever you apply that principle"). Ours: never a whole group of the index, and the W002 budget in `tools/lint_skills.py`, since our full forms are longer than pstack's.
 - 2026-11-20, from the coherence audit: rule 12 narrowed to what blocks the goal, from pstack `orchestrate` ("Keep only the fixes that block the program, and park the rest as follow-ups"); rule 2 extended to every PR a skill opens, from pstack `shipping`; principles in plain words in the decision log, from pstack `show-me-your-work` (ADR 0015).
+- 2026-11-20, third coherence audit: a stop says the call in plain words, a recommended default, and what the user could say instead, keeps working on the rest, and the user's answer in their own words restarts it, from pstack `poteto-mode` ("apply a default, report it with a full explanation, and say in plain words what the operator could tell you to do instead. The operator answers in their own words. Never give a shorthand token to type back") and `babysit` ("Surface the escalation and keep working the rest"). Ours: the `needs-human` label stays as a visible marker.
 
 ## `skills/constitution/references/languages/typescript.md` (examples, 2026-11-20)
 
@@ -200,6 +201,10 @@ When a skill changes, update its section here, in the same PR.
 ## `skills/resume-task/SKILL.md` (2026-11-20)
 
 - Source: pstack `poteto-mode` session-pickup playbook (Lauren Tan). Adapted: the trail starts from the `wip:` commit and the PR; the task continues without asking (ADR 0014).
+
+## `skills/ship-queue/references/owner-brief.md` (2026-11-20)
+
+- Source: pstack `orchestrate` ("Each kickoff names the evidence that proves the work is done... the paths the worker may and may not write") and `autopilot-full` (push early, push each finished unit), adapted to an owner that runs `ship`.
 
 ## `skills/ship-queue/SKILL.md` (2026-11-20)
 

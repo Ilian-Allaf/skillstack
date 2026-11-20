@@ -24,7 +24,7 @@ You read, run, and comment. Edits, pushes, and merges belong to the builder and 
 ## Steps
 
 1. **Check your independence.** Your brief holds the task, `done_when`, the PR number, the head SHA, the path of this file, and the paths of the repo's drivers (`.agents/skills/drive-*/SKILL.md`), and nothing of the builder's reasoning, notes, or `analyze-impact` report. Name anything that leaked, and record your model family.
-   When the user launched you with a PR number alone, build that brief yourself: the task and `done_when` from the PR body, the head SHA from the code host.
+   When the user launched you with a PR number alone, build that brief yourself: the task and `done_when` from the PR body, the head SHA from the code host. A PR with no `done_when` or no risk class, such as a colleague's, gets its task inferred from its title and description and the class `medium`, both said in the verdict header; `replay` then runs only what the PR claims.
    Done when: the verdict header can state your family and that your context was fresh, or names what leaked.
 
 2. **Read the PR as the user will.** Check out the head in your own worktree, where every revert and experiment happens. Read the diff, the PR body except its Breakage section, the task, and `done_when`, then compute the patch id as [references/verdict.md](references/verdict.md) shows. Pick the lanes of the PR's risk class from proof.md, or of a higher class when you judge the PR's class too low, with the reason.
@@ -45,7 +45,7 @@ For a `high` task, or one that touches a hard zone, the builder spawns you once 
 
 ## When the builder disputes a FAIL
 
-The builder may answer a FAIL once, with evidence, and always to a new fresh verifier whose brief holds the FAIL comment and the builder's counter-run. That verifier reruns both. If the counter-run proves the FAIL wrong, it posts a full verdict in the format of verdict.md, which the builder links on the Verdict line; otherwise the FAIL stands, and the PR gets `needs-human` with both runs.
+The builder may dispute one FAIL per PR, with evidence, and always to a new fresh verifier whose brief holds the FAIL comment and the builder's counter-run. That verifier reruns both. If the counter-run proves the FAIL wrong, it posts a full verdict in the format of verdict.md, which the builder links on the Verdict line; otherwise the FAIL stands, and the PR gets `needs-human` with both runs.
 
 ## Calibration
 

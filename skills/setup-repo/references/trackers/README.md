@@ -15,7 +15,7 @@ Propose the tracker that matches the repo's `git remote`, and let the user chang
 
 ## The operations
 
-Every template, and every file written from `other.md`, answers each of these, under these headings. A skill that needs an operation the file does not answer stops and asks the user, instead of guessing.
+Every template, and every file written from `other.md`, answers each of these, under these headings. A skill that needs an operation the file does not answer never guesses: outside a running task it asks the user; during a task it lists the operation in its reply and the decision log, and goes on, as the constitution says for a missing tracker file.
 
 | Operation | Used by |
 |---|---|

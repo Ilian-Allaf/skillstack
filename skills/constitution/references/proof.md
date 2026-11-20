@@ -54,7 +54,7 @@ Level 5 needs the running app, driven the way a user does. The repo's drivers li
 - **observable**: a command, a test, or an app journey that answers yes or no. "Works correctly" is not observable; "the e2e double-click test passes and the notes table holds one row" is;
 - **red on the base**: run it before any code changes, and confirm it fails. A `done_when` that is already green proves nothing: the task is misread or already done, so ask. A refactoring adds a behavior pin that is green on both the base and the head;
 - **from the user**: taken from the request or the issue. The builder never sets the bar for its own judge. When it has to sharpen the wording, it shows the sharpened version and the user corrects it;
-- **narrow**: one task, one condition. Several conditions mean several units of the task: one PR each, stacked, as `frame` describes;
+- **narrow**: one task, one condition. Several conditions mean several units of the task: one PR each, stacked, as `frame` describes. The exception is the two parts a playbook defines, such as a refactoring's target and its pin;
 - **shown**: it is in the frame, where the user can correct it at any time. For `high`, or a task that touches a hard zone, the verifier reads it before `build` and flags it if it cannot be checked.
 
 ## Risk classes

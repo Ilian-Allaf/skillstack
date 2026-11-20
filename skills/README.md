@@ -57,7 +57,7 @@ flowchart TB
   shape -->|spec issue| tracker
   shape -.->|"you run /ship #spec"| ship
   ship -->|medium, high| impact
-  ship -->|prototype a choice| investigate
+  ship -->|diagnose, or prototype a choice| investigate
   ship -.->|too big, open decisions| shape
   verify -->|breakage lane| impact
   ship --> verify
@@ -106,7 +106,7 @@ flowchart TB
 ```mermaid
 flowchart TB
   go(("You:<br/>/ship task"))
-  frame["1 · Frame, shown to you<br/><i>done_when red on the base,<br/>cases, risk</i>"]
+  frame["1 · Frame, shown to you<br/><i>done_when red on the base,<br/>cases, risk; high or hard zone:<br/>a verifier reads done_when first</i>"]
   design["2a · Design<br/><i>data shape; two sketches<br/>and a note when it crosses<br/>a function boundary</i>"]
   door{"One-way door,<br/>or you asked?"}
   shown{"You approve<br/>the design?"}
@@ -119,7 +119,7 @@ flowchart TB
   babysit["8 · Babysit<br/><i>conflicts, review, CI</i>"]
   ready[["ready"]]
   merge(("You<br/>merge"))
-  human[["PR open,<br/>needs-human"]]
+  human[["PR open, needs-human<br/><i>the call, a default,<br/>and what you could say</i>"]]
 
   go --> frame --> design --> door
   door -->|no| build
@@ -132,7 +132,8 @@ flowchart TB
   verdict -->|first FAIL| build
   verdict -->|PASS| babysit --> ready --> merge
   verdict -->|"2 FAILs, FAIL upheld,<br/>or INCONCLUSIVE"| human
-  babysit -->|5 rounds spent| human
+  babysit -->|"5 rounds, FAIL budget spent,<br/>INCONCLUSIVE, or a call for you"| human
+  human -.->|your answer, in your words| build
 
   classDef you fill:#16a34a,stroke:#16a34a,color:#fff
   classDef stop fill:#fef2f2,stroke:#dc2626,color:#7f1d1d

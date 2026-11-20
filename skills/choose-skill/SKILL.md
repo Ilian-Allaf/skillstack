@@ -38,11 +38,13 @@ You are the index of this framework, so the user only has to remember you. You p
 | a question about the code, a symptom you cannot reproduce, or a choice an experiment can settle | `/investigate <the question>` |
 | you must stop now, or the session is about to end, and want to resume later | `/pause-task` |
 | you start or come back to a topic and want what happened around it first | `/recall-context <the topic, and a window>` |
+| you answered a PR that stopped on `needs-human` | `/resume-task <PR number>`, after your answer in a PR comment |
 | a task an earlier session left mid-way | `/resume-task <branch or PR, or nothing for the last paused task>` |
 | you were away: what changed, and what waits on you | `/catch-me-up`, or `/catch-me-up video` for a short video |
 | an open PR stuck on conflicts, review comments, or CI | `/babysit-pr <PR number>` |
 | an independent check of a PR, yours or anyone's | `/verify-pr <PR number>`, in a fresh session |
 | what a change could break before you merge it | `/analyze-impact <PR number or diff>` |
+| you want the mistakes agents repeat in this repo found and fixed from its history | `/add-guardrail` |
 | an agent made the same mistake twice | `/add-guardrail <the mistake>` |
 | what the code already enforces, before agents work on it at scale | `/add-guardrail audit` |
 | your disk fills up with the worktrees of past tasks | `/clean-worktrees` |
