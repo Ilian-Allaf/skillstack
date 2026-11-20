@@ -1,12 +1,12 @@
 # PR format
 
-The user reads the PR body to decide the merge without running anything. It is a one-minute briefing, not a lab notebook: what is visible says why, what is covered, what is not, the risk, and the verdict. Proof, breakage, and decisions are folded below, there to dig into. See [coverage.md](coverage.md).
+The user reads the PR body to decide the merge without running anything. It is a one-minute briefing, not a lab notebook: what is visible says why, what is covered, what is not, the risk, and the verdict. Proof, breakage, and decisions are folded below, there to dig into. See [coverage.md](coverage.md), and write it as [writing.md](writing.md) says.
 
 ```markdown
 <title that says why, not what>
 
 ## Why
-The problem, in one or two sentences.
+Who notices the change and what changes for them, then the problem, in one or two sentences. Then one line on what the next engineer who owns this code inherits. If you cannot say what either would notice, the change or the explanation is off.
 
 ## Done when
 The `done_when`, and the run that showed it red on the base.

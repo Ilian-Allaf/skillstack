@@ -4,7 +4,7 @@ Spend words on the calls, not on the story.
 
 ## Voice
 
-Plain words and short sentences, as one person catching up another. Say what changed for the user, not how you did it: "the tests pass", not "CI is green". Leave out hashes, file paths, commands, and counts unless the user needs one to act. Call each PR, branch, or agent by a name the user knows, not one you invented. A fact that needs context gets its context, or is left out.
+Plain words and short sentences, as one person catching up another. Say what changed for the user, not how you did it: "the tests pass", not "CI is green". Leave out hashes, file paths, commands, and counts unless the user needs one to act. Call each PR, branch, or agent by a name the user knows, not one you invented. A fact that needs context gets its context, or is left out. The rest of [writing.md](../../constitution/references/writing.md) applies.
 
 ## Shape
 
