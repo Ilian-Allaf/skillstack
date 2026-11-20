@@ -22,6 +22,7 @@
     "./skills/pause-task",
     "./skills/resume-task",
     "./skills/catch-me-up",
+    "./skills/clean-worktrees",
     "./skills/create-app-driver",
     "./skills/add-guardrail",
     "./skills/learn-from-mistakes",

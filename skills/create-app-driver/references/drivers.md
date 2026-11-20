@@ -1,6 +1,6 @@
 # Drivers
 
-Fallback recipes, for when the repo has no harness of its own. Prefer what the repo already uses. Copy the recipe into the generated skill and adapt it; the target repo never calls this file.
+Fallback recipes, for when the repo has no harness of its own, then how to grow the driver into a small CLI. Prefer what the repo already uses. Copy the recipe into the generated skill and adapt it; the target repo never calls this file.
 
 ## Web app or Electron: a browser driver
 
@@ -29,7 +29,17 @@ Fallback recipes, for when the repo has no harness of its own. Prefer what the r
 - A script that imports the package the way a user does, from its public entry point, and calls the changed function.
 - Evidence: the script, its output, and the version or commit it ran against.
 
-## Assembling the demo
+## A control CLI
+
+When the drive takes more than a few lines of script, or agents keep writing throwaway scripts to click through the app, grow the script the skill ships into a small control CLI (`build-the-lever`). Every run then drives the app the same way, for fewer tokens, and the evidence replays. A CLI agents use well has:
+
+- a few composable commands that each do real work, such as `launch`, `drive <feature>`, `capture`, `reset`, rather than many thin ones;
+- `--dry-run` on anything that deletes or writes outside the run's own directory;
+- `--help` on every command, with an example;
+- machine-readable output, such as JSON, beside the human one;
+- errors that say what to do next: "port 3000 is taken; pass --port or run `reset`";
+- one command that brings the environment up the same way every time: dependencies, migrations, seed data, test users.
+
 
 A helper `record-demo` turns the per-case clips into one video, as [coverage.md](../../constitution/references/coverage.md) describes:
 

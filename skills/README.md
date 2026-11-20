@@ -19,6 +19,7 @@ flowchart TB
     pause["pause-task<br/><i>stop cleanly</i>"]
     resume["resume-task<br/><i>pick up where it stopped</i>"]
     catchup["catch-me-up<br/><i>what changed, what waits on you</i>"]
+    cleanwt["clean-worktrees<br/><i>free disk, keep unsaved work</i>"]
     guard["add-guardrail<br/><i>mistake → check</i>"]
     cva["create-app-driver<br/><i>teach the agent your app</i>"]
     learn["learn-from-mistakes<br/><i>bug got through → fix the layer</i>"]
@@ -66,6 +67,7 @@ flowchart TB
   pause -.->|next session| resume
   resume -->|carries on| ship
   queue -->|one owner per task| ship
+  queue -.->|leaves worktrees| cleanwt
   catchup -->|reads| pr
   learn -.->|test a proposed fix| testskill
   sharpen -.->|you send it| ship
@@ -83,7 +85,7 @@ flowchart TB
   classDef repoNode fill:#faf5ff,stroke:#7c3aed,color:#4c1d95,stroke-dasharray:4 3
   classDef shared fill:#f4f4f5,stroke:#71717a,color:#27272a
   class you,merge person
-  class choose,setup,shape,investigate,ship,queue,pause,resume,catchup,guard,cva,learn,testskill,sharpen,plain entry
+  class choose,setup,shape,investigate,ship,queue,pause,resume,catchup,cleanwt,guard,cva,learn,testskill,sharpen,plain entry
   class impact,verify,babysit inner
   class drive,prove,checks,tracker,pr repoNode
   class constitution shared

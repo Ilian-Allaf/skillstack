@@ -1,0 +1,5 @@
+interface:
+  display_name: "Clean worktrees"
+  short_description: "Free disk, never lose unsaved work"
+policy:
+  allow_implicit_invocation: false

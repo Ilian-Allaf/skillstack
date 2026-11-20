@@ -77,6 +77,7 @@ Every skill is launched by you; none is picked by the model on its own. Each one
 - **[pause-task](skills/pause-task/SKILL.md)**: Stops the running task at a safe point and leaves a resume note, so a fresh session picks it up with nothing lost.
 - **[resume-task](skills/resume-task/SKILL.md)**: Picks up a task an earlier session left mid-way, and carries it on without redoing what was done.
 - **[catch-me-up](skills/catch-me-up/SKILL.md)**: Tells you what changed while you were away, with the screenshots and videos the work produced, and every call waiting on you.
+- **[clean-worktrees](skills/clean-worktrees/SKILL.md)**: Frees disk by removing the worktrees of finished or abandoned tasks, and never loses uncommitted work.
 - **[create-app-driver](skills/create-app-driver/SKILL.md)**: Writes the repo's driver, a skill that launches, drives, and observes the app like a user, with its feature map.
 - **[add-guardrail](skills/add-guardrail/SKILL.md)**: Makes a repeated mistake impossible: turns it into a check, proven red on the real mistake.
 - **[learn-from-mistakes](skills/learn-from-mistakes/SKILL.md)**: Learns from a session, a failed PR, or a bug found after merge, and proposes fixes to the layer that missed it.
