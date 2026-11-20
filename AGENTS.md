@@ -5,7 +5,7 @@ This repo is the source of a skill framework. `skills/` is the folder the framew
 - **Check everything**: `python -I tools/check.py` runs the tool tests, the skill linter, and the reference checker. Run it before every commit; CI runs the same.
 - **Shared rules and glossary**: `skills/constitution/README.md` and `skills/constitution/references/glossary.md`, which is this repo's glossary.
 - **Decisions**: `docs/adr/`. Read the ADRs whose Applies to covers what you touch, before you touch it. Never rewrite an accepted ADR: a new decision supersedes it.
-- **What changes a skill**: `SCOPE.md`. A change needs an observed failure, unless it fixes a broken reference or a failing check.
+- **What changes a skill**: `SCOPE.md`. A change contradicts no accepted ADR, and its PR says why it is worth it.
 - **Attribution**: `docs/sources.md`. Skills name no source themselves.
 - **History**: `docs/history/` holds the first design notes, in French, frozen. They bind nothing; do not update them.
 - **Judgment calls the linter cannot hold**: `CODING_STANDARDS.md`.

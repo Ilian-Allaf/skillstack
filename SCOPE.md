@@ -4,12 +4,9 @@ What gets a skill changed, and what the framework will not do.
 
 ## The bar for a change
 
-A change to a skill clears both parts:
+A change to a skill fits the decisions: it contradicts no accepted ADR in [`docs/adr/`](docs/adr/). To reopen one, cite it and say what changed since; a yes becomes a new ADR that supersedes it.
 
-1. **An observed failure.** It names something that went wrong in a real session: what was run, what the skill did, what was expected. Link the session, the PR, or the issue. "It would be better if..." does not clear this part.
-2. **It fits the decisions.** It contradicts no accepted ADR in [`docs/adr/`](docs/adr/). To reopen one, cite it and say what changed since; a yes becomes a new ADR that supersedes it.
-
-Size does not matter: a one-word fix and a rewrite face the same bar. A broken reference, a failing check, or an attribution in [`docs/sources.md`](docs/sources.md) is fixed without one.
+Size does not matter: a one-word fix and a rewrite face the same bar. A PR says why the change is worth it: an observed failure when there is one, linked to its session, PR, or issue.
 
 ## A new skill
 
