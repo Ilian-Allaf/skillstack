@@ -28,7 +28,8 @@ Every template, and every file written from `other.md`, answers each of these, u
 | Close an issue, after a comment that says why | `shape-spec` |
 | Link a child issue to its parent | `shape-spec` (a map and its decisions) |
 | Mark an issue as blocked by another, and count its open blockers | `shape-spec` |
-| Claim an issue, so two sessions never work the same one | `shape-spec` |
+| Claim an issue, so two sessions never work the same one | `shape-spec`, `ship` |
+| Link a PR to the issue it delivers, so the merge closes it | `ship` |
 
 ## The code host is separate
 

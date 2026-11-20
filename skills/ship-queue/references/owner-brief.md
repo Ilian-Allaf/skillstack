@@ -2,7 +2,7 @@
 
 What each owner of a queue gets, and nothing of your own reasoning. Fill every line.
 
-- **The goal**, in the user's words, and this task in one line.
+- **The goal**, in the user's words, and this task in one line, with its issue number when it is one: `ship` claims and links it.
 - **The base**: the repo's base branch, or the branch of the PR this task builds on.
 - **The skill**: the path of `ship/SKILL.md`, to follow from step 1 to step 8.
 - **The paths it may write**, and those it must not.

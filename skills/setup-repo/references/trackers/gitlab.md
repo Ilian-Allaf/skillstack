@@ -36,6 +36,9 @@ Post the quick action `/blocked_by #<blocker>` as a note on the child. Native bl
 
 ## Claim an issue
 `glab issue update <n> --assignee @me`, as the session's first write on it.
+
+## Link a PR to the issue it delivers
+In the merge request description, `Closes #<n>` on the one that completes the issue, and `Part of #<n>` on an earlier one of a stack; GitLab closes the issue when it merges into the default branch. When the code lives on another host, post the PR's link as a comment on the issue instead, and the user closes the issue when they merge.
 ```
 
 Prove the file with the read-only list command before you commit it. The blocking and label commands are the least tested; run each once on a throwaway issue when the user agrees.

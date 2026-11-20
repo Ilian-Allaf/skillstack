@@ -36,6 +36,9 @@ Comment with the reason first, then `gh issue close <n>`.
 
 ## Claim an issue
 `gh issue edit <n> --add-assignee @me`, as the session's first write on it.
+
+## Link a PR to the issue it delivers
+In the PR body, `Closes #<n>` on the PR that completes the issue, and `Part of #<n>` on an earlier PR of a stack. GitHub closes the issue when that PR merges into the default branch.
 ```
 
 The `--add-sub-issue` and `--add-blocked-by` flags need a recent `gh`; when they fail, use the fallback lines in the body. Prove the file with the read-only list command before you commit it.
