@@ -24,7 +24,7 @@ Shared rules, not a skill: no harness lists this folder, and no one launches it.
 |---|---|
 | [references/proof.md](references/proof.md) | before you write `done_when`, prove a change, give a verdict, or size the verification to the risk class |
 | [references/coverage.md](references/coverage.md) | before you list the cases in `frame`, build the coverage table or the demo video, or check coverage as the verifier |
-| [references/principles.md](references/principles.md), then the full form in `references/principles/<id>.md` | when a step names a principle by its id, when you pick or judge the shape of code, or when a decision is not covered by a skill |
+| [references/principles.md](references/principles.md) | when a step names a principle by its id, or a decision is not covered by a skill; then the full form of each principle you apply, as [Reading a principle](#reading-a-principle) says |
 | [references/glossary.md](references/glossary.md) | before you write a skill, a PR, or a verdict, and whenever a term is ambiguous |
 | [references/pr-format.md](references/pr-format.md) | before you open or edit a PR body |
 | [references/writing.md](references/writing.md) | before you write what a person reads: a PR body, a commit message, an issue, a reply, a doc, a skill |
@@ -45,6 +45,12 @@ Shared rules, not a skill: no harness lists this folder, and no one launches it.
 | coordinator | runs a queue of tasks through one owner each, and checks what each hands back; never writes code | the session's model |
 
 A subagent gets a brief and the path of the skill it runs, never the parent's reasoning. Skills here are read by path, not found by name. The verifier's brief never holds the builder's notes or its `analyze-impact` report; step 1 of the `verify-pr` skill lists what it holds.
+
+## Reading a principle
+
+The index gives each principle in one line. Before you apply a principle, or judge work by it, read its full form, `references/principles/<id>.md`: one file per principle you apply, when you apply it. Never read the whole folder or a whole group of the index.
+
+A principle you cite, under Decisions or in a decision log, is one whose full form you read in this session.
 
 ## Principles in the record
 

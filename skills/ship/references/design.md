@@ -1,6 +1,6 @@
 # Design before code
 
-The codebase is the largest input of the next agent, and that agent copies the nearest example. A shape chosen at write time is cheap; recovering it later reads as a refactor and gets deferred. So the builder picks the shape before the code, with the [principles](../../constitution/references/principles.md) of Design and structure as its method.
+The codebase is the largest input of the next agent, and that agent copies the nearest example. A shape chosen at write time is cheap; recovering it later reads as a refactor and gets deferred. So the builder picks the shape before the code, and reads the full form of each [principle](../../constitution/references/principles.md) its sketch relies on: those the rules of [sketch.md](sketch.md) name, one file each.
 
 ## How much design the change needs
 

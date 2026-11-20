@@ -4,6 +4,7 @@ One entry per merged PR that changes what a skill does, or how the framework is 
 
 ## Unreleased (v0)
 
+- Principles are read one at a time: the constitution's Reading a principle says to read the full form of each principle you apply, never a whole group, and to cite only what you read in the session; `ship`'s design reads the principles its sketch relies on, and `verify-pr`'s standards lane those the PR cites or the diff calls for. W002 warns when a principle's full form passes 500 words.
 - New skill `/recall-context`: a brief of where things stand on a topic, from past sessions and the repo's record. New user guide `docs/guide.md`: what to put in a prompt, prompts to copy per kind of work, the costly mistakes; R011 checks that each command it names is a skill.
 - `create-app-driver` grows the driver into a small control CLI when the drive outgrows a script: composable commands, `--dry-run`, `--help`, JSON output, errors that say what to do, one command for the environment. New skill `/clean-worktrees` removes the worktrees of finished tasks and asks before any uncommitted work is lost.
 - Faster review: `babysit-pr` pushes once per round and babysits a stack from its lowest PR, one babysitter per stack, keeping the stack's shape; `constitution/references/writing.md` sets how PR bodies, commits, replies, and docs are written; a PR's Why opens with who notices the change and what the next maintainer inherits.

@@ -39,7 +39,7 @@ Read the code, the issue, and the history first: most questions answer themselve
 
 ## Playbooks
 
-Pick one playbook per task, from the first column. A playbook names principles by their id; the rules are in [principles.md](../../constitution/references/principles.md).
+Pick one playbook per task, from the first column. A playbook names principles by their id; the rules are in [principles.md](../../constitution/references/principles.md), and you read the full form of one when you apply it.
 
 | Task | Playbook | Ends with |
 |---|---|---|

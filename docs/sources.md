@@ -40,6 +40,7 @@ When a skill changes, update its section here, in the same PR.
 
 - (pstack `poteto-mode`)
 - 2026-11-20, rules 11 to 13 (ADR 0014): pstack `poteto-mode` Autonomy and Non-negotiables ("don't wait for confirmation", "broken skill mid-task"), and its `autonomous-run` playbook (mid-run discoveries are yours, out-of-band fixes in their own PR, a plateau is not a stop, never relax the predicate). Adapted: a framework skill that is wrong goes to `/learn-from-mistakes`, since a target repo cannot edit the installed plugin.
+- 2026-11-20, Reading a principle: pstack `poteto-mode` ("Read the leaf skill in full for any principle you apply", "Cite only principles whose leaf SKILL.md you read this session") and `poteto-agent` ("Navigate to a leaf principle skill whenever you apply that principle"). Ours: never a whole group of the index, and the W002 budget in `tools/lint_skills.py`, since our full forms are longer than pstack's.
 
 ## `skills/constitution/references/languages/typescript.md` (examples, 2026-11-20)
 
