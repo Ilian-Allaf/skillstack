@@ -18,6 +18,7 @@
     "./skills/shape-spec",
     "./skills/investigate",
     "./skills/ship",
+    "./skills/ship-queue",
     "./skills/pause-task",
     "./skills/resume-task",
     "./skills/catch-me-up",

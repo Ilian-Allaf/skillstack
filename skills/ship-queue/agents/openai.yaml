@@ -1,0 +1,5 @@
+interface:
+  display_name: "Ship queue"
+  short_description: "Many tasks to many ready PRs"
+policy:
+  allow_implicit_invocation: false
