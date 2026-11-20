@@ -1,13 +1,15 @@
 # Architecture 02 — Le framework de skills (v3)
 
+> **Frozen on 2026-11-19.** History only, in French: names, decisions, and paths are those of their time and bind nothing. Decisions in force: [docs/adr/](../adr/). How the framework works today: [skills/README.md](../../skills/README.md).
+
 > **Statut** : v3, du 2026-11-18. Construits en v0, non prouvés : `constitution` (dossier partagé), `choose-skill`, `setup-repo`, `create-app-driver` (avec le mode `formal`), `add-guardrail`, `shape-spec`, `investigate`, `learn-from-mistakes`, `ship` (6 playbooks), `analyze-impact`, `verify-pr`, `babysit-pr`, et `tools/lint_skills.py`. Ajouts du 2026-11-19, repris de pstack et de Matt Pocock : `shape-spec` (grill, domain, spec, map), `learn-from-mistakes`, les références `parallel`, `decision-log`, `statechart` et `languages/typescript`, le playbook `bespoke`. `to-tickets` n'est pas repris : Ray Amjad et Anthropic montrent qu'un spec découpé en tickets confiés à des agents parallèles donne de moins bons résultats.
-> **Ce qui change depuis la v2** ([archivée](archive/02-architecture-v2.md)) : ta décision du 2026-11-18.
+> **Ce qui change depuis la v2** ([archivée](02-architecture-v2.md)) : ta décision du 2026-11-18.
 >
 > - **Tu merges toujours toi-même, sans exception.** L'agent rend une PR prête à merger, et s'arrête là.
 > - Disparaissent donc : le dossier `.trust/`, la gate de CI, l'échelle N0–N5, `/ship send`, le merge sans toi, le skill `trust` et le merge par `land`.
 > - **Le centre du document devient la vérification** : comment l'agent prouve que son code marche et trouve ce qui casse (section 5).
 >
-> **Entrées** : le [brainstorm 01](01-brainstorm-pr-sereines.md), la [revue 03](03-revue-principes.md) et la base [`knowledge/`](../knowledge/README.md).
+> **Entrées** : le [brainstorm 01](01-brainstorm-pr-sereines.md), la [revue 03](03-revue-principes.md) et la base [`knowledge/`](../../knowledge/README.md).
 > **Reste ouvert** : le repo cobaye (section 13).
 
 ---
@@ -97,7 +99,7 @@ Plus un script dès l'étape 0 : `tools/lint_skills.py`.
 
 ### 4.3 Le graphe
 
-Le graphe fait foi dans [`skills/README.md`](../skills/README.md) : la carte des skills et le parcours d'une tâche, en Mermaid. `tools/check_refs.py` échoue (règle R006) si un skill y manque, pour qu'il ne se périme pas.
+Le graphe fait foi dans [`skills/README.md`](../../skills/README.md) : la carte des skills et le parcours d'une tâche, en Mermaid. `tools/check_refs.py` échoue (règle R006) si un skill y manque, pour qu'il ne se périme pas.
 
 Chaque flèche pleine est un `calls` du frontmatter : le skill appelant lit le `SKILL.md` appelé par son chemin (routage pstack). Les lectures d'un fichier d'un autre skill sont des `reads`. La lint vérifie que le texte et le frontmatter disent la même chose (règles F014 et F015).
 

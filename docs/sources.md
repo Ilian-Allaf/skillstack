@@ -1,8 +1,8 @@
-# Sources des skills
+# Where the skills come from
 
-Les skills de `skills/` ne nomment aucune source externe : un agent qui lirait « Matt Pocock `grilling` » pourrait aller chercher ce skill et sortir du framework. La lint l'interdit (règle P005). La traçabilité vit ici : pour chaque fichier, le texte d'attribution retiré le 2026-11-19, tel quel. Les originaux sont dans `knowledge/sources/`.
+Skills name no external source: an agent that read "Matt Pocock `grilling`" in a skill could go find that skill and leave the framework. The linter forbids it (P005, [ADR 0007](adr/0007-no-external-sources-in-skills.md)). Attribution lives here instead: for each file, the attribution text removed from it on 2026-11-19, as it was. The originals are in `knowledge/sources/`.
 
-Quand un skill change, mets à jour sa ligne ici, pas dans le skill.
+When a skill changes, update its section here, in the same PR.
 
 ## `skills/add-guardrail/SKILL.md`
 
@@ -91,12 +91,12 @@ Quand un skill change, mets à jour sa ligne ici, pas dans le skill.
 - (pstack: "a small, obvious edit doesn't" need full rigor)
 - (Ray Amjad: "you don't really need a verifier to like verify that the contact form submits"; Anthropic "harness design": the evaluator "is worth the cost when the task sits beyond what the current model does reliably solo")
 
-## `skills/constitution/references/target-repo.md` (où vivent skills et instructions, 2026-11-19)
+## `skills/constitution/references/target-repo.md` (where skills and instructions live, 2026-11-19)
 
-- Agent Skills, « How to add skills support to your agent » : « The `.agents/skills/` paths have emerged as a widely-adopted convention for cross-client skill sharing. While the Agent Skills specification does not mandate where skill directories live… » <https://agentskills.io/client-implementation/adding-skills-support>
-- Claude Code, Skills : project skills in `.claude/skills/`; « a `<skill-name>` entry in the enterprise, personal, or project location can be a symlink to a directory elsewhere on disk ». <https://code.claude.com/docs/en/skills>
-- Claude Code, Memory : reads `AGENTS.md` when no `CLAUDE.md` exists (v2.1.277+), and « Not read: … anything under a `.agents/` directory ». <https://code.claude.com/docs/en/memory>
-- Codex, Build skills : « Codex scans `.agents/skills` in every directory from your current working directory up to the repository root », « supports symlinked skill folders », and `agents/openai.yaml` `policy.allow_implicit_invocation`. <https://learn.chatgpt.com/docs/build-skills>
+- Agent Skills, "How to add skills support to your agent": "The `.agents/skills/` paths have emerged as a widely-adopted convention for cross-client skill sharing. While the Agent Skills specification does not mandate where skill directories live…" <https://agentskills.io/client-implementation/adding-skills-support>
+- Claude Code, Skills: project skills in `.claude/skills/`; "a `<skill-name>` entry in the enterprise, personal, or project location can be a symlink to a directory elsewhere on disk". <https://code.claude.com/docs/en/skills>
+- Claude Code, Memory: reads `AGENTS.md` when no `CLAUDE.md` exists (v2.1.277+), and "Not read: … anything under a `.agents/` directory". <https://code.claude.com/docs/en/memory>
+- Codex, Build skills: "Codex scans `.agents/skills` in every directory from your current working directory up to the repository root", "supports symlinked skill folders", and `agents/openai.yaml` `policy.allow_implicit_invocation`. <https://learn.chatgpt.com/docs/build-skills>
 
 ## `skills/constitution/references/statechart.md`
 
@@ -144,18 +144,18 @@ Quand un skill change, mets à jour sa ligne ici, pas dans le skill.
 
 ## `skills/learn-from-mistakes/references/routes.md`
 
-- Source: our verification layers (`design/02`, section 5); Matt Pocock `retro` for the target repo files.
+- Source: our verification layers ([design 02](history/02-architecture.md), section 5); Matt Pocock `retro` for the target repo files.
 - (Matt Pocock `retro`)
 
 ## `skills/learn-from-mistakes/references/synthesis.md`
 
 - Source: pstack `reflect` synthesizer.
 
-## `skills/setup-repo/references/trackers/` (suivi des issues indépendant de l'outil, 2026-11-19)
+## `skills/setup-repo/references/trackers/` (an issue tracker of any kind, 2026-11-19)
 
-- Matt Pocock `setup-matt-pocock-skills` : « Those files are the only thing that varies between repos. The skills themselves are identical everywhere. They read `docs/agents/issue-tracker.md` at run time and do what it says. » Templates GitHub, GitLab, local markdown, et l'option « Other » en prose pour Jira, Linear… (`knowledge/sources/repos/mattpocock-skills/repo/docs/engineering/setup-matt-pocock-skills.md`).
-- Matt Pocock, ADR 0001 : pointeur explicite vers le setup seulement pour les skills qui en dépendent vraiment (`.agents/adr/0001-explicit-setup-pointer-only-for-hard-dependencies.md`). Repris pour `shape-spec` et `learn-from-mistakes`.
-- Les commandes `gh` et `glab` des modèles sont adaptées de ses templates `issue-tracker-github.md` et `issue-tracker-gitlab.md`.
+- Matt Pocock `setup-matt-pocock-skills`: "Those files are the only thing that varies between repos. The skills themselves are identical everywhere. They read `docs/agents/issue-tracker.md` at run time and do what it says." Templates for GitHub, GitLab, and local markdown, and an "Other" option in prose for Jira, Linear, and the rest (`knowledge/sources/repos/mattpocock-skills/repo/docs/engineering/setup-matt-pocock-skills.md`).
+- Matt Pocock, ADR 0001: an explicit pointer to the setup only in the skills that truly depend on it (`.agents/adr/0001-explicit-setup-pointer-only-for-hard-dependencies.md`). Adopted for `shape-spec` and `learn-from-mistakes`.
+- The `gh` and `glab` commands of the templates are adapted from his `issue-tracker-github.md` and `issue-tracker-gitlab.md`.
 
 ## `skills/shape-spec/SKILL.md`
 
@@ -242,3 +242,8 @@ Quand un skill change, mets à jour sa ligne ici, pas dans le skill.
 
 - Source: tstack severity scale, pstack blocking rule.
 - Source: Matt Pocock `code-review` ("documented-standard breaches can be hard"), pstack ("a doc line the PR made wrong").
+
+## The layout of this repo (2026-11-19)
+
+- Source: Matt Pocock's `mattpocock/skills` repo (`knowledge/sources/repos/mattpocock-skills/repo/`): a README that says why and lists every skill linked to its `SKILL.md`; `SCOPE.md` and its bar of an observed failure; a bug issue template with the skill, version, and harness; `CHANGELOG.md`; decisions as ADRs; the `AGENTS.md` rule that a skill added or renamed updates every list of skills in the same PR.
+- Ours: the rule that a doc is either executed or dated ([ADR 0013](adr/0013-a-doc-stays-fresh-by-running-or-by-date.md)), and the ADRs in `docs/adr/`, the folder the framework gives target repos, instead of `.agents/adr/`.

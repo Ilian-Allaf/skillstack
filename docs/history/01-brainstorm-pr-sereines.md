@@ -1,9 +1,11 @@
 # Brainstorm 01 — Livrer beaucoup de PR, sereinement
 
+> **Frozen on 2026-11-19.** History only, in French: names, decisions, and paths are those of their time and bind nothing. Decisions in force: [docs/adr/](../adr/). How the framework works today: [skills/README.md](../../skills/README.md).
+
 > **Statut** : brainstorm. Rien n'est décidé, tout est à challenger.
 > **Date** : 2026-11-16.
 > **Question** : quelle est la meilleure approche pour construire notre framework de skills, afin de livrer beaucoup de PR sereinement, comme poteto (Lauren Tan) ?
-> **Entrées** : [`knowledge/`](../knowledge/README.md), en particulier le [nectar de Lauren Tan](../knowledge/sources/videos/2026-11-14-all-code-is-slop-lauren-tan/nectar.md), les playbooks `shipping`, `autopilot-full` et `orchestrate` de pstack, `full-send` de tstack et `software-factory` de Matt Pocock.
+> **Entrées** : [`knowledge/`](../../knowledge/README.md), en particulier le [nectar de Lauren Tan](../../knowledge/sources/videos/2026-11-14-all-code-is-slop-lauren-tan/nectar.md), les playbooks `shipping`, `autopilot-full` et `orchestrate` de pstack, `full-send` de tstack et `software-factory` de Matt Pocock.
 > **Suite** : l'[architecture 02](02-architecture.md) tranche ces idées. Depuis sa v3 (2026-11-18), l'échelle de confiance (§4) et la forge comme arbitre (§5) sont abandonnées : tu merges toujours toi-même.
 
 ---

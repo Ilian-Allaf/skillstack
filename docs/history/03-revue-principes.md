@@ -1,5 +1,7 @@
 # Revue 03 — Le design face aux grands principes de `knowledge/`
 
+> **Frozen on 2026-11-19.** History only, in French: names, decisions, and paths are those of their time and bind nothing. Decisions in force: [docs/adr/](../adr/). How the framework works today: [skills/README.md](../../skills/README.md).
+
 > **Statut** : revue de l'[architecture 02](02-architecture.md). Intégrée dans la v2 de 02 le 2026-11-17. La v3 du 2026-11-18 retire `.trust/`, la gate et l'échelle N0–N5 : les constats de cette revue qui portent sur eux sont sans objet.
 > **Date** : 2026-11-17.
 > **Méthode** : six relecteurs indépendants, chacun sur un groupe de sources. Chacun a listé les grands préceptes de ses sources avec des citations, donné un verdict par précepte et vérifié nos attributions. J'ai fusionné les six revues et vérifié moi-même dans les sources les constats qui pèsent le plus.

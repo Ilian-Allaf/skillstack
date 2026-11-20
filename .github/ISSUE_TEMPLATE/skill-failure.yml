@@ -1,0 +1,48 @@
+name: Skill failure
+description: A skill did the wrong thing in a real session. One failure per issue.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Put the repro first and keep it short. A failure seen in a real session is what changes a skill: see [SCOPE.md](https://github.com/Ilian-Allaf/software-ai-skills-framework/blob/master/SCOPE.md).
+  - type: input
+    id: skill
+    attributes:
+      label: Skill
+      description: Which skill, e.g. `ship`, `verify-pr`.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Commit
+      description: The commit of this repo the skills came from.
+    validations:
+      required: true
+  - type: input
+    id: harness
+    attributes:
+      label: Harness and model
+      description: e.g. Claude Code 2.3 with Opus, Codex CLI 0.40 with GPT, T3 Code.
+    validations:
+      required: true
+  - type: textarea
+    id: ran
+    attributes:
+      label: What you ran
+      description: The command you typed, and a link to the session, PR, or issue.
+    validations:
+      required: true
+  - type: textarea
+    id: did
+    attributes:
+      label: What the skill did
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true

@@ -12,8 +12,8 @@ A reference is any place where one text names another thing:
   - R005 a skill name that was retired by a rename, so an agent never looks for a skill that is gone;
   - R006 a skill missing from the map in skills/README.md, so the diagram cannot fall behind the skills.
 
-Scanned: skills/, README.md, design/02-architecture.md, design/sources.md, evals/.
-Not scanned: knowledge/ (third-party sources) and the historical design notes (01, 03, archive/),
+Scanned: skills/, the root docs (README, AGENTS, SCOPE, CHANGELOG, CODING_STANDARDS), docs/ and evals/.
+Not scanned: knowledge/ (third-party sources) and docs/history/ (frozen design notes),
 which keep the names of their time on purpose.
 
 Exit code: 0 when every reference resolves, 1 otherwise, 2 on bad usage. Standard library only.
@@ -27,8 +27,8 @@ import sys
 from dataclasses import dataclass
 from pathlib import Path
 
-DOCS = ["README.md", "design/02-architecture.md", "design/sources.md"]
-DOC_DIRS = ["evals"]
+DOCS = ["README.md", "AGENTS.md", "SCOPE.md", "CHANGELOG.md", "CODING_STANDARDS.md", "docs/sources.md"]
+DOC_DIRS = ["evals", "docs/adr", "docs/agents"]
 FRAMEWORK_DIRS = {"skills", "design", "tools", "evals", "knowledge", ".github"}
 PRINCIPLES = Path("skills/constitution/references/principles.md")
 GLOSSARY = Path("skills/constitution/references/glossary.md")
