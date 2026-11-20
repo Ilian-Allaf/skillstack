@@ -80,6 +80,9 @@ Every skill is launched by you; none is picked by the model on its own. Each one
 - **[create-app-driver](skills/create-app-driver/SKILL.md)**: Writes the repo's driver, a skill that launches, drives, and observes the app like a user, with its feature map.
 - **[add-guardrail](skills/add-guardrail/SKILL.md)**: Makes a repeated mistake impossible: turns it into a check, proven red on the real mistake.
 - **[learn-from-mistakes](skills/learn-from-mistakes/SKILL.md)**: Learns from a session, a failed PR, or a bug found after merge, and proposes fixes to the layer that missed it.
+- **[test-skill-change](skills/test-skill-change/SKILL.md)**: Tests blind whether a change to a skill makes the agent work better, old and new on the same task. Applies nothing.
+- **[sharpen-prompt](skills/sharpen-prompt/SKILL.md)**: Rewrites a prompt you are about to send so it asks for deeper work, not more work.
+- **[say-it-plainly](skills/say-it-plainly/SKILL.md)**: Says the agent's last reply again in plain words, shorter, with no jargon.
 
 **Inside a task** (`ship` runs them; you can also launch them on an open PR)
 
