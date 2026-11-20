@@ -51,6 +51,7 @@ When a skill changes, update its section here, in the same PR.
 
 ## `skills/constitution/references/harness.md`
 
+- 2026-11-20, Model per role: pstack `setup-pstack` and the "Match the model to the job" rules of `poteto-mode` (Lauren Tan). Adapted: roles map to the models of one subscription, Claude or Codex, never across providers; an override is a line in the user's agent file instead of a generated rule file.
 - (tstack)
 
 ## `skills/constitution/references/languages/typescript.md`
@@ -174,6 +175,10 @@ When a skill changes, update its section here, in the same PR.
 
 - Source: pstack `poteto-mode` session-pickup playbook (Lauren Tan). Adapted: the trail starts from the `wip:` commit and the PR; the task continues without asking (ADR 0014).
 
+## `skills/ship-queue/SKILL.md` (2026-11-20)
+
+- Source: pstack `poteto-mode` autopilot-stack and autopilot-full playbooks, and orchestrate for the supervision rules: start with one unit, judge agents by side effects, replace a stuck one with a consolidated brief (Lauren Tan). Adapted: no merge and no merge prep; each owner runs `ship`, whose fresh verifier gives the verdict, instead of a root swarm; at most three owners at once, for a subscription; no cloud agents.
+
 ## `skills/setup-repo/references/trackers/` (an issue tracker of any kind, 2026-11-19)
 
 - Matt Pocock `setup-matt-pocock-skills`: "Those files are the only thing that varies between repos. The skills themselves are identical everywhere. They read `docs/agents/issue-tracker.md` at run time and do what it says." Templates for GitHub, GitLab, and local markdown, and an "Other" option in prose for Jira, Linear, and the rest (`knowledge/sources/repos/mattpocock-skills/repo/docs/engineering/setup-matt-pocock-skills.md`).
@@ -242,6 +247,10 @@ When a skill changes, update its section here, in the same PR.
 
 - Source: Matt Pocock `tdd`, pstack `principle-sequence-verifiable-units`.
 - 2026-11-20: duty 2 from pstack `principle-redesign-from-first-principles` and `principle-foundational-thinking`.
+
+## `skills/ship/references/playbooks/hillclimb.md` (2026-11-20)
+
+- Source: pstack `poteto-mode` hillclimb playbook (Lauren Tan). Adapted: proof duties in the shape of the other playbooks, and a line for the verifier.
 
 ## `skills/ship/references/playbooks/perf.md`
 

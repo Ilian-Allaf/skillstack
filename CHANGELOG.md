@@ -4,6 +4,7 @@ One entry per merged PR that changes what a skill does, or how the framework is 
 
 ## Unreleased (v0)
 
+- New skill `/ship-queue`: a list of independent tasks becomes as many PRs, one `ship` owner per task, each with its own verifier, watched by its side effects, stopped before every merge. New `ship` playbook `hillclimb`: one metric pushed to a target, one measured attempt at a time. `harness.md` gains Model per role, within one subscription. The constitution gains the coordinator role.
 - New skills: `/pause-task` stops a task at a safe point with a resume note in a `wip:` commit (and on the PR), also on its own when the context or the usage limit runs low; `/resume-task` carries a stopped task on without redoing it; `/catch-me-up` reports what changed with its screenshots and videos, and every call waiting on you, or as a short video.
 - A launched task runs to a ready PR without a go (ADR 0014, superseding ADR 0002): `ship` shows its frame and goes on, and stops only for a one-way door, a product call, evidence against the request, or a dead end. Constitution rules 11 to 13: launching is the go; what serves the goal is fixed on the way, in its own PR when outside the diff; a wrong skill is fixed or reported, never worked around. Rule 7: a plateau changes the approach, and `done_when` is never relaxed. Still no cron or scheduled run.
 - `SCOPE.md` no longer requires an observed failure before a skill changes: a change fits the accepted ADRs and its PR says why it is worth it.
