@@ -31,3 +31,6 @@ Comment with the reason first, then `gh issue close <n>`.
 
 ## Claim an issue
 `gh issue edit <n> --add-assignee @me`, as the session's first write on it.
+
+## Link a PR to the issue it delivers
+In the PR body, `Closes #<n>` on the PR that completes the issue, and `Part of #<n>` on an earlier PR of a stack. GitHub closes the issue when that PR merges into the default branch.

@@ -36,4 +36,7 @@ A `Blocked by: <NN>, <NN>` line near the top. The issue can start once every lis
 
 ## Claim an issue
 Set `Status: claimed` and save, before any other work on it.
+
+## Link a PR to the issue it delivers
+Add a `PR: <link>` line under the `Labels:` line, with `(part)` after the link for an earlier PR of a stack. The user sets `Status: closed` when they merge the PR that completes it.
 ```

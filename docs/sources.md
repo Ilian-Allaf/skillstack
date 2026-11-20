@@ -87,6 +87,7 @@ When a skill changes, update its section here, in the same PR.
 - 2026-11-20: Why opens with who notices and what the next maintainer inherits, from pstack `poteto-mode` "Frame impact for the consumer and the maintainer".
 - (pstack `opening-a-pr`)
 - 2026-11-20: the Design section, from pstack `architect`, whose rationale ships beside the sketch.
+- 2026-11-20: the task's issue linked at the top, `Closes` on the PR that completes it and `Part of` on an earlier unit. Ours: pstack has no linking rule; the closing keywords are GitHub's and GitLab's own.
 
 ## `skills/constitution/references/principles.md` and `principles/`
 
@@ -224,6 +225,10 @@ When a skill changes, update its section here, in the same PR.
 - Matt Pocock `setup-matt-pocock-skills`: "Those files are the only thing that varies between repos. The skills themselves are identical everywhere. They read `docs/agents/issue-tracker.md` at run time and do what it says." Templates for GitHub, GitLab, and local markdown, and an "Other" option in prose for Jira, Linear, and the rest (`knowledge/sources/repos/mattpocock-skills/repo/docs/engineering/setup-matt-pocock-skills.md`).
 - Matt Pocock, ADR 0001: an explicit pointer to the setup only in the skills that truly depend on it (`.agents/adr/0001-explicit-setup-pointer-only-for-hard-dependencies.md`). Adopted for `shape-spec` and `learn-from-mistakes`.
 - The `gh` and `glab` commands of the templates are adapted from his `issue-tracker-github.md` and `issue-tracker-gitlab.md`.
+
+## `skills/setup-repo/references/trackers/` (linking a PR, 2026-11-20)
+
+- Ours: the operation "Link a PR to the issue it delivers", with each tracker's own form (GitHub and GitLab closing keywords, a `PR:` line in a local file).
 
 ## `skills/shape-spec/SKILL.md`
 
