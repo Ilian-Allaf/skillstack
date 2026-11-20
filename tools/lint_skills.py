@@ -17,7 +17,8 @@ Checks every skills/<name>/ folder:
   - invocation: every skill is launched by the user (docs/adr/0006), in every harness:
     disable-model-invocation is true, and agents/openai.yaml sets Codex's
     policy.allow_implicit_invocation to false, with the picker's display name and description;
-  - size: SKILL.md over the word budget is a warning.
+  - size: SKILL.md over the word budget is a warning, and so is a principle's full form over its own,
+    since an agent reads one each time it applies that principle.
 
 Exit code: 0 when there is no error (warnings allowed), 1 on errors, 2 on bad usage.
 Standard library only, so it runs anywhere with `python -I`.
@@ -47,6 +48,7 @@ NAME_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 NAME_MAX = 64
 DESCRIPTION_MAX = 1024
 WORD_BUDGET = 800
+PRINCIPLE_BUDGET = 500
 GLOSSARY = Path("skills/constitution/references/glossary.md")
 
 # pstack `unslop`, rules 7 and 31: words that read as AI tells, with the plain word to use.
@@ -388,6 +390,10 @@ def lint_shared(folder: Path, avoid: list[tuple[str, str]], root: Path) -> list[
         md_lines = md.read_text(encoding="utf-8").splitlines()
         check_prose(md, md_lines, avoid, md.resolve() == (root / GLOSSARY).resolve(), out)
         linked |= check_links(md, md_lines, out)
+        if md.parent.name == "principles" and md.parent.parent.name == "references":
+            words = len(re.findall(r"\S+", "\n".join(md_lines)))
+            if words > PRINCIPLE_BUDGET:
+                out.append(Finding(md, 1, "warning", "W002", f"this principle's full form has {words} words, over the {PRINCIPLE_BUDGET} budget; an agent reads it each time it applies the principle. Fix: cut the How list to what changes a decision, and keep one example."))
     references = folder / "references"
     if references.is_dir():
         for ref in sorted(references.rglob("*")):

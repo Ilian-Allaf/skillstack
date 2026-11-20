@@ -257,6 +257,14 @@ class LintTest(unittest.TestCase):
         self.edit("skills/probe/SKILL.md", "Find the safety fact.", "Run it like Matt Pocock `grilling` does.")
         self.assertIn("P005", self.codes())
 
+    def test_principle_budget_is_a_warning(self) -> None:
+        self.write("skills/constitution/references/principles/probe-rule.md", "# probe-rule\n\n" + "word " * 400)
+        self.edit("skills/constitution/README.md", "Read [the glossary]", "See [probe-rule](references/principles/probe-rule.md). Read [the glossary]")
+        self.assertNotIn("W002", self.codes("warning"))
+        self.write("skills/constitution/references/principles/probe-rule.md", "# probe-rule\n\n" + "word " * 600)
+        self.assertIn("W002", self.codes("warning"))
+        self.assertEqual(self.codes(), [])
+
     def test_word_budget_is_a_warning(self) -> None:
         self.edit("skills/probe/SKILL.md", "## Steps", "word " * 900 + "\n\n## Steps")
         self.assertIn("W001", self.codes("warning"))
