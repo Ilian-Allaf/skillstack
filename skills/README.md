@@ -14,7 +14,7 @@ flowchart TB
     setup["setup-repo<br/><i>first time in a repo:<br/>tracker, labels, docs</i>"]
     shape["shape-spec<br/><i>idea → spec</i>"]
     investigate["investigate<br/><i>answer, no PR</i>"]
-    ship["ship<br/><i>task → ready PR</i>"]
+    ship["ship<br/><i>try verification · build · audit evidence → ready PR</i>"]
     queue["ship-queue<br/><i>tasks → ready PRs, one owner each</i>"]
     pause["pause-task<br/><i>stop cleanly</i>"]
     resume["resume-task<br/><i>pick up where it stopped</i>"]
@@ -23,7 +23,7 @@ flowchart TB
     cleanwt["clean-worktrees<br/><i>free disk, keep unsaved work</i>"]
     guard["add-guardrail<br/><i>mistake → check</i>"]
     cva["create-app-driver<br/><i>teach the agent your app</i>"]
-    learn["learn-from-mistakes<br/><i>bug got through → fix the layer</i>"]
+    learn["learn-from-mistakes<br/><i>recorded activity → fix the layer</i>"]
     testskill["test-skill-change<br/><i>old vs new skill, judged blind</i>"]
     sharpen["sharpen-prompt<br/><i>a deeper prompt</i>"]
     plain["say-it-plainly<br/><i>last reply, plain words</i>"]
@@ -32,7 +32,7 @@ flowchart TB
   subgraph task ["Inside a task"]
     direction LR
     impact["analyze-impact<br/><i>what else breaks?</i>"]
-    verify["verify-pr<br/><i>fresh verifier tries to break it</i>"]
+    verify["verify-pr<br/><i>independent findings · then replay proof</i>"]
     babysit["babysit-pr<br/><i>conflicts, review, CI</i>"]
   end
 
@@ -106,15 +106,15 @@ flowchart TB
 ```mermaid
 flowchart TB
   go(("You:<br/>/ship task"))
-  frame["1 · Frame, shown to you<br/><i>done_when red on the base,<br/>cases, risk; high or hard zone:<br/>a verifier reads done_when first</i>"]
+  frame["1 · Frame, shown to you<br/><i>try verification setup,<br/>done_when red, cases, risk; high or hard zone:<br/>a verifier reads done_when first</i>"]
   design["2a · Design<br/><i>data shape; two sketches<br/>and a note when it crosses<br/>a function boundary</i>"]
   door{"One-way door,<br/>or you asked?"}
   shown{"You approve<br/>the design?"}
   build["2b · Build<br/><i>playbook, red → green,<br/>3 attempts</i>"]
-  clean["3 · Clean<br/><i>comment hunter</i>"]
+  clean["3 · Clean<br/><i>comment hunter proposes a patch</i>"]
   proofs["4 · Prove every case<br/><i>base and head, on the app</i>"]
   impact["5 · Analyze impact<br/><i>medium, high</i>"]
-  open["6 · Open the PR"]
+  open["6 · Audit evidence and open the PR"]
   verdict{"7 · Fresh verifier:<br/>PASS?"}
   babysit["8 · Babysit<br/><i>conflicts, review, CI</i>"]
   ready[["ready"]]

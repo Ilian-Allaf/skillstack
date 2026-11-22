@@ -1,0 +1,114 @@
+"""Check a local evidence index, not the truth of its claims.
+
+Usage: python -I check_evidence.py record.json --patch-id <current full patch id>
+Paths resolve from the record's directory. No network access or dependencies.
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import re
+from pathlib import Path
+
+
+def check(record: object, root: Path, patch_id: str) -> list[str]:
+    errors: list[str] = []
+
+    def fail(where: str, fix: str) -> None:
+        errors.append(f"{where}: Fix: {fix}")
+
+    def present(value: object) -> bool:
+        return isinstance(value, str) and bool(value.strip())
+
+    def artifact(value: object, where: str) -> None:
+        if not present(value):
+            fail(where, "supply a local artifact path")
+            return
+        try:
+            path = root / value
+            valid = path.is_file() and path.stat().st_size > 0
+        except (OSError, ValueError):
+            valid = False
+        if not valid:
+            fail(where, f"save a nonempty artifact at {value}")
+
+    def rows(key: str, identity: str) -> list[dict]:
+        values = record.get(key)
+        if not isinstance(values, list) or not values:
+            fail(key, "supply a nonempty list from the agreed case list or skill steps")
+            return []
+        seen = set()
+        valid = []
+        for index, row in enumerate(values):
+            where = f"{key}[{index}]"
+            if not isinstance(row, dict):
+                fail(where, "supply an object")
+                continue
+            name = row.get(identity)
+            if not present(name) or name in seen:
+                fail(where, f"supply a unique nonempty {identity}")
+            else:
+                seen.add(name)
+            valid.append(row)
+        return valid
+
+    if not isinstance(record, dict):
+        return ["record: Fix: supply a JSON object"]
+    if not re.fullmatch(r"[0-9a-f]{40}|[0-9a-f]{64}", patch_id):
+        fail("patch id", "compute and pass the full current stable patch id")
+    for row in rows("cases", "id"):
+        where = f"case {row.get('id')}"
+        level = row.get("level")
+        if type(level) is not int or not 1 <= level <= 5:
+            fail(where, "set level to an integer from 1 to 5")
+        evidence = row.get("evidence")
+        if not isinstance(evidence, list):
+            fail(where, "supply evidence as a list of local artifact paths")
+        else:
+            for path in evidence:
+                artifact(path, where)
+            if not evidence and not present(row.get("not_verified")):
+                fail(where, "attach evidence or explain not_verified")
+    for row in rows("steps", "name"):
+        where = f"step {row.get('name')}"
+        if row.get("status") not in ("done", "skip", "unverified"):
+            fail(where, "set status to done, skip, or unverified")
+        if not present(row.get("result")):
+            fail(where, "record the result or the reason for skip or unverified")
+        if row.get("status") == "done":
+            artifact(row.get("trace"), where)
+    required = record.get("required_artifacts")
+    if not isinstance(required, list):
+        fail("required_artifacts", "list required captures, or use an empty list when none apply")
+    else:
+        for path in required:
+            artifact(path, "required_artifacts")
+    verdict = record.get("verdict")
+    if verdict is not None:
+        if not isinstance(verdict, dict) or verdict.get("patch_id") != patch_id:
+            fail("verdict", "obtain a verdict for the current patch id")
+    return errors
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("record", type=Path)
+    parser.add_argument("--patch-id", required=True)
+    args = parser.parse_args()
+    try:
+        record = json.loads(args.record.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        print(f"record: Fix: supply a readable JSON file ({exc})")
+        return 1
+    errors = check(record, args.record.resolve().parent, args.patch_id)
+    for error in errors:
+        print(error)
+    if errors:
+        return 1
+    print("Evidence index checked. Inspect content and unverified cases before judging readiness.")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

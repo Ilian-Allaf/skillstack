@@ -25,7 +25,7 @@ A mistake that reached the user is a hole in one layer of the system. You find t
    - a PR: its body, verdict comments, review threads, commits, and the decision log if one exists;
    - an issue labeled `escaped`: the bug, the PR that shipped it, and that PR's coverage table and verdict.
 
-   Skip a session that was trivial or already went by the book. A one-off is not a lesson.
+   For a session, reconstruct required reads, actions, and outputs from activity before reading its final summary; use [decision-log.md](../constitution/references/decision-log.md#before-handing-back) to distinguish an observed action from a claim. Name missing activity rather than treating absence of a trace as proof an action never ran. Skip a session that was trivial or already went by the book. A one-off is not a lesson.
    Done when: every source is listed with its path or link, or the reason to stop is given.
 
 2. **Spawn three reviewers, for a session only.** A swarm of three read-only fresh subagents, one per lens, as [references/reviewers.md](references/reviewers.md) describes. With a PR or an `escaped` issue, skip this step: the layer of step 3 is the finding, and step 4 sorts it alone.

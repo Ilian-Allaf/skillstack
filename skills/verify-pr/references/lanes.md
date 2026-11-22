@@ -2,6 +2,12 @@
 
 Each lane answers one question. The risk class picks the lanes (see [proof.md](../../constitution/references/proof.md)). Every lane returns each finding with a title and its run: the exact command, the output it printed, and the output the task requires. A lane that finds nothing says what it tried.
 
+## Before the lanes
+
+Your brief holds the task, `done_when`, the case list, risk class, playbook, the PR number, the head SHA, the path of the verifier's SKILL.md, driver paths (`.agents/skills/drive-*/SKILL.md`), and safe startup and access instructions. Keep it factual: the builder's reasoning, notes, impact report, and prior verdicts stay out. Name anything that leaked, including diagnostic text exposed by the code host, and record your model family.
+
+When the user launched you with a PR number alone, build that brief yourself: extract the task, `done_when`, case list, risk class, and playbook from the PR body through a filtered view, and the head SHA from the code host. If the view exposes diagnoses, record the leak. Missing startup or access instructions stay an explicit limit. A PR with no `done_when` or no risk class, such as a colleague's, gets its task inferred from its title and description and the class `medium`, both said in the verdict header; `replay` then runs only what the PR claims.
+
 ## Behavior axis
 
 ### `replay`: does the builder's proof hold?
@@ -12,13 +18,13 @@ Run every command in the PR's Proof section on the head SHA, the demo scripts in
 
 Drive the real app with the repo's `drive-<app>` skill, on the base and then on the head. Do not follow the builder's journey; build your own from `done_when` and the feature map. Try every entry point the map lists for the touched feature, then try what a real user would: double clicks, back navigation, reload mid-action, empty and long input, slow network.
 
-Then test the coverage itself (see [coverage.md](../../constitution/references/coverage.md)). List the cases you would have expected from the feature map, `done_when`, and the hard zones, and drive each one the table lacks. A missing case that misbehaves is a FAIL. A missing case that behaves correctly is a coverage gap: report it with your evidence, so the builder adds it to the table.
+List and drive the cases you would have expected from the feature map, `done_when`, and the hard zones. Save those results before reading the coverage table, then test the coverage itself (see [coverage.md](../../constitution/references/coverage.md)). A missing case that misbehaves is a FAIL. A missing case that behaves correctly is a coverage gap: report it with your evidence, so the builder adds it to the table.
 
 Find the drivers as [proof.md](../../constitution/references/proof.md) describes. When no driver exists for a surface the change touches, this lane returns INCONCLUSIVE for it, with that reason. It never falls back to reading code.
 
 ### `breakage`: what does it break elsewhere?
 
-Run [analyze-impact](../../analyze-impact/SKILL.md) on the diff yourself. Compare your safety fact with the one in the PR's Breakage section. A different fact, or a confirmed risk the PR does not list, is a finding.
+Run [analyze-impact](../../analyze-impact/SKILL.md) on the diff yourself and save the result. After the independent lanes finish, compare your safety fact with the one in the PR's Breakage section. A different fact, or a confirmed risk the PR does not list, is a finding.
 
 ### `adversarial`: can someone break it? (`high` only)
 

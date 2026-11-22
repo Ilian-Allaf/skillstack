@@ -66,6 +66,7 @@ When a skill changes, update its section here, in the same PR.
 ## `skills/constitution/references/decision-log.md`
 
 - Source: pstack `show-me-your-work` (Lauren Tan).
+- 2026-11-22: activity-first reconstruction comes from pstack `poteto-mode/playbooks/eval.md`, step 6; checking results as well as reads is our adaptation. Observed failures and the approved correction set are recorded below under First-use corrections.
 
 ## `skills/constitution/references/harness.md`
 
@@ -176,6 +177,7 @@ When a skill changes, update its section here, in the same PR.
 ## `skills/learn-from-mistakes/SKILL.md`
 
 - Sources: pstack `reflect` (three lenses, a synthesizer, approval before any edit), Matt Pocock `retro` (categories of improvement; standards belong to the review agent), Lauren Tan (a correction becomes a check, not a rule).
+- 2026-11-22: reconstruct session activity before trusting summaries, from pstack's evaluation transcript check; see First-use corrections below.
 
 ## `skills/learn-from-mistakes/references/reviewers.md`
 
@@ -257,6 +259,11 @@ When a skill changes, update its section here, in the same PR.
 ## `skills/ship/references/clean.md`
 
 - Source: pstack `no-comments` and its `comment-sicko` agent (Lauren Tan). Adapted: constraint encodings go to `/add-guardrail` instead of an inline approval.
+- 2026-11-22: the single retry after an invalid report comes from `no-comments`. Proposal-only patches and retaining uncertain comments until their symbols are traced are our experiment in protecting public contracts; pstack's original deletes on doubt. See First-use corrections below.
+
+## `skills/ship/SKILL.md`, `skills/ship/references/verification.md`, and `skills/ship/scripts/check_evidence.py`
+
+- 2026-11-22: pstack `figure-it-out` puts the verification harness before implementation; `poteto-mode/playbooks/eval.md` checks activity rather than self-report; `poteto-mode/scripts/check-plan.mjs` mechanically checks plan structure. Our adaptation checks a local evidence index for certainty levels, nonempty artifact files, step results and traces, and stale verdicts. It cannot judge content or completeness against the original task. Tests live in `tools/test_check_evidence.py`. This is a local task check, not a framework CI gate in target repos (ADR 0001).
 
 ## `skills/ship/references/design.md`
 
@@ -278,6 +285,7 @@ When a skill changes, update its section here, in the same PR.
 - Source: pstack `in-your-own-words`, Anthropic "harness design" (agree on what done means before building), Matt Pocock `tdd` (agree the seams first).
 - Source: pstack `poteto-mode` playbooks (Lauren Tan).
 - 2026-11-20, second coherence audit: a symptom that will not reproduce goes through `investigate`'s diagnosis and the task goes on or stops, as pstack's bug-fix playbook does ("synthesize the trigger, tighten conditions, or instrument until it fires"); several open decisions stop the task and propose `/shape-spec`, since they are the user's (pstack `poteto-mode`: "Reserve the question for a genuine product or preference call").
+- 2026-11-22: try verification setup before building, adapted from `figure-it-out`; see First-use corrections below.
 
 ## `skills/ship/references/playbooks/bespoke.md`
 
@@ -319,6 +327,7 @@ When a skill changes, update its section here, in the same PR.
 ## `skills/verify-pr/SKILL.md`
 
 - Anthropic found that an untuned evaluator finds real issues, then talks itself into approving the work anyway ("harness design").
+- 2026-11-22: holding prior diagnoses back until independent findings are saved is our adaptation of the controlled information exposure in pstack's evaluation playbook. Factual startup and access instructions address the observed inaccessible live environment. See First-use corrections below.
 
 ## `skills/verify-pr/references/calibration.md`
 
@@ -333,6 +342,13 @@ When a skill changes, update its section here, in the same PR.
 - Source: Matt Pocock `code-review` (Spec axis), `tdd`, pstack refactoring playbook.
 - Source: Matt Pocock `code-review` (Standards axis, Fowler smells).
 - 2026-11-20: the standards lane checks the shape against the red flags, the architecture principles, and the PR's design note, as pstack `architect` holds an implementation to its sketch.
+- 2026-11-22: save independent live and breakage results before comparing the PR's evidence, paired with the information exposure change in `verify-pr` above.
+
+## First-use corrections (2026-11-22)
+
+- Observed session: [Tenant Custom Domain Admin Setup](t3-thread://v2/fbd209eb-b598-4771-a8c0-9e6077a24fde/bfcde634-64f0-4301-a875-2f8135610f6c), including [PR 180](https://github.com/Photo-Platform/photo-platform/pull/180). The analysis and approved recommendations are in [the framework analysis](t3-thread://v2/fbd209eb-b598-4771-a8c0-9e6077a24fde/e217306f-a744-40f4-b8a6-a8e657f835e1).
+- The builder denied having run the comment hunter despite recorded activity; required reads and captures were omitted, certainty levels left the defined scale, reviewers lacked live access and saw prior diagnoses, and the hunter proposed protected public-contract deletions. Expected behavior: trace-backed reporting, complete replayable proof, independent findings, and protected keeps. These observations justify the changes above under `SCOPE.md`.
+- Routing text in `skills/choose-skill/SKILL.md`, Reference entries in `README.md`, and map labels in `skills/README.md` describe these same corrections; no new skill or dependency edge is introduced. Plugin paths and Codex invocation policies remain valid. These procedures need another real session to measure whether omissions decrease; the script tests only mechanical rejection of the observed evidence defects.
 
 ## `skills/verify-pr/references/verdict.md`
 

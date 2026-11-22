@@ -32,5 +32,5 @@ Log forks, units finished with their check, pivots and reverts with their trigge
 
 ## Before handing back
 
-1. **Audit the log against what happened.** Every row maps to a real decision; every pointer resolves and shows what the row claims. A fork or revert that shaped the work but has no row is a gap: add it. Correct with new rows, never by editing.
+1. **Audit the log against recorded activity.** Reconstruct actions from command calls and outputs, file reads, diffs, artifacts, and subagent results before comparing them to the log. Every row maps to a real decision; every pointer resolves and shows what the row claims. A fork, cleanup, or revert that shaped the work but has no row is a gap: add it. A file read proves only that it was read; inspect the result to judge its application. When activity is unavailable, name the missing interval and leave its actions unverified. Correct with new rows, never by editing.
 2. **Have it read by another family.** Spawn a fresh subagent, from another model family when available, to read the log and flag: decisions with weak evidence, checks claimed without proof, choices that look risky in hindsight, and gaps a quick skim would miss. Its flags go in the reply under "Attention", with the reviewer's model named. "No flags" is a valid result.

@@ -8,6 +8,7 @@ Framing costs a message; a misread task costs hours.
 - **Reproduce a bug first.** Drive the symptom the user reported, as the first duty of the [bug-fix playbook](playbooks/bug-fix.md) says, before you write `done_when`.
 - **Read the accepted ADRs** whose Applies to covers the code you will touch. A task that goes against one says so in the message, with a superseding ADR for the user to decide: it is a one-way door.
 - **Collect the cases** as [coverage.md](../../constitution/references/coverage.md) describes, and the risk class and hard zones as proof.md does.
+- **Try the verification setup** as [verification.md](verification.md) describes, before implementation. A failed startup is an environment limit, not the red behavior that proves `done_when`.
 
 ## What to send the user
 
@@ -18,6 +19,7 @@ Smallest change: <the least that meets the goal>
 Done when: <observable condition>. Ran it on the base: <command> -> <red output>.
 Cases: <numbered list: the main case, each entry point, the edge cases of the hard zones>
 Evidence: <demo video, state chart, screenshots, or command output, and why>
+Verification setup: <startup runs for builder and verifier, capture command, access limits and remedy>
 Out of scope: <what this PR will not do>
 Risk: <low | medium | high>, because <path or reason>. Hard zones: <list, or none>.
 Playbook: <one from the list below>. Seams under test: <public interfaces>.
