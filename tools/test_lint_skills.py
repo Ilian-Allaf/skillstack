@@ -257,6 +257,19 @@ class LintTest(unittest.TestCase):
         self.edit("skills/probe/SKILL.md", "Find the safety fact.", "Run it like Matt Pocock `grilling` does.")
         self.assertIn("P005", self.codes())
 
+    def test_repo_path_of_a_project_file(self) -> None:
+        self.edit("skills/probe/SKILL.md", "Find the safety fact.", "Read `CODING_STANDARDS.md`, then find the safety fact.")
+        self.assertIn("P006", self.codes())
+
+    def test_project_folder_path_is_clean(self) -> None:
+        self.edit("skills/probe/SKILL.md", "Find the safety fact.", "Read `~/.agents/projects/<project>/coding-standards.md`, then find the safety fact.")
+        self.assertNotIn("P006", self.codes())
+
+    def test_writers_may_name_repo_paths(self) -> None:
+        self.write("skills/constitution/references/target-repo.md", "# Target repo\n\nShared at `docs/agents/issue-tracker.md` and `.agents/skills/drive-<app>/`.\n")
+        self.edit("skills/constitution/README.md", "Read [the glossary]", "See [target-repo.md](references/target-repo.md). Read [the glossary]")
+        self.assertEqual(self.codes(), [])
+
     def test_principle_budget_is_a_warning(self) -> None:
         self.write("skills/constitution/references/principles/probe-rule.md", "# probe-rule\n\n" + "word " * 400)
         self.edit("skills/constitution/README.md", "Read [the glossary]", "See [probe-rule](references/principles/probe-rule.md). Read [the glossary]")

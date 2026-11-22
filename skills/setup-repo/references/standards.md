@@ -1,6 +1,6 @@
 # Coding standards
 
-The standards of a repo come from what its code and its reviews already do, not from a generic list. Each one ends in one of two places: a check, when a tool can hold it, or `CODING_STANDARDS.md`, when only judgment can. See [target-repo.md](../../constitution/references/target-repo.md).
+The standards of a repo come from what its code and its reviews already do, not from a generic list. Each one ends in one of two places: a check, when a tool can hold it, or the coding standards, when only judgment can: `coding-standards.md` in the project folder, or `CODING_STANDARDS.md` when the user shares it. See [target-repo.md](../../constitution/references/target-repo.md).
 
 ## Find them
 
@@ -14,7 +14,7 @@ The standards of a repo come from what its code and its reviews already do, not 
 | It is | Example | Goes to |
 |---|---|---|
 | mechanical: a tool can fail on it | "components never import the store directly" | the report, as a candidate for `add-guardrail` |
-| a judgment call: two good engineers could disagree on a given diff | "prefer a new module over growing a file past one responsibility" | `CODING_STANDARDS.md` |
+| a judgment call: two good engineers could disagree on a given diff | "prefer a new module over growing a file past one responsibility" | the coding standards |
 | already enforced by a tool | "no unused imports" with the lint rule on | nowhere |
 | what the code does not do yet | "every endpoint validates its input" when half of them do not | the report, as a gap, never as a standard |
 

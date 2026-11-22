@@ -17,4 +17,4 @@ Where a lesson goes, by the layer that should have caught the mistake.
 
 ## Files in the target repo
 
-Which file a lesson lands in, and who reads it, is in [target-repo.md](../../constitution/references/target-repo.md). A mechanical rule becomes a check through `add-guardrail`; only a judgment call goes in `CODING_STANDARDS.md`.
+Which file a lesson lands in, and who reads it, is in [target-repo.md](../../constitution/references/target-repo.md). A mechanical rule becomes a check through `add-guardrail`; only a judgment call goes in `coding-standards.md` of the project folder.

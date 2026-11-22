@@ -1,6 +1,6 @@
 # Template: GitLab Issues
 
-Copy the block below into the target repo at `docs/agents/issue-tracker.md`.
+Copy the block below into `~/.agents/projects/<project>/issue-tracker.md`, or into the repo at `docs/agents/issue-tracker.md` when the user shares it, with a route to it in the project folder.
 
 ```markdown
 # Issue tracker: GitLab
@@ -41,4 +41,4 @@ Post the quick action `/blocked_by #<blocker>` as a note on the child. Native bl
 In the merge request description, `Closes #<n>` on the one that completes the issue, and `Part of #<n>` on an earlier one of a stack; GitLab closes the issue when it merges into the default branch. When the code lives on another host, post the PR's link as a comment on the issue instead, and the user closes the issue when they merge.
 ```
 
-Prove the file with the read-only list command before you commit it. The blocking and label commands are the least tested; run each once on a throwaway issue when the user agrees.
+Prove the file with the read-only list command before you save it. The blocking and label commands are the least tested; run each once on a throwaway issue when the user agrees.

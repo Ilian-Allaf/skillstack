@@ -1,6 +1,6 @@
 # Issue trackers
 
-The skills never name a tracker. They name an operation, such as "publish to the issue tracker" or "label it `escaped`", and the repo's `docs/agents/issue-tracker.md` says how to do it there. That file is the only thing that changes from one tracker to another; the skills stay the same everywhere.
+The skills never name a tracker. They name an operation, such as "publish to the issue tracker" or "label it `escaped`", and `issue-tracker.md` in the project folder says how to do it there. That file is the only thing that changes from one tracker to another; the skills stay the same everywhere.
 
 `setup-repo` writes that file from one of the templates below, then proves it with a read-only operation.
 

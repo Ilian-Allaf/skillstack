@@ -1,6 +1,6 @@
 # Template: markdown files in the repo
 
-For a solo project, or a repo with no remote. Pick it instead of a hosted tracker, never beside one. Copy the block below into the target repo at `docs/agents/issue-tracker.md`.
+For a solo project, or a repo with no remote. Pick it instead of a hosted tracker, never beside one. Copy the block below into `~/.agents/projects/<project>/issue-tracker.md`, or into the repo at `docs/agents/issue-tracker.md` when the user shares it, with a route to it in the project folder. The issues of a private tracker live in the project folder, under `issues/` instead of `.scratch/`, so they never reach the repo.
 
 ```markdown
 # Issue tracker: markdown files

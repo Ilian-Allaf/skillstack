@@ -14,6 +14,9 @@ Checks every skills/<name>/ folder:
   - prose: no words from the banned vocabulary, no term from the glossary's Avoid
     column, no em dash, no curly quotes (code is skipped), and no external
     attribution (sources live in docs/sources.md);
+  - project files: a skill reads the repo's working files in the project folder
+    (~/.agents/projects/<project>/), never at a path in the repo, so the framework imposes
+    no file on the team (docs/adr/0016); only the files that write a shared entry name its repo path;
   - invocation: every skill is launched by the user (docs/adr/0006), in every harness:
     disable-model-invocation is true, and agents/openai.yaml sets Codex's
     policy.allow_implicit_invocation to false, with the picker's display name and description;
@@ -85,6 +88,10 @@ EXTERNAL = re.compile(r"\b(pstack|tstack|cursor-pstack|poteto|Matt Pocock|Lauren
 LINK_RE = re.compile(r"\[[^\]]*\]\(([^)\s]+)(?:\s+\"[^\"]*\")?\)")
 INLINE_CODE_RE = re.compile(r"`[^`]*`")
 STEP_RE = re.compile(r"^\d+\.\s")
+# The repo paths of the entries a team may share. Readers go through the project folder instead.
+REPO_PATH_RE = re.compile(r"docs/agents/issue-tracker\.md|(?<![\w-])GLOSSARY\.md|CODING_STANDARDS\.md|docs/agent-rules\.md|docs/adr/|\.agents/skills/(?:drive|prove)-")
+# The files that write a shared entry, and so must name where it goes in the repo.
+REPO_PATH_WRITERS = ("skills/constitution/references/target-repo.md", "skills/setup-repo/", "skills/create-app-driver/")
 
 
 @dataclass
@@ -255,6 +262,16 @@ def check_steps(path: Path, lines: list[str], start: int, out: list[Finding]) ->
             out.append(Finding(path, number, "error", "S003", "step has no completion criterion. Fix: end it with 'Done when: <observable condition>'."))
 
 
+def check_repo_paths(path: Path, lines: list[str], root: Path, out: list[Finding]) -> None:
+    rel = path.resolve().relative_to(root.resolve()).as_posix()
+    if rel.startswith(REPO_PATH_WRITERS):
+        return
+    for number, raw in enumerate(lines, start=1):
+        match = REPO_PATH_RE.search(raw)
+        if match:
+            out.append(Finding(path, number, "error", "P006", f"repo path {match.group(0)!r}: the team may not have this file, and the user's copy lives in the project folder. Fix: name the file in ~/.agents/projects/<project>/ instead, as skills/constitution/references/target-repo.md lists them."))
+
+
 def lint_skill(skill_dir: Path, names: set[str], avoid: list[tuple[str, str]], root: Path) -> list[Finding]:
     out: list[Finding] = []
     skill_md = skill_dir / "SKILL.md"
@@ -318,6 +335,7 @@ def lint_skill(skill_dir: Path, names: set[str], avoid: list[tuple[str, str]], r
         md_lines = md.read_text(encoding="utf-8").splitlines() if md != skill_md else lines
         is_glossary = md.resolve() == (root / GLOSSARY).resolve()
         check_prose(md, md_lines, avoid, is_glossary, out)
+        check_repo_paths(md, md_lines, root, out)
         linked |= check_links(md, md_lines, out)
     references = skill_dir / "references"
     if references.is_dir():
@@ -389,6 +407,7 @@ def lint_shared(folder: Path, avoid: list[tuple[str, str]], root: Path) -> list[
     for md in sorted(folder.rglob("*.md")):
         md_lines = md.read_text(encoding="utf-8").splitlines()
         check_prose(md, md_lines, avoid, md.resolve() == (root / GLOSSARY).resolve(), out)
+        check_repo_paths(md, md_lines, root, out)
         linked |= check_links(md, md_lines, out)
         if md.parent.name == "principles" and md.parent.parent.name == "references":
             words = len(re.findall(r"\S+", "\n".join(md_lines)))

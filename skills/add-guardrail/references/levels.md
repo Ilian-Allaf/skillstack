@@ -8,7 +8,7 @@ From the strongest to the weakest.
 | 2. Type | the bad state cannot be written | a branded id type; a union that makes the illegal state unrepresentable; a required field instead of an optional one |
 | 3. Lint or CI check | the bad code is written, then fails loudly | a custom lint rule; a script in CI that greps for the pattern; a dependency boundary check |
 | 4. Test | the bad behavior fails a test | a test at a public seam that fails when the behavior breaks |
-| 5. Docs or agent rule | nothing fails; an agent may skip it | `CODING_STANDARDS.md` for judgment calls only |
+| 5. Docs or agent rule | nothing fails; an agent may skip it | `coding-standards.md` in the project folder, for judgment calls only |
 
 ## Rules
 

@@ -34,10 +34,10 @@ Three modes:
 4. **Prove it on the real mistake.** Check out or recreate one real past occurrence and run the check: it must fail with its message. Then run it on the fixed code: it must pass.
    Done when: the PR shows both runs, red on the real mistake and green on the fix (certainty level 4).
 
-5. **Update the rule table.** `docs/agent-rules.md` holds a table pairing each rule with what enforces it; `AGENTS.md` points to it in one line and holds no rules itself. Add the row. When the rule was already in the table with no enforcer, this was a repeat: say so in the PR. Remove rules whose mistake can no longer happen.
+5. **Update the rule table.** `~/.agents/projects/<project>/agent-rules.md` holds a table pairing each rule with what enforces it; the agent file holds no rules itself. Add the row, creating the file when it is the first. When the rule was already in the table with no enforcer, this was a repeat: say so in the PR. Remove rules whose mistake can no longer happen.
    Done when: the table has the row, and no row says "nothing" in its enforcer column without an open issue.
 
-6. **Open the PR.** One PR per class, in [the PR format](../constitution/references/pr-format.md). Judgment calls that no check can hold go to `CODING_STANDARDS.md`, which the verifier's `standards` lane reads.
+6. **Open the PR.** One PR per class, in [the PR format](../constitution/references/pr-format.md). Judgment calls that no check can hold go to `~/.agents/projects/<project>/coding-standards.md`, which the verifier's `standards` lane reads.
    Then get a verdict and run `babysit-pr`, as rule 2 of the constitution says.
    Done when: the PR is open with both runs from step 4 as its proof, and carries `ready` or `needs-human`.
 

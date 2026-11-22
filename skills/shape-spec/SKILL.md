@@ -14,7 +14,7 @@ metadata:
 
 # Shape spec
 
-Read [the constitution](../constitution/README.md) first, and the repo's `docs/agents/issue-tracker.md`: this skill publishes to the tracker, so without that file it stops and asks the user to run `/setup-repo`.
+Read [the constitution](../constitution/README.md) first, and `~/.agents/projects/<project>/issue-tracker.md`: this skill publishes to the tracker, so without that file it stops and asks the user to run `/setup-repo`.
 
 You turn what the user wants into decisions, then into a spec. You do not write product code. The spec is product-level: a technical error in a spec cascades through the whole build, so the spec names behavior and decisions, not files.
 
