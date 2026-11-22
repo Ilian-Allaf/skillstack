@@ -2,16 +2,16 @@
 
 The repo's own words for its domain, kept while you design, so the next agent reads one term per idea in the code, the spec, and the PRs.
 
-## Files in the target repo
+## Files in the project folder
 
 ```text
-GLOSSARY.md          the domain terms of the repo
-docs/adr/0001-<slug>.md   one file per decision worth recording
+~/.agents/projects/<project>/glossary.md          the domain terms of the repo
+~/.agents/projects/<project>/adr/0001-<slug>.md   one file per decision worth recording
 ```
 
-When the repo already keeps its glossary elsewhere and `AGENTS.md` names it, that file is the repo glossary: use it, and create no `GLOSSARY.md`. A repo with several contexts has a `GLOSSARY-MAP.md` at the root pointing at a `GLOSSARY.md` and a `docs/adr/` per context. Create files only when you have something to write.
+When the team keeps its glossary or its ADRs in the repo, these entries are routes to them, as [target-repo.md](../../constitution/references/target-repo.md) describes: read and edit the team's files. A repo with several contexts keeps a map of its glossaries, each with its own ADRs; `glossary.md` is that map, or routes to it. Create files only when you have something to write.
 
-`GLOSSARY.md` holds terms and nothing else: no implementation details, no spec, no scratch notes. Each entry: the term, its meaning in one or two sentences, and the words to avoid for it.
+The glossary holds terms and nothing else: no implementation details, no spec, no scratch notes. Each entry: the term, its meaning in one or two sentences, and the words to avoid for it.
 
 ## While you design
 
@@ -19,7 +19,7 @@ When the repo already keeps its glossary elsewhere and `AGENTS.md` names it, tha
 - **Sharpen fuzzy words.** For an overloaded word, propose one precise term: "By account, do you mean the Customer or the User?"
 - **Test with scenarios.** Invent concrete edge cases that force the boundaries between concepts.
 - **Check against the code.** When the user says how something works, read whether the code agrees, and surface a contradiction.
-- **Write as you go.** When a term is settled, update the repo glossary right then, on a docs branch of its own. The glossary and the ADRs land through one docs PR, linked from the spec, which the user merges like any other.
+- **Write as you go.** When a term is settled, update the repo glossary right then. In the project folder, write it in place. In a file the team shares, write it on a docs branch of its own: the glossary and the ADRs land through one docs PR, linked from the spec, which the user merges like any other.
 
 ## ADRs, sparingly
 

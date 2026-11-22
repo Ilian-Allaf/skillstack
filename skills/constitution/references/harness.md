@@ -10,6 +10,7 @@ Skills name a capability, never a tool. This table maps each capability to the t
 | a subagent spawns its own subagents (the verifier's lanes, swarms) | to confirm | to confirm | to confirm |
 | wake up when a PR changes | `watch_pull_request` | to confirm (REST polling fallback) | to confirm |
 | find a project skill | `.claude/skills/` (Claude Code) or `.agents/skills/` (Codex), by the agent it runs | `.claude/skills/` only: link each skill from `.agents/skills/` | `.agents/skills/`, from the working directory up to the repo root |
+| read and write the project folder (`~/.agents/projects/`) | as the agent it runs | works; a write outside the working directory may ask the user's permission first | to confirm: the default sandbox may refuse writes outside the workspace; then ask the user to add the folder as a writable root |
 | read the agent file | as the agent it runs | `AGENTS.md` when no `CLAUDE.md` exists; otherwise `CLAUDE.md`, which imports it with `@AGENTS.md` | `AGENTS.md` |
 | ask the user a question | `AskUserQuestion` | `AskUserQuestion` | `request_user_input` |
 | read a session transcript | to confirm | `~/.claude/projects/<project>/<session>.jsonl` | to confirm |

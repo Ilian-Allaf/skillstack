@@ -16,8 +16,8 @@ Run it after `drive-<app>` exists, when the repo has a hard zone, as [proof.md](
    Done when: the check failed on the break and is back to its starting state.
 5. **Keep findings as findings.** When the current code breaks the property, report the counterexample as a short sequence of steps in the code's words. Never weaken the property or the model until it passes, and never change product code unless the user asks.
    Done when: every violation is reported, or the run passed under stated bounds.
-6. **Write the skill.** `.agents/skills/prove-<area>/SKILL.md`, linked like any skill of the repo, says when a change touches the verified code, how to run the check, how to tell a real bug from a modeling error, the bounds and what is left out, and the files each check covers with the commit at which they were last confirmed. Open it as a PR in the usual format.
-   Done when: the PR is open, and a cold reader could run the check from the skill alone.
+6. **Write the skill.** `prove-<area>/SKILL.md`, beside `drive-<app>`: in the project folder, or in the repo when the user shares it. It says when a change touches the verified code, how to run the check, how to tell a real bug from a modeling error, the bounds and what is left out, and the files each check covers with the commit at which they were last confirmed. When it is shared, open it as a PR in the usual format.
+   Done when: the skill is saved, or its PR is open, and a cold reader could run the check from the skill alone.
 
 ## Maintain
 

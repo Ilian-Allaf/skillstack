@@ -42,7 +42,7 @@ Required levels:
 
 ## The app's drivers
 
-Level 5 needs the running app, driven the way a user does. The repo's drivers live in `.agents/skills/drive-*/SKILL.md`, one per surface: a repo with a web app and a CLI has two. Look there, not only in the harness's skill list, which a subagent may not have.
+Level 5 needs the running app, driven the way a user does. The repo's drivers live in `~/.agents/projects/<project>/drive-*/SKILL.md`, one per surface: a repo with a web app and a CLI has two; a driver the team shares is a route to the repo. Look there, not only in the harness's skill list, which a subagent may not have.
 
 - Use the driver whose surface the change touches. A change across surfaces is proven on each surface, with its driver.
 - When no driver exists for a touched surface, prove what you can at level 4 and write the gap under Not verified. A missing driver is not a pass: for a `medium` or `high` task the `live` lane is INCONCLUSIVE, so the PR ends `needs-human`, with `/create-app-driver` as the recommendation.

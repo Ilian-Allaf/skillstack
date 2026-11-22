@@ -1,6 +1,6 @@
 # Template: GitHub Issues
 
-Copy the block below into the target repo at `docs/agents/issue-tracker.md`.
+Copy the block below into `~/.agents/projects/<project>/issue-tracker.md`, or into the repo at `docs/agents/issue-tracker.md` when the user shares it, with a route to it in the project folder.
 
 ```markdown
 # Issue tracker: GitHub
@@ -41,4 +41,4 @@ Comment with the reason first, then `gh issue close <n>`.
 In the PR body, `Closes #<n>` on the PR that completes the issue, and `Part of #<n>` on an earlier PR of a stack. GitHub closes the issue when that PR merges into the default branch.
 ```
 
-The `--add-sub-issue` and `--add-blocked-by` flags need a recent `gh`; when they fail, use the fallback lines in the body. Prove the file with the read-only list command before you commit it.
+The `--add-sub-issue` and `--add-blocked-by` flags need a recent `gh`; when they fail, use the fallback lines in the body. Prove the file with the read-only list command before you save it.

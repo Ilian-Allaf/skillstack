@@ -8,7 +8,7 @@ The target repo can have its own glossary of domain terms. The builder and the v
 |---|---|---|---|
 | task | tâche | what the user asks for and launches, in one `/ship` | `ticket` |
 | unit | unité | one PR of a task, green on its own check; a task is one unit, or several when it spans several PRs, stacked | `work item` |
-| issue tracker | issue tracker | the tool where tasks, specs, maps, and bugs live, such as GitHub Issues, GitLab, Linear, or markdown files; the repo's `docs/agents/issue-tracker.md` says which and how | `ticket tracker` |
+| issue tracker | issue tracker | the tool where tasks, specs, maps, and bugs live, such as GitHub Issues, GitLab, Linear, or markdown files; `issue-tracker.md` in the project folder says which and how | `ticket tracker` |
 | issue | issue | one item in the issue tracker | |
 | code host | code host | where the repo, its pull requests, and its CI live, such as GitHub | |
 | builder | builder | the agent that carries a PR from `frame` to ready | `implementer`, `coder agent` |
@@ -51,6 +51,8 @@ The target repo can have its own glossary of domain terms. The builder and the v
 | frontier | frontière | the open decisions whose prerequisites are settled | |
 | swarm | essaim | several workers on slices of one job, or racing on one brief; one report | |
 | decision log | journal de décisions | the append-only TSV of decisions of a long run | `audit trail` |
-| repo glossary | glossaire du repo | the target repo's own domain terms: `GLOSSARY.md`, or the file `AGENTS.md` names as the glossary when the repo keeps it elsewhere | |
-| ADR | ADR | a dated file in `docs/adr/` recording a decision that is hard to reverse, with its status and the paths it applies to; superseded, never rewritten | |
+| repo glossary | glossaire du repo | the target repo's own domain terms: `glossary.md` in the project folder, or the team's file it routes to | |
+| ADR | ADR | a dated file in `adr/` of the project folder, or the team's folder it routes to, recording a decision that is hard to reverse, with its status and the paths it applies to; superseded, never rewritten | |
+| project folder | dossier projet | `~/.agents/projects/<project>/`, outside the repo: the working files the framework keeps for one repo, private unless the user shares an entry with the team | `home repo` |
+| route | route | a file of the project folder whose one line says the entry lives in the repo, and where | `pointer file` |
 | playbook | playbook | the proof duties of `build` for one kind of task | |

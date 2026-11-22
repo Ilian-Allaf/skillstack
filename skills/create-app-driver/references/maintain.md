@@ -21,5 +21,5 @@ Edit only the `drive-<app>` folder: its SKILL.md, `features/`, and its scripts. 
 5. **Triage.** A wrong description is drift: fix the file. Working behavior the harness cannot drive is a harness gap: fix the harness and drive it again. Broken app behavior is a product regression: report it to the user and keep it out of this PR.
    Done when: every finding sits in one of the three groups.
 
-6. **Ship or stop.** End on one outcome. `clean`: full coverage, nothing to change, no PR. `changed`: one PR of proven corrections in the PR format. `blocked`: name what blocked the pass.
+6. **Ship or stop.** End on one outcome. `clean`: full coverage, nothing to change, no PR. `changed`: the proven corrections, in place for a private driver, or in one PR in the PR format for a shared one. `blocked`: name what blocked the pass.
    Done when: the outcome is reported with the features covered.

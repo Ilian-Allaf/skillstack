@@ -44,7 +44,7 @@ Skills install as whole folders beside [the constitution](skills/constitution/RE
 
 ## Getting started
 
-1. Run `/setup-repo` once per repo. It sets up the issue tracker, the labels, the glossary, the coding standards, the agent file, and the app driver, and asks before each part.
+1. Run `/setup-repo` once per repo. It sets up the issue tracker, the labels, the glossary, the coding standards, and the app driver, and asks before each part. Each file stays private, in `~/.agents/projects/<repo>/` on your machine, unless you share it with the team in the repo ([ADR 0016](docs/adr/0016-the-working-files-live-outside-the-repo.md)).
 2. Run `/ship <task>` for each task. It shows you its frame and runs to a PR labeled `ready`, stopping only for what is yours to decide. You merge.
 3. Not sure which skill fits? Run `/choose-skill` and describe your situation.
 
@@ -69,7 +69,7 @@ Every skill is launched by you; none is picked by the model on its own. Each one
 **You launch**
 
 - **[choose-skill](skills/choose-skill/SKILL.md)**: Tells you which skill to launch for your situation, and with what command.
-- **[setup-repo](skills/setup-repo/SKILL.md)**: Prepares a repo the first time you work in it, asking before each part.
+- **[setup-repo](skills/setup-repo/SKILL.md)**: Prepares a repo the first time you work in it, asking before each part, and keeps each file private or shares it with the team.
 - **[shape-spec](skills/shape-spec/SKILL.md)**: Turns a loose idea into a spec issue through an interview, or into a map of decisions when the work is too big for one session.
 - **[investigate](skills/investigate/SKILL.md)**: Answers a question about the code, diagnoses a runtime symptom, or settles a decision with a throwaway prototype. Opens no PR.
 - **[ship](skills/ship/SKILL.md)**: Turns one task into a ready-to-merge PR, with verification tried before the build and evidence checked against recorded activity.

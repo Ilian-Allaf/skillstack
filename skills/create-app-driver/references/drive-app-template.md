@@ -1,6 +1,6 @@
 # Template for `drive-<app>`
 
-Copy this into the target repo at `.agents/skills/drive-<app>/SKILL.md`, link it for the harnesses that need it as [target-repo.md](../../constitution/references/target-repo.md) describes, and replace every `<...>`. The generated skill keeps no `<...>` once written.
+Copy this into `~/.agents/projects/<project>/drive-<app>/SKILL.md`, or, when the user shares it, into the repo at `.agents/skills/drive-<app>/SKILL.md`, linked and routed as [target-repo.md](../../constitution/references/target-repo.md) describes. Replace every `<...>`. The generated skill keeps no `<...>` once written.
 
 ```markdown
 ---

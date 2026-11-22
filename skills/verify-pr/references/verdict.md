@@ -6,7 +6,7 @@ The one place that defines a FAIL. Every other file points here.
 
 A finding is a FAIL when all three hold:
 
-1. **It is proven.** It comes with its run on the head of the PR, and you reran that command yourself and saw the same output. A breach of a documented repo standard (`CODING_STANDARDS.md`, the agent file, the repo's glossary, or an accepted ADR whose Applies to covers the hunk) is proven instead by quoting the file, the rule, and the hunk. A PR that changes such a decision on purpose carries the ADR that supersedes it.
+1. **It is proven.** It comes with its run on the head of the PR, and you reran that command yourself and saw the same output. A breach of a documented repo standard (`coding-standards.md` in the project folder, the agent file, the repo's glossary, or an accepted ADR whose Applies to covers the hunk) is proven instead by quoting the file, the rule, and the hunk. A PR that changes such a decision on purpose carries the ADR that supersedes it.
 2. **It is in the task's scope**: it breaks the task or `done_when`, or the diff itself breaks a documented standard. A finding outside the task's scope is a note, however real.
 3. **Its grade is blocker or should**, in the table below.
 
