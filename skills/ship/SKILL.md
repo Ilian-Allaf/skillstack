@@ -46,7 +46,7 @@ When the build budget runs out or a second sketch is scrapped, still open the PR
    Done when: the formatted PR is open and the evidence check passes, or discrepancies are attached to a draft labeled `needs-human`.
 
 7. **Get a verdict.** Spawn a fresh verifier (see Roles in the constitution) to run [verify-pr](../verify-pr/SKILL.md) with the brief its step 1 lists, and write the outcome on the PR's Verdict line. On a FAIL, go back to step 2 with its run, or dispute it as verify-pr describes, once per PR. An axis INCONCLUSIVE means `needs-human`, with what would make the lane runnable: for a surface with no driver, `/create-app-driver`. The budget is 2 FAIL verdicts.
-   Done when: both axes pass on the head's patch id, or the PR is `needs-human`: budget spent, FAIL upheld, or an axis INCONCLUSIVE.
+   Done when: both axes pass on the current base and head, or the PR is `needs-human`: budget spent, FAIL upheld, or an axis INCONCLUSIVE.
 
 8. **Hand over to babysit-pr.** Run [babysit-pr](../babysit-pr/SKILL.md) on the PR until it is `ready` or `needs-human`. Before handback, [refresh and check evidence](references/verification.md) against the final activity and verdict; unresolved discrepancies mean `needs-human`.
    Done when: the PR carries `ready` or `needs-human`, and the user has the link and a three-line summary: what changed, how it was proven, what was not verified.

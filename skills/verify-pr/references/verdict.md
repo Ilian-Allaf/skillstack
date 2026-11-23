@@ -29,18 +29,26 @@ A defect you observed stays a FAIL unless `done_when` excludes it: keep it, what
 
 The PR is verified when both axes are PASS.
 
-## The patch id
+## Verdict validity
 
-A verdict covers one patch id: `git diff <base>...<head> | git patch-id --stable`. A new push with the same patch id, such as a pure rebase, keeps the verdict. A different patch id needs a new one.
+A verdict covers the exact base and head commits checked. Record their full SHAs from the code host: the base-sha field is the current tip of the PR's target branch, not the merge base; the sha field is the PR head checked out for the runs. Compute the patch id with `git diff <base-sha>...<head-sha> | git patch-id --stable`. The patch id describes the diff, not the code it runs with.
+
+Reuse a linked verdict only while both SHAs still match the PR. A changed base or head needs a new verdict, including a conflict-free rebase, a commit with the same tree, or a target-branch update with no push to the PR. A missing SHA makes an older verdict historical too. Remove `ready`, refresh the proof on the current head against the current base, and run the selected lanes again before linking the new verdict. Keep the old comment as evidence of the old version. An unchanged pair allows reuse only while the recorded rules and environment still apply.
+
+Record the rule files and revisions used, and the runtime, dependency setup, driver, and service configuration needed to replay the runs. For private files outside git, record a content hash and a safe location. Keep credentials out of the comment. This records what the verifier used; review of proposed rule changes is still the `standards` lane's job.
+
+Before posting, fetch the PR's base and head again. If either moved during verification, keep the result historical and verify the new pair. The verdict comment and existing CI artifacts hold this record; no database or committed per-run file is required.
 
 ## Comment format
 
 Post exactly this shape, so the builder and the user can read it at a glance and a script can parse its first lines.
 
 ```text
-verdict: PASS | FAIL | INCONCLUSIVE   sha=<head sha, 7 chars>   patch-id=<7 chars>
+verdict: PASS | FAIL | INCONCLUSIVE   sha=<full head SHA>   base-sha=<full base SHA>   patch-id=<full stable patch id>
 behavior: <outcome> (<lanes run>)   code: <outcome> (<lanes run>)
 verifier: <model family>, fresh context: yes | no (<what leaked>)
+rules: <paths and revisions, or content hashes for private files>
+environment: <runtime, dependency setup, driver, services, and replay instructions or artifact link>
 
 FAIL 1 (blocker | should): <title>
   run:      <command>

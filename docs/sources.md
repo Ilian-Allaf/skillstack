@@ -24,6 +24,8 @@ When a skill changes, update its section here, in the same PR.
 
 ## `skills/babysit-pr/SKILL.md`
 
+- 2026-11-23: ours, [ADR 0018](adr/0018-a-verdict-covers-the-tested-base-and-head.md), based on our executed counterexample: an unchanged patch id after a conflict-free rebase can hide changed behavior. Verdicts record full base and head SHAs, rules, and replay setup; reuse follows that identity.
+
 - 2026-11-20: one push per round and the stack rules (the lowest PR first, one babysitter per stack, fixes in the owning PR, the stack's shape kept), from pstack `poteto-mode` babysit playbook. Adapted: rebasing the PRs above after the lowest one is rebased stays the babysitter's job, since our builder owns the stack.
 - Source: tstack `babysit-pr`, pstack `shipping`.
 - (pstack `babysit`)
@@ -281,6 +283,8 @@ When a skill changes, update its section here, in the same PR.
 
 ## `skills/ship/SKILL.md`, `skills/ship/references/verification.md`, and `skills/ship/scripts/check_evidence.py`
 
+- 2026-11-23: ours, [ADR 0018](adr/0018-a-verdict-covers-the-tested-base-and-head.md), based on our executed counterexample: an unchanged patch id after a conflict-free rebase can hide changed behavior. Verdicts record full base and head SHAs, rules, and replay setup; reuse follows that identity.
+
 - 2026-11-22: pstack `figure-it-out` puts the verification harness before implementation; `poteto-mode/playbooks/eval.md` checks activity rather than self-report; `poteto-mode/scripts/check-plan.mjs` mechanically checks plan structure. Our adaptation checks a local evidence index for certainty levels, nonempty artifact files, step results and traces, and stale verdicts. It cannot judge content or completeness against the original task. Tests live in `tools/test_check_evidence.py`. This is a local task check, not a framework CI gate in target repos (ADR 0001).
 - 2026-11-23: ours, [ADR 0017](adr/0017-a-formal-check-guards-every-task-that-touches-its-code.md): build's Done when requires each altered formal check to describe the head.
 
@@ -345,6 +349,8 @@ When a skill changes, update its section here, in the same PR.
 
 ## `skills/verify-pr/SKILL.md`
 
+- 2026-11-23: ours, [ADR 0018](adr/0018-a-verdict-covers-the-tested-base-and-head.md), based on our executed counterexample: an unchanged patch id after a conflict-free rebase can hide changed behavior. Verdicts record full base and head SHAs, rules, and replay setup; reuse follows that identity.
+
 - Anthropic found that an untuned evaluator finds real issues, then talks itself into approving the work anyway ("harness design").
 - 2026-11-22: holding prior diagnoses back until independent findings are saved is our adaptation of the controlled information exposure in pstack's evaluation playbook. Factual startup and access instructions address the observed inaccessible live environment. See First-use corrections below.
 
@@ -372,6 +378,8 @@ When a skill changes, update its section here, in the same PR.
 
 ## `skills/verify-pr/references/verdict.md`
 
+- 2026-11-23: ours, [ADR 0018](adr/0018-a-verdict-covers-the-tested-base-and-head.md), based on our executed counterexample: an unchanged patch id after a conflict-free rebase can hide changed behavior. Verdicts record full base and head SHAs, rules, and replay setup; reuse follows that identity.
+
 - Source: tstack severity scale, pstack blocking rule.
 - Source: Matt Pocock `code-review` ("documented-standard breaches can be hard"), pstack ("a doc line the PR made wrong").
 
@@ -384,3 +392,7 @@ When a skill changes, update its section here, in the same PR.
 - Source: Matt Pocock's `mattpocock/skills` repo (`knowledge/sources/repos/mattpocock-skills/repo/`): a README that says why and lists every skill linked to its `SKILL.md`; `SCOPE.md` (its bar of an observed failure was dropped on 2026-11-20: a change needs only to fit the ADRs); a bug issue template with the skill, version, and harness; `CHANGELOG.md`; decisions as ADRs; the `AGENTS.md` rule that a skill added or renamed updates every list of skills in the same PR.
 - Install: the plugin manifests (`.claude-plugin/plugin.json` listing each skill, `marketplace.json` with the repo as its own source), `agents/openai.yaml` beside each `SKILL.md` with `policy.allow_implicit_invocation: false` (his `.agents/invocation.md`), and `tools/link_skills.py`, adapted from his `scripts/link-skills.sh` (same destinations, same guard against a destination linked into the repo). Ours: shared folders linked beside the skills, a real folder never deleted, the Windows junction fallback, `--dry-run` and `--unlink`.
 - Ours: the rule that a doc is either executed or dated ([ADR 0013](adr/0013-a-doc-stays-fresh-by-running-or-by-date.md)), and the ADRs in `docs/adr/`, the folder the framework gives target repos, instead of `.agents/adr/`.
+
+## Verdict validity integration (2026-11-23)
+
+- Ours, [ADR 0018](adr/0018-a-verdict-covers-the-tested-base-and-head.md): `skills/babysit-pr/references/stack.md`, `skills/ship-queue/SKILL.md`, `skills/choose-skill/SKILL.md`, `skills/constitution/references/glossary.md`, and `skills/constitution/references/pr-format.md` follow the base and head identity instead of patch-id reuse. The existing plugin paths and harness entries still apply.

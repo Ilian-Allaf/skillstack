@@ -29,13 +29,13 @@ Write a JSON evidence record in the work directory, out of git. It is an index o
 }
 ```
 
-After verification, `verdict` holds `{"patch_id": "<full stable patch id>"}` from the verdict comment. Compute the current patch id from the diff as [verdict.md](../../verify-pr/references/verdict.md#the-patch-id) describes, and run:
+After verification, `verdict` holds `{"patch_id": "<full stable patch id>", "base_sha": "<full base SHA>", "head_sha": "<full head SHA>"}` from the verdict comment. Fetch the current base and head SHAs from the code host and compute their patch id as [verdict.md](../../verify-pr/references/verdict.md#verdict-validity) describes. Pass these independently obtained current values, not the values copied from the old verdict:
 
 ```text
-python -I <ship-folder>/scripts/check_evidence.py <record.json> --patch-id <current-full-patch-id>
+python -I <ship-folder>/scripts/check_evidence.py <record.json> --patch-id <current-full-patch-id> --base-sha <current-full-base-sha> --head-sha <current-full-head-sha>
 ```
 
-Use the installed folder containing this reference for `<ship-folder>`. The check rejects invalid certainty levels, missing or empty local artifacts, completed steps without a result and trace, and an existing verdict for another patch. Every case needs evidence or a `not_verified` reason. Fix discrepancies in the source evidence and PR, then update the index. A passing check confirms structure and file presence only; inspect whether artifacts show the expected result. Unverified cases remain visible and readiness still follows the verifier's axes.
+Use the installed folder containing this reference for `<ship-folder>`. The check rejects invalid certainty levels, missing or empty local artifacts, completed steps without a result and trace, and an existing verdict for another base, head, or patch id. Older records with only a patch id need a new verdict with both SHAs. Every case needs evidence or a `not_verified` reason. Fix discrepancies in the source evidence and PR, then update the index. A passing check confirms structure and file presence only; inspect whether artifacts show the expected result. Unverified cases remain visible and readiness still follows the verifier's axes.
 
 When a discrepancy cannot be resolved, preserve the failing check output and link it under Not verified in a draft PR labeled `needs-human`. Missing mandatory captures stay in the record; removing them to obtain a passing check does not complete the proof.
 

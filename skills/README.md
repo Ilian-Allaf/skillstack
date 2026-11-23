@@ -97,7 +97,7 @@ flowchart TB
   verdict -->|first FAIL: fix| build
   verdict -->|budget spent or verification blocked| human
   build -->|build budget spent or second scrapped sketch| human
-  babysit -->|patch changed: new verdict required| verdict
+  babysit -->|base or head changed: new verdict required| verdict
   babysit -->|budget spent or a decision for you| human
   human -.->|your answer restarts the stopped loop| resume
 ```
@@ -110,8 +110,8 @@ flowchart TB
 | **4. Prove every case** | Run the case list through the relevant user paths. Keep scripts and captures, update changed feature maps, and identify what could not be verified. Visual journeys need a scripted demo; stateful journeys need a state chart. | A coverage table with evidence per case, plus explicit gaps. [Coverage](constitution/references/coverage.md) |
 | **5. Analyze impact** | For medium and high risk, follow callers, data formats, timing, dependencies, and error paths beyond the diff. Find and run the test of the fact the change is safe because of. High risk widens the search to several agents. | The safety fact, its run or `unproven` status, and confirmed risks fixed or tracked. [analyze-impact](analyze-impact/SKILL.md) |
 | **6. Open the PR** | Compare the claimed work with recorded activity and artifacts. Check the local evidence index, push the task branch, and open the PR in the shared format. | The linked issue when applicable, design, coverage, proof, impact, decisions, and limits. [PR format](constitution/references/pr-format.md), [evidence audit](ship/references/verification.md) |
-| **7. Get a verdict** | A fresh verifier receives factual inputs, independently looks for failures, then replays the builder's proof. The builder fixes proven findings or uses the one permitted dispute. | Separate behavior and code verdicts on the current patch, with findings and notes. [verify-pr](verify-pr/SKILL.md) |
-| **8. Babysit and hand over** | Resolve conflicts, answer review, and fix CI. Reprove each fix and obtain a new verdict when the patch changes. Refresh the evidence before handback. | `ready` only when both axes pass, checks are green, review bots have finished, and nothing remains open. You merge. [babysit-pr](babysit-pr/SKILL.md) |
+| **7. Get a verdict** | A fresh verifier receives factual inputs, independently looks for failures, then replays the builder's proof. The builder fixes proven findings or uses the one permitted dispute. | Separate behavior and code verdicts on the current base and head, with findings and notes. [verify-pr](verify-pr/SKILL.md) |
+| **8. Babysit and hand over** | Resolve conflicts, answer review, and fix CI. Reprove each fix and obtain a new verdict when the base or head changes. Refresh the evidence before handback. | `ready` only when both axes pass, checks are green, review bots have finished, and nothing remains open. You merge. [babysit-pr](babysit-pr/SKILL.md) |
 
 Launching is permission to continue through reversible work. Design approval is required for a one-way door, such as a public API, schema, or storage format, or when you asked to see it. Product or preference decisions that no run can settle, and evidence ruling out the request, also stop the task. These rules come from [the constitution](constitution/README.md).
 
@@ -127,7 +127,7 @@ For example, suppose a user reports that double-clicking Save creates two notes.
 | Playbook | `bug-fix`: commit the failing repro, establish the cause with runtime evidence, fix it, and rerun the same command |
 | Project tools and proof | Use the app driver to perform the clicks; read back the stored notes; attach the base/head run and demo to the coverage table |
 | Independent review | Select lanes from the risk class and hard zones; try another path, inspect the state representation, and replay the supplied evidence |
-| Delivery | Reprove review fixes, obtain passing verdicts on the final patch, wait for green CI, then hand you the PR to merge |
+| Delivery | Reprove review fixes, obtain passing verdicts on the final base and head, wait for green CI, then hand you the PR to merge |
 
 ## 4. The seven playbooks
 
@@ -217,7 +217,7 @@ A FAIL must be proven, be in scope, and meet the blocker or should grade. Behavi
 | An axis FAIL | At least one proven, blocking finding | Builder fixes and obtains a new verdict, within the shared FAIL budget; one dispute is allowed |
 | An axis INCONCLUSIVE | A required lane could not run because of an external limit | `needs-human`, with what would make it runnable; retry only after the setup changes |
 
-A verdict covers a **patch id**, the stable hash of the diff. A pure rebase can retain it; a changed patch needs a new verdict. Notes become issues only when you ask. The authoritative grades, outcomes, and comment format live in [verdict.md](verify-pr/references/verdict.md).
+A verdict covers the exact **base and head commits** checked, with the rules and replay environment recorded. A changed base or head needs a new verdict, even after a conflict-free rebase with the same patch id. Notes become issues only when you ask. The authoritative grades, outcomes, and comment format live in [verdict.md](verify-pr/references/verdict.md).
 
 ## 6. Where the files and state live
 

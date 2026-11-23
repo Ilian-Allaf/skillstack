@@ -1,5 +1,5 @@
 interface:
   display_name: "Verify PR"
-  short_description: "Try to break a PR and give a verdict"
+  short_description: "Judge a PR on its tested base and head"
 policy:
   allow_implicit_invocation: false
