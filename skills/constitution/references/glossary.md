@@ -37,7 +37,9 @@ The target repo can have its own glossary of domain terms. The builder and the v
 | coverage table | table de couverture | the PR's table of cases, each with its evidence and certainty level | `test matrix` |
 | coverage gap | trou de couverture | a case missing from the coverage table that the verifier drove and found correct | |
 | demo | démo | the video assembled from one scripted clip per case, with captions | `screencast` |
-| formal check | check formel | a project-local `prove-<area>` skill that checks one property over every order of steps, or every input up to a bound | |
+| formal check | check formel | a project-local `prove-<area>` skill that checks one property over every order of steps, or every input up to a bound; `create-formal-verification` writes it | |
+| sync commit | commit de synchro | the commit at which a formal check was last confirmed to describe the code it covers | |
+| stale | périmé | said of a formal check or a feature file whose code changed after the commit it was last confirmed at; what it says proves nothing until it is checked again | |
 | feature map | feature map | one file per user-facing feature in `drive-<app>` | `feature list` |
 | seeded defect | défaut semé | a bug planted in a real PR to test the verifier | `fake bug` |
 | pin | pin | a test, snapshot, or script that captures today's behavior before a refactoring moves structure | `golden master` |

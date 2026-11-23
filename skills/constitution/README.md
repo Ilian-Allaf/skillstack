@@ -34,6 +34,7 @@ Shared rules, not a skill: no harness lists this folder, and no one launches it.
 | [references/harness.md](references/harness.md) | before you spawn a subagent, ask the user a question, wait on a PR, or read a session transcript |
 | [references/parallel.md](references/parallel.md) | before you run several subagents on one job |
 | [references/decision-log.md](references/decision-log.md) | before a long or unattended run, and before handing one back |
+| [references/formal.md](references/formal.md) | before you write, run, or update a formal check (`prove-<area>`), or when a touched file is one a formal check covers |
 | [references/statechart.md](references/statechart.md) | when a touched journey moves between states, or a hard zone needs a checked model |
 | [references/languages/typescript.md](references/languages/typescript.md) | when the diff touches a `.ts` or `.tsx` file, as builder or verifier |
 

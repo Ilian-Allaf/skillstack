@@ -4,7 +4,7 @@ description: "Writes the repo's driver, a skill that launches, drives, and obser
 disable-model-invocation: true
 metadata:
   kind: kit
-  produces: "repo:drive-<app> skill and feature map, in the project folder or in one PR when shared; in formal mode, repo:prove-<area>"
+  produces: "repo:drive-<app> skill and feature map, in the project folder or in one PR when shared"
   hypothesis: "Without a scripted way to drive the real app, agents prove changes with proxies such as green tests, or improvise a new harness every run."
 ---
 
@@ -16,11 +16,10 @@ Every agent that proves a change needs the same three things: start the app from
 
 You write for an agent that reads the generated skill cold, mid-task, and has never seen the app.
 
-Three modes:
+Two modes:
 
 - **create** (default): the repo has no `drive-<app>` skill. Run the steps below.
 - **maintain**: the skill exists and the app has changed. Follow [references/maintain.md](references/maintain.md). Run it when the user asks, and after a `learn-from-mistakes` the user approved that found a gap in the feature map.
-- **formal**: the repo has a hard zone where tests rarely reach the breaking case. Follow [references/formal.md](references/formal.md) to write `prove-<area>`.
 
 ## Steps
 
