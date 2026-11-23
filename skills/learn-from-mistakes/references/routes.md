@@ -11,6 +11,7 @@ Where a lesson goes, by the layer that should have caught the mistake.
 | no case covered that path | coverage | the feature map, through `create-app-driver` in maintain mode, and the case list rules in [coverage.md](../../constitution/references/coverage.md) |
 | the proof drove the app the wrong way | proof on the app | the target repo's `drive-<app>` skill |
 | the change broke something outside its diff | breakage | the `analyze-impact` skill |
+| a formal check covered the code and passed, or its property missed the case | formal check | `/maintain-formal-verification` when the check was stale or its model wrong; `/create-formal-verification` for a property no check holds |
 | the verifier saw it and passed it, or never tried it | the verifier | an example in [calibration.md](../../verify-pr/references/calibration.md), and the lane that should have tried it; replayed until a fresh verifier gives the missed FAIL |
 | a skill guided the agent badly, or did not fire | the framework | a PR on that skill, in its own PR, never inside a task |
 | the repo has no hook or CI running its checks | guardrails | a `/add-guardrail` PR that wires them |

@@ -87,7 +87,8 @@ flowchart TB
   cva --> drive
   cfv --> prove
   mfv --> prove
-  impact -.->|stale check: issue| mfv
+  ship -.->|stale check: issue| mfv
+  ship -->|covered file: run, update| prove
   setup -.->|hard zones| cfv
   guard --> checks
   learn --> guard

@@ -91,7 +91,7 @@ STEP_RE = re.compile(r"^\d+\.\s")
 # The repo paths of the entries a team may share. Readers go through the project folder instead.
 REPO_PATH_RE = re.compile(r"docs/agents/issue-tracker\.md|(?<![\w-])GLOSSARY\.md|CODING_STANDARDS\.md|docs/agent-rules\.md|docs/adr/|\.agents/skills/(?:drive|prove)-")
 # The files that write a shared entry, and so must name where it goes in the repo.
-REPO_PATH_WRITERS = ("skills/constitution/references/target-repo.md", "skills/setup-repo/", "skills/create-app-driver/")
+REPO_PATH_WRITERS = ("skills/constitution/references/target-repo.md", "skills/setup-repo/", "skills/create-app-driver/", "skills/create-formal-verification/")
 
 
 @dataclass

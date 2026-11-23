@@ -30,16 +30,16 @@ Find the part of the repo where a broken promise harms users and tests rarely re
 4. **Run it on the current code.** For each counterexample, replay every step against the code. A step the code cannot take is a modeling error: fix the model and say what was wrong. A path the code can take is a finding: keep the property, and tell the path as steps in the code's words.
    Done when: the check passes under stated bounds, or every violation is a finding replayed against the code.
 
-5. **Show it can fail.** Break the guarded code once on a scratch change, watch the check catch it, then drop the change.
+5. **Show it can fail.** Break the guarded code once on a scratch change and watch the check catch it, as formal.md's Able to fail rule says for a model and for a harness. Then drop the change.
    Done when: the check failed on the break, and it is back where it started: passing, or failing only on the findings of step 4.
 
-6. **Write `prove-<area>`.** Use the shape in formal.md, with this repo's real commands, paths, and names. Set Synced at to the commit you checked.
+6. **Write `prove-<area>`.** Write `~/.agents/projects/<project>/prove-<area>/SKILL.md`, with the model, the harness, and its scripts in that folder, as formal.md describes. When the user shares it, write it in the repo at `.agents/skills/prove-<area>/` instead, with the links and the route [target-repo.md](../constitution/references/target-repo.md) asks for. Use the shape in formal.md, with this repo's real commands, paths, and names. Record each covered file's content id and set Synced at to the commit you checked.
    Done when: the skill holds no placeholder, every command in it ran once, and it lists every file and function the check covers.
 
 7. **Follow it cold.** Spawn a fresh subagent, as [harness.md](../constitution/references/harness.md) describes, with only the path of `prove-<area>` and a scratch change that breaks the property in the real code. It follows the skill and reports what the check said. When the subagent misses the break or a step does not run, fix the skill or the model, never the scratch change, and run this step again.
    Done when: the subagent caught the break from the skill alone, the scratch change is dropped, and the check is back where step 5 left it.
 
-8. **Hand it over.** A private check is done once step 7 passed. A shared one goes in a PR in [the PR format](../constitution/references/pr-format.md): its Proof holds the runs of steps 4, 5, and 7. Then get a verdict and run `babysit-pr`, as rule 2 of the constitution says. A finding stays out of product code unless the user asks; to fix it, the user runs `/ship` with the counterexample.
+8. **Hand it over.** A private check is done once step 7 passed. A shared one goes in a PR in [the PR format](../constitution/references/pr-format.md), which also runs the check and its staleness test in the repo's CI, so a change made without an agent is caught too: its Proof holds the runs of steps 4, 5, and 7. Then get a verdict and run `babysit-pr`, as rule 2 of the constitution says. A finding stays out of product code unless the user asks; to fix it, the user runs `/ship` with the counterexample.
    Done when: the private check's path is reported with its runs; or the PR is open with its runs, and carries `ready` or `needs-human`.
 
 ## Reply
