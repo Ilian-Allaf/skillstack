@@ -33,7 +33,7 @@ Find the part of the repo where a broken promise harms users and tests rarely re
 5. **Show it can fail.** Break the guarded code once on a scratch change, watch the check catch it, then drop the change.
    Done when: the check failed on the break, and it is back where it started: passing, or failing only on the findings of step 4.
 
-6. **Write `prove-<area>`.** Use the shape in formal.md, with this repo's real commands, paths, and names. Set Synced at to the commit you checked.
+6. **Write `prove-<area>`.** Write `~/.agents/projects/<project>/prove-<area>/SKILL.md`, with the model, the harness, and its scripts in that folder, as formal.md describes. When the user shares it, write it in the repo at `.agents/skills/prove-<area>/` instead, with the links and the route [target-repo.md](../constitution/references/target-repo.md) asks for. Use the shape in formal.md, with this repo's real commands, paths, and names. Set Synced at to the commit you checked.
    Done when: the skill holds no placeholder, every command in it ran once, and it lists every file and function the check covers.
 
 7. **Follow it cold.** Spawn a fresh subagent, as [harness.md](../constitution/references/harness.md) describes, with only the path of `prove-<area>` and a scratch change that breaks the property in the real code. It follows the skill and reports what the check said. When the subagent misses the break or a step does not run, fix the skill or the model, never the scratch change, and run this step again.

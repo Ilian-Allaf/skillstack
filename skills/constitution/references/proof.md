@@ -40,12 +40,14 @@ Required levels:
 - **The safety fact** of a change, the one fact the change is safe because of, reaches level 4. Otherwise mark it `unproven` in the PR.
 - **A verifier FAIL** comes with its run, at level 4.
 
-## The app's drivers
+## Drivers and formal checks
 
 Level 5 needs the running app, driven the way a user does. The repo's drivers live in `~/.agents/projects/<project>/drive-*/SKILL.md`, one per surface: a repo with a web app and a CLI has two; a driver the team shares is a route to the repo. Look there, not only in the harness's skill list, which a subagent may not have.
 
 - Use the driver whose surface the change touches. A change across surfaces is proven on each surface, with its driver.
 - When no driver exists for a touched surface, prove what you can at level 4 and write the gap under Not verified. A missing driver is not a pass: for a `medium` or `high` task the `live` lane is INCONCLUSIVE, so the PR ends `needs-human`, with `/create-app-driver` as the recommendation.
+
+The repo's formal checks live in `~/.agents/projects/<project>/prove-*/SKILL.md`, one per guarded area; a check the team shares is a route to the repo. Look there too, not in the harness's skill list. A check covers a touched file when its Covered code section lists that file: read that section of each check against the diff. [formal.md](formal.md#in-a-task) says what a task does with each check it touches.
 
 ## `done_when`
 

@@ -131,7 +131,7 @@ When a skill changes, update its section here, in the same PR.
 - (pstack: "a small, obvious edit doesn't" need full rigor)
 - (Ray Amjad: "you don't really need a verifier to like verify that the contact form submits"; Anthropic "harness design": the evaluator "is worth the cost when the task sits beyond what the current model does reliably solo")
 - 2026-11-20, from the coherence audit: a missing driver is not a pass, from pstack "'Inconclusive' or wrong-surface is not a pass" and `autopilot-full` ("The verdict is not clean without the live lane"); a user-facing `low` change is proven on the app, from pstack `poteto-mode` ("Shipping UI: the matching control skill").
-- 2026-11-23: ours, [ADR 0017](adr/0017-a-formal-check-guards-every-task-that-touches-its-code.md): every file a formal check covers is a hard zone.
+- 2026-11-23: ours, [ADR 0017](adr/0017-a-formal-check-guards-every-task-that-touches-its-code.md): every file a formal check covers is a hard zone; where formal checks live and how a diff finds them, beside the drivers.
 
 ## `skills/constitution/references/target-repo.md` (where skills and instructions live, 2026-11-19)
 
@@ -144,7 +144,7 @@ When a skill changes, update its section here, in the same PR.
 
 - Source: pstack `create-formal-verification-skill` (What makes it good, Let the question choose the tool) and `maintain-formal-verification-skill` (Edit scope, update from the code) (Lauren Tan).
 - 2026-11-23: our adaptation: the rules shared by creation, maintenance, and a builder's update in one file; the shape of `prove-<area>`; the definition of a stale check, from pstack's sync commit.
-- 2026-11-23: ours, [ADR 0017](adr/0017-a-formal-check-guards-every-task-that-touches-its-code.md): In a task, and staleness compared by content, not history.
+- 2026-11-23: ours, [ADR 0017](adr/0017-a-formal-check-guards-every-task-that-touches-its-code.md): In a task, staleness compared by content, not history, and where a private harness runs.
 
 ## `skills/constitution/references/statechart.md`
 

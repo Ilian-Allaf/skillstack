@@ -14,7 +14,7 @@ Exhaustive in coverage, not in footage: every case has evidence, and each case g
 - one case per path a user can reach that calls the changed code, found in the code itself (a search for its callers, `analyze-impact` step 1), not only in the map. A path the map lacks is added to its feature file in this PR, so the builder and the verifier do not share the map's blind spot;
 - the edge cases of the hard zones the change touches: double action, retry, error path, empty and long input, reload or back navigation mid-action, two users or two tabs;
 - for a bug, the reported case on the base and on the head;
-- the property of each formal check that covers a touched file, with its check run as evidence; a check stale on the base proves nothing, so its case goes under Not verified, as [formal.md](formal.md#in-a-task) says.
+- the property of each formal check that covers a touched file, found as [proof.md](proof.md#drivers-and-formal-checks) says, with its check run as evidence; a check stale on the base proves nothing, so its case goes under Not verified, as [formal.md](formal.md#in-a-task) says.
 
 A feature file whose code changed after the commit it was last driven at may be stale: say so in the frame, and drive its entry points before you trust it. Cases that what the code already forbids (a type, a lint) need no evidence; name the check instead. `analyze-impact` and the verifier may add cases; each one added goes in the table.
 

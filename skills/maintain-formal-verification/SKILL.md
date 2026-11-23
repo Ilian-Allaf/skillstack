@@ -31,7 +31,7 @@ Give each check one outcome, or both `updated` and `bug`:
 
 ## Steps
 
-1. **Find the checks.** Read each `prove-<area>` in the project folder, following routes into the repo, or the one the user named, and any verifier the repo already runs against named code. Collect each check's property, covered code, bounds and assumptions, command, and sync commit. Without a recorded sync commit, use the last commit that changed the verification files, and say so. With no check at all, stop and point at `/create-formal-verification`.
+1. **Find the checks.** Read each `~/.agents/projects/<project>/prove-*/SKILL.md`, following routes into the repo, or the one the user named, and any verifier the repo already runs against named code. Collect each check's property, covered code, bounds and assumptions, command, and sync commit. Without a recorded sync commit, use the last commit that changed the verification files, and say so. With no check at all, stop and point at `/create-formal-verification`.
    Done when: every check has these five facts, or you stopped.
 
 2. **Run each check as it is,** before any edit. A pass only says the old description holds; judge no failure yet.

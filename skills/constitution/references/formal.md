@@ -30,7 +30,7 @@ Prefer a tool the repo's developers can install and run.
 
 ## `prove-<area>/SKILL.md`
 
-It lives where [target-repo.md](target-repo.md) puts `prove-<area>/`: in the project folder, or in the repo when the user shares it. It holds no placeholder, and an agent that reads it cold, mid-change, can act on it.
+It lives in `~/.agents/projects/<project>/prove-<area>/`, with the model, the harness, and the scripts it runs beside it. A check the team shares lives in the repo, and that folder holds a route to it, as [target-repo.md](target-repo.md) describes. The skill holds no placeholder, and an agent that reads it cold, mid-change, can act on it.
 
 ```markdown
 ---
@@ -47,7 +47,7 @@ description: "Checks that <property, in one sentence> in <area>. Use before you 
 <each file and function the check describes>. Synced at: <commit>.
 
 ## Run
-<one command>, <tool and pinned version>, about <duration>. Bounds: <bounds>. Assumptions: <assumptions>. Left out: <what the check does not cover>.
+<one command>, <tool and pinned version>, about <duration>. <For a harness built with the code: how it is copied into a scratch worktree, run, and removed.> Bounds: <bounds>. Assumptions: <assumptions>. Left out: <what the check does not cover>.
 
 ## Read the result
 <what a pass means, and how to read a counterexample. Replay each step against the code: a step the code cannot take is a modeling error, so fix the model; a path the code can take is a bug.>
@@ -55,6 +55,13 @@ description: "Checks that <property, in one sentence> in <area>. Use before you 
 ## When your change alters covered code
 Update the model from the code before you rerun: every part keeps its `file:line`, and one atomic step in the code stays one step. Never weaken the property, the model, or a bound to make the check pass. Rerun, then break the new code once and watch the check catch it. The property changes only for a promise that changed on purpose: write the old wording, the new one, and the evidence in the PR's Proof section. Move Synced at to the new commit only once the model describes the code at that commit.
 ```
+
+## Where the harness runs
+
+A model checker reads its model from anywhere, so a model stays in the check's folder. A harness that must be built with the code, such as a property test or a code-level verifier's harness, runs only inside the repo:
+
+- **Private check**: the harness lives in the check's folder. Its Run section copies it into a scratch worktree of the commit under check, runs it there, and removes the worktree. The harness is never committed.
+- **Shared check**: the harness lives in the repo, where the repo keeps its tests, and Covered code lists it.
 
 ## Stale
 
@@ -64,7 +71,7 @@ Move the sync commit forward only after you confirmed that the model describes t
 
 ## In a task
 
-A file a formal check covers is a hard zone ([proof.md](proof.md)), so a task that touches it is never `low`, and its property is a case ([coverage.md](coverage.md)).
+A file a formal check covers, found as [proof.md](proof.md#drivers-and-formal-checks) says, is a hard zone, so a task that touches it is never `low`, and its property is a case ([coverage.md](coverage.md)).
 
 - **In `frame`**, check each such formal check for staleness on the base. A stale one stays stale for the whole task: its case goes under Not verified, and the builder opens an issue for the user to run `/maintain-formal-verification`. The pass itself is not part of the task.
 - **In `build`**, when the change alters covered code of a check that was in sync on the base, update the check from the code, by the rules above, and set its sync commit to the head. A private check is updated in place; a shared one changes in the PR's diff.
