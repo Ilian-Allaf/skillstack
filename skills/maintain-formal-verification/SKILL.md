@@ -47,10 +47,10 @@ Give each check one outcome, or both `updated` and `bug`:
 4. **Update from the code.** Change the model or the harness so each changed part points at code again, before you rerun. Change a property only for a promise changed on purpose. Keep the bounds unless the change makes them wrong.
    Done when: every changed part has its `file:line`; each property change has its old wording, new wording, and evidence; each reduced bound is listed.
 
-5. **Rerun and judge.** On a pass, break the new code once and watch the check catch it, then drop the break. On a failure, replay the counterexample against the code. A step the code cannot take means the check is wrong: fix it and say what was wrong. A path the code can take is a bug: find the commit that introduced it, and tell the path in the code's words with its harm. A cheap repro goes in the report as evidence, not in product code.
+5. **Rerun and judge.** On a pass, break the new code once and watch the check catch it, as formal.md says, then drop the break. On a failure, replay the counterexample against the code. A step the code cannot take means the check is wrong: fix it and say what was wrong. A path the code can take is a bug: find the commit that introduced it, and tell the path in the code's words with its harm. A cheap repro goes in the report as evidence, not in product code.
    Done when: each check has its outcome, with its run and, for a pass, the break it caught.
 
-6. **Update `prove-<area>`:** covered code, command, bounds, assumptions, and the sync commit, set to the commit you checked; a `blocked` check keeps its old one. Then follow the skill once as the next agent would.
+6. **Update `prove-<area>`:** covered code with its content ids, command, bounds, assumptions, and the sync commit you checked; a `blocked` check keeps its old ones. Then follow the skill once as the next agent would.
    Done when: the skill describes the check as it now is, and its own command ran from it.
 
 7. **Hand it over.** A private check is updated in place. A shared one goes in one PR in [the PR format](../constitution/references/pr-format.md), holding only verification changes, through a verdict and `babysit-pr` (rule 2). Each bug becomes an issue with its counterexample, harm, and introducing commit; the user fixes it through `/ship`. Close or link the issue that asked for this pass.

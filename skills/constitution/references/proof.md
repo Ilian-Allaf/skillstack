@@ -49,6 +49,8 @@ Level 5 needs the running app, driven the way a user does. The repo's drivers li
 
 The repo's formal checks live in `~/.agents/projects/<project>/prove-*/SKILL.md`, one per guarded area; a check the team shares is a route to the repo. Look there too, not in the harness's skill list. A check covers a touched file when its Covered code section lists that file: read that section of each check against the diff. [formal.md](formal.md#in-a-task) says what a task does with each check it touches.
 
+Where the project folder is absent, as in a cloud session or CI, read the shared drivers and checks at the repo paths [target-repo.md](target-repo.md) gives.
+
 ## `done_when`
 
 `done_when` is the finish condition of a task. It is:
@@ -66,7 +68,7 @@ The builder announces the class in `frame`. The user can correct it in one word.
 | Class | When |
 |---|---|
 | `high` | the change touches auth, payments, migrations, data deletion, CI, or secrets; or it changes more than 400 lines |
-| `low` | every changed file is docs or tests; or a change of about 30 lines inside one function, with no hard zone and no public interface changed |
+| `low` | every changed file is docs or tests, and none is in a hard zone; or a change of about 30 lines inside one function, with no hard zone and no public interface changed |
 | `medium` | everything else |
 
 The class sets how deep verification goes:

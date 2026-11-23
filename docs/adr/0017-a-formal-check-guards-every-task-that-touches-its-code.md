@@ -14,9 +14,9 @@ pstack, where the formal skills come from, leaves all of this to the agent: the 
 
 - Every file a formal check covers is a hard zone. A task that touches one is never `low`, its property is a case of the coverage table, and the verifier runs its `breakage` lane.
 - `frame` checks each such check for staleness on the base. A stale check proves nothing: its case goes under Not verified, and the builder opens an issue for `/maintain-formal-verification`. The maintain pass stays outside the task.
-- A builder whose change alters covered code of an in-sync check updates the check in its build, by the rules of `formal.md`, and lists the update in the PR's Proof.
-- The verifier judges the check as it stands at the head: it breaks the guarded code once, and a break the check misses, or a check the change left stale, is a FAIL graded should.
-- Staleness compares content, `git diff <sync commit> <commit> -- <covered files>`, not history, so a squash or a rebase of the updating commit leaves the check in sync.
+- A builder whose change alters covered code of an in-sync check updates the check in its build, by the rules of `formal.md`, and lists the update in the PR's Proof. A check stale on the base is not updated by the task.
+- For each check in sync on the base, the verifier judges the check as it stands at the head: it breaks the guarded code once, and a break the check misses, or a check the change left stale, is a FAIL graded should. A model does not read the code, so the break is described in the model before the model checker runs.
+- Staleness compares each covered file with the content id the check records, `git rev-parse <commit>:<file>`, not history, so a squash, a rebase, or a fresh clone that lacks the updating commit leaves the check in sync.
 - A shared check also runs in the repo's CI, wired by the PR that shares it.
 
 ## Alternatives rejected
@@ -25,9 +25,10 @@ pstack, where the formal skills come from, leaves all of this to the agent: the 
 - **Every update through the maintain pass**: every PR that touches covered code would end with an issue, and the check would stay stale until the user ran the pass.
 - **The builder updates and judges its own update**: the author is never the judge ([ADR 0003](0003-the-author-is-never-the-judge.md)); a model loosened until it passes reads the same as a correct one.
 - **Staleness by history** (`git log <sync commit>..HEAD`): a squash merge rewrites the commit the builder recorded, so every updated check would read stale after its merge.
+- **Staleness by a diff against the sync commit** (`git diff <sync commit> <commit>`): after a squash merge and a deleted branch, a fresh clone lacks that commit, and the diff errors instead of comparing.
 
 ## Consequences
 
 - Tasks that touch covered code cost more: a full frame, the verifier reading `done_when` before build, and the `breakage` lane.
 - A private check is updated in place while its PR is open, so another task on the base sees it stale until the merge, which is true: the model describes the branch.
-- The CI run of a shared check is the team's check, not a gate of the framework's own, which [ADR 0001](0001-the-user-always-merges.md) rules out.
+- The CI run of a shared check is the team's check, not a gate of the framework's own, which [ADR 0001](0001-the-user-always-merges.md) rules out. For a model, CI proves the model and, through the staleness test, that the covered files still match it; a code change made without updating the model fails the staleness test, not the model checker.
