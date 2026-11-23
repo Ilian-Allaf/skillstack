@@ -39,6 +39,7 @@ Swap in the real paths, numbers, and checks.
 /investigate how does the export retry work? are we sure a retry cannot write twice?
 /investigate why does memory grow after each sync? here is the heap snapshot: <path>
 /investigate prototype two layouts for the settings page, screenshots of each, and pick one
+/create-formal-verification the job lease and retry logic. a job must never run twice at once.
 /sharpen-prompt write a migration guide for the v2 config format
 ```
 
@@ -91,6 +92,7 @@ You merge. A stack merges from the bottom.
 /add-guardrail
 /learn-from-mistakes 123
 /test-skill-change the new feature playbook in branch better-feature-playbook
+/maintain-formal-verification
 /clean-worktrees
 ```
 

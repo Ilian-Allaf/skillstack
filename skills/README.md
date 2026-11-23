@@ -23,6 +23,8 @@ flowchart TB
     cleanwt["clean-worktrees<br/><i>free disk, keep unsaved work</i>"]
     guard["add-guardrail<br/><i>mistake → check</i>"]
     cva["create-app-driver<br/><i>teach the agent your app</i>"]
+    cfv["create-formal-verification<br/><i>prove one property, every case</i>"]
+    mfv["maintain-formal-verification<br/><i>formal check back in line</i>"]
     learn["learn-from-mistakes<br/><i>recorded activity → fix the layer</i>"]
     testskill["test-skill-change<br/><i>old vs new skill, judged blind</i>"]
     sharpen["sharpen-prompt<br/><i>a deeper prompt</i>"]
@@ -83,7 +85,10 @@ flowchart TB
   sharpen -.->|you send it| ship
   pr --> merge
   cva --> drive
-  cva -->|formal mode| prove
+  cfv --> prove
+  mfv --> prove
+  impact -.->|stale check: issue| mfv
+  setup -.->|hard zones| cfv
   guard --> checks
   learn --> guard
   learn -->|feature map gap| cva
@@ -95,7 +100,7 @@ flowchart TB
   classDef repoNode fill:#faf5ff,stroke:#7c3aed,color:#4c1d95,stroke-dasharray:4 3
   classDef shared fill:#f4f4f5,stroke:#71717a,color:#27272a
   class you,merge person
-  class choose,setup,shape,investigate,ship,queue,pause,resume,recall,catchup,cleanwt,guard,cva,learn,testskill,sharpen,plain entry
+  class choose,setup,shape,investigate,ship,queue,pause,resume,recall,catchup,cleanwt,guard,cva,cfv,mfv,learn,testskill,sharpen,plain entry
   class impact,verify,babysit inner
   class drive,prove,checks,tracker,pr repoNode
   class constitution shared

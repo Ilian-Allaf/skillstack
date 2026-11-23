@@ -137,6 +137,11 @@ When a skill changes, update its section here, in the same PR.
 - Claude Code, Memory: reads `AGENTS.md` when no `CLAUDE.md` exists (v2.1.277+), and "Not read: … anything under a `.agents/` directory". <https://code.claude.com/docs/en/memory>
 - Codex, Build skills: "Codex scans `.agents/skills` in every directory from your current working directory up to the repository root", "supports symlinked skill folders", and `agents/openai.yaml` `policy.allow_implicit_invocation`. <https://learn.chatgpt.com/docs/build-skills>
 
+## `skills/constitution/references/formal.md`
+
+- Source: pstack `create-formal-verification-skill` (What makes it good, Let the question choose the tool) and `maintain-formal-verification-skill` (Edit scope, update from the code) (Lauren Tan).
+- 2026-11-23: our adaptation: the rules shared by creation, maintenance, and a builder's update in one file; the shape of `prove-<area>`; the definition of a stale check, from pstack's sync commit.
+
 ## `skills/constitution/references/statechart.md`
 
 - Source: pstack `statechart` (Lauren Tan). Adapted: pstack ships a script that runs TLC and draws the chart; here the method is described and the tool is the repo's, or TLC run directly.
@@ -144,19 +149,26 @@ When a skill changes, update its section here, in the same PR.
 ## `skills/create-app-driver/SKILL.md`
 
 - 2026-11-20: the control CLI (`references/drivers.md`) and the template's "add a command, not a throwaway script", from pstack guide page "Verify the result and open a PR" (Lauren Tan).
-- Source: pstack `create-verification-skill`, `maintain-verification-skill`, and the formal variants.
+- Source: pstack `create-verification-skill` and `maintain-verification-skill`.
+- 2026-11-23: the formal mode moved out to `create-formal-verification` and `maintain-formal-verification`.
 
 ## `skills/create-app-driver/references/feature-map.md`
 
 - Source: pstack `create-verification-skill`, example `create-note.md`.
 
-## `skills/create-app-driver/references/formal.md`
-
-- Source: pstack `create-formal-verification-skill` and `maintain-formal-verification-skill` (Lauren Tan).
-
 ## `skills/create-app-driver/references/maintain.md`
 
 - Source: pstack `maintain-verification-skill`.
+
+## `skills/create-formal-verification/SKILL.md`
+
+- Source: pstack `create-formal-verification-skill` (Lauren Tan): choose the strongest target from the code, the question picks the tool, show it can fail, findings stay findings, follow the generated skill once on a scratch break before the handoff, the handoff list.
+- 2026-11-23: ours: the follow-it-cold run is done by a fresh subagent that holds only the path of `prove-<area>`; a shared check goes through a verdict and `babysit-pr`; no driver is required first.
+
+## `skills/maintain-formal-verification/SKILL.md`
+
+- Source: pstack `maintain-formal-verification-skill` (Lauren Tan): the four outcomes, run before changing anything, the four kinds of change, update from the code and not from the result, re-break after a pass, replay a counterexample to tell drift from a bug, the sync commit rules, the report.
+- 2026-11-23: ours: a builder's own change to covered code is handled in its run, so this pass covers the changes that skipped the check; each bug becomes an issue; the issue opened by `analyze-impact` for a stale check is closed or linked.
 
 ## `skills/investigate/SKILL.md`
 

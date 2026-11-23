@@ -48,7 +48,7 @@ You prepare this repo so every later task starts from facts, not guesses, and im
 9. **Audit the checks, if the user chose it.** Run [add-guardrail](../add-guardrail/SKILL.md) in audit mode. It changes nothing; its proposed corrections join the report, with the candidates from step 6.
    Done when: the audit report is attached, or the user declined it.
 
-10. **Give the readiness report.** What works, what is missing, and what is not confirmed; the PRs to merge, in order; the corrections proposed; the hard zones you saw, with the formal mode of `create-app-driver` as an option for each; and one first task to try. Start nothing.
+10. **Give the readiness report.** What works, what is missing, and what is not confirmed; the PRs to merge, in order; the corrections proposed; the hard zones you saw, with `/create-formal-verification` as an option for each; and one first task to try. Start nothing.
     Done when: the report covers every capability of step 2, every part of step 3, and every PR this run opened.
 
 ## Reply
