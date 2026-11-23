@@ -10,7 +10,7 @@ Size does not matter: a one-word fix and a rewrite face the same bar. A PR says 
 
 ## A new skill
 
-A new skill enters only when the same failure was seen twice and no existing skill can absorb it. If the behavior composes from existing skills, it gets no skill of its own.
+A new skill faces the same bar as any change, and its PR says why no existing skill can absorb it. If the behavior composes from existing skills, it gets no skill of its own.
 
 ## Out of scope
 

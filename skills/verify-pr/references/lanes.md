@@ -4,7 +4,7 @@ Each lane answers one question. The risk class picks the lanes (see [proof.md](.
 
 ## Before the lanes
 
-Your brief holds the task, `done_when`, the case list, risk class, playbook, the PR number, the head SHA, the path of the verifier's SKILL.md, driver paths (`~/.agents/projects/<project>/drive-*/SKILL.md`, or the repo files their routes name), and safe startup and access instructions. Keep it factual: the builder's reasoning, notes, impact report, and prior verdicts stay out. Name anything that leaked, including diagnostic text exposed by the code host, and record your model family.
+Your brief holds the task, `done_when`, the case list, risk class, playbook, the PR number, the head SHA, the path of the verifier's SKILL.md, driver paths (`~/.agents/projects/<project>/drive-*/SKILL.md`, or the repo files their routes name), the paths of the formal checks that cover a touched file (`~/.agents/projects/<project>/prove-*/SKILL.md`, or the repo files their routes name), and safe startup and access instructions. Keep it factual: the builder's reasoning, notes, impact report, and prior verdicts stay out. Name anything that leaked, including diagnostic text exposed by the code host, and record your model family.
 
 When the user launched you with a PR number alone, build that brief yourself: extract the task, `done_when`, case list, risk class, and playbook from the PR body through a filtered view, and the head SHA from the code host. If the view exposes diagnoses, record the leak. Missing startup or access instructions stay an explicit limit. A PR with no `done_when` or no risk class, such as a colleague's, gets its task inferred from its title and description and the class `medium`, both said in the verdict header; `replay` then runs only what the PR claims.
 
@@ -25,6 +25,8 @@ Find the drivers as [proof.md](../../constitution/references/proof.md) describes
 ### `breakage`: what does it break elsewhere?
 
 Run [analyze-impact](../../analyze-impact/SKILL.md) on the diff yourself and save the result. After the independent lanes finish, compare your safety fact with the one in the PR's Breakage section. A different fact, or a confirmed risk the PR does not list, is a finding.
+
+When the change alters code a formal check covers and that check was in sync on the base, judge the check as it now stands, against the rules of [formal.md](../../constitution/references/formal.md). Each part the PR changed points at the head's code by its `file:line`. Break the guarded code once in your worktree, as formal.md's Able to fail rule says for a model and for a harness, and run the check: a break it misses is a FAIL graded should, since the coverage row of its property no longer shows its case. A property reworded without evidence that the promise changed on purpose, or a bound reduced without a line in Proof, is a finding. Such a check left stale at the head is a FAIL graded should. A check stale on the base is the builder's Not verified case: check only that its issue exists.
 
 ### `adversarial`: can someone break it? (`high` only)
 

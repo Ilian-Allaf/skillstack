@@ -50,7 +50,8 @@ You are the index of this framework, so the user only has to remember you. You p
 | your disk fills up with the worktrees of past tasks | `/clean-worktrees` |
 | the agent cannot drive your app, or a PR is `needs-human` for lack of a driver | `/create-app-driver` |
 | the app changed and the agent drives it the old way | `/create-app-driver`, maintain mode |
-| a hard zone needs a check over every order of steps, or a `prove-<area>` check is stale | `/create-app-driver`, formal mode |
+| a race, a retry, a lock, or an invariant needs a check over every order of steps or every input, not only the cases tests reach | `/create-formal-verification <the area or the property>` |
+| a formal check (`prove-<area>`) is stale, or merges and refactors changed the code it covers | `/maintain-formal-verification <the check, or nothing for all>` |
 | you changed a skill and want to know whether it helps before you keep it | `/test-skill-change <the skill and the change>` |
 | you are about to send a prompt and want it aimed deeper | `/sharpen-prompt <your prompt>` |
 | the last reply was too dense to act on | `/say-it-plainly` |

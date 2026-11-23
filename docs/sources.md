@@ -20,6 +20,7 @@ When a skill changes, update its section here, in the same PR.
 ## `skills/analyze-impact/references/where-grep-stops.md`
 
 - Source: pstack `blast-radius`.
+- 2026-11-23: ours, [ADR 0017](adr/0017-a-formal-check-guards-every-task-that-touches-its-code.md): the Formal checks row runs the check as the PR updated it, and a check stale on the base proves nothing.
 
 ## `skills/babysit-pr/SKILL.md`
 
@@ -62,6 +63,7 @@ When a skill changes, update its section here, in the same PR.
 
 - Source: Lauren Tan ("our code review process has now really shrunk into looking at verification artifacts instead. So things like videos, screenshots, diagrams"), pstack `create-verification-skill` (feature map), pstack `statechart`.
 - (pstack `ketchup-video`)
+- 2026-11-23: ours, [ADR 0017](adr/0017-a-formal-check-guards-every-task-that-touches-its-code.md): a formal check stale on the base proves nothing, so its case goes under Not verified.
 
 ## `skills/constitution/references/decision-log.md`
 
@@ -129,6 +131,7 @@ When a skill changes, update its section here, in the same PR.
 - (pstack: "a small, obvious edit doesn't" need full rigor)
 - (Ray Amjad: "you don't really need a verifier to like verify that the contact form submits"; Anthropic "harness design": the evaluator "is worth the cost when the task sits beyond what the current model does reliably solo")
 - 2026-11-20, from the coherence audit: a missing driver is not a pass, from pstack "'Inconclusive' or wrong-surface is not a pass" and `autopilot-full` ("The verdict is not clean without the live lane"); a user-facing `low` change is proven on the app, from pstack `poteto-mode` ("Shipping UI: the matching control skill").
+- 2026-11-23: ours, [ADR 0017](adr/0017-a-formal-check-guards-every-task-that-touches-its-code.md): every file a formal check covers is a hard zone; where formal checks live and how a diff finds them, beside the drivers.
 
 ## `skills/constitution/references/target-repo.md` (where skills and instructions live, 2026-11-19)
 
@@ -137,6 +140,12 @@ When a skill changes, update its section here, in the same PR.
 - Claude Code, Memory: reads `AGENTS.md` when no `CLAUDE.md` exists (v2.1.277+), and "Not read: … anything under a `.agents/` directory". <https://code.claude.com/docs/en/memory>
 - Codex, Build skills: "Codex scans `.agents/skills` in every directory from your current working directory up to the repository root", "supports symlinked skill folders", and `agents/openai.yaml` `policy.allow_implicit_invocation`. <https://learn.chatgpt.com/docs/build-skills>
 
+## `skills/constitution/references/formal.md`
+
+- Source: pstack `create-formal-verification-skill` (What makes it good, Let the question choose the tool) and `maintain-formal-verification-skill` (Edit scope, update from the code) (Lauren Tan).
+- 2026-11-23: our adaptation: the rules shared by creation, maintenance, and a builder's update in one file; the shape of `prove-<area>`; the definition of a stale check, from pstack's sync commit.
+- 2026-11-23: ours, [ADR 0017](adr/0017-a-formal-check-guards-every-task-that-touches-its-code.md): In a task, staleness compared by content, not history, and where a private harness runs.
+
 ## `skills/constitution/references/statechart.md`
 
 - Source: pstack `statechart` (Lauren Tan). Adapted: pstack ships a script that runs TLC and draws the chart; here the method is described and the tool is the repo's, or TLC run directly.
@@ -144,19 +153,27 @@ When a skill changes, update its section here, in the same PR.
 ## `skills/create-app-driver/SKILL.md`
 
 - 2026-11-20: the control CLI (`references/drivers.md`) and the template's "add a command, not a throwaway script", from pstack guide page "Verify the result and open a PR" (Lauren Tan).
-- Source: pstack `create-verification-skill`, `maintain-verification-skill`, and the formal variants.
+- Source: pstack `create-verification-skill` and `maintain-verification-skill`.
+- 2026-11-23: the formal mode moved out to `create-formal-verification` and `maintain-formal-verification`.
 
 ## `skills/create-app-driver/references/feature-map.md`
 
 - Source: pstack `create-verification-skill`, example `create-note.md`.
 
-## `skills/create-app-driver/references/formal.md`
-
-- Source: pstack `create-formal-verification-skill` and `maintain-formal-verification-skill` (Lauren Tan).
-
 ## `skills/create-app-driver/references/maintain.md`
 
 - Source: pstack `maintain-verification-skill`.
+
+## `skills/create-formal-verification/SKILL.md`
+
+- Source: pstack `create-formal-verification-skill` (Lauren Tan): choose the strongest target from the code, the question picks the tool, show it can fail, findings stay findings, follow the generated skill once on a scratch break before the handoff, the handoff list.
+- 2026-11-23: ours: the follow-it-cold run is done by a fresh subagent that holds only the path of `prove-<area>`; a shared check goes through a verdict and `babysit-pr`; no driver is required first.
+- 2026-11-23: ours, [ADR 0017](adr/0017-a-formal-check-guards-every-task-that-touches-its-code.md): a shared check also runs in the repo's CI.
+
+## `skills/maintain-formal-verification/SKILL.md`
+
+- Source: pstack `maintain-formal-verification-skill` (Lauren Tan): the four outcomes, run before changing anything, the four kinds of change, update from the code and not from the result, re-break after a pass, replay a counterexample to tell drift from a bug, the sync commit rules, the report.
+- 2026-11-23: ours: a builder's own change to covered code is handled in its run, so this pass covers the changes that skipped the check; each bug becomes an issue; the issue opened by `analyze-impact` for a stale check is closed or linked.
 
 ## `skills/investigate/SKILL.md`
 
@@ -187,6 +204,7 @@ When a skill changes, update its section here, in the same PR.
 
 - Source: our verification layers ([design 02](history/02-architecture.md), section 5); Matt Pocock `retro` for the target repo files.
 - (Matt Pocock `retro`)
+- 2026-11-23: ours, [ADR 0017](adr/0017-a-formal-check-guards-every-task-that-touches-its-code.md): the formal check route.
 
 ## `skills/learn-from-mistakes/references/synthesis.md`
 
@@ -264,6 +282,7 @@ When a skill changes, update its section here, in the same PR.
 ## `skills/ship/SKILL.md`, `skills/ship/references/verification.md`, and `skills/ship/scripts/check_evidence.py`
 
 - 2026-11-22: pstack `figure-it-out` puts the verification harness before implementation; `poteto-mode/playbooks/eval.md` checks activity rather than self-report; `poteto-mode/scripts/check-plan.mjs` mechanically checks plan structure. Our adaptation checks a local evidence index for certainty levels, nonempty artifact files, step results and traces, and stale verdicts. It cannot judge content or completeness against the original task. Tests live in `tools/test_check_evidence.py`. This is a local task check, not a framework CI gate in target repos (ADR 0001).
+- 2026-11-23: ours, [ADR 0017](adr/0017-a-formal-check-guards-every-task-that-touches-its-code.md): build's Done when requires each altered formal check to describe the head.
 
 ## `skills/ship/references/design.md`
 
@@ -343,6 +362,7 @@ When a skill changes, update its section here, in the same PR.
 - Source: Matt Pocock `code-review` (Standards axis, Fowler smells).
 - 2026-11-20: the standards lane checks the shape against the red flags, the architecture principles, and the PR's design note, as pstack `architect` holds an implementation to its sketch.
 - 2026-11-22: save independent live and breakage results before comparing the PR's evidence, paired with the information exposure change in `verify-pr` above.
+- 2026-11-23: ours, [ADR 0017](adr/0017-a-formal-check-guards-every-task-that-touches-its-code.md): the `breakage` lane judges a formal check the change altered, by breaking the guarded code once.
 
 ## First-use corrections (2026-11-22)
 

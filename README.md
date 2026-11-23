@@ -80,6 +80,8 @@ Every skill is launched by you; none is picked by the model on its own. Each one
 - **[catch-me-up](skills/catch-me-up/SKILL.md)**: Tells you what changed while you were away, with the screenshots and videos the work produced, and every call waiting on you.
 - **[clean-worktrees](skills/clean-worktrees/SKILL.md)**: Frees disk by removing the worktrees of finished or abandoned tasks, and never loses uncommitted work.
 - **[create-app-driver](skills/create-app-driver/SKILL.md)**: Writes the repo's driver, a skill that launches, drives, and observes the app like a user, with its feature map.
+- **[create-formal-verification](skills/create-formal-verification/SKILL.md)**: Proves one property of the code where a bug costs the most and tests reach the least, over every case in a stated scope, and writes the check the next agent runs on every change to that code.
+- **[maintain-formal-verification](skills/maintain-formal-verification/SKILL.md)**: Brings each formal check back in line with the code after changes that skipped it, and says for each failure whether the check drifted or the code has a bug.
 - **[add-guardrail](skills/add-guardrail/SKILL.md)**: Makes a repeated mistake impossible: turns it into a check, proven red on the real mistake.
 - **[learn-from-mistakes](skills/learn-from-mistakes/SKILL.md)**: Reconstructs a session from recorded activity, or studies a failed PR or escaped bug, and proposes fixes to the layer that missed it.
 - **[test-skill-change](skills/test-skill-change/SKILL.md)**: Tests blind whether a change to a skill makes the agent work better, old and new on the same task. Applies nothing.

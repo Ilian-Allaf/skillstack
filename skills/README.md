@@ -233,7 +233,28 @@ The framework ships shared workflows. Project-specific knowledge lives separatel
 
 [create-app-driver](create-app-driver/SKILL.md) creates **`drive-<app>`**, one driver per surface: how to launch, check health, drive the app, capture evidence, and clean up. Its **feature map** records entry points, drive steps, and expected end states so builder and verifier know which paths to cover.
 
-Its [formal mode](create-app-driver/references/formal.md) creates **`prove-<area>`** for a property whose failures tests rarely reach, using a model checker or code verifier as appropriate. `analyze-impact` runs it when covered files are touched; stale models are reported and need a maintenance pass.
+[create-formal-verification](create-formal-verification/SKILL.md) creates **`prove-<area>`** for a property whose failures tests rarely reach, using a model checker or code verifier as appropriate. It ties the check to named code, states its bounds and assumptions, and proves that it catches a deliberate break. [maintain-formal-verification](maintain-formal-verification/SKILL.md) brings checks back in line after changes that skipped them, distinguishing drift in the check from a bug in the code.
+
+During a task, covered files make the change a hard zone and each property becomes a case. Framing checks staleness on the base. A check already stale stays under Not verified, with an issue recommending maintenance. For a check in sync on the base, the builder updates it when covered code changes and proves that it catches a break; the verifier judges it independently in the `breakage` lane. The shared rules and required evidence live in [formal.md](constitution/references/formal.md).
+
+```mermaid
+flowchart TB
+    setup["setup-repo<br/>Identify hard zones"]
+    create["create-formal-verification<br/>Check one property; prove it can fail"]
+    prove[("prove-#lt;area#gt;<br/>Property, covered code, command, bounds")]
+    ship["ship<br/>Find covered files; check base staleness"]
+    update["Build<br/>Update checks in sync on base; catch a break"]
+    maintain["maintain-formal-verification<br/>Bring skipped checks back in line"]
+    verify["verify-pr<br/>Judge in-sync checks in the breakage lane"]
+    setup -.->|recommend| create
+    create --> prove
+    ship --> prove
+    ship -->|in sync on base| update
+    update --> prove
+    ship -.->|stale on base: issue for user| maintain
+    maintain --> prove
+    prove --> verify
+```
 
 These generated skills are project-specific, not additional skills shipped by this framework. When you share one, it lives under `.agents/skills/` in the repo and the project folder contains a one-hop route to it. `<project>` is derived from the repo's remote. File ownership, routing, and label definitions are in [target-repo.md](constitution/references/target-repo.md).
 
@@ -277,7 +298,7 @@ flowchart TB
 flowchart TB
     learn["learn-from-mistakes<br/>Find the layer that missed a mistake"]
     guard["add-guardrail<br/>Make a repeated mistake impossible or loud"]
-    driver["create-app-driver<br/>Create or maintain drive and prove skills"]
+    driver["create-app-driver<br/>Create or maintain app drivers and feature maps"]
     testskill["test-skill-change<br/>Compare old and new skill behavior blind"]
     learn -->|approved code-level lesson| guard
     learn -->|approved feature-map gap| driver
