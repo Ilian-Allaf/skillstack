@@ -1,0 +1,127 @@
+{
+  "id": "DNwMbJf5SAI",
+  "title": "How Anthropic Verifies Code Written by Claude",
+  "uploader": "Ray Amjad",
+  "channel_url": "https://www.youtube.com/channel/UCLA7cJBnqr0nLF2bQBD9uUg",
+  "webpage_url": "https://www.youtube.com/watch?v=DNwMbJf5SAI",
+  "upload_date": "20261123",
+  "duration": 1524,
+  "chapters": [
+    {
+      "start_time": 0,
+      "title": "Intro",
+      "end_time": 50
+    },
+    {
+      "start_time": 50,
+      "title": "The Class",
+      "end_time": 75
+    },
+    {
+      "start_time": 75,
+      "title": "Three Parts",
+      "end_time": 99
+    },
+    {
+      "start_time": 99,
+      "title": "Verification Loops",
+      "end_time": 147
+    },
+    {
+      "start_time": 147,
+      "title": "Slack & Percy",
+      "end_time": 190
+    },
+    {
+      "start_time": 190,
+      "title": "First Verification",
+      "end_time": 243
+    },
+    {
+      "start_time": 243,
+      "title": "Surfaces",
+      "end_time": 316
+    },
+    {
+      "start_time": 316,
+      "title": "Verification Skill",
+      "end_time": 376
+    },
+    {
+      "start_time": 376,
+      "title": "Parallel Sandboxes",
+      "end_time": 427
+    },
+    {
+      "start_time": 427,
+      "title": "Setup, Drive, Check",
+      "end_time": 503
+    },
+    {
+      "start_time": 503,
+      "title": "Agent Identities",
+      "end_time": 633
+    },
+    {
+      "start_time": 633,
+      "title": "Bug Bash",
+      "end_time": 760
+    },
+    {
+      "start_time": 760,
+      "title": "Private Cloud",
+      "end_time": 854
+    },
+    {
+      "start_time": 854,
+      "title": "Bug Report",
+      "end_time": 909
+    },
+    {
+      "start_time": 909,
+      "title": "Stress Test",
+      "end_time": 966
+    },
+    {
+      "start_time": 966,
+      "title": "Keep It Working",
+      "end_time": 1045
+    },
+    {
+      "start_time": 1045,
+      "title": "Hybrid Tests",
+      "end_time": 1201
+    },
+    {
+      "start_time": 1201,
+      "title": "Fuzzing",
+      "end_time": 1230
+    },
+    {
+      "start_time": 1230,
+      "title": "What Slips Through",
+      "end_time": 1262
+    },
+    {
+      "start_time": 1262,
+      "title": "Safari Bug",
+      "end_time": 1345
+    },
+    {
+      "start_time": 1345,
+      "title": "Reliability Checklist",
+      "end_time": 1402
+    },
+    {
+      "start_time": 1402,
+      "title": "Verify the Verifier",
+      "end_time": 1492
+    },
+    {
+      "start_time": 1492,
+      "title": "Outro",
+      "end_time": 1524
+    }
+  ],
+  "retrieved_at": "2026-11-23"
+}

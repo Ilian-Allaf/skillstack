@@ -5,6 +5,8 @@ Toutes les sources importées dans cette base de connaissance, avec leur provena
 **Date d'import** : 2026-11-16  
 **Registre machine** : [`sources.json`](sources.json)
 
+**Additional import, 2026-11-23**: sources 7 and 8 below. Earlier source records are unchanged.
+
 ---
 
 ## Vue d'ensemble
@@ -17,6 +19,8 @@ Toutes les sources importées dans cette base de connaissance, avec leur provena
 | 4 | [All Code Is Slop (Except Mine)](https://www.youtube.com/watch?v=O_zcc6Xl12g) | Vidéo | Lauren Tan (AI Engineer) | 2026-11-14 | YouTube standard | [`SOURCE.md`](sources/videos/2026-11-14-all-code-is-slop-lauren-tan/SOURCE.md) · [`transcript`](sources/videos/2026-11-14-all-code-is-slop-lauren-tan/transcript.md) · [`nectar`](sources/videos/2026-11-14-all-code-is-slop-lauren-tan/nectar.md) |
 | 5 | [OpenAI and Anthropic Agree on What Comes After Loops](https://www.youtube.com/watch?v=yrRpnx_iugY) | Vidéo | Ray Amjad | 2026-11-04 | YouTube standard | [`SOURCE.md`](sources/videos/2026-11-04-what-comes-after-loops-ray-amjad/SOURCE.md) · [`transcript`](sources/videos/2026-11-04-what-comes-after-loops-ray-amjad/transcript.md) · [`nectar`](sources/videos/2026-11-04-what-comes-after-loops-ray-amjad/nectar.md) |
 | 6 | [Building always-on agents](https://claude.com/fr/resources/articles/building-always-on-agents) | Article | William Hu (Anthropic) | 2026-11-13 | © Anthropic, usage documentaire | [`SOURCE.md`](sources/articles/2026-11-13-building-always-on-agents/SOURCE.md) · [`content`](sources/articles/2026-11-13-building-always-on-agents/content.md) · [`nectar`](sources/articles/2026-11-13-building-always-on-agents/nectar.md) |
+| 7 | [How the Claude Code team thinks about verification](https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/) | Article | Addy Osmani (Anthropic) | 2026-11-16 | © Anthropic; no redistribution license identified | [`SOURCE.md`](sources/articles/2026-11-16-claude-code-verification/SOURCE.md) · [reading notes](sources/articles/2026-11-16-claude-code-verification/content.md) · [nectar](sources/articles/2026-11-16-claude-code-verification/nectar.md) |
+| 8 | [How Anthropic Verifies Code Written by Claude](https://www.youtube.com/watch?v=DNwMbJf5SAI) | Video | Ray Amjad | 2026-11-23 | No redistribution license verified | [`SOURCE.md`](sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad/SOURCE.md) · [transcript](sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad/transcript.md) · [timestamped notes](sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad/notes.md) · [nectar](sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad/nectar.md) |
 
 ---
 
@@ -76,6 +80,27 @@ Toutes les sources importées dans cette base de connaissance, avec leur provena
 - **Publié le** : 2026-11-13
 - **Contenu** : version hors-ligne nettoyée, navigation et articles associés retirés. Les diagrammes d'origine sont conservés dans `assets/`.
 - **Droits** : contenu © Anthropic, conservé à des fins de recherche documentaire. Ne pas republier comme contenu original.
+
+---
+
+## Additional provenance, collected 2026-11-23
+
+### 7. Article — How the Claude Code team thinks about verification
+
+- **URL**: <https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/>
+- **Author**: Addy Osmani (Anthropic).
+- **Published**: 2026-11-16; retrieved 2026-11-23.
+- **Import**: paraphrased reading notes and dated analysis, not a full article copy. No illustrations imported.
+- **Reliability**: a primary account of the team's process. Internal results were not independently reproduced.
+
+### 8. Video — How Anthropic Verifies Code Written by Claude
+
+- **URL**: <https://www.youtube.com/watch?v=DNwMbJf5SAI>
+- **Author**: Ray Amjad.
+- **Published**: 2026-11-23; retrieved 2026-11-23; duration 25:24.
+- **Collection**: title and channel checked through YouTube oEmbed; publication date, duration and chapters through `yt-dlp`; automatic English captions retrieved with `youtube-transcript-api`. This import retains 822 timed segments in `raw/segments.json`, a readable timestamped transcript in `transcript.md`, selected metadata, reading notes and analysis. The transcript uses the same collection format as source 4 (Lauren Tan).
+- **Dependency**: the video explicitly discusses source 7 and adds the presenter's demonstrations. Do not count both as independent evidence of the article's claims.
+- **Framework status**: reference material only. The analyses distinguish proposals from adopted decisions and flag practices that conflict with accepted ADRs.
 
 ---
 

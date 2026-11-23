@@ -1,0 +1,4117 @@
+{
+  "video_id": "DNwMbJf5SAI",
+  "title": "How Anthropic Verifies Code Written by Claude",
+  "language": "en",
+  "segments": [
+    {
+      "start": 0.08,
+      "duration": 3.04,
+      "text": "All right, so a few days ago, the Claude"
+    },
+    {
+      "start": 1.6,
+      "duration": 3.04,
+      "text": "code team published a really great"
+    },
+    {
+      "start": 3.12,
+      "duration": 3.44,
+      "text": "article about how they think about"
+    },
+    {
+      "start": 4.64,
+      "duration": 4.24,
+      "text": "verification when so much of their code"
+    },
+    {
+      "start": 6.56,
+      "duration": 3.44,
+      "text": "is being written and reviewed by Claude."
+    },
+    {
+      "start": 8.88,
+      "duration": 2.879,
+      "text": "Now, I will be going through many of"
+    },
+    {
+      "start": 10.0,
+      "duration": 3.92,
+      "text": "these ideas in detail with a whole bunch"
+    },
+    {
+      "start": 11.759,
+      "duration": 3.92,
+      "text": "of examples because as Boris Churnney"
+    },
+    {
+      "start": 13.92,
+      "duration": 3.52,
+      "text": "said earlier this year, if you give"
+    },
+    {
+      "start": 15.679,
+      "duration": 3.841,
+      "text": "Claude a way to verify its own work,"
+    },
+    {
+      "start": 17.44,
+      "duration": 3.759,
+      "text": "then it will two to 3x the quality of"
+    },
+    {
+      "start": 19.52,
+      "duration": 3.12,
+      "text": "the final result. So, you basically want"
+    },
+    {
+      "start": 21.199,
+      "duration": 3.201,
+      "text": "to make sure you're investing in your"
+    },
+    {
+      "start": 22.64,
+      "duration": 2.96,
+      "text": "verification setups. And generally when"
+    },
+    {
+      "start": 24.4,
+      "duration": 3.039,
+      "text": "I have been doing consulting for"
+    },
+    {
+      "start": 25.6,
+      "duration": 3.759,
+      "text": "different engineering teams, one of the"
+    },
+    {
+      "start": 27.439,
+      "duration": 3.68,
+      "text": "first things I help them with is setting"
+    },
+    {
+      "start": 29.359,
+      "duration": 3.281,
+      "text": "up different verification environments,"
+    },
+    {
+      "start": 31.119,
+      "duration": 3.44,
+      "text": "ensuring these environments are well"
+    },
+    {
+      "start": 32.64,
+      "duration": 3.919,
+      "text": "designed and tracking how well their"
+    },
+    {
+      "start": 34.559,
+      "duration": 3.441,
+      "text": "verifiers are performing over time. And"
+    },
+    {
+      "start": 36.559,
+      "duration": 3.201,
+      "text": "that's kind of related to how the Cloud"
+    },
+    {
+      "start": 38.0,
+      "duration": 3.76,
+      "text": "Code team tries to ensure their"
+    },
+    {
+      "start": 39.76,
+      "duration": 3.28,
+      "text": "verifiers are kept honest. Now, I won't"
+    },
+    {
+      "start": 41.76,
+      "duration": 2.72,
+      "text": "be going through every single idea"
+    },
+    {
+      "start": 43.04,
+      "duration": 3.6,
+      "text": "because if I did, then this video would"
+    },
+    {
+      "start": 44.48,
+      "duration": 4.16,
+      "text": "be well over 1 hour long. So I will be"
+    },
+    {
+      "start": 46.64,
+      "duration": 3.439,
+      "text": "focusing on the highle ideas but if you"
+    },
+    {
+      "start": 48.64,
+      "duration": 3.36,
+      "text": "want to see me go through pretty much"
+    },
+    {
+      "start": 50.079,
+      "duration": 3.921,
+      "text": "all of the ideas then you will find that"
+    },
+    {
+      "start": 52.0,
+      "duration": 3.6,
+      "text": "inside my classes. So I actually have a"
+    },
+    {
+      "start": 54.0,
+      "duration": 3.199,
+      "text": "black Friday sale going on right now for"
+    },
+    {
+      "start": 55.6,
+      "duration": 3.52,
+      "text": "my next class that is starting on the"
+    },
+    {
+      "start": 57.199,
+      "duration": 4.081,
+      "text": "7th of December which will be about"
+    },
+    {
+      "start": 59.12,
+      "duration": 4.48,
+      "text": "codebase design verification loops agent"
+    },
+    {
+      "start": 61.28,
+      "duration": 4.4,
+      "text": "swarms software factories and system one"
+    },
+    {
+      "start": 63.6,
+      "duration": 4.24,
+      "text": "models. So it is 50% off with the Black"
+    },
+    {
+      "start": 65.68,
+      "duration": 4.0,
+      "text": "Friday sale and there are triple the"
+    },
+    {
+      "start": 67.84,
+      "duration": 3.52,
+      "text": "number of office hours compared to the"
+    },
+    {
+      "start": 69.68,
+      "duration": 3.439,
+      "text": "previous classes that will be all over"
+    },
+    {
+      "start": 71.36,
+      "duration": 3.759,
+      "text": "Zoom. So if you do want to end the year"
+    },
+    {
+      "start": 73.119,
+      "duration": 3.601,
+      "text": "being on the forefront of agent coding,"
+    },
+    {
+      "start": 75.119,
+      "duration": 3.921,
+      "text": "then this is a place. Now I'm going to"
+    },
+    {
+      "start": 76.72,
+      "duration": 4.399,
+      "text": "split up the video into three parts. The"
+    },
+    {
+      "start": 79.04,
+      "duration": 4.56,
+      "text": "first is does a change actually work."
+    },
+    {
+      "start": 81.119,
+      "duration": 4.561,
+      "text": "The second part is will it keep working?"
+    },
+    {
+      "start": 83.6,
+      "duration": 4.159,
+      "text": "And the final one will be what happens"
+    },
+    {
+      "start": 85.68,
+      "duration": 3.6,
+      "text": "when something slips through. So you can"
+    },
+    {
+      "start": 87.759,
+      "duration": 2.72,
+      "text": "kind of skip around to whichever part"
+    },
+    {
+      "start": 89.28,
+      "duration": 2.96,
+      "text": "you find the most helpful and"
+    },
+    {
+      "start": 90.479,
+      "duration": 3.521,
+      "text": "interesting. And if you already know a"
+    },
+    {
+      "start": 92.24,
+      "duration": 3.04,
+      "text": "bit about the basics of verification,"
+    },
+    {
+      "start": 94.0,
+      "duration": 2.88,
+      "text": "then you may want to skip a couple"
+    },
+    {
+      "start": 95.28,
+      "duration": 3.199,
+      "text": "minutes ahead. Now at the start of the"
+    },
+    {
+      "start": 96.88,
+      "duration": 3.04,
+      "text": "article and prop say that verification"
+    },
+    {
+      "start": 98.479,
+      "duration": 3.521,
+      "text": "loops are the building block that let"
+    },
+    {
+      "start": 99.92,
+      "duration": 3.519,
+      "text": "you delegate more work to claude. And I"
+    },
+    {
+      "start": 102.0,
+      "duration": 3.36,
+      "text": "did kind of talk about this in my last"
+    },
+    {
+      "start": 103.439,
+      "duration": 3.521,
+      "text": "video all about loops where I mentioned"
+    },
+    {
+      "start": 105.36,
+      "duration": 4.399,
+      "text": "that the setup that I use every single"
+    },
+    {
+      "start": 106.96,
+      "duration": 4.799,
+      "text": "day is this one where I have a builder"
+    },
+    {
+      "start": 109.759,
+      "duration": 4.241,
+      "text": "that's looping back and forth with a"
+    },
+    {
+      "start": 111.759,
+      "duration": 4.561,
+      "text": "review agent that then loops back and"
+    },
+    {
+      "start": 114.0,
+      "duration": 3.68,
+      "text": "forth with a verifier up to three times."
+    },
+    {
+      "start": 116.32,
+      "duration": 3.439,
+      "text": "And the thing that most people are still"
+    },
+    {
+      "start": 117.68,
+      "duration": 3.84,
+      "text": "missing from their setup is having a"
+    },
+    {
+      "start": 119.759,
+      "duration": 3.601,
+      "text": "verifier that their builder can loop"
+    },
+    {
+      "start": 121.52,
+      "duration": 3.84,
+      "text": "back and forth with. and Enthropic do"
+    },
+    {
+      "start": 123.36,
+      "duration": 4.16,
+      "text": "say that without this you can only run"
+    },
+    {
+      "start": 125.36,
+      "duration": 3.759,
+      "text": "one or two clouds at a time because you"
+    },
+    {
+      "start": 127.52,
+      "duration": 3.439,
+      "text": "then have to check every single change"
+    },
+    {
+      "start": 129.119,
+      "duration": 3.521,
+      "text": "yourself before you trust enough to"
+    },
+    {
+      "start": 130.959,
+      "duration": 4.081,
+      "text": "merge in. So in this video I want to"
+    },
+    {
+      "start": 132.64,
+      "duration": 4.64,
+      "text": "zoom in on the verifier and walk through"
+    },
+    {
+      "start": 135.04,
+      "duration": 4.16,
+      "text": "how Enthropic and also I think about"
+    },
+    {
+      "start": 137.28,
+      "duration": 4.319,
+      "text": "this. So the first part of the video is"
+    },
+    {
+      "start": 139.2,
+      "duration": 3.84,
+      "text": "how do we know the change actually works"
+    },
+    {
+      "start": 141.599,
+      "duration": 2.961,
+      "text": "without us having to click around"
+    },
+    {
+      "start": 143.04,
+      "duration": 2.96,
+      "text": "through the application ourselves. Now,"
+    },
+    {
+      "start": 144.56,
+      "duration": 2.88,
+      "text": "I'm going to be using Slack for most of"
+    },
+    {
+      "start": 146.0,
+      "duration": 3.68,
+      "text": "this video because even though most of"
+    },
+    {
+      "start": 147.44,
+      "duration": 3.84,
+      "text": "my videos are inside of Cloud Code in"
+    },
+    {
+      "start": 149.68,
+      "duration": 3.12,
+      "text": "the terminal, most of my day-to-day"
+    },
+    {
+      "start": 151.28,
+      "duration": 3.679,
+      "text": "building actually happens inside of"
+    },
+    {
+      "start": 152.8,
+      "duration": 3.92,
+      "text": "Slack with my agents running inside of"
+    },
+    {
+      "start": 154.959,
+      "duration": 3.28,
+      "text": "cloud sandboxes. And I think that if"
+    },
+    {
+      "start": 156.72,
+      "duration": 3.04,
+      "text": "you're not building with your agents in"
+    },
+    {
+      "start": 158.239,
+      "duration": 3.121,
+      "text": "this kind of way, then it's definitely"
+    },
+    {
+      "start": 159.76,
+      "duration": 3.44,
+      "text": "something you want to try out because"
+    },
+    {
+      "start": 161.36,
+      "duration": 3.76,
+      "text": "pretty much every single agent first"
+    },
+    {
+      "start": 163.2,
+      "duration": 4.08,
+      "text": "company that I know is building in a"
+    },
+    {
+      "start": 165.12,
+      "duration": 4.08,
+      "text": "very similar manner, including the cloud"
+    },
+    {
+      "start": 167.28,
+      "duration": 4.16,
+      "text": "code team themselves. So when I went to"
+    },
+    {
+      "start": 169.2,
+      "duration": 3.84,
+      "text": "AI engineer code in San Francisco last"
+    },
+    {
+      "start": 171.44,
+      "duration": 3.6,
+      "text": "week, one of the biggest things that"
+    },
+    {
+      "start": 173.04,
+      "duration": 4.0,
+      "text": "surprised me is that the cloud code"
+    },
+    {
+      "start": 175.04,
+      "duration": 3.839,
+      "text": "terminal team does not actually build"
+    },
+    {
+      "start": 177.04,
+      "duration": 3.52,
+      "text": "cloud code terminal inside of the"
+    },
+    {
+      "start": 178.879,
+      "duration": 4.481,
+      "text": "terminal itself. They actually build it"
+    },
+    {
+      "start": 180.56,
+      "duration": 4.959,
+      "text": "via claude tag inside of Slack. I do"
+    },
+    {
+      "start": 183.36,
+      "duration": 4.08,
+      "text": "also go into the Slack first approach in"
+    },
+    {
+      "start": 185.519,
+      "duration": 3.121,
+      "text": "way more detail inside my classes. So"
+    },
+    {
+      "start": 187.44,
+      "duration": 2.879,
+      "text": "I'm going to go through a really simple"
+    },
+    {
+      "start": 188.64,
+      "duration": 3.28,
+      "text": "example so you can see what verification"
+    },
+    {
+      "start": 190.319,
+      "duration": 3.92,
+      "text": "looks like. So, I'm going to tag my"
+    },
+    {
+      "start": 191.92,
+      "duration": 4.399,
+      "text": "agent Percy over here and then say,"
+    },
+    {
+      "start": 194.239,
+      "duration": 4.0,
+      "text": "\"Hey, for my application agent stack,"
+    },
+    {
+      "start": 196.319,
+      "duration": 4.56,
+      "text": "can you basically verify that the create"
+    },
+    {
+      "start": 198.239,
+      "duration": 4.0,
+      "text": "agent functionality works end to end?"
+    },
+    {
+      "start": 200.879,
+      "duration": 3.041,
+      "text": "Anything that you're missing, can you"
+    },
+    {
+      "start": 202.239,
+      "duration": 3.601,
+      "text": "install into the sandbox that you're"
+    },
+    {
+      "start": 203.92,
+      "duration": 3.28,
+      "text": "inside?\" And then send me a video"
+    },
+    {
+      "start": 205.84,
+      "duration": 3.2,
+      "text": "recording back. And I'm actually going"
+    },
+    {
+      "start": 207.2,
+      "duration": 3.679,
+      "text": "to tell it to not use any skills that it"
+    },
+    {
+      "start": 209.04,
+      "duration": 3.44,
+      "text": "has installed because I want to make a"
+    },
+    {
+      "start": 210.879,
+      "duration": 3.28,
+      "text": "verification skill. So, what it's going"
+    },
+    {
+      "start": 212.48,
+      "duration": 3.679,
+      "text": "to do is clone my application agent"
+    },
+    {
+      "start": 214.159,
+      "duration": 3.761,
+      "text": "stack that you can see over here into a"
+    },
+    {
+      "start": 216.159,
+      "duration": 3.761,
+      "text": "sandbox. Then figure out how to boot it"
+    },
+    {
+      "start": 217.92,
+      "duration": 3.92,
+      "text": "up locally with a database with Reddius"
+    },
+    {
+      "start": 219.92,
+      "duration": 3.44,
+      "text": "and everything else. Open up a browser"
+    },
+    {
+      "start": 221.84,
+      "duration": 2.88,
+      "text": "and then using something kind of like"
+    },
+    {
+      "start": 223.36,
+      "duration": 3.519,
+      "text": "playright, it will click through the"
+    },
+    {
+      "start": 224.72,
+      "duration": 4.159,
+      "text": "application whilst taking screenshots"
+    },
+    {
+      "start": 226.879,
+      "duration": 4.08,
+      "text": "along the way the same way that a real"
+    },
+    {
+      "start": 228.879,
+      "duration": 3.761,
+      "text": "user would and then deliver a recording"
+    },
+    {
+      "start": 230.959,
+      "duration": 3.36,
+      "text": "back to me on Slack. And the main point"
+    },
+    {
+      "start": 232.64,
+      "duration": 3.44,
+      "text": "over here is that the agent will be"
+    },
+    {
+      "start": 234.319,
+      "duration": 3.521,
+      "text": "checking the flow that I described,"
+    },
+    {
+      "start": 236.08,
+      "duration": 3.84,
+      "text": "which is creating a brand new agent on"
+    },
+    {
+      "start": 237.84,
+      "duration": 4.08,
+      "text": "the same place that a real user would"
+    },
+    {
+      "start": 239.92,
+      "duration": 3.28,
+      "text": "actually be meeting that change. And"
+    },
+    {
+      "start": 241.92,
+      "duration": 3.679,
+      "text": "that's what I'm going to be calling the"
+    },
+    {
+      "start": 243.2,
+      "duration": 5.2,
+      "text": "surface. So surface could be a web page,"
+    },
+    {
+      "start": 245.599,
+      "duration": 4.56,
+      "text": "a API, a CLI, even a mobile app."
+    },
+    {
+      "start": 248.4,
+      "duration": 3.28,
+      "text": "Basically, whatever place it uses are"
+    },
+    {
+      "start": 250.159,
+      "duration": 2.8,
+      "text": "interacting with the application. And"
+    },
+    {
+      "start": 251.68,
+      "duration": 3.6,
+      "text": "the reason why it's important for the"
+    },
+    {
+      "start": 252.959,
+      "duration": 4.321,
+      "text": "agent to check at the surface is because"
+    },
+    {
+      "start": 255.28,
+      "duration": 4.4,
+      "text": "otherwise it will default to running"
+    },
+    {
+      "start": 257.28,
+      "duration": 4.4,
+      "text": "whatever is easiest and that may be a"
+    },
+    {
+      "start": 259.68,
+      "duration": 3.36,
+      "text": "unit test or calling an endpoint and"
+    },
+    {
+      "start": 261.68,
+      "duration": 3.519,
+      "text": "then basically claiming that is"
+    },
+    {
+      "start": 263.04,
+      "duration": 3.52,
+      "text": "verified. But as anthropic article talks"
+    },
+    {
+      "start": 265.199,
+      "duration": 3.201,
+      "text": "about we want to make sure that we have"
+    },
+    {
+      "start": 266.56,
+      "duration": 3.6,
+      "text": "endto-end testing which is the most"
+    },
+    {
+      "start": 268.4,
+      "duration": 3.359,
+      "text": "reliable form of testing and that"
+    },
+    {
+      "start": 270.16,
+      "duration": 2.72,
+      "text": "involves meeting the change at the same"
+    },
+    {
+      "start": 271.759,
+      "duration": 3.041,
+      "text": "surface that a user would be"
+    },
+    {
+      "start": 272.88,
+      "duration": 4.08,
+      "text": "experiencing it at. Okay. So now I came"
+    },
+    {
+      "start": 274.8,
+      "duration": 4.16,
+      "text": "back and I also mentioned let me know of"
+    },
+    {
+      "start": 276.96,
+      "duration": 4.08,
+      "text": "any bugs you spot or anything that feels"
+    },
+    {
+      "start": 278.96,
+      "duration": 3.679,
+      "text": "weird or off. And scrolling down, this"
+    },
+    {
+      "start": 281.04,
+      "duration": 2.879,
+      "text": "is a video that it gave back to me. So,"
+    },
+    {
+      "start": 282.639,
+      "duration": 3.12,
+      "text": "you can see that it first makes an"
+    },
+    {
+      "start": 283.919,
+      "duration": 3.761,
+      "text": "account, it signs in, and then it tries"
+    },
+    {
+      "start": 285.759,
+      "duration": 3.521,
+      "text": "to make itself an agent over here. It"
+    },
+    {
+      "start": 287.68,
+      "duration": 3.12,
+      "text": "fails for whatever reason, and then"
+    },
+    {
+      "start": 289.28,
+      "duration": 2.8,
+      "text": "tries again. And then it goes back to"
+    },
+    {
+      "start": 290.8,
+      "duration": 3.119,
+      "text": "the dashboard, and it's like, \"Hey, now"
+    },
+    {
+      "start": 292.08,
+      "duration": 3.6,
+      "text": "I have two agents. Let me make another"
+    },
+    {
+      "start": 293.919,
+      "duration": 3.521,
+      "text": "one to do another end to end test.\" And"
+    },
+    {
+      "start": 295.68,
+      "duration": 3.84,
+      "text": "you can see at the very end, it also"
+    },
+    {
+      "start": 297.44,
+      "duration": 3.84,
+      "text": "decides to check the database as well."
+    },
+    {
+      "start": 299.52,
+      "duration": 3.119,
+      "text": "And it can see that the database records"
+    },
+    {
+      "start": 301.28,
+      "duration": 2.72,
+      "text": "are actually there. And at the very end,"
+    },
+    {
+      "start": 302.639,
+      "duration": 3.361,
+      "text": "it also mentioned six different things"
+    },
+    {
+      "start": 304.0,
+      "duration": 3.52,
+      "text": "that look or feel off and then some"
+    },
+    {
+      "start": 306.0,
+      "duration": 3.52,
+      "text": "things that it could not actually prove"
+    },
+    {
+      "start": 307.52,
+      "duration": 3.6,
+      "text": "for itself. So overall what I asked it"
+    },
+    {
+      "start": 309.52,
+      "duration": 2.959,
+      "text": "to verify end to end did actually work"
+    },
+    {
+      "start": 311.12,
+      "duration": 2.72,
+      "text": "but it did come across some broken"
+    },
+    {
+      "start": 312.479,
+      "duration": 2.961,
+      "text": "things kind of like the fact that"
+    },
+    {
+      "start": 313.84,
+      "duration": 3.359,
+      "text": "pressing the cancel button doesn't clear"
+    },
+    {
+      "start": 315.44,
+      "duration": 3.759,
+      "text": "the dialogue. Now the reason why I did"
+    },
+    {
+      "start": 317.199,
+      "duration": 4.241,
+      "text": "this is because firstly I want to make a"
+    },
+    {
+      "start": 319.199,
+      "duration": 3.761,
+      "text": "verification skill for this project and"
+    },
+    {
+      "start": 321.44,
+      "duration": 3.84,
+      "text": "secondly I want to make sure that any"
+    },
+    {
+      "start": 322.96,
+      "duration": 4.64,
+      "text": "dependencies are required for verifying"
+    },
+    {
+      "start": 325.28,
+      "duration": 4.4,
+      "text": "the application inside of the sandbox"
+    },
+    {
+      "start": 327.6,
+      "duration": 3.439,
+      "text": "come pre-installed. So for example in"
+    },
+    {
+      "start": 329.68,
+      "duration": 3.6,
+      "text": "this project I know that it uses"
+    },
+    {
+      "start": 331.039,
+      "duration": 3.761,
+      "text": "Postgress reddis for verification it"
+    },
+    {
+      "start": 333.28,
+      "duration": 3.199,
+      "text": "requires playright and then a bunch more"
+    },
+    {
+      "start": 334.8,
+      "duration": 3.6,
+      "text": "dependencies. I want to basically make"
+    },
+    {
+      "start": 336.479,
+      "duration": 3.761,
+      "text": "sure they all exist inside of a sandbox"
+    },
+    {
+      "start": 338.4,
+      "duration": 4.4,
+      "text": "image template going forwards. So I can"
+    },
+    {
+      "start": 340.24,
+      "duration": 4.32,
+      "text": "then say, \"Okay, cool. Can you make a"
+    },
+    {
+      "start": 342.8,
+      "duration": 4.32,
+      "text": "verification skill that basically"
+    },
+    {
+      "start": 344.56,
+      "duration": 4.56,
+      "text": "teaches you a future version of you how"
+    },
+    {
+      "start": 347.12,
+      "duration": 4.16,
+      "text": "to boot up the application locally and"
+    },
+    {
+      "start": 349.12,
+      "duration": 3.919,
+      "text": "include any shortcuts as well, like"
+    },
+    {
+      "start": 351.28,
+      "duration": 3.6,
+      "text": "making an account really quickly? And"
+    },
+    {
+      "start": 353.039,
+      "duration": 3.681,
+      "text": "then also for the sandbox template"
+    },
+    {
+      "start": 354.88,
+      "duration": 3.84,
+      "text": "image, can you basically make a new"
+    },
+    {
+      "start": 356.72,
+      "duration": 3.84,
+      "text": "template image that has anything that"
+    },
+    {
+      "start": 358.72,
+      "duration": 4.0,
+      "text": "you had to install that was not already"
+    },
+    {
+      "start": 360.56,
+      "duration": 3.68,
+      "text": "existing inside the sandbox? Confirm"
+    },
+    {
+      "start": 362.72,
+      "duration": 2.88,
+      "text": "with me before making this new template"
+    },
+    {
+      "start": 364.24,
+      "duration": 3.04,
+      "text": "image.\" and it'll probably come back to"
+    },
+    {
+      "start": 365.6,
+      "duration": 3.36,
+      "text": "me being like, I had to manually install"
+    },
+    {
+      "start": 367.28,
+      "duration": 3.359,
+      "text": "Playright. It'd be better if Playright"
+    },
+    {
+      "start": 368.96,
+      "duration": 3.44,
+      "text": "was installed going forwards. So, this"
+    },
+    {
+      "start": 370.639,
+      "duration": 3.441,
+      "text": "is what internification looks like on a"
+    },
+    {
+      "start": 372.4,
+      "duration": 3.68,
+      "text": "day-to-day basis. So, you can see that's"
+    },
+    {
+      "start": 374.08,
+      "duration": 3.839,
+      "text": "now drafting a skill which is verify"
+    },
+    {
+      "start": 376.08,
+      "duration": 4.16,
+      "text": "agent stack. Now, the reason why this is"
+    },
+    {
+      "start": 377.919,
+      "duration": 4.0,
+      "text": "handy to do inside of a sandbox is"
+    },
+    {
+      "start": 380.24,
+      "duration": 3.84,
+      "text": "because we can run many different"
+    },
+    {
+      "start": 381.919,
+      "duration": 3.84,
+      "text": "verification flows in parallel. So, for"
+    },
+    {
+      "start": 384.08,
+      "duration": 3.679,
+      "text": "example, imagine that you added a really"
+    },
+    {
+      "start": 385.759,
+      "duration": 3.201,
+      "text": "big feature and there were like 15"
+    },
+    {
+      "start": 387.759,
+      "duration": 3.121,
+      "text": "different ways that a user could"
+    },
+    {
+      "start": 388.96,
+      "duration": 3.6,
+      "text": "interact with that feature. If we have a"
+    },
+    {
+      "start": 390.88,
+      "duration": 3.439,
+      "text": "sandbox template that has everything"
+    },
+    {
+      "start": 392.56,
+      "duration": 4.16,
+      "text": "pre-installed, we can then have the"
+    },
+    {
+      "start": 394.319,
+      "duration": 3.841,
+      "text": "agent spin up 15 different sandboxes and"
+    },
+    {
+      "start": 396.72,
+      "duration": 3.28,
+      "text": "then verify every single flow in"
+    },
+    {
+      "start": 398.16,
+      "duration": 3.52,
+      "text": "parallel and then pass all the findings"
+    },
+    {
+      "start": 400.0,
+      "duration": 4.08,
+      "text": "back to the builder agent that built out"
+    },
+    {
+      "start": 401.68,
+      "duration": 3.92,
+      "text": "the feature to do any fixes. Whereas if"
+    },
+    {
+      "start": 404.08,
+      "duration": 3.2,
+      "text": "we had 15 different agents all running"
+    },
+    {
+      "start": 405.6,
+      "duration": 3.36,
+      "text": "inside one sandbox trying to verify"
+    },
+    {
+      "start": 407.28,
+      "duration": 3.52,
+      "text": "things in parallel, that would lead to a"
+    },
+    {
+      "start": 408.96,
+      "duration": 3.359,
+      "text": "bunch of conflict with the database with"
+    },
+    {
+      "start": 410.8,
+      "duration": 3.28,
+      "text": "Reddus and stuff and you'd have to have"
+    },
+    {
+      "start": 412.319,
+      "duration": 3.281,
+      "text": "like 15 different versions of Postgress"
+    },
+    {
+      "start": 414.08,
+      "duration": 3.36,
+      "text": "running in parallel that you can't"
+    },
+    {
+      "start": 415.6,
+      "duration": 3.439,
+      "text": "really fit inside of one sandbox. So"
+    },
+    {
+      "start": 417.44,
+      "duration": 3.68,
+      "text": "alternative would be to run them each in"
+    },
+    {
+      "start": 419.039,
+      "duration": 4.241,
+      "text": "series and then reset the state in"
+    },
+    {
+      "start": 421.12,
+      "duration": 4.079,
+      "text": "between every single time. But that can"
+    },
+    {
+      "start": 423.28,
+      "duration": 3.359,
+      "text": "take much longer. Now the way that I"
+    },
+    {
+      "start": 425.199,
+      "duration": 3.84,
+      "text": "like to have my verification skills"
+    },
+    {
+      "start": 426.639,
+      "duration": 4.4,
+      "text": "structured is we have the setup stage,"
+    },
+    {
+      "start": 429.039,
+      "duration": 3.761,
+      "text": "the driving stage and then the checking"
+    },
+    {
+      "start": 431.039,
+      "duration": 3.521,
+      "text": "stage. So the setup stage would"
+    },
+    {
+      "start": 432.8,
+      "duration": 3.839,
+      "text": "basically have one agent that launches"
+    },
+    {
+      "start": 434.56,
+      "duration": 3.759,
+      "text": "application. It uses any shortcuts or"
+    },
+    {
+      "start": 436.639,
+      "duration": 3.921,
+      "text": "skills to get the database into right"
+    },
+    {
+      "start": 438.319,
+      "duration": 3.761,
+      "text": "state to verify a flow. The driving"
+    },
+    {
+      "start": 440.56,
+      "duration": 2.96,
+      "text": "agent would be driving it on the surface"
+    },
+    {
+      "start": 442.08,
+      "duration": 2.88,
+      "text": "that a user would experience that"
+    },
+    {
+      "start": 443.52,
+      "duration": 2.72,
+      "text": "change. And then the checker would"
+    },
+    {
+      "start": 444.96,
+      "duration": 3.2,
+      "text": "basically make sure that everything has"
+    },
+    {
+      "start": 446.24,
+      "duration": 3.92,
+      "text": "been done properly. So for example, if I"
+    },
+    {
+      "start": 448.16,
+      "duration": 3.84,
+      "text": "were adding multi-organization support"
+    },
+    {
+      "start": 450.16,
+      "duration": 4.56,
+      "text": "and my spec basically had acceptance"
+    },
+    {
+      "start": 452.0,
+      "duration": 4.8,
+      "text": "criteria with 10 different flows and one"
+    },
+    {
+      "start": 454.72,
+      "duration": 4.24,
+      "text": "of the flows was basically transferring"
+    },
+    {
+      "start": 456.8,
+      "duration": 4.16,
+      "text": "an organization from one user to another"
+    },
+    {
+      "start": 458.96,
+      "duration": 3.679,
+      "text": "user. It would require the application"
+    },
+    {
+      "start": 460.96,
+      "duration": 3.76,
+      "text": "to have two organizations at the"
+    },
+    {
+      "start": 462.639,
+      "duration": 3.68,
+      "text": "beginning and then a couple users and"
+    },
+    {
+      "start": 464.72,
+      "duration": 3.28,
+      "text": "this is what the setup agent is"
+    },
+    {
+      "start": 466.319,
+      "duration": 3.521,
+      "text": "responsible for doing and then it passes"
+    },
+    {
+      "start": 468.0,
+      "duration": 3.52,
+      "text": "it over to driving agent that actually"
+    },
+    {
+      "start": 469.84,
+      "duration": 3.44,
+      "text": "interacts with it the same way that a"
+    },
+    {
+      "start": 471.52,
+      "duration": 3.519,
+      "text": "user would. So it would like send the"
+    },
+    {
+      "start": 473.28,
+      "duration": 3.919,
+      "text": "transfer request for the organization to"
+    },
+    {
+      "start": 475.039,
+      "duration": 3.84,
+      "text": "other user, log out, log back in as"
+    },
+    {
+      "start": 477.199,
+      "duration": 3.44,
+      "text": "other user and then accept the request"
+    },
+    {
+      "start": 478.879,
+      "duration": 3.04,
+      "text": "or something and then the checker agent"
+    },
+    {
+      "start": 480.639,
+      "duration": 3.441,
+      "text": "would basically make sure that the"
+    },
+    {
+      "start": 481.919,
+      "duration": 3.521,
+      "text": "driving agent did not cheat in its"
+    },
+    {
+      "start": 484.08,
+      "duration": 3.6,
+      "text": "approach by using something like the"
+    },
+    {
+      "start": 485.44,
+      "duration": 4.64,
+      "text": "JavaScript tool instead of clicking real"
+    },
+    {
+      "start": 487.68,
+      "duration": 4.88,
+      "text": "buttons. And also look for any defects"
+    },
+    {
+      "start": 490.08,
+      "duration": 4.16,
+      "text": "because even though a flow can pass,"
+    },
+    {
+      "start": 492.56,
+      "duration": 3.52,
+      "text": "there may still be small defects that"
+    },
+    {
+      "start": 494.24,
+      "duration": 3.6,
+      "text": "you want to fix before you then merge it"
+    },
+    {
+      "start": 496.08,
+      "duration": 3.679,
+      "text": "into production. And that could be stuff"
+    },
+    {
+      "start": 497.84,
+      "duration": 3.919,
+      "text": "like small UI defects or behavioral"
+    },
+    {
+      "start": 499.759,
+      "duration": 3.681,
+      "text": "defects kind of like the cancel button"
+    },
+    {
+      "start": 501.759,
+      "duration": 3.201,
+      "text": "not actually clearing the dialogue. Now"
+    },
+    {
+      "start": 503.44,
+      "duration": 3.439,
+      "text": "that was a pretty simple example but"
+    },
+    {
+      "start": 504.96,
+      "duration": 4.0,
+      "text": "these end to-end agentic verification"
+    },
+    {
+      "start": 506.879,
+      "duration": 3.921,
+      "text": "setups can become more complicated over"
+    },
+    {
+      "start": 508.96,
+      "duration": 4.559,
+      "text": "time. So for example inside of the"
+    },
+    {
+      "start": 510.8,
+      "duration": 3.84,
+      "text": "application agent stack we have a Slack"
+    },
+    {
+      "start": 513.519,
+      "duration": 2.801,
+      "text": "integration. So you can go to"
+    },
+    {
+      "start": 514.64,
+      "duration": 3.519,
+      "text": "integrations and connect it to your"
+    },
+    {
+      "start": 516.32,
+      "duration": 3.76,
+      "text": "Slack. So you can reply to customer"
+    },
+    {
+      "start": 518.159,
+      "duration": 3.281,
+      "text": "support messages via Slack. But now if"
+    },
+    {
+      "start": 520.08,
+      "duration": 2.959,
+      "text": "the agent were to add a brand new"
+    },
+    {
+      "start": 521.44,
+      "duration": 3.92,
+      "text": "feature over here, it would not be able"
+    },
+    {
+      "start": 523.039,
+      "duration": 4.401,
+      "text": "to test it out end to end the same way"
+    },
+    {
+      "start": 525.36,
+      "duration": 3.84,
+      "text": "that a real user would because I haven't"
+    },
+    {
+      "start": 527.44,
+      "duration": 3.519,
+      "text": "given it access to its own Slack"
+    },
+    {
+      "start": 529.2,
+      "duration": 3.28,
+      "text": "account. And in these kind of situations"
+    },
+    {
+      "start": 530.959,
+      "duration": 4.161,
+      "text": "when the agent cannot verify something"
+    },
+    {
+      "start": 532.48,
+      "duration": 4.32,
+      "text": "to end, it usually results to a cheaper"
+    },
+    {
+      "start": 535.12,
+      "duration": 3.52,
+      "text": "test, kind of like a unit test or"
+    },
+    {
+      "start": 536.8,
+      "duration": 3.599,
+      "text": "integration test instead, which can"
+    },
+    {
+      "start": 538.64,
+      "duration": 3.04,
+      "text": "ultimately give you less confidence. So"
+    },
+    {
+      "start": 540.399,
+      "duration": 3.44,
+      "text": "what I would do in this case is"
+    },
+    {
+      "start": 541.68,
+      "duration": 3.76,
+      "text": "basically go to Slack and then make the"
+    },
+    {
+      "start": 543.839,
+      "duration": 4.0,
+      "text": "agent a brand new account by doing like"
+    },
+    {
+      "start": 545.44,
+      "duration": 3.92,
+      "text": "Percy at aentstack.build scheduled and"
+    },
+    {
+      "start": 547.839,
+      "duration": 3.44,
+      "text": "then it give it access to its own"
+    },
+    {
+      "start": 549.36,
+      "duration": 3.68,
+      "text": "workspace so it can then test out things"
+    },
+    {
+      "start": 551.279,
+      "duration": 3.201,
+      "text": "end to end with the slack integration"
+    },
+    {
+      "start": 553.04,
+      "duration": 3.359,
+      "text": "and the same thing would matter hey when"
+    },
+    {
+      "start": 554.48,
+      "duration": 4.479,
+      "text": "it comes to calendarly for example or"
+    },
+    {
+      "start": 556.399,
+      "duration": 4.161,
+      "text": "notion for example so often when I add a"
+    },
+    {
+      "start": 558.959,
+      "duration": 3.921,
+      "text": "running integration to agent stack then"
+    },
+    {
+      "start": 560.56,
+      "duration": 3.839,
+      "text": "I have to make a separate identity a"
+    },
+    {
+      "start": 562.88,
+      "duration": 2.8,
+      "text": "separate account for the agent to use as"
+    },
+    {
+      "start": 564.399,
+      "duration": 2.961,
+      "text": "well but now it kind of becomes a case"
+    },
+    {
+      "start": 565.68,
+      "duration": 3.76,
+      "text": "of I have to manage these different"
+    },
+    {
+      "start": 567.36,
+      "duration": 3.68,
+      "text": "identities for the agent to do agentic"
+    },
+    {
+      "start": 569.44,
+      "duration": 2.88,
+      "text": "enter verification but then I would need"
+    },
+    {
+      "start": 571.04,
+      "duration": 3.04,
+      "text": "to figure out a way for where I would"
+    },
+    {
+      "start": 572.32,
+      "duration": 3.6,
+      "text": "store the password and the user identity"
+    },
+    {
+      "start": 574.08,
+      "duration": 3.28,
+      "text": "for the agent because it'd be a bad idea"
+    },
+    {
+      "start": 575.92,
+      "duration": 2.72,
+      "text": "to have it written inside bit of a"
+    },
+    {
+      "start": 577.36,
+      "duration": 2.56,
+      "text": "skill. So, I'd probably have to do"
+    },
+    {
+      "start": 578.64,
+      "duration": 3.6,
+      "text": "something like setting up some kind of"
+    },
+    {
+      "start": 579.92,
+      "duration": 4.24,
+      "text": "proxy on top of my sandbox. So, now you"
+    },
+    {
+      "start": 582.24,
+      "duration": 3.68,
+      "text": "can see where like verification can get"
+    },
+    {
+      "start": 584.16,
+      "duration": 3.679,
+      "text": "more complicated, especially for enter"
+    },
+    {
+      "start": 585.92,
+      "duration": 4.08,
+      "text": "verification. And Boris Chenny did say"
+    },
+    {
+      "start": 587.839,
+      "duration": 3.921,
+      "text": "back in January that verification can"
+    },
+    {
+      "start": 590.0,
+      "duration": 3.44,
+      "text": "look different for each domain. So, this"
+    },
+    {
+      "start": 591.76,
+      "duration": 3.199,
+      "text": "is my particular application, but for"
+    },
+    {
+      "start": 593.44,
+      "duration": 3.28,
+      "text": "other applications, I have different"
+    },
+    {
+      "start": 594.959,
+      "duration": 3.521,
+      "text": "kinds of verification setups and"
+    },
+    {
+      "start": 596.72,
+      "duration": 3.36,
+      "text": "verification environments. So what I"
+    },
+    {
+      "start": 598.48,
+      "duration": 3.12,
+      "text": "actually spend most my time doing every"
+    },
+    {
+      "start": 600.08,
+      "duration": 3.52,
+      "text": "day in addition to making sure the"
+    },
+    {
+      "start": 601.6,
+      "duration": 4.08,
+      "text": "factory is running smoothly is basically"
+    },
+    {
+      "start": 603.6,
+      "duration": 4.48,
+      "text": "making sure my verification environments"
+    },
+    {
+      "start": 605.68,
+      "duration": 4.24,
+      "text": "are configured correctly especially as"
+    },
+    {
+      "start": 608.08,
+      "duration": 3.68,
+      "text": "for example this application is evolving"
+    },
+    {
+      "start": 609.92,
+      "duration": 3.76,
+      "text": "in terms of integrations so the"
+    },
+    {
+      "start": 611.76,
+      "duration": 3.44,
+      "text": "verifiers can stay honest. Now one of"
+    },
+    {
+      "start": 613.68,
+      "duration": 3.44,
+      "text": "the benefits here is that if you make a"
+    },
+    {
+      "start": 615.2,
+      "duration": 3.36,
+      "text": "good verification skill with the three"
+    },
+    {
+      "start": 617.12,
+      "duration": 3.52,
+      "text": "things that I mentioned for the setup"
+    },
+    {
+      "start": 618.56,
+      "duration": 4.24,
+      "text": "agent, the driver agent and then the"
+    },
+    {
+      "start": 620.64,
+      "duration": 3.12,
+      "text": "checker agent and then also the sandbox"
+    },
+    {
+      "start": 622.8,
+      "duration": 2.56,
+      "text": "template for your verification"
+    },
+    {
+      "start": 623.76,
+      "duration": 3.04,
+      "text": "environment is good. You can do"
+    },
+    {
+      "start": 625.36,
+      "duration": 3.36,
+      "text": "something kind of like this. So, one of"
+    },
+    {
+      "start": 626.8,
+      "duration": 4.64,
+      "text": "the things I gave my agent in Slack is"
+    },
+    {
+      "start": 628.72,
+      "duration": 4.96,
+      "text": "the ability to spawn up child sandboxes"
+    },
+    {
+      "start": 631.44,
+      "duration": 4.16,
+      "text": "and the ability to fork itself. And one"
+    },
+    {
+      "start": 633.68,
+      "duration": 3.92,
+      "text": "of the things I like to do before a big"
+    },
+    {
+      "start": 635.6,
+      "duration": 3.6,
+      "text": "feature release or a big launch, kind of"
+    },
+    {
+      "start": 637.6,
+      "duration": 2.88,
+      "text": "like my Black Friday sale where I'm"
+    },
+    {
+      "start": 639.2,
+      "duration": 3.52,
+      "text": "expecting like hundreds of people to"
+    },
+    {
+      "start": 640.48,
+      "duration": 4.72,
+      "text": "sign up, is basically using agents to"
+    },
+    {
+      "start": 642.72,
+      "duration": 4.48,
+      "text": "bug bash the application and find any"
+    },
+    {
+      "start": 645.2,
+      "duration": 4.24,
+      "text": "weird stuff or edge cases or anything"
+    },
+    {
+      "start": 647.2,
+      "duration": 4.0,
+      "text": "that may be broken on the website that I"
+    },
+    {
+      "start": 649.44,
+      "duration": 4.399,
+      "text": "didn't expect. So, what I'm going to do"
+    },
+    {
+      "start": 651.2,
+      "duration": 4.879,
+      "text": "is copy the URL, go back to Percy inside"
+    },
+    {
+      "start": 653.839,
+      "duration": 3.44,
+      "text": "of Slack, tag it, and then say, \"Hey,"
+    },
+    {
+      "start": 656.079,
+      "duration": 2.961,
+      "text": "Percy. So, I'm going to be doing the"
+    },
+    {
+      "start": 657.279,
+      "duration": 3.921,
+      "text": "Black Friday sale for what is the best"
+    },
+    {
+      "start": 659.04,
+      "duration": 3.76,
+      "text": "class on Agent Coding and software"
+    },
+    {
+      "start": 661.2,
+      "duration": 3.28,
+      "text": "factories on the internet. Since I'm"
+    },
+    {
+      "start": 662.8,
+      "duration": 3.84,
+      "text": "expecting a lot of people to sign up, I"
+    },
+    {
+      "start": 664.48,
+      "duration": 3.84,
+      "text": "want to bug bash the application in tons"
+    },
+    {
+      "start": 666.64,
+      "duration": 5.12,
+      "text": "of different directions. Can you bug"
+    },
+    {
+      "start": 668.32,
+      "duration": 5.28,
+      "text": "bash at least 100 flows across like 30"
+    },
+    {
+      "start": 671.76,
+      "duration": 4.0,
+      "text": "different child sandboxes and then give"
+    },
+    {
+      "start": 673.6,
+      "duration": 4.4,
+      "text": "me a HTML report with all the weird"
+    },
+    {
+      "start": 675.76,
+      "duration": 4.24,
+      "text": "broken things that you found grouped by"
+    },
+    {
+      "start": 678.0,
+      "duration": 3.839,
+      "text": "severity and then we can fix those"
+    },
+    {
+      "start": 680.0,
+      "duration": 3.36,
+      "text": "quickly before everyone starts signing"
+    },
+    {
+      "start": 681.839,
+      "duration": 3.201,
+      "text": "up. Let me know if there's anything that"
+    },
+    {
+      "start": 683.36,
+      "duration": 3.52,
+      "text": "you need to kind of bug bash it on the"
+    },
+    {
+      "start": 685.04,
+      "duration": 3.44,
+      "text": "real website. I think I gave you access"
+    },
+    {
+      "start": 686.88,
+      "duration": 3.12,
+      "text": "to relevant tools already, but let me"
+    },
+    {
+      "start": 688.48,
+      "duration": 2.96,
+      "text": "know if anything is missing. So now I"
+    },
+    {
+      "start": 690.0,
+      "duration": 3.44,
+      "text": "have Percy working on this particular"
+    },
+    {
+      "start": 691.44,
+      "duration": 4.0,
+      "text": "issue. And you may be thinking, won't I"
+    },
+    {
+      "start": 693.44,
+      "duration": 4.16,
+      "text": "end up using a lot of tokens if you have"
+    },
+    {
+      "start": 695.44,
+      "duration": 3.76,
+      "text": "like 25 30 different agents all running"
+    },
+    {
+      "start": 697.6,
+      "duration": 3.04,
+      "text": "in parallel, checking all these"
+    },
+    {
+      "start": 699.2,
+      "duration": 3.52,
+      "text": "different flows and trying to do this"
+    },
+    {
+      "start": 700.64,
+      "duration": 5.04,
+      "text": "bug bashing. But I generally find that"
+    },
+    {
+      "start": 702.72,
+      "duration": 4.559,
+      "text": "because I'm using GPT6 Luna Extra High,"
+    },
+    {
+      "start": 705.68,
+      "duration": 3.44,
+      "text": "which is really good at computer use at"
+    },
+    {
+      "start": 707.279,
+      "duration": 4.321,
+      "text": "a pretty affordable price. This won't"
+    },
+    {
+      "start": 709.12,
+      "duration": 4.48,
+      "text": "really use more than like $10, $20 of"
+    },
+    {
+      "start": 711.6,
+      "duration": 3.44,
+      "text": "API usage. Because the main thing that"
+    },
+    {
+      "start": 713.6,
+      "duration": 3.2,
+      "text": "matters here is you basically have a"
+    },
+    {
+      "start": 715.04,
+      "duration": 3.359,
+      "text": "model that's like really good at"
+    },
+    {
+      "start": 716.8,
+      "duration": 3.2,
+      "text": "computer use. And we're finding that"
+    },
+    {
+      "start": 718.399,
+      "duration": 3.281,
+      "text": "models are getting cheaper and better"
+    },
+    {
+      "start": 720.0,
+      "duration": 3.2,
+      "text": "computer use over time. And now I can"
+    },
+    {
+      "start": 721.68,
+      "duration": 3.36,
+      "text": "see that it basically spun up a whole"
+    },
+    {
+      "start": 723.2,
+      "duration": 2.879,
+      "text": "bunch of child sandboxes. And if I"
+    },
+    {
+      "start": 725.04,
+      "duration": 2.72,
+      "text": "wanted to follow what one of the"
+    },
+    {
+      "start": 726.079,
+      "duration": 3.681,
+      "text": "sandboxes were doing, I can click on the"
+    },
+    {
+      "start": 727.76,
+      "duration": 4.0,
+      "text": "link and then it takes me to the admin"
+    },
+    {
+      "start": 729.76,
+      "duration": 4.72,
+      "text": "panel and I can see the sandbox running"
+    },
+    {
+      "start": 731.76,
+      "duration": 4.56,
+      "text": "live with this prompt, initial prompt"
+    },
+    {
+      "start": 734.48,
+      "duration": 3.919,
+      "text": "over here with stuff kind of like the"
+    },
+    {
+      "start": 736.32,
+      "duration": 3.519,
+      "text": "box ID, the account it was assigned and"
+    },
+    {
+      "start": 738.399,
+      "duration": 3.521,
+      "text": "then a bunch of flows that it has to"
+    },
+    {
+      "start": 739.839,
+      "duration": 4.641,
+      "text": "verify. Now in this case where I can"
+    },
+    {
+      "start": 741.92,
+      "duration": 4.8,
+      "text": "have one sandboxed agent spin up 25"
+    },
+    {
+      "start": 744.48,
+      "duration": 4.32,
+      "text": "child sandboxes. It kind of leans into"
+    },
+    {
+      "start": 746.72,
+      "duration": 4.16,
+      "text": "idea that agents should be going beyond"
+    },
+    {
+      "start": 748.8,
+      "duration": 4.719,
+      "text": "their own sandbox and be able to control"
+    },
+    {
+      "start": 750.88,
+      "duration": 4.639,
+      "text": "other sandboxes and make S3 buck bookets"
+    },
+    {
+      "start": 753.519,
+      "duration": 3.601,
+      "text": "do any networking and ultimately agents"
+    },
+    {
+      "start": 755.519,
+      "duration": 3.281,
+      "text": "should kind of be responsible for their"
+    },
+    {
+      "start": 757.12,
+      "duration": 3.36,
+      "text": "own dev platform. And this is really"
+    },
+    {
+      "start": 758.8,
+      "duration": 3.68,
+      "text": "similar to idea that a guy from one of"
+    },
+    {
+      "start": 760.48,
+      "duration": 3.68,
+      "text": "the big sandboxing providers said in"
+    },
+    {
+      "start": 762.48,
+      "duration": 3.039,
+      "text": "this article called sandboxes are dead"
+    },
+    {
+      "start": 764.16,
+      "duration": 3.119,
+      "text": "whereby the main argument that he's"
+    },
+    {
+      "start": 765.519,
+      "duration": 3.921,
+      "text": "making is that we kind of want to make a"
+    },
+    {
+      "start": 767.279,
+      "duration": 3.921,
+      "text": "private cloud for our agents so they can"
+    },
+    {
+      "start": 769.44,
+      "duration": 3.199,
+      "text": "do even more ambitious work. So"
+    },
+    {
+      "start": 771.2,
+      "duration": 2.48,
+      "text": "basically what I spend most of my time"
+    },
+    {
+      "start": 772.639,
+      "duration": 2.88,
+      "text": "thinking about when it comes to"
+    },
+    {
+      "start": 773.68,
+      "duration": 4.719,
+      "text": "verification especially end toend"
+    },
+    {
+      "start": 775.519,
+      "duration": 4.481,
+      "text": "verification is what identities and what"
+    },
+    {
+      "start": 778.399,
+      "duration": 3.361,
+      "text": "things are my agents missing. Now the"
+    },
+    {
+      "start": 780.0,
+      "duration": 3.519,
+      "text": "way that I kind of apply this idea is I"
+    },
+    {
+      "start": 781.76,
+      "duration": 3.92,
+      "text": "gave my agents access to their own"
+    },
+    {
+      "start": 783.519,
+      "duration": 3.76,
+      "text": "cloudflower account and their own AWS"
+    },
+    {
+      "start": 785.68,
+      "duration": 3.12,
+      "text": "account. So they can do stuff like spin"
+    },
+    {
+      "start": 787.279,
+      "duration": 3.68,
+      "text": "up buckets, like deploy lambda"
+    },
+    {
+      "start": 788.8,
+      "duration": 4.08,
+      "text": "functions, rent GPUs and all that kind"
+    },
+    {
+      "start": 790.959,
+      "duration": 3.281,
+      "text": "of stuff. And they have a budget cap as"
+    },
+    {
+      "start": 792.88,
+      "duration": 2.959,
+      "text": "well, so they don't end up spending all"
+    },
+    {
+      "start": 794.24,
+      "duration": 3.279,
+      "text": "my money. And I generally found that by"
+    },
+    {
+      "start": 795.839,
+      "duration": 3.761,
+      "text": "giving my agents access to their own"
+    },
+    {
+      "start": 797.519,
+      "duration": 3.44,
+      "text": "private cloud where they can do all this"
+    },
+    {
+      "start": 799.6,
+      "duration": 3.6,
+      "text": "stuff and they have complete freedom"
+    },
+    {
+      "start": 800.959,
+      "duration": 4.401,
+      "text": "over it, they can do even more ambitious"
+    },
+    {
+      "start": 803.2,
+      "duration": 4.0,
+      "text": "work and then verify it correctly as"
+    },
+    {
+      "start": 805.36,
+      "duration": 4.159,
+      "text": "well because they can do stuff kind of"
+    },
+    {
+      "start": 807.2,
+      "duration": 5.04,
+      "text": "like stress testing individual parts of"
+    },
+    {
+      "start": 809.519,
+      "duration": 4.32,
+      "text": "one of my services by hosting on AWS and"
+    },
+    {
+      "start": 812.24,
+      "duration": 3.68,
+      "text": "then bombarding it with a bunch of"
+    },
+    {
+      "start": 813.839,
+      "duration": 3.68,
+      "text": "traffic. And Enthropic also do something"
+    },
+    {
+      "start": 815.92,
+      "duration": 3.76,
+      "text": "very similar because in another recent"
+    },
+    {
+      "start": 817.519,
+      "duration": 3.681,
+      "text": "article that they posted over here, they"
+    },
+    {
+      "start": 819.68,
+      "duration": 3.279,
+      "text": "basically mentioned that they gave"
+    },
+    {
+      "start": 821.2,
+      "duration": 2.879,
+      "text": "Claude access to its own staging"
+    },
+    {
+      "start": 822.959,
+      "duration": 3.361,
+      "text": "environment where it could run"
+    },
+    {
+      "start": 824.079,
+      "duration": 4.161,
+      "text": "continuously for 2 weeks to try and"
+    },
+    {
+      "start": 826.32,
+      "duration": 3.44,
+      "text": "break the application and it basically"
+    },
+    {
+      "start": 828.24,
+      "duration": 3.279,
+      "text": "load tested every single part of the"
+    },
+    {
+      "start": 829.76,
+      "duration": 3.28,
+      "text": "infrastructure and then fixed anything"
+    },
+    {
+      "start": 831.519,
+      "duration": 2.801,
+      "text": "that was broken. So I guess the"
+    },
+    {
+      "start": 833.04,
+      "duration": 2.72,
+      "text": "conclusion that we can take away from"
+    },
+    {
+      "start": 834.32,
+      "duration": 3.28,
+      "text": "this is that as a models are getting"
+    },
+    {
+      "start": 835.76,
+      "duration": 3.68,
+      "text": "even more capable, you may want to"
+    },
+    {
+      "start": 837.6,
+      "duration": 4.08,
+      "text": "expand the scope of responsibility that"
+    },
+    {
+      "start": 839.44,
+      "duration": 4.32,
+      "text": "they have by giving agents access to own"
+    },
+    {
+      "start": 841.68,
+      "duration": 4.32,
+      "text": "AWS account so they can take on more"
+    },
+    {
+      "start": 843.76,
+      "duration": 4.0,
+      "text": "ambitious work and then also verify it"
+    },
+    {
+      "start": 846.0,
+      "duration": 3.92,
+      "text": "better as well. Okay, so I can see that"
+    },
+    {
+      "start": 847.76,
+      "duration": 5.199,
+      "text": "the bug bash is finished over here and"
+    },
+    {
+      "start": 849.92,
+      "duration": 5.12,
+      "text": "those zero critical bugs, four high, 23"
+    },
+    {
+      "start": 852.959,
+      "duration": 3.601,
+      "text": "medium, and 41 low. So I'm probably"
+    },
+    {
+      "start": 855.04,
+      "duration": 3.68,
+      "text": "going to work on the four high ones and"
+    },
+    {
+      "start": 856.56,
+      "duration": 3.92,
+      "text": "then some of the medium ones and then do"
+    },
+    {
+      "start": 858.72,
+      "duration": 3.52,
+      "text": "the low ones later. But if I kind of"
+    },
+    {
+      "start": 860.48,
+      "duration": 3.919,
+      "text": "scroll down, so for example, this one"
+    },
+    {
+      "start": 862.24,
+      "duration": 4.399,
+      "text": "over here is about accessibility. This"
+    },
+    {
+      "start": 864.399,
+      "duration": 3.841,
+      "text": "one over here is about contrast. This"
+    },
+    {
+      "start": 866.639,
+      "duration": 3.521,
+      "text": "one over here is about a really weird"
+    },
+    {
+      "start": 868.24,
+      "duration": 3.279,
+      "text": "edge case with pasting your onetime"
+    },
+    {
+      "start": 870.16,
+      "duration": 3.359,
+      "text": "password. So I'll basically tell the"
+    },
+    {
+      "start": 871.519,
+      "duration": 4.081,
+      "text": "agent like, hey, can you fix like L6,"
+    },
+    {
+      "start": 873.519,
+      "duration": 3.521,
+      "text": "L7, so forth. So I'll basically pick"
+    },
+    {
+      "start": 875.6,
+      "duration": 2.96,
+      "text": "which ones that agent should be fixing"
+    },
+    {
+      "start": 877.04,
+      "duration": 3.2,
+      "text": "here. Now I know that in the case of the"
+    },
+    {
+      "start": 878.56,
+      "duration": 3.6,
+      "text": "article, I focus pretty heavily on end"
+    },
+    {
+      "start": 880.24,
+      "duration": 3.44,
+      "text": "to end testing. But we also do have"
+    },
+    {
+      "start": 882.16,
+      "duration": 3.52,
+      "text": "property tests and then we have"
+    },
+    {
+      "start": 883.68,
+      "duration": 3.279,
+      "text": "differential tests as well. Those two I"
+    },
+    {
+      "start": 885.68,
+      "duration": 2.959,
+      "text": "will be talking more about inside my"
+    },
+    {
+      "start": 886.959,
+      "duration": 3.201,
+      "text": "classes. Now, the next thing we want to"
+    },
+    {
+      "start": 888.639,
+      "duration": 3.681,
+      "text": "consider is how do we know that the"
+    },
+    {
+      "start": 890.16,
+      "duration": 4.0,
+      "text": "verify skill itself is working? And this"
+    },
+    {
+      "start": 892.32,
+      "duration": 4.0,
+      "text": "is part about making sure our verifiers"
+    },
+    {
+      "start": 894.16,
+      "duration": 4.0,
+      "text": "are honest because once you stop reading"
+    },
+    {
+      "start": 896.32,
+      "duration": 4.16,
+      "text": "through every single diff and start"
+    },
+    {
+      "start": 898.16,
+      "duration": 4.479,
+      "text": "trusting the checker's verdict, a faulty"
+    },
+    {
+      "start": 900.48,
+      "duration": 4.799,
+      "text": "verification skill can either wave real"
+    },
+    {
+      "start": 902.639,
+      "duration": 4.161,
+      "text": "bugs through or block clean code for no"
+    },
+    {
+      "start": 905.279,
+      "duration": 2.961,
+      "text": "real reason. And in the case of an"
+    },
+    {
+      "start": 906.8,
+      "duration": 3.599,
+      "text": "article, they mention that you should"
+    },
+    {
+      "start": 908.24,
+      "duration": 3.92,
+      "text": "get Claw to iterate and stress test your"
+    },
+    {
+      "start": 910.399,
+      "duration": 3.44,
+      "text": "verification skill. And the simplest way"
+    },
+    {
+      "start": 912.16,
+      "duration": 4.0,
+      "text": "that you could do this is by giving the"
+    },
+    {
+      "start": 913.839,
+      "duration": 4.081,
+      "text": "article over to your agent in Slack and"
+    },
+    {
+      "start": 916.16,
+      "duration": 3.84,
+      "text": "then say something like, \"Hey, can you"
+    },
+    {
+      "start": 917.92,
+      "duration": 3.599,
+      "text": "stress test our verification skill?\" And"
+    },
+    {
+      "start": 920.0,
+      "duration": 3.76,
+      "text": "in my case, you can see that it made a"
+    },
+    {
+      "start": 921.519,
+      "duration": 3.76,
+      "text": "HTML file over here. And if I scroll"
+    },
+    {
+      "start": 923.76,
+      "duration": 4.0,
+      "text": "through, then it basically says that it"
+    },
+    {
+      "start": 925.279,
+      "duration": 4.321,
+      "text": "planted real bugs. It seated real bugs"
+    },
+    {
+      "start": 927.76,
+      "duration": 3.68,
+      "text": "inside of PRs. And then basically"
+    },
+    {
+      "start": 929.6,
+      "duration": 3.84,
+      "text": "checked that the verification skill was"
+    },
+    {
+      "start": 931.44,
+      "duration": 3.36,
+      "text": "actually catching those bugs. So you can"
+    },
+    {
+      "start": 933.44,
+      "duration": 3.44,
+      "text": "see that in this case over here for the"
+    },
+    {
+      "start": 934.8,
+      "duration": 4.399,
+      "text": "15 PRs, this is where it made the right"
+    },
+    {
+      "start": 936.88,
+      "duration": 4.399,
+      "text": "call. somewhere it was partly right and"
+    },
+    {
+      "start": 939.199,
+      "duration": 3.44,
+      "text": "somewhere it decides to overfl. So what"
+    },
+    {
+      "start": 941.279,
+      "duration": 3.201,
+      "text": "you can do in this particular situation"
+    },
+    {
+      "start": 942.639,
+      "duration": 4.32,
+      "text": "is make a brand new channel, call it"
+    },
+    {
+      "start": 944.48,
+      "duration": 4.08,
+      "text": "something like verify skill checker,"
+    },
+    {
+      "start": 946.959,
+      "duration": 3.761,
+      "text": "paste in the article and then say"
+    },
+    {
+      "start": 948.56,
+      "duration": 3.44,
+      "text": "something like hey on a weekly basis can"
+    },
+    {
+      "start": 950.72,
+      "duration": 3.359,
+      "text": "you basically stress test our"
+    },
+    {
+      "start": 952.0,
+      "duration": 3.839,
+      "text": "verification skill by repeating some"
+    },
+    {
+      "start": 954.079,
+      "duration": 3.361,
+      "text": "previous PRs and then any issues that"
+    },
+    {
+      "start": 955.839,
+      "duration": 3.841,
+      "text": "you find with it. Can you make me a HTML"
+    },
+    {
+      "start": 957.44,
+      "duration": 4.16,
+      "text": "artifact to show me what improvements"
+    },
+    {
+      "start": 959.68,
+      "duration": 3.2,
+      "text": "that we can be making to it. Now this is"
+    },
+    {
+      "start": 961.6,
+      "duration": 2.96,
+      "text": "just one way of stress testing your"
+    },
+    {
+      "start": 962.88,
+      "duration": 3.519,
+      "text": "verification skill. There are many other"
+    },
+    {
+      "start": 964.56,
+      "duration": 3.519,
+      "text": "approaches that you can do as well. Now"
+    },
+    {
+      "start": 966.399,
+      "duration": 4.0,
+      "text": "on to the second part of the video. We"
+    },
+    {
+      "start": 968.079,
+      "duration": 3.921,
+      "text": "want to talk about will it keep working?"
+    },
+    {
+      "start": 970.399,
+      "duration": 3.281,
+      "text": "Because verifying a change once with an"
+    },
+    {
+      "start": 972.0,
+      "duration": 3.199,
+      "text": "agent proves that that feature works"
+    },
+    {
+      "start": 973.68,
+      "duration": 3.36,
+      "text": "today. But it doesn't prove that the"
+    },
+    {
+      "start": 975.199,
+      "duration": 3.841,
+      "text": "feature will keep working next month"
+    },
+    {
+      "start": 977.04,
+      "duration": 4.159,
+      "text": "when another PR touches the same bit of"
+    },
+    {
+      "start": 979.04,
+      "duration": 4.479,
+      "text": "code. Now what many people did before"
+    },
+    {
+      "start": 981.199,
+      "duration": 4.401,
+      "text": "coding agents is they had a lot of unit"
+    },
+    {
+      "start": 983.519,
+      "duration": 4.24,
+      "text": "tests. They had fewer integration tests"
+    },
+    {
+      "start": 985.6,
+      "duration": 4.159,
+      "text": "on top of that and then fewer end to end"
+    },
+    {
+      "start": 987.759,
+      "duration": 3.76,
+      "text": "tests. And this formed what is known as"
+    },
+    {
+      "start": 989.759,
+      "duration": 3.361,
+      "text": "a testing pyramid. And the reason why"
+    },
+    {
+      "start": 991.519,
+      "duration": 3.601,
+      "text": "it's a pyramid is because as you move"
+    },
+    {
+      "start": 993.12,
+      "duration": 4.159,
+      "text": "upwards maintaining them can get more"
+    },
+    {
+      "start": 995.12,
+      "duration": 3.6,
+      "text": "and more expensive. So for example with"
+    },
+    {
+      "start": 997.279,
+      "duration": 2.961,
+      "text": "end to end tests they were usually"
+    },
+    {
+      "start": 998.72,
+      "duration": 3.119,
+      "text": "written in playright and it would be"
+    },
+    {
+      "start": 1000.24,
+      "duration": 3.839,
+      "text": "kind of like go to this page click on"
+    },
+    {
+      "start": 1001.839,
+      "duration": 4.321,
+      "text": "this selector wait x number of seconds"
+    },
+    {
+      "start": 1004.079,
+      "duration": 3.68,
+      "text": "then go to this page and if the layout"
+    },
+    {
+      "start": 1006.16,
+      "duration": 2.88,
+      "text": "of the page were to change for whatever"
+    },
+    {
+      "start": 1007.759,
+      "duration": 3.281,
+      "text": "reason then the end to end test would"
+    },
+    {
+      "start": 1009.04,
+      "duration": 3.68,
+      "text": "end up failing even though the flow was"
+    },
+    {
+      "start": 1011.04,
+      "duration": 3.359,
+      "text": "working just fine. But now the shift"
+    },
+    {
+      "start": 1012.72,
+      "duration": 3.84,
+      "text": "that we're kind of seeing happening is"
+    },
+    {
+      "start": 1014.399,
+      "duration": 4.88,
+      "text": "we're moving away from end to end tests"
+    },
+    {
+      "start": 1016.56,
+      "duration": 4.719,
+      "text": "to agentic end to end tests that have"
+    },
+    {
+      "start": 1019.279,
+      "duration": 3.92,
+      "text": "agentic elements and deterministic"
+    },
+    {
+      "start": 1021.279,
+      "duration": 4.321,
+      "text": "elements. And we're getting our agents"
+    },
+    {
+      "start": 1023.199,
+      "duration": 3.84,
+      "text": "to maintain our end to end tests. And"
+    },
+    {
+      "start": 1025.6,
+      "duration": 3.28,
+      "text": "some people are going so far as to"
+    },
+    {
+      "start": 1027.039,
+      "duration": 3.92,
+      "text": "delete all of their unit tests. Kind of"
+    },
+    {
+      "start": 1028.88,
+      "duration": 3.52,
+      "text": "like in these two situations over here"
+    },
+    {
+      "start": 1030.959,
+      "duration": 3.041,
+      "text": "where people are generally agreeing that"
+    },
+    {
+      "start": 1032.4,
+      "duration": 3.519,
+      "text": "end to end tests are the main ones that"
+    },
+    {
+      "start": 1034.0,
+      "duration": 4.079,
+      "text": "matter because stuff like unit tests can"
+    },
+    {
+      "start": 1035.919,
+      "duration": 3.92,
+      "text": "lock in slop code making hard to change"
+    },
+    {
+      "start": 1038.079,
+      "duration": 2.96,
+      "text": "or remove. Now, this is still a debate"
+    },
+    {
+      "start": 1039.839,
+      "duration": 3.12,
+      "text": "that's kind of happening. But the main"
+    },
+    {
+      "start": 1041.039,
+      "duration": 3.92,
+      "text": "benefit we get from agents is that they"
+    },
+    {
+      "start": 1042.959,
+      "duration": 3.441,
+      "text": "make maintaining end to end tests really"
+    },
+    {
+      "start": 1044.959,
+      "duration": 2.801,
+      "text": "cheap. Now, I basically ended up doing"
+    },
+    {
+      "start": 1046.4,
+      "duration": 4.72,
+      "text": "something very similar where I deleted"
+    },
+    {
+      "start": 1047.76,
+      "duration": 5.279,
+      "text": "about 400 500,000 lines of unit tests"
+    },
+    {
+      "start": 1051.12,
+      "duration": 4.08,
+      "text": "and then replace them with about 4 to"
+    },
+    {
+      "start": 1053.039,
+      "duration": 3.921,
+      "text": "500 end to end test instead. And of"
+    },
+    {
+      "start": 1055.2,
+      "duration": 3.2,
+      "text": "course, you should not blindly copy me."
+    },
+    {
+      "start": 1056.96,
+      "duration": 3.04,
+      "text": "You should read these two Twitter"
+    },
+    {
+      "start": 1058.4,
+      "duration": 3.12,
+      "text": "threads over here. They will be linked"
+    },
+    {
+      "start": 1060.0,
+      "duration": 3.12,
+      "text": "down below and then come to your own"
+    },
+    {
+      "start": 1061.52,
+      "duration": 3.12,
+      "text": "conclusion. But essentially what I ended"
+    },
+    {
+      "start": 1063.12,
+      "duration": 3.76,
+      "text": "up switching over to was this library"
+    },
+    {
+      "start": 1064.64,
+      "duration": 4.399,
+      "text": "called E2E whereby you can mix"
+    },
+    {
+      "start": 1066.88,
+      "duration": 4.24,
+      "text": "deterministic tests and end to end tests"
+    },
+    {
+      "start": 1069.039,
+      "duration": 4.081,
+      "text": "together. So for example, we have a test"
+    },
+    {
+      "start": 1071.12,
+      "duration": 3.84,
+      "text": "over here whereby an agent can upgrade"
+    },
+    {
+      "start": 1073.12,
+      "duration": 3.679,
+      "text": "to pro that opens up the settings"
+    },
+    {
+      "start": 1074.96,
+      "duration": 3.839,
+      "text": "billing page. Then we have an agent"
+    },
+    {
+      "start": 1076.799,
+      "duration": 4.161,
+      "text": "that's acting and we can define this to"
+    },
+    {
+      "start": 1078.799,
+      "duration": 4.321,
+      "text": "be any model kind of like GBT6 Luna"
+    },
+    {
+      "start": 1080.96,
+      "duration": 4.16,
+      "text": "extra high. That will click through the"
+    },
+    {
+      "start": 1083.12,
+      "duration": 4.0,
+      "text": "application. Then we have another agent"
+    },
+    {
+      "start": 1085.12,
+      "duration": 4.0,
+      "text": "that can be running a different model"
+    },
+    {
+      "start": 1087.12,
+      "duration": 3.679,
+      "text": "asserting to make sure the flow has"
+    },
+    {
+      "start": 1089.12,
+      "duration": 3.52,
+      "text": "passed and then we can add some more"
+    },
+    {
+      "start": 1090.799,
+      "duration": 3.681,
+      "text": "deterministic behavior again. So I"
+    },
+    {
+      "start": 1092.64,
+      "duration": 3.12,
+      "text": "basically have about 500 of these. And"
+    },
+    {
+      "start": 1094.48,
+      "duration": 2.8,
+      "text": "one of the nice things is that we can"
+    },
+    {
+      "start": 1095.76,
+      "duration": 3.52,
+      "text": "cach these agent steps so they don't"
+    },
+    {
+      "start": 1097.28,
+      "duration": 3.84,
+      "text": "have to use tokens every single time. We"
+    },
+    {
+      "start": 1099.28,
+      "duration": 3.68,
+      "text": "can choose between different models like"
+    },
+    {
+      "start": 1101.12,
+      "duration": 4.24,
+      "text": "system one models as well. And we can"
+    },
+    {
+      "start": 1102.96,
+      "duration": 4.079,
+      "text": "also use system one models to decide"
+    },
+    {
+      "start": 1105.36,
+      "duration": 4.0,
+      "text": "which set of end to end test should be"
+    },
+    {
+      "start": 1107.039,
+      "duration": 4.161,
+      "text": "run for a given PR. So we'd basically"
+    },
+    {
+      "start": 1109.36,
+      "duration": 3.76,
+      "text": "have a bunch of hunks being passed to"
+    },
+    {
+      "start": 1111.2,
+      "duration": 3.68,
+      "text": "the system one model alongside the end"
+    },
+    {
+      "start": 1113.12,
+      "duration": 3.84,
+      "text": "to end test and then give it relevant"
+    },
+    {
+      "start": 1114.88,
+      "duration": 3.919,
+      "text": "context and say does this hunk affect"
+    },
+    {
+      "start": 1116.96,
+      "duration": 3.44,
+      "text": "this end to end test. And I really like"
+    },
+    {
+      "start": 1118.799,
+      "duration": 3.12,
+      "text": "the library E2 because it makes it"
+    },
+    {
+      "start": 1120.4,
+      "duration": 3.36,
+      "text": "really easy for us. But essentially"
+    },
+    {
+      "start": 1121.919,
+      "duration": 3.921,
+      "text": "where this fits into the wider picture"
+    },
+    {
+      "start": 1123.76,
+      "duration": 4.0,
+      "text": "is that after we write a spec with the"
+    },
+    {
+      "start": 1125.84,
+      "duration": 3.76,
+      "text": "acceptance criteria, this could have"
+    },
+    {
+      "start": 1127.76,
+      "duration": 4.08,
+      "text": "like 10 different flows. We'd have our"
+    },
+    {
+      "start": 1129.6,
+      "duration": 4.88,
+      "text": "agent build and verify in a loop. The"
+    },
+    {
+      "start": 1131.84,
+      "duration": 4.56,
+      "text": "verifier may spin up child sandboxes to"
+    },
+    {
+      "start": 1134.48,
+      "duration": 3.68,
+      "text": "verify 10 different flows in parallel"
+    },
+    {
+      "start": 1136.4,
+      "duration": 3.36,
+      "text": "and those would be fixed going through a"
+    },
+    {
+      "start": 1138.16,
+      "duration": 2.8,
+      "text": "loop. And then we kind of lock in this"
+    },
+    {
+      "start": 1139.76,
+      "duration": 3.52,
+      "text": "behavior to make sure we don't"
+    },
+    {
+      "start": 1140.96,
+      "duration": 4.16,
+      "text": "accidentally regress by converting the"
+    },
+    {
+      "start": 1143.28,
+      "duration": 4.16,
+      "text": "things that we verified with the agent"
+    },
+    {
+      "start": 1145.12,
+      "duration": 4.08,
+      "text": "into end to end tests that are defined"
+    },
+    {
+      "start": 1147.44,
+      "duration": 4.56,
+      "text": "in this format kind of like this and"
+    },
+    {
+      "start": 1149.2,
+      "duration": 4.719,
+      "text": "would run selectively on future PRs if"
+    },
+    {
+      "start": 1152.0,
+      "duration": 4.0,
+      "text": "that future PR were to affect that"
+    },
+    {
+      "start": 1153.919,
+      "duration": 3.441,
+      "text": "particular end to end test. Now, do also"
+    },
+    {
+      "start": 1156.0,
+      "duration": 3.44,
+      "text": "mention in the article that if you do"
+    },
+    {
+      "start": 1157.36,
+      "duration": 4.08,
+      "text": "focus on one test type, then pick end to"
+    },
+    {
+      "start": 1159.44,
+      "duration": 3.68,
+      "text": "end tests because it's really hard for"
+    },
+    {
+      "start": 1161.44,
+      "duration": 3.04,
+      "text": "the agent to cheat its way around"
+    },
+    {
+      "start": 1163.12,
+      "duration": 3.04,
+      "text": "because they're difficult to fuel"
+    },
+    {
+      "start": 1164.48,
+      "duration": 3.199,
+      "text": "because either the feature works or it"
+    },
+    {
+      "start": 1166.16,
+      "duration": 3.2,
+      "text": "doesn't work. But of course, one of the"
+    },
+    {
+      "start": 1167.679,
+      "duration": 3.441,
+      "text": "problems that we can have with a library"
+    },
+    {
+      "start": 1169.36,
+      "duration": 3.6,
+      "text": "kind of like this is that we don't"
+    },
+    {
+      "start": 1171.12,
+      "duration": 3.36,
+      "text": "identify any weird side effects kind of"
+    },
+    {
+      "start": 1172.96,
+      "duration": 3.04,
+      "text": "like the dialogue thing that I mentioned"
+    },
+    {
+      "start": 1174.48,
+      "duration": 2.559,
+      "text": "earlier in the video. But essentially a"
+    },
+    {
+      "start": 1176.0,
+      "duration": 2.96,
+      "text": "general shift that we're seeing in the"
+    },
+    {
+      "start": 1177.039,
+      "duration": 3.681,
+      "text": "agent coding space is that we're using"
+    },
+    {
+      "start": 1178.96,
+      "duration": 3.92,
+      "text": "the computer use browser use"
+    },
+    {
+      "start": 1180.72,
+      "duration": 4.4,
+      "text": "capabilities of these agents to write"
+    },
+    {
+      "start": 1182.88,
+      "duration": 4.32,
+      "text": "hybrid tests that make use of agentic"
+    },
+    {
+      "start": 1185.12,
+      "duration": 4.32,
+      "text": "steps and also deterministic steps and"
+    },
+    {
+      "start": 1187.2,
+      "duration": 3.839,
+      "text": "then using system one models to decide"
+    },
+    {
+      "start": 1189.44,
+      "duration": 3.599,
+      "text": "which test should run to kind of"
+    },
+    {
+      "start": 1191.039,
+      "duration": 3.441,
+      "text": "preserve behavior and detect regressions"
+    },
+    {
+      "start": 1193.039,
+      "duration": 3.121,
+      "text": "going forwards. But now one of the"
+    },
+    {
+      "start": 1194.48,
+      "duration": 3.12,
+      "text": "problems is that these kind of end tests"
+    },
+    {
+      "start": 1196.16,
+      "duration": 3.6,
+      "text": "that we're writing in code kind of like"
+    },
+    {
+      "start": 1197.6,
+      "duration": 4.079,
+      "text": "this are only testing the flows that we"
+    },
+    {
+      "start": 1199.76,
+      "duration": 3.6,
+      "text": "bother to think about. And this is where"
+    },
+    {
+      "start": 1201.679,
+      "duration": 3.761,
+      "text": "the idea of fuzzying kind of comes in."
+    },
+    {
+      "start": 1203.36,
+      "duration": 4.319,
+      "text": "So what I have in my setup is a bunch of"
+    },
+    {
+      "start": 1205.44,
+      "duration": 4.96,
+      "text": "cloud powered fuzzers. They're taking in"
+    },
+    {
+      "start": 1207.679,
+      "duration": 4.0,
+      "text": "analytics from Post Hog to see how real"
+    },
+    {
+      "start": 1210.4,
+      "duration": 3.2,
+      "text": "users are interacting with the"
+    },
+    {
+      "start": 1211.679,
+      "duration": 4.321,
+      "text": "application and kind of messing up the"
+    },
+    {
+      "start": 1213.6,
+      "duration": 4.56,
+      "text": "path slightly and doing unexpected user"
+    },
+    {
+      "start": 1216.0,
+      "duration": 3.679,
+      "text": "behavior to see if anything breaks. And"
+    },
+    {
+      "start": 1218.16,
+      "duration": 3.92,
+      "text": "then anything that breaks that's really"
+    },
+    {
+      "start": 1219.679,
+      "duration": 4.321,
+      "text": "easy to fix, it automatically fixes,"
+    },
+    {
+      "start": 1222.08,
+      "duration": 4.08,
+      "text": "measures in, and then just lets me know"
+    },
+    {
+      "start": 1224.0,
+      "duration": 3.679,
+      "text": "in like a daily recap. And that is one"
+    },
+    {
+      "start": 1226.16,
+      "duration": 3.28,
+      "text": "component my software factory that's"
+    },
+    {
+      "start": 1227.679,
+      "duration": 3.12,
+      "text": "working around the clock to maintain my"
+    },
+    {
+      "start": 1229.44,
+      "duration": 2.8,
+      "text": "applications. And that kind of leads"
+    },
+    {
+      "start": 1230.799,
+      "duration": 2.961,
+      "text": "onto the third part which is what"
+    },
+    {
+      "start": 1232.24,
+      "duration": 2.96,
+      "text": "happens when something slips through"
+    },
+    {
+      "start": 1233.76,
+      "duration": 3.2,
+      "text": "anyway. So let's say that your agent"
+    },
+    {
+      "start": 1235.2,
+      "duration": 3.76,
+      "text": "builds out an entire feature. It passes"
+    },
+    {
+      "start": 1236.96,
+      "duration": 4.24,
+      "text": "a verification all the end to end tests"
+    },
+    {
+      "start": 1238.96,
+      "duration": 4.079,
+      "text": "pass as well but somehow your users"
+    },
+    {
+      "start": 1241.2,
+      "duration": 3.599,
+      "text": "still end up facing some kind of bug"
+    },
+    {
+      "start": 1243.039,
+      "duration": 3.281,
+      "text": "that they email you about. Now of course"
+    },
+    {
+      "start": 1244.799,
+      "duration": 3.921,
+      "text": "you will want to go ahead and fix that"
+    },
+    {
+      "start": 1246.32,
+      "duration": 3.599,
+      "text": "bug because a user reported it to you."
+    },
+    {
+      "start": 1248.72,
+      "duration": 3.04,
+      "text": "But you kind of want to step back and"
+    },
+    {
+      "start": 1249.919,
+      "duration": 3.841,
+      "text": "think, okay, what exactly went wrong"
+    },
+    {
+      "start": 1251.76,
+      "duration": 3.52,
+      "text": "with my verification setup? How can I"
+    },
+    {
+      "start": 1253.76,
+      "duration": 2.96,
+      "text": "make some kind of upstream fix to"
+    },
+    {
+      "start": 1255.28,
+      "duration": 3.36,
+      "text": "prevent this class of bugs happening"
+    },
+    {
+      "start": 1256.72,
+      "duration": 4.16,
+      "text": "again in the future? Now to give a"
+    },
+    {
+      "start": 1258.64,
+      "duration": 4.159,
+      "text": "realistic example for the Genta coding"
+    },
+    {
+      "start": 1260.88,
+      "duration": 4.159,
+      "text": "skill website, a user once reported a"
+    },
+    {
+      "start": 1262.799,
+      "duration": 4.24,
+      "text": "book to me whereby the video player kind"
+    },
+    {
+      "start": 1265.039,
+      "duration": 3.281,
+      "text": "of had this weird issue on Safari. So"
+    },
+    {
+      "start": 1267.039,
+      "duration": 3.041,
+      "text": "that when they were watching the videos"
+    },
+    {
+      "start": 1268.32,
+      "duration": 3.599,
+      "text": "instead of a class, it would very"
+    },
+    {
+      "start": 1270.08,
+      "duration": 3.36,
+      "text": "occasionally crash for whatever reason."
+    },
+    {
+      "start": 1271.919,
+      "duration": 3.041,
+      "text": "And the reason why this had never been"
+    },
+    {
+      "start": 1273.44,
+      "duration": 3.44,
+      "text": "called until now is because the"
+    },
+    {
+      "start": 1274.96,
+      "duration": 3.76,
+      "text": "verification skill and all the internal"
+    },
+    {
+      "start": 1276.88,
+      "duration": 4.0,
+      "text": "verification was happening using"
+    },
+    {
+      "start": 1278.72,
+      "duration": 4.48,
+      "text": "Playright Chromium and Safari runs on"
+    },
+    {
+      "start": 1280.88,
+      "duration": 3.76,
+      "text": "WebKit and it kind of handles videos a"
+    },
+    {
+      "start": 1283.2,
+      "duration": 3.2,
+      "text": "tiny bit differently compared to"
+    },
+    {
+      "start": 1284.64,
+      "duration": 4.24,
+      "text": "Chromium. So basically even though my"
+    },
+    {
+      "start": 1286.4,
+      "duration": 4.24,
+      "text": "verification scale said use playright it"
+    },
+    {
+      "start": 1288.88,
+      "duration": 3.679,
+      "text": "never specified which version. So it"
+    },
+    {
+      "start": 1290.64,
+      "duration": 3.76,
+      "text": "used chromium by default but then I"
+    },
+    {
+      "start": 1292.559,
+      "duration": 4.081,
+      "text": "basically had the agent spin a playright"
+    },
+    {
+      "start": 1294.4,
+      "duration": 4.08,
+      "text": "webkit it found the issue it then fixed"
+    },
+    {
+      "start": 1296.64,
+      "duration": 3.76,
+      "text": "the issue verified that it worked with"
+    },
+    {
+      "start": 1298.48,
+      "duration": 3.6,
+      "text": "playright webkit and then found a whole"
+    },
+    {
+      "start": 1300.4,
+      "duration": 3.2,
+      "text": "bunch of issues as well because it was"
+    },
+    {
+      "start": 1302.08,
+      "duration": 3.28,
+      "text": "the very first time that I was testing"
+    },
+    {
+      "start": 1303.6,
+      "duration": 3.439,
+      "text": "the website with playright webkit and"
+    },
+    {
+      "start": 1305.36,
+      "duration": 3.12,
+      "text": "then after fixing those issues I"
+    },
+    {
+      "start": 1307.039,
+      "duration": 3.52,
+      "text": "basically wanted to prevent these kind"
+    },
+    {
+      "start": 1308.48,
+      "duration": 4.64,
+      "text": "of issues happening again. So I changed"
+    },
+    {
+      "start": 1310.559,
+      "duration": 4.48,
+      "text": "my verification skill to say verify"
+    },
+    {
+      "start": 1313.12,
+      "duration": 4.0,
+      "text": "using playright chromium and also"
+    },
+    {
+      "start": 1315.039,
+      "duration": 3.681,
+      "text": "playright webkit as well. Specifically"
+    },
+    {
+      "start": 1317.12,
+      "duration": 3.2,
+      "text": "when touching anything to do with a"
+    },
+    {
+      "start": 1318.72,
+      "duration": 3.199,
+      "text": "video player because that's where the"
+    },
+    {
+      "start": 1320.32,
+      "duration": 3.52,
+      "text": "issue arose from. And that simple"
+    },
+    {
+      "start": 1321.919,
+      "duration": 3.841,
+      "text": "instruction inside my verification skill"
+    },
+    {
+      "start": 1323.84,
+      "duration": 3.68,
+      "text": "means that we can catch any issues"
+    },
+    {
+      "start": 1325.76,
+      "duration": 3.279,
+      "text": "upstream before they get merged into"
+    },
+    {
+      "start": 1327.52,
+      "duration": 3.68,
+      "text": "main. And this is why I generally think"
+    },
+    {
+      "start": 1329.039,
+      "duration": 4.081,
+      "text": "whereby if a bug does go to production"
+    },
+    {
+      "start": 1331.2,
+      "duration": 3.599,
+      "text": "that my verification skill ignored, how"
+    },
+    {
+      "start": 1333.12,
+      "duration": 3.679,
+      "text": "can I change a skill? What kind of"
+    },
+    {
+      "start": 1334.799,
+      "duration": 3.76,
+      "text": "stress testing can I do here to prevent"
+    },
+    {
+      "start": 1336.799,
+      "duration": 3.441,
+      "text": "that class of bug entering production"
+    },
+    {
+      "start": 1338.559,
+      "duration": 3.041,
+      "text": "again? Now a kind of bigger version of"
+    },
+    {
+      "start": 1340.24,
+      "duration": 3.76,
+      "text": "this that Ananthropic mentioned in the"
+    },
+    {
+      "start": 1341.6,
+      "duration": 4.559,
+      "text": "article is a reliability checklist that"
+    },
+    {
+      "start": 1344.0,
+      "duration": 4.559,
+      "text": "triggers on a diff. So they basically"
+    },
+    {
+      "start": 1346.159,
+      "duration": 4.721,
+      "text": "compiled a checklist of 39 items from"
+    },
+    {
+      "start": 1348.559,
+      "duration": 4.161,
+      "text": "previous instance. So for example in a"
+    },
+    {
+      "start": 1350.88,
+      "duration": 3.919,
+      "text": "previous instant they change a way that"
+    },
+    {
+      "start": 1352.72,
+      "duration": 3.839,
+      "text": "cla code stored session slightly and"
+    },
+    {
+      "start": 1354.799,
+      "duration": 4.401,
+      "text": "that meant that resuming a previous"
+    },
+    {
+      "start": 1356.559,
+      "duration": 4.641,
+      "text": "session with cloud-res"
+    },
+    {
+      "start": 1359.2,
+      "duration": 3.839,
+      "text": "not work anymore. So they had to make a"
+    },
+    {
+      "start": 1361.2,
+      "duration": 4.0,
+      "text": "really quick fix and then they added to"
+    },
+    {
+      "start": 1363.039,
+      "duration": 3.601,
+      "text": "a checklist whereby every time Claude"
+    },
+    {
+      "start": 1365.2,
+      "duration": 3.44,
+      "text": "were to change the way that sessions are"
+    },
+    {
+      "start": 1366.64,
+      "duration": 4.24,
+      "text": "stored inside of Claude code then it"
+    },
+    {
+      "start": 1368.64,
+      "duration": 4.159,
+      "text": "would always try to resume to basically"
+    },
+    {
+      "start": 1370.88,
+      "duration": 3.679,
+      "text": "make sure that still works. So it's not"
+    },
+    {
+      "start": 1372.799,
+      "duration": 3.601,
+      "text": "the case that every single of these 39"
+    },
+    {
+      "start": 1374.559,
+      "duration": 3.681,
+      "text": "items are triggered every single time."
+    },
+    {
+      "start": 1376.4,
+      "duration": 3.92,
+      "text": "Only when Claude reads a diff and"
+    },
+    {
+      "start": 1378.24,
+      "duration": 3.679,
+      "text": "decides that the trigger matches a diff"
+    },
+    {
+      "start": 1380.32,
+      "duration": 4.0,
+      "text": "would that extra step of verification"
+    },
+    {
+      "start": 1381.919,
+      "duration": 4.64,
+      "text": "run. So going back to my early example,"
+    },
+    {
+      "start": 1384.32,
+      "duration": 4.0,
+      "text": "the trigger is basically any change that"
+    },
+    {
+      "start": 1386.559,
+      "duration": 3.6,
+      "text": "happened to video player on my Aenta"
+    },
+    {
+      "start": 1388.32,
+      "duration": 4.08,
+      "text": "coding school website. That would also"
+    },
+    {
+      "start": 1390.159,
+      "duration": 4.0,
+      "text": "get another bit of verification with"
+    },
+    {
+      "start": 1392.4,
+      "duration": 3.36,
+      "text": "Playright WebKit to make sure that it"
+    },
+    {
+      "start": 1394.159,
+      "duration": 3.281,
+      "text": "works properly on Safari. They mention"
+    },
+    {
+      "start": 1395.76,
+      "duration": 3.44,
+      "text": "at the very bottom that we found that"
+    },
+    {
+      "start": 1397.44,
+      "duration": 3.68,
+      "text": "giving your agent a way to verify it to"
+    },
+    {
+      "start": 1399.2,
+      "duration": 3.599,
+      "text": "work with a strong feedback loop makes"
+    },
+    {
+      "start": 1401.12,
+      "duration": 3.84,
+      "text": "all the difference. And this is kind of"
+    },
+    {
+      "start": 1402.799,
+      "duration": 3.76,
+      "text": "like the builder verify loop that I"
+    },
+    {
+      "start": 1404.96,
+      "duration": 3.199,
+      "text": "mentioned earlier in the video. And that"
+    },
+    {
+      "start": 1406.559,
+      "duration": 3.921,
+      "text": "you should treat your verification layer"
+    },
+    {
+      "start": 1408.159,
+      "duration": 3.921,
+      "text": "like you treat any other system. So, one"
+    },
+    {
+      "start": 1410.48,
+      "duration": 3.199,
+      "text": "of the problems that we can now face is"
+    },
+    {
+      "start": 1412.08,
+      "duration": 3.599,
+      "text": "that since we're always adding new stuff"
+    },
+    {
+      "start": 1413.679,
+      "duration": 4.0,
+      "text": "to our verification skill and our"
+    },
+    {
+      "start": 1415.679,
+      "duration": 3.921,
+      "text": "verification environment may be evolving"
+    },
+    {
+      "start": 1417.679,
+      "duration": 3.841,
+      "text": "because we're allowing the agent spin up"
+    },
+    {
+      "start": 1419.6,
+      "duration": 3.439,
+      "text": "child sandboxes, we're giving it"
+    },
+    {
+      "start": 1421.52,
+      "duration": 3.68,
+      "text": "identities kind of like on Slack and"
+    },
+    {
+      "start": 1423.039,
+      "duration": 3.921,
+      "text": "stuff. They have their own AWS accounts."
+    },
+    {
+      "start": 1425.2,
+      "duration": 4.24,
+      "text": "We basically want to take good care of"
+    },
+    {
+      "start": 1426.96,
+      "duration": 3.68,
+      "text": "our verification skills and environment"
+    },
+    {
+      "start": 1429.44,
+      "duration": 2.8,
+      "text": "rather than just setting up and"
+    },
+    {
+      "start": 1430.64,
+      "duration": 4.159,
+      "text": "forgetting about it. So this would mean"
+    },
+    {
+      "start": 1432.24,
+      "duration": 4.4,
+      "text": "stuff like having a collection of PRs"
+    },
+    {
+      "start": 1434.799,
+      "duration": 3.841,
+      "text": "like 20 or 30 PRs that are your own"
+    },
+    {
+      "start": 1436.64,
+      "duration": 3.919,
+      "text": "benchmark so that when you do make a"
+    },
+    {
+      "start": 1438.64,
+      "duration": 3.76,
+      "text": "change to your verification skill that"
+    },
+    {
+      "start": 1440.559,
+      "duration": 3.12,
+      "text": "you rerun it across that benchmark to"
+    },
+    {
+      "start": 1442.4,
+      "duration": 3.279,
+      "text": "make sure that you did not have a"
+    },
+    {
+      "start": 1443.679,
+      "duration": 3.441,
+      "text": "accidental regression. Stress testing"
+    },
+    {
+      "start": 1445.679,
+      "duration": 3.36,
+      "text": "the skill kind of like we showed early"
+    },
+    {
+      "start": 1447.12,
+      "duration": 4.24,
+      "text": "on in the video. Also finding"
+    },
+    {
+      "start": 1449.039,
+      "duration": 3.921,
+      "text": "contradictory instructions in the skill"
+    },
+    {
+      "start": 1451.36,
+      "duration": 3.439,
+      "text": "because especially as your verification"
+    },
+    {
+      "start": 1452.96,
+      "duration": 3.04,
+      "text": "skills get longer over time or your"
+    },
+    {
+      "start": 1454.799,
+      "duration": 2.961,
+      "text": "verification environment gets more"
+    },
+    {
+      "start": 1456.0,
+      "duration": 3.12,
+      "text": "complicated. There may be two things in"
+    },
+    {
+      "start": 1457.76,
+      "duration": 3.36,
+      "text": "your verification skill that kind of"
+    },
+    {
+      "start": 1459.12,
+      "duration": 3.36,
+      "text": "contradict each other and lead to agent"
+    },
+    {
+      "start": 1461.12,
+      "duration": 3.439,
+      "text": "doing the wrong thing. And this could"
+    },
+    {
+      "start": 1462.48,
+      "duration": 3.84,
+      "text": "also be set up as a loop on another"
+    },
+    {
+      "start": 1464.559,
+      "duration": 3.841,
+      "text": "Slack channel. And then you could also"
+    },
+    {
+      "start": 1466.32,
+      "duration": 3.52,
+      "text": "do stuff like pulling in any support"
+    },
+    {
+      "start": 1468.4,
+      "duration": 3.279,
+      "text": "tickets as well. And then you're using"
+    },
+    {
+      "start": 1469.84,
+      "duration": 3.52,
+      "text": "them to help you decide how to improve"
+    },
+    {
+      "start": 1471.679,
+      "duration": 3.201,
+      "text": "your verification skill and your"
+    },
+    {
+      "start": 1473.36,
+      "duration": 3.199,
+      "text": "verification environments. So for"
+    },
+    {
+      "start": 1474.88,
+      "duration": 3.52,
+      "text": "example, one support ticket may say,"
+    },
+    {
+      "start": 1476.559,
+      "duration": 3.36,
+      "text": "\"Hey, I use Firefox every day. Your"
+    },
+    {
+      "start": 1478.4,
+      "duration": 3.68,
+      "text": "application's kind of weird or funky on"
+    },
+    {
+      "start": 1479.919,
+      "duration": 4.321,
+      "text": "there.\" You may also add Firefox to your"
+    },
+    {
+      "start": 1482.08,
+      "duration": 3.599,
+      "text": "verification skill if you deem that it's"
+    },
+    {
+      "start": 1484.24,
+      "duration": 3.12,
+      "text": "worth it. Now the way that I kind of"
+    },
+    {
+      "start": 1485.679,
+      "duration": 3.6,
+      "text": "think about this is that my role as an"
+    },
+    {
+      "start": 1487.36,
+      "duration": 3.84,
+      "text": "engineer is kind of evolving. So rather"
+    },
+    {
+      "start": 1489.279,
+      "duration": 4.561,
+      "text": "than waking up every day and thinking"
+    },
+    {
+      "start": 1491.2,
+      "duration": 4.24,
+      "text": "okay I maintain software, it's more I"
+    },
+    {
+      "start": 1493.84,
+      "duration": 3.839,
+      "text": "maintain loops that maintain the"
+    },
+    {
+      "start": 1495.44,
+      "duration": 4.32,
+      "text": "software for me. So I stop reading every"
+    },
+    {
+      "start": 1497.679,
+      "duration": 3.921,
+      "text": "single diff myself and I instead build"
+    },
+    {
+      "start": 1499.76,
+      "duration": 3.919,
+      "text": "the verification systems and"
+    },
+    {
+      "start": 1501.6,
+      "duration": 3.76,
+      "text": "environments to basically check and"
+    },
+    {
+      "start": 1503.679,
+      "duration": 4.0,
+      "text": "stress test my applications around the"
+    },
+    {
+      "start": 1505.36,
+      "duration": 4.4,
+      "text": "clock. do all kinds of fuzzy and I"
+    },
+    {
+      "start": 1507.679,
+      "duration": 4.0,
+      "text": "review the videos, any HTML artifacts"
+    },
+    {
+      "start": 1509.76,
+      "duration": 4.08,
+      "text": "and evidence and then I may decide what"
+    },
+    {
+      "start": 1511.679,
+      "duration": 3.841,
+      "text": "to do in situations where the agent is"
+    },
+    {
+      "start": 1513.84,
+      "duration": 3.76,
+      "text": "kind of unsure or there are multiple"
+    },
+    {
+      "start": 1515.52,
+      "duration": 3.759,
+      "text": "correct solutions. And at any time a bug"
+    },
+    {
+      "start": 1517.6,
+      "duration": 4.0,
+      "text": "still slips through and then affects a"
+    },
+    {
+      "start": 1519.279,
+      "duration": 5.681,
+      "text": "user, I tried to tighten the entire loop"
+    },
+    {
+      "start": 1521.6,
+      "duration": 3.36,
+      "text": "to make the system more reliable."
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-16",
+  "generated_at": "2026-11-23",
   "description": "Registre des sources de la base de connaissance. Source de vérité pour la provenance, les révisions et les chemins locaux.",
   "sources": [
     {
@@ -85,6 +85,47 @@
       "language": "en",
       "local_path": "sources/articles/2026-11-13-building-always-on-agents",
       "notes": "Cinq primitives d'architecture pour agents persistants : event inbox, timers, memory, permissions, outbox."
+    },
+    {
+      "id": "article-claude-code-verification",
+      "type": "article",
+      "title": "How the Claude Code team thinks about verification",
+      "author": "Addy Osmani (Anthropic)",
+      "url": "https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/",
+      "published_at": "2026-11-16",
+      "retrieved_at": "2026-11-23",
+      "reading_time": "10 min",
+      "language": "en",
+      "license": "Copyright Anthropic; no redistribution license identified",
+      "local_path": "sources/articles/2026-11-16-claude-code-verification",
+      "summary_path": "sources/articles/2026-11-16-claude-code-verification/SOURCE.md",
+      "content_path": "sources/articles/2026-11-16-claude-code-verification/content.md",
+      "content_format": "paraphrased reading notes, not a full article copy",
+      "nectar_path": "sources/articles/2026-11-16-claude-code-verification/nectar.md",
+      "notes": "Primary account of verification and reviewer evaluation. Related video: video-how-anthropic-verifies-code. Collected as reference, without changing framework behavior."
+    },
+    {
+      "id": "video-how-anthropic-verifies-code",
+      "type": "video",
+      "title": "How Anthropic Verifies Code Written by Claude",
+      "author": "Ray Amjad",
+      "url": "https://www.youtube.com/watch?v=DNwMbJf5SAI",
+      "published_at": "2026-11-23",
+      "retrieved_at": "2026-11-23",
+      "duration": "25:24",
+      "language": "en",
+      "license": "No redistribution license verified",
+      "local_path": "sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad",
+      "summary_path": "sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad/SOURCE.md",
+      "content_path": "sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad/transcript.md",
+      "content_format": "automatic English captions, cleaned and grouped into timestamped paragraphs",
+      "metadata_path": "sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad/raw/metadata.json",
+      "nectar_path": "sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad/nectar.md",
+      "notes": "Commentary on article-claude-code-verification with the presenter's own demonstrations. Secondary source, not independent confirmation of Anthropic's claims.",
+      "transcript": "auto-generated, cleaned",
+      "transcript_path": "sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad/transcript.md",
+      "segments_path": "sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad/raw/segments.json",
+      "reading_notes_path": "sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad/notes.md"
     }
   ]
 }

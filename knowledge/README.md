@@ -38,6 +38,10 @@ knowledge/
 | Article | Anthropic, *Patterns and problems in emerging multiagent systems* | [nectar](sources/articles/2026-08-13-multiagent-systems/nectar.md) · [contenu](sources/articles/2026-08-13-multiagent-systems/content.md) |
 | Article | Anthropic, *When to fold subagents into your main agent loop* | [nectar](sources/articles/2026-10-22-fold-subagents-into-main-loop/nectar.md) · [contenu](sources/articles/2026-10-22-fold-subagents-into-main-loop/content.md) |
 | Article | Anthropic, *Harness design for long-running application development* | [nectar](sources/articles/2026-03-24-harness-design-long-running-apps/nectar.md) · [contenu](sources/articles/2026-03-24-harness-design-long-running-apps/content.md) |
+| Article | Addy Osmani, *How the Claude Code team thinks about verification* | [source](sources/articles/2026-11-16-claude-code-verification/SOURCE.md) · [reading notes](sources/articles/2026-11-16-claude-code-verification/content.md) · [nectar](sources/articles/2026-11-16-claude-code-verification/nectar.md) |
+| Video | Ray Amjad, *How Anthropic Verifies Code Written by Claude* | [source](sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad/SOURCE.md) · [transcript](sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad/transcript.md) · [timestamped notes](sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad/notes.md) · [nectar](sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad/nectar.md) |
+
+Added on 2026-11-23: the verification article and video are dated research records. The article has reading notes; the video has extracted captions, timestamped notes and analysis; the video discusses the article, so they are not independent confirmation of the same claims.
 
 ## Synthèses
 
