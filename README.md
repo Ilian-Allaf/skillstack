@@ -91,8 +91,8 @@ Every skill is launched by you; none is picked by the model on its own. Each one
 **Inside a task** (every PR a skill opens goes through `verify-pr` and `babysit-pr`, and `ship` runs `analyze-impact` for `medium` and `high`; you can also launch them on an open PR)
 
 - **[analyze-impact](skills/analyze-impact/SKILL.md)**: Finds what a change breaks outside its diff, and proves by a run the one fact it is safe because of.
-- **[verify-pr](skills/verify-pr/SKILL.md)**: Tries to break a pull request before reading prior diagnostics, then replays the proof and gives a verdict per axis, each FAIL with its run.
-- **[babysit-pr](skills/babysit-pr/SKILL.md)**: Drives an open PR to ready: conflicts, review comments, CI, every fix proven again. Stops before the merge.
+- **[verify-pr](skills/verify-pr/SKILL.md)**: Tries to break a pull request before reading prior diagnostics, then replays the proof and gives a verdict per axis on the tested base and head, each FAIL with its run.
+- **[babysit-pr](skills/babysit-pr/SKILL.md)**: Drives an open PR to ready: conflicts, review comments, CI, every fix proven again, and a new verdict when the base or head changes. Stops before the merge.
 
 **Written in your repo** by the skills above: `drive-<app>`, the driver of each surface of your app, and `prove-<area>`, a formal check of one critical area.
 

@@ -26,7 +26,7 @@ What no run could prove. Write "nothing" when everything was proven.
 
 ## Risk
 Class: low | medium | high. Door: two-way | one-way, and the irreversible choice when one-way.
-Verdict: behavior <outcome>, code <outcome>, patch-id <7 chars>, <link to the verifier's comment>
+Verdict: behavior <outcome>, code <outcome>, base-sha <full SHA>, sha <full head SHA>, <link to the verifier's comment>
 
 <details><summary>Proof, breakage, decisions</summary>
 

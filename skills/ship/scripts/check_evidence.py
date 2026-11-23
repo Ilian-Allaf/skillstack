@@ -1,6 +1,6 @@
 """Check a local evidence index, not the truth of its claims.
 
-Usage: python -I check_evidence.py record.json --patch-id <current full patch id>
+Usage: python -I check_evidence.py record.json --patch-id <full patch id> --base-sha <full base SHA> --head-sha <full head SHA>
 Paths resolve from the record's directory. No network access or dependencies.
 """
 
@@ -12,7 +12,7 @@ import re
 from pathlib import Path
 
 
-def check(record: object, root: Path, patch_id: str) -> list[str]:
+def check(record: object, root: Path, patch_id: str, base_sha: str, head_sha: str) -> list[str]:
     errors: list[str] = []
 
     def fail(where: str, fix: str) -> None:
@@ -55,8 +55,10 @@ def check(record: object, root: Path, patch_id: str) -> list[str]:
 
     if not isinstance(record, dict):
         return ["record: Fix: supply a JSON object"]
-    if not re.fullmatch(r"[0-9a-f]{40}|[0-9a-f]{64}", patch_id):
-        fail("patch id", "compute and pass the full current stable patch id")
+    current = {"patch_id": patch_id, "base_sha": base_sha, "head_sha": head_sha}
+    for name, value in current.items():
+        if not isinstance(value, str) or not re.fullmatch(r"[0-9a-f]{40}|[0-9a-f]{64}", value):
+            fail(name, f"compute and pass the full current {name}")
     for row in rows("cases", "id"):
         where = f"case {row.get('id')}"
         level = row.get("level")
@@ -86,8 +88,8 @@ def check(record: object, root: Path, patch_id: str) -> list[str]:
             artifact(path, "required_artifacts")
     verdict = record.get("verdict")
     if verdict is not None:
-        if not isinstance(verdict, dict) or verdict.get("patch_id") != patch_id:
-            fail("verdict", "obtain a verdict for the current patch id")
+        if not isinstance(verdict, dict) or any(verdict.get(name) != value for name, value in current.items()):
+            fail("verdict", "obtain a verdict for the current base SHA, head SHA, and patch id")
     return errors
 
 
@@ -95,13 +97,15 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("record", type=Path)
     parser.add_argument("--patch-id", required=True)
+    parser.add_argument("--base-sha", required=True)
+    parser.add_argument("--head-sha", required=True)
     args = parser.parse_args()
     try:
         record = json.loads(args.record.read_text(encoding="utf-8"))
     except (OSError, ValueError) as exc:
         print(f"record: Fix: supply a readable JSON file ({exc})")
         return 1
-    errors = check(record, args.record.resolve().parent, args.patch_id)
+    errors = check(record, args.record.resolve().parent, args.patch_id, args.base_sha, args.head_sha)
     for error in errors:
         print(error)
     if errors:

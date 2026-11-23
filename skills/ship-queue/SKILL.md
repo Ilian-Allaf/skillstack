@@ -38,8 +38,8 @@ The tasks come from the user. You do not split one task into several (ADR 0011):
 4. **Watch by side effects.** Wake on PR events, or on a periodic check while the queue runs (ADR 0014); the wake ends with the queue. On each wake, judge each owner by its pushes, its PR, and its decision log, not by its status text. An owner that errors or shows nothing new for twice its usual time is stuck: replace it with a fresh owner whose brief holds the first brief, every later directive, and the stuck owner's branch and report. After two replacements for one task, stop replacing: push the stuck owner's branch, open its PR in the PR format with what is proven and what is not, label it `needs-human` as `ship` does for a stop before its step 6, and replan the tasks that build on it. When an owner reports what a branch below needs, hand it to that branch's owner. Show the user each owner's frame as it arrives: its `done_when` and its cases. When a PR below gets a new head, tell the owner above to rebase on it, or spawn a fresh owner with its brief if that one has finished. Answer an owner that waits on you. Pass a call only the user can make to the user, with its evidence.
    Done when: every owner is running, done, or replaced, and no owner waits on you.
 
-5. **Check what each owner hands back.** Read the PR, not the owner's summary: its coverage table, its demo, its Verdict line on the head's patch id, and its label. A PR labeled `ready` without a passing verdict on its head is not ready: send it back to its owner.
-   Done when: every PR is `ready` with a verdict on its head, or `needs-human` with its reason.
+5. **Check what each owner hands back.** Read the PR, not the owner's summary: its coverage table, its demo, its Verdict line on the current base and head, and its label. A PR labeled `ready` without a passing verdict on its current base and head is not ready: send it back to its owner.
+   Done when: every PR is `ready` with a verdict on its current base and head, or `needs-human` with its reason.
 
 6. **Hand over.** After the handover, nobody pushes to a PR of the queue without the user's go.
    Done when: the user has the reply below.

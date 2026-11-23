@@ -22,7 +22,7 @@ The target repo can have its own glossary of domain terms. The builder and the v
 | risk class | classe de risque | `low`, `medium`, or `high`; sets how deep verification goes | `risk level` |
 | hard zone | zone difficile | where models fail most; the one list is in `proof.md` | |
 | lane | lane | one question the verifier answers, such as `live` or `spec` | `check type` |
-| verdict | verdict | PASS, FAIL, or INCONCLUSIVE, per axis, on one patch | `LGTM` |
+| verdict | verdict | PASS, FAIL, or INCONCLUSIVE, per axis, on one base and head pair | `LGTM` |
 | axis | axe | behavior or code; each gets its own verdict | |
 | note | note | a finding that does not block; listed in the verdict comment, an issue only when the user asks | |
 | ready | prête | the PR needs nothing but the user's merge; label `ready` | `merge-ready` |
@@ -33,7 +33,7 @@ The target repo can have its own glossary of domain terms. The builder and the v
 | case | cas | one situation the evidence must show: an entry point, an edge case, the main path | `scenario` |
 | case list | liste des cas | the numbered cases `frame` fixes before any code, shown in the frame | |
 | seam | seam | a public interface the tests drive, agreed in `frame` or the spec | |
-| patch id | patch id | the hash of the diff, `git patch-id --stable`; a verdict holds for one | |
+| patch id | patch id | the hash of the diff, `git patch-id --stable`; unchanged does not make a verdict reusable | |
 | coverage table | table de couverture | the PR's table of cases, each with its evidence and certainty level | `test matrix` |
 | coverage gap | trou de couverture | a case missing from the coverage table that the verifier drove and found correct | |
 | demo | démo | the video assembled from one scripted clip per case, with captions | `screencast` |
