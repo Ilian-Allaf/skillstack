@@ -2,7 +2,7 @@
 
 A test checks the cases someone thought of. Formal verification checks every case in a stated scope: every order of steps in a model, every input up to a bound, or every input. A formal check is a project-local `prove-<area>` skill that checks one property of named code this way, so every agent that changes that code can check the change against the property.
 
-This file holds the rules every formal check follows, the shape of `prove-<area>`, and when a check is stale. `create-formal-verification` writes a check, `maintain-formal-verification` brings one back in line with the code, and a builder whose change alters covered code updates the check in its own run. All three follow the same rules.
+This file holds the rules every formal check follows, the shape of `prove-<area>`, when a check is stale, and what a task does with a check it touches. `create-formal-verification` writes a check, `maintain-formal-verification` brings one back in line with the code, and a builder whose change alters covered code updates the check in its own run. All three follow the same rules.
 
 ## Rules
 
@@ -58,6 +58,15 @@ Update the model from the code before you rerun: every part keeps its `file:line
 
 ## Stale
 
-A check is stale when a covered file changed after its sync commit: `git log <sync commit>..HEAD -- <covered files>` lists a commit. A stale check can keep passing on code that no longer exists, so its pass proves nothing: report the property as not verified until the model is back in line.
+A check is stale when a covered file differs from its content at the sync commit: `git diff --quiet <sync commit> <commit> -- <covered files>` fails. The comparison is on content, not history, so a squash or a rebase of the commit that updated the check leaves it in sync. A stale check can keep passing on code that no longer exists, so its pass proves nothing: report the property as not verified until the model is back in line.
 
 Move the sync commit forward only after you confirmed that the model describes the code at the new commit. A check that could not be brought back in line keeps its old sync commit.
+
+## In a task
+
+A file a formal check covers is a hard zone ([proof.md](proof.md)), so a task that touches it is never `low`, and its property is a case ([coverage.md](coverage.md)).
+
+- **In `frame`**, check each such formal check for staleness on the base. A stale one stays stale for the whole task: its case goes under Not verified, and the builder opens an issue for the user to run `/maintain-formal-verification`. The pass itself is not part of the task.
+- **In `build`**, when the change alters covered code of a check that was in sync on the base, update the check from the code, by the rules above, and set its sync commit to the head. A private check is updated in place; a shared one changes in the PR's diff.
+- **In the PR's Proof**, for each updated check: the parts that changed with their `file:line`, the old and new property wording with the evidence when the property changed, the break the updated check caught, and the new sync commit.
+- **The verifier judges the update** in its `breakage` lane, as [lanes.md](../../verify-pr/references/lanes.md) describes. The builder's own run of the check is evidence, never the verdict.

@@ -77,6 +77,6 @@ The class sets how deep verification goes:
 | `analyze-impact` | no | yes, without widening | yes, widened to several subagents |
 | `verify-pr` lanes | `replay`, `spec`, `standards` | adds `live`; `breakage` when a hard zone is touched | adds `breakage` and `adversarial` |
 
-Hard zones are where models fail most, and this is their one list: concurrency and locking, sync, retries, payments, data loss, security, migrations, and protocols, connection lifecycles included. `frame` names the ones a change touches, and verification goes deeper there. Below that edge a verifier mostly confirms what the builder already got right.
+Hard zones are where models fail most, and this is their one list: concurrency and locking, sync, retries, payments, data loss, security, migrations, and protocols, connection lifecycles included; and every file a formal check covers, as its `prove-<area>` lists them. `frame` names the ones a change touches, and verification goes deeper there. Below that edge a verifier mostly confirms what the builder already got right.
 
 A lane gets lighter only when the seeded defects in calibration show it no longer catches anything the other lanes miss.
