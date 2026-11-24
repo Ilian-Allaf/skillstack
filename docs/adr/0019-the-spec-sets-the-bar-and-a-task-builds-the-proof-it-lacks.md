@@ -29,10 +29,10 @@ On 2026-11-24 the user set the goal: the chain from idea to PR finds by itself t
 - It puts "the verification updates in a change of their own" (`skills/maintain-formal-verification-skill/SKILL.md:58`).
 
 **Ray Amjad's account of Anthropic's practice** (`knowledge/sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad/transcript.md`):
-- Success is set by a list of journeys ("flows" in his words), each verified separately (07:14).
+- Success is set by "acceptance criteria with 10 different flows" in the spec (07:14, 18:31), each flow verified separately, in parallel (06:16).
 - End-to-end testing is "the most reliable form of testing" (04:21).
 - An agent that cannot verify to the end "usually results to a cheaper test", with less confidence (08:45).
-- The agent installs what it lacks during the task (03:22).
+- Asked to "install into the sandbox" what it lacks (03:22), the agent installs it during the task, then proposes to make it permanent (05:44).
 
 **Where the sources are silent**: no source sets the proof target by kind of case, or says what a task does with a missing formal check. Those parts of this decision are ours.
 
