@@ -88,6 +88,8 @@ Every skill is launched by you; none is picked by the model on its own. Each one
 - **[sharpen-prompt](skills/sharpen-prompt/SKILL.md)**: Rewrites a prompt you are about to send so it asks for deeper work, not more work.
 - **[say-it-plainly](skills/say-it-plainly/SKILL.md)**: Says the agent's last reply again in plain words, shorter, with no jargon.
 
+- **[show-me](skills/show-me/SKILL.md)**: Shows you the current topic visually, with the smallest diagram, tree, or diff that makes the key point clear.
+
 **Inside a task** (every PR a skill opens goes through `verify-pr` and `babysit-pr`, and `ship` runs `analyze-impact` for `medium` and `high`; you can also launch them on an open PR)
 
 - **[analyze-impact](skills/analyze-impact/SKILL.md)**: Finds what a change breaks outside its diff, and proves by a run the one fact it is safe because of.

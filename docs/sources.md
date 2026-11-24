@@ -343,6 +343,10 @@ When a skill changes, update its section here, in the same PR.
 
 - Source: pstack `poteto-mode` visual-parity playbook (Lauren Tan).
 
+## `skills/show-me/SKILL.md` and its references (2026-11-24)
+
+- Source: the `show-me` skill of humanlayer's skill set (Dex Horthy; [the announcement post](https://www.humanlayer.com/blog/show-me-skill), [the skill page](https://www.skills.sh/humanlayer/skills/show-me)), nearly as is for the catalog of views. Adapted: the catalog moves to `references/views.md` behind a link, the steps and the reply shape are ours, and the HTML artifact opens through the harness's preview instead of a shell `open`.
+
 ## `skills/test-skill-change/SKILL.md` (2026-11-20)
 
 - Source: pstack `poteto-mode` eval playbook (Lauren Tan): the blinding rules, the organic prompt, the judge on neutral labels, chain-following graded from what the agent read. Adapted: every run and the judge on the session's model, with no panel of models (ADR 0014 lifts ADR 0002's removal of `eval`).
