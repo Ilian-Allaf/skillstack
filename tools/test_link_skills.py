@@ -5,6 +5,8 @@ from __future__ import annotations
 import contextlib
 import io
 import os
+import shutil
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -34,6 +36,12 @@ class LinkSkillsTest(unittest.TestCase):
     def run_tool(self, **kwargs) -> list[str]:
         with contextlib.redirect_stdout(io.StringIO()):
             return link_skills.run(self.repo, [self.dest], **kwargs)
+
+    def run_tool_capture(self, **kwargs) -> tuple[list[str], str]:
+        out = io.StringIO()
+        with contextlib.redirect_stdout(out):
+            problems = link_skills.run(self.repo, [self.dest], **kwargs)
+        return problems, out.getvalue()
 
     def test_links_every_skill_and_shared_folder(self) -> None:
         self.assertEqual(self.run_tool(), [])
@@ -102,6 +110,72 @@ class LinkSkillsTest(unittest.TestCase):
         self.assertEqual(self.run_tool(unlink=True), [])
         self.assertEqual(sorted(p.name for p in self.dest.iterdir()), ["mine"])
         self.assertTrue((self.repo / "skills" / "ship" / "SKILL.md").exists())
+
+    def test_quiet_prints_only_changes(self) -> None:
+        self.run_tool()
+        problems, out = self.run_tool_capture(quiet=True)
+        self.assertEqual(problems, [])
+        self.assertNotIn("ok ", out)
+        new_skill = self.repo / "skills" / "new-skill"
+        new_skill.mkdir()
+        (new_skill / "SKILL.md").write_text("x", encoding="utf-8")
+        problems, out = self.run_tool_capture(quiet=True)
+        self.assertEqual(problems, [])
+        self.assertIn("new-skill", out)
+        self.assertNotIn("ok ", out)
+
+
+@unittest.skipUnless(shutil.which("git"), "git is required to install hooks")
+class HookTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.tmp = tempfile.TemporaryDirectory()
+        self.repo = Path(self.tmp.name) / "repo"
+        skill = self.repo / "skills" / "ship"
+        skill.mkdir(parents=True)
+        (skill / "SKILL.md").write_text("x", encoding="utf-8")
+        (self.repo / "tools").mkdir()
+        subprocess.run(["git", "init", "-q", str(self.repo)], check=True)
+
+    def tearDown(self) -> None:
+        self.tmp.cleanup()
+
+    def hooks_dir(self) -> Path:
+        return self.repo / ".git" / "hooks"
+
+    def test_install_hook_writes_post_merge_and_post_checkout(self) -> None:
+        self.assertEqual(link_skills.install_hook(self.repo), [])
+        for name in ("post-merge", "post-checkout"):
+            content = (self.hooks_dir() / name).read_text(encoding="utf-8")
+            self.assertNotIn(link_skills.HOOK_PLACEHOLDER, content)
+            self.assertIn("link_skills.py", content)
+            self.assertIn("--quiet", content)
+            self.assertNotIn("\r", content)
+
+    def test_installed_hook_points_at_the_main_clone(self) -> None:
+        link_skills.install_hook(self.repo)
+        content = (self.hooks_dir() / "post-merge").read_text(encoding="utf-8")
+        self.assertIn((self.repo / "tools" / "link_skills.py").as_posix(), content)
+
+    def test_remove_hook_deletes_only_our_hooks(self) -> None:
+        link_skills.install_hook(self.repo)
+        (self.hooks_dir() / "pre-push").write_text("#!/bin/sh\necho keep\n", encoding="utf-8")
+        self.assertEqual(link_skills.remove_hook(self.repo), [])
+        self.assertFalse((self.hooks_dir() / "post-merge").exists())
+        self.assertFalse((self.hooks_dir() / "post-checkout").exists())
+        self.assertTrue((self.hooks_dir() / "pre-push").exists())
+
+    def test_remove_hook_without_hooks_is_ok(self) -> None:
+        self.assertEqual(link_skills.remove_hook(self.repo), [])
+
+
+class NotACloneTest(unittest.TestCase):
+    def test_install_hook_outside_a_git_clone_reports_a_problem(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp) / "plain" / "repo"
+            repo.mkdir(parents=True)
+            problems = link_skills.install_hook(repo)
+        self.assertEqual(len(problems), 1)
+        self.assertIn("not a git clone", problems[0])
 
 
 if __name__ == "__main__":

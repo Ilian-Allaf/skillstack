@@ -40,6 +40,8 @@ python -I tools/link_skills.py
 
 It links every skill into `~/.agents/skills` (Codex and most other harnesses) and `~/.claude/skills` (Claude Code). The links point into the clone, so a `git pull` updates the skills, and they follow the branch you have checked out. `--dry-run` shows what would change; `--unlink` removes the links.
 
+Run `python -I tools/link_skills.py --install-hook` once to make the linking automatic: it installs `post-merge` and `post-checkout` hooks in the clone, so every `git pull` also links the skills added or renamed since the last run. The hook always links the main clone (never a temporary worktree) and never blocks a git operation. `--remove-hook` uninstalls it. The plugin route above needs no links at all: it updates itself.
+
 Skills install as whole folders beside [the constitution](skills/constitution/README.md), which they read by relative path. An installer that copies skills one at a time drops it, so it is not supported ([ADR 0005](docs/adr/0005-the-constitution-is-a-folder-not-a-skill.md)).
 
 ## Getting started
