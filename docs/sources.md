@@ -21,6 +21,7 @@ When a skill changes, update its section here, in the same PR.
 
 - Source: pstack `blast-radius`.
 - 2026-11-23: ours, [ADR 0017](adr/0017-a-formal-check-guards-every-task-that-touches-its-code.md): the Formal checks row runs the check as the PR updated it, and a check stale on the base proves nothing.
+- 2026-11-24, [ADR 0019](adr/0019-the-spec-sets-the-bar-and-a-task-builds-the-proof-it-lacks.md), ours: a check stale on the base is repaired by the task before the change; only a failed repair leaves an issue to name.
 
 ## `skills/babysit-pr/SKILL.md`
 
@@ -177,11 +178,13 @@ When a skill changes, update its section here, in the same PR.
 - Source: pstack `create-formal-verification-skill` (Lauren Tan): choose the strongest target from the code, the question picks the tool, show it can fail, findings stay findings, follow the generated skill once on a scratch break before the handoff, the handoff list.
 - 2026-11-23: ours: the follow-it-cold run is done by a fresh subagent that holds only the path of `prove-<area>`; a shared check goes through a verdict and `babysit-pr`; no driver is required first.
 - 2026-11-23: ours, [ADR 0017](adr/0017-a-formal-check-guards-every-task-that-touches-its-code.md): a shared check also runs in the repo's CI.
+- 2026-11-24, [ADR 0019](adr/0019-the-spec-sets-the-bar-and-a-task-builds-the-proof-it-lacks.md), ours: run before a task's change, a shared check leaves `babysit-pr` to the task's stack, as the bespoke playbook does.
 
 ## `skills/maintain-formal-verification/SKILL.md`
 
 - Source: pstack `maintain-formal-verification-skill` (Lauren Tan): the four outcomes, run before changing anything, the four kinds of change, update from the code and not from the result, re-break after a pass, replay a counterexample to tell drift from a bug, the sync commit rules, the report.
 - 2026-11-23: ours: a builder's own change to covered code is handled in its run, so this pass covers the changes that skipped the check; each bug becomes an issue; the issue opened by `analyze-impact` for a stale check is closed or linked.
+- 2026-11-24, [ADR 0019](adr/0019-the-spec-sets-the-bar-and-a-task-builds-the-proof-it-lacks.md), ours: a task runs this pass on a check stale on its base, before the change, and leaves `babysit-pr` to its stack.
 
 ## `skills/investigate/SKILL.md`
 
