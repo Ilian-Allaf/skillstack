@@ -59,6 +59,16 @@ class EvidenceTest(unittest.TestCase):
         self.assertEqual([], self.errors())
 
     def test_spec_story_without_case_fails(self):
+        self.record["spec_ids"] = ["S1", "S2", "P1"]
+        self.record["cases"] = [
+            {"id": "S1", "level": 5, "evidence": ["run.txt"]},
+            {"id": "P1", "level": 4, "evidence": ["run.txt"]},
+        ]
+        errors = self.errors()
+        self.assertEqual(1, len(errors))
+        self.assertIn("spec id S2", errors[0])
+
+    def test_spec_promise_without_case_fails(self):
         self.record["spec_ids"] = ["S1", "P1"]
         self.record["cases"] = [
             {"id": "S1", "level": 5, "evidence": ["run.txt"]},
@@ -79,12 +89,33 @@ class EvidenceTest(unittest.TestCase):
         self.record.pop("spec_ids", None)
         self.assertEqual([], self.errors())
 
-    def test_invalid_spec_ids(self):
-        for spec_ids in ("S1", [], ["s1"], ["X1"], ["S"], ["S1", "S1"], [1]):
+    def test_spec_ids_not_a_nonempty_list(self):
+        for spec_ids in ("S1", [], None):
             with self.subTest(spec_ids=spec_ids):
                 self.record["spec_ids"] = spec_ids
                 self.record["cases"] = [{"id": "S1", "level": 4, "evidence": ["run.txt"]}]
-                self.assertTrue(self.errors())
+                errors = self.errors()
+                self.assertEqual(1, len(errors))
+                self.assertIn("spec_ids: Fix: list the spec's story and promise ids", errors[0])
+
+    def test_malformed_spec_ids(self):
+        # Each id also names a case, so only the format rule can reject it.
+        for spec_ids in (["s1"], ["X1"], ["S"], ["S1", "S1"], [1]):
+            with self.subTest(spec_ids=spec_ids):
+                self.record["spec_ids"] = spec_ids
+                self.record["cases"] = [
+                    {"id": str(spec_id), "level": 4, "evidence": ["run.txt"]} for spec_id in set(map(str, spec_ids))
+                ]
+                errors = self.errors()
+                self.assertEqual(1, len(errors))
+                self.assertIn("use each id once, as the spec numbers it", errors[0])
+
+    def test_spec_ids_with_an_unhashable_case_id(self):
+        self.record["spec_ids"] = ["S1"]
+        self.record["cases"] = [{"id": ["S1"], "level": 4, "evidence": ["run.txt"]}]
+        errors = self.errors()
+        self.assertTrue(errors)
+        self.assertTrue(all("Fix:" in error for error in errors))
 
     def test_each_artifact_source_rejects_missing_empty_and_directory(self):
         for value in ("missing.mp4", "empty.txt", ".", "", None):
