@@ -81,6 +81,7 @@ The normal path is `/ship <task or issue>`. Its contract is **`done_when`**: an 
 flowchart TB
   start(("You launch ship"))
   frame["1. Frame<br/>Fix the contract, cases, risk, and verification setup"]
+  lacks["First unit<br/>Build the missing driver or formal check; repair a stale one"]
   build["2. Design and build<br/>Choose the shape, then follow the playbook"]
   clean["3. Clean<br/>Remove slop; fix the comment hunter's root causes"]
   proof["4. Prove every case<br/>Capture replayable evidence and its limits"]
@@ -92,7 +93,9 @@ flowchart TB
   human[["needs-human<br/>The blocker, attempts, and a recommended next move"]]
   resume["Continue at the first incomplete step<br/>In the current session, or through resume-task"]
 
-  start --> frame --> build --> clean --> proof --> impact --> open --> verdict
+  start --> frame
+  frame -->|the proof lacks a driver or a check| lacks --> build
+  frame --> build --> clean --> proof --> impact --> open --> verdict
   verdict -->|yes| babysit --> ready
   verdict -->|first FAIL: fix| build
   verdict -->|budget spent or verification blocked| human
@@ -104,7 +107,7 @@ flowchart TB
 
 | Step | What happens and why | Result you can inspect |
 |---|---|---|
-| **1. Frame** | Restate the request, list the cases and interfaces under test, choose the risk class and playbook. Try startup, access, and evidence capture before implementation. For high risk or a hard zone, a verifier checks the proposed contract before code exists. | The frame shown to you, the red base run, and any setup limits. [Frame](ship/references/frame.md), [verification setup](ship/references/verification.md) |
+| **1. Frame** | Restate the request, list the cases and interfaces under test with the target each aims at, choose the risk class and playbook. A spec's journeys and promises become cases by their ids. Try startup, access, and evidence capture before implementation. What the proof lacks is built first: a driver for a touched surface, a formal check for a promise you stated in a hard zone, the repair of a check stale on the base. For high risk or a hard zone, a verifier checks the proposed contract before code exists. | The frame shown to you, the red base run, and any setup limits. [Frame](ship/references/frame.md), [verification setup](ship/references/verification.md) |
 | **2. Design and build** | Name the data shape before logic. Features and changes to types, signatures, or module boundaries need grounding, two structurally different sketches, and a design note. Build against the chosen shape using the playbook. | The chosen and rejected designs, recorded deviations, and `done_when` green. [Design](ship/references/design.md) |
 | **3. Clean** | Remove dead code, debug output, and workarounds. A fresh comment hunter proposes deletions and flags symbols whose design should explain itself; the builder validates the patch and fixes the root causes. | A cleaned diff, resolved flags or linked issues, and green lint, types, and tests. [Clean](ship/references/clean.md) |
 | **4. Prove every case** | Run the case list through the relevant user paths. Keep scripts and captures, update changed feature maps, and identify what could not be verified. Visual journeys need a scripted demo; stateful journeys need a state chart. | A coverage table with evidence per case, plus explicit gaps. [Coverage](constitution/references/coverage.md) |
@@ -151,7 +154,7 @@ There are three separate checks on the result: the **builder's evidence**, the *
 
 ### Evidence: show the result through the right surface
 
-The builder maintains a case list before coding and a coverage table in the PR. Cases include the request, entry points and callers, relevant edge cases, and formal properties covering touched files. Each row has replayable evidence or an explicit reason under **Not verified**. See [coverage](constitution/references/coverage.md).
+The builder maintains a case list before coding and a coverage table in the PR. Cases include the spec's journeys and promises by their ids, the request, entry points and callers, relevant edge cases, and formal properties covering touched files. Each aims at a target: a certainty level for a journey, a breadth for a property, with a reason when it falls short. `check_evidence.py` fails when a spec id has no case. Each row has replayable evidence or an explicit reason under **Not verified**. See [coverage](constitution/references/coverage.md).
 
 | Certainty level | What was actually established |
 |---|---|
@@ -165,7 +168,7 @@ The builder maintains a case list before coding and a coverage table in the PR. 
 
 ### Independent review: two axes, six lanes
 
-The verifier starts from the task, `done_when`, case list, risk class, diff, and safe setup instructions. It saves independent findings before reading the builder's proof and decisions or old discussions. `spec` and `standards` run in fresh parallel agents where supported; otherwise the verifier runs them sequentially and reports that limit.
+The verifier starts from the task, its spec issue, `done_when`, case list, risk class, diff, and safe setup instructions. It saves independent findings before reading the builder's proof and decisions or old discussions. `spec` and `standards` run in fresh parallel agents where supported; otherwise the verifier runs them sequentially and reports that limit.
 
 ```mermaid
 flowchart TB
@@ -185,10 +188,10 @@ The diagram shows the available lanes; the risk class selects which run. Each la
 | Lane | The question it answers | What the verifier does |
 |---|---|---|
 | `replay` | Does the PR's claimed proof hold? | Rerun its commands and demos; compare the actual results and coverage with the claims |
-| `live` | Does the app satisfy the contract? | Build its own journeys, drive base and head, try entry points and edge cases, then check claimed coverage |
-| `breakage` | What breaks outside this diff? | Run `analyze-impact` independently, then compare safety facts and risks |
+| `live` | Does the app satisfy the contract? | Drive the spec's journeys and promises, then its own journeys, on base and head; try entry points and edge cases, then check claimed coverage |
+| `breakage` | What breaks outside this diff? | Run `analyze-impact` independently, then compare safety facts and risks; judge each formal check made or repaired in the task against its base version |
 | `adversarial` | Can deliberate attempts break it? | Run three agents on a factual brief, rerun their reproductions, merge duplicate root causes |
-| `spec` | Is this all of the request, with no extra behavior? | Compare the diff with the task, revert the fix to test the tests, and check the playbook's duties |
+| `spec` | Is this all of the request, with no extra behavior? | Compare the diff with the task and its spec, Out of scope included, revert the fix to test the tests, and check the playbook's duties |
 | `standards` | Does the code follow the repo's rules and a sound design? | Read applicable standards, glossary, ADRs, and language rules; check smells, design red flags, and relevant principles |
 
 ### Risk: spend verification where failures matter
@@ -199,7 +202,7 @@ The diagram shows the available lanes; the risk class selects which run. Each la
 | `medium` | Everything between low and high | Low lanes plus `live`; `breakage` when a hard zone is touched; builder runs impact analysis |
 | `high` | Auth, payments, migrations, data deletion, CI, secrets, or more than 400 changed lines | All six lanes; verifier reads `done_when` before build; impact analysis widens |
 
-A hard zone also triggers the pre-build contract review for a medium task. The verifier can raise a class it judges too low. The canonical [risk rules and hard-zone list](constitution/references/proof.md#risk-classes) cover concurrency, sync, retries, data loss, security, and other areas needing deeper verification. When a required live surface has no driver, the lane is **INCONCLUSIVE**, not PASS; the remedy is to prepare the driver or access.
+A hard zone also triggers the pre-build contract review for a medium task. The verifier can raise a class it judges too low. The canonical [risk rules and hard-zone list](constitution/references/proof.md#risk-classes) cover concurrency, sync, retries, data loss, security, and other areas needing deeper verification. A task builds a missing driver before its change. When a required live surface still has no driver, the lane is **INCONCLUSIVE**, not PASS; the remedy is the access or the setup that blocked it.
 
 ### Principles: how review finds design improvements
 
@@ -209,7 +212,7 @@ For example, a diff adding a second boolean that must stay synchronized with the
 
 ### Verdict: what blocks, and what happens next
 
-A FAIL must be proven, be in scope, and meet the blocker or should grade. Behavioral findings need a reproduction the verifier reran; a documented-standard breach can instead quote the file, rule, and hunk. Other findings remain notes. A missing case that works correctly is a coverage gap: the builder adds it with the verifier's evidence before `ready`.
+A FAIL must be proven, be in scope, and meet the blocker or should grade. Behavioral findings need a reproduction the verifier reran; a documented-standard breach can instead quote the file, rule, and hunk. Other findings remain notes. A missing case that works correctly is a coverage gap: the builder adds it with the verifier's evidence before `ready`. A spec story or promise missing from the table is graded the same way.
 
 | Outcome | Meaning | Next step |
 |---|---|---|
@@ -231,27 +234,28 @@ The framework ships shared workflows. Project-specific knowledge lives separatel
 | Code host and issue tracker | PRs, issues, labels, verdict comments, review threads, task and decision records | Durable task state; reread before acting rather than trusting a session summary |
 | Work directory and linked artifacts | The local evidence index, run outputs, screenshots, demos, and other captures | Indexed and checked before PR opening and handback; the PR links the evidence |
 
-[create-app-driver](create-app-driver/SKILL.md) creates **`drive-<app>`**, one driver per surface: how to launch, check health, drive the app, capture evidence, and clean up. Its **feature map** records entry points, drive steps, and expected end states so builder and verifier know which paths to cover.
+[create-app-driver](create-app-driver/SKILL.md) creates **`drive-<app>`**, one driver per surface: how to launch, check health, drive the app, capture evidence, and clean up. Its **feature map** records entry points, drive steps, and expected end states so builder and verifier know which paths to cover. A task that touches a surface with no driver runs it first, with the access `shape-spec` collected, and a fresh agent follows the new driver cold before the change uses it.
 
 [create-formal-verification](create-formal-verification/SKILL.md) creates **`prove-<area>`** for a property whose failures tests rarely reach, using a model checker or code verifier as appropriate. It ties the check to named code, states its bounds and assumptions, and proves that it catches a deliberate break. [maintain-formal-verification](maintain-formal-verification/SKILL.md) brings checks back in line after changes that skipped them, distinguishing drift in the check from a bug in the code.
 
-During a task, covered files make the change a hard zone and each property becomes a case. Framing checks staleness on the base. A check already stale stays under Not verified, with an issue recommending maintenance. For a check in sync on the base, the builder updates it when covered code changes and proves that it catches a break; the verifier judges it independently in the `breakage` lane. The shared rules and required evidence live in [formal.md](constitution/references/formal.md).
+During a task, covered files make the change a hard zone and each property becomes a case. Framing checks staleness on the base, and a stale check is repaired before the change; a private one's base version is saved for the verifier. A promise you stated in a hard zone with no check gets one first. A bug either finds on the base becomes an issue, and the task goes on. For a check in sync, the builder updates it when covered code changes and proves that it catches a break; the verifier judges every check in sync, made, or repaired, independently, in the `breakage` lane. The shared rules and required evidence live in [formal.md](constitution/references/formal.md).
 
 ```mermaid
 flowchart TB
     setup["setup-repo<br/>Identify hard zones"]
     create["create-formal-verification<br/>Check one property; prove it can fail"]
     prove[("prove-#lt;area#gt;<br/>Property, covered code, command, bounds")]
-    ship["ship<br/>Find covered files; check base staleness"]
+    ship["ship<br/>Find covered files; check base staleness; build the proof first"]
     update["Build<br/>Update checks in sync on base; catch a break"]
     maintain["maintain-formal-verification<br/>Bring skipped checks back in line"]
-    verify["verify-pr<br/>Judge in-sync checks in the breakage lane"]
+    verify["verify-pr<br/>Judge checks in sync, made, or repaired, in the breakage lane"]
     setup -.->|recommend| create
     create --> prove
     ship --> prove
     ship -->|in sync on base| update
     update --> prove
-    ship -.->|stale on base: issue for user| maintain
+    ship -->|stale on base: repair first| maintain
+    ship -->|your promise in a hard zone, no check: first| create
     maintain --> prove
     prove --> verify
 ```

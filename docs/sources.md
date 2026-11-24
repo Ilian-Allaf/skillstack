@@ -144,6 +144,7 @@ When a skill changes, update its section here, in the same PR.
 - Claude Code, Skills: project skills in `.claude/skills/`; "a `<skill-name>` entry in the enterprise, personal, or project location can be a symlink to a directory elsewhere on disk". <https://code.claude.com/docs/en/skills>
 - Claude Code, Memory: reads `AGENTS.md` when no `CLAUDE.md` exists (v2.1.277+), and "Not read: … anything under a `.agents/` directory". <https://code.claude.com/docs/en/memory>
 - Codex, Build skills: "Codex scans `.agents/skills` in every directory from your current working directory up to the repository root", "supports symlinked skill folders", and `agents/openai.yaml` `policy.allow_implicit_invocation`. <https://learn.chatgpt.com/docs/build-skills>
+- 2026-11-24, [ADR 0019](adr/0019-the-spec-sets-the-bar-and-a-task-builds-the-proof-it-lacks.md), ours: `access/<app>.md` is never shared, since it says where a secret lives.
 
 ## `skills/constitution/references/formal.md`
 
@@ -382,6 +383,7 @@ When a skill changes, update its section here, in the same PR.
 - 2026-11-20: the standards lane checks the shape against the red flags, the architecture principles, and the PR's design note, as pstack `architect` holds an implementation to its sketch.
 - 2026-11-22: save independent live and breakage results before comparing the PR's evidence, paired with the information exposure change in `verify-pr` above.
 - 2026-11-23: ours, [ADR 0017](adr/0017-a-formal-check-guards-every-task-that-touches-its-code.md): the `breakage` lane judges a formal check the change altered, by breaking the guarded code once.
+- 2026-11-24, [ADR 0019](adr/0019-the-spec-sets-the-bar-and-a-task-builds-the-proof-it-lacks.md), ours: the brief carries the spec issue, `live` starts from its journeys and promises, `spec` reads its Out of scope, and `breakage` compares a check made or repaired in the task with its base version.
 
 ## First-use corrections (2026-11-22)
 
