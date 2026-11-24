@@ -283,12 +283,14 @@ flowchart TB
     resume["resume-task<br/>Continue at the first incomplete step"]
     catchup["catch-me-up<br/>Evidence, live state, and decisions waiting on you"]
     plain["say-it-plainly<br/>Restate the last reply"]
+    showme["show-me<br/>Show the current topic as a diagram"]
     cleanwt["clean-worktrees<br/>Remove finished worktrees; protect unsaved work"]
     queue --> owners
     owners -->|context runs low or you ask| pause
     pause -.->|next session| resume
     owners -.->|you ask for status| catchup
     catchup -.->|you ask for plain words| plain
+    owners -.->|you ask to see the current topic| showme
     queue -.->|you launch cleanup| cleanwt
 ```
 
@@ -315,6 +317,8 @@ flowchart TB
 | [clean-worktrees](clean-worktrees/SKILL.md) | Finished or abandoned tasks consume disk | Worktrees removed safely; unsaved work requires your decision and branches are retained |
 | [sharpen-prompt](sharpen-prompt/SKILL.md) | You want a better request before launching work | A rewritten prompt asking for stronger methods and evidence; no task execution |
 | [say-it-plainly](say-it-plainly/SKILL.md) | The previous reply is hard to act on | The same facts and pending decisions, shorter and without jargon |
+
+| [show-me](show-me/SKILL.md) | The current topic, a reply, or a diff is too dense to read | The same point as the smallest visual that makes it clear |
 
 A `ship-queue` coordinates tasks you supplied; it does not split one spec into assignments for agents. A large spec uses `bespoke`, preserving one builder's context. Queue handoff checks the actual PR evidence and current verdict, not just an owner's report.
 

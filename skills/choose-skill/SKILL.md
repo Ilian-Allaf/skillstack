@@ -55,6 +55,8 @@ You are the index of this framework, so the user only has to remember you. You p
 | you changed a skill and want to know whether it helps before you keep it | `/test-skill-change <the skill and the change>` |
 | you are about to send a prompt and want it aimed deeper | `/sharpen-prompt <your prompt>` |
 | the last reply was too dense to act on | `/say-it-plainly` |
+
+| the current topic, a reply, or a diff is too dense to read | `/show-me` |
 | a bug got past the checks, or a session went badly and needs reconstruction from recorded activity | `/learn-from-mistakes <issue, PR, or nothing for this session>` |
 
 ## Reply

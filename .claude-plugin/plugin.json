@@ -32,6 +32,7 @@
     "./skills/test-skill-change",
     "./skills/sharpen-prompt",
     "./skills/say-it-plainly",
+    "./skills/show-me",
     "./skills/analyze-impact",
     "./skills/verify-pr",
     "./skills/babysit-pr"
