@@ -32,7 +32,7 @@ You do not cut the spec into implementation slices for parallel agents. One buil
    Done when: the mode is named to the user with the reason.
 
 2. **Grill.** Interview the user in rounds, as [references/grill.md](references/grill.md) describes, and keep the repo's domain model up to date as [references/domain.md](references/domain.md) describes. Facts are your job; decisions are the user's.
-   Done when: no open decision is left, every story has a journey and every promise its harm, confirmed by the user, the drivers and formal checks of the area are looked up, the access for any surface without a driver is written down, every resolved term is in the repo glossary, and the user confirmed you share the same understanding.
+   Done when: no open decision is left, every story has a journey and every promise its harm, and what cannot be verified is named, all confirmed by the user, the drivers and formal checks of the area are looked up, the access for any surface without a driver is written down, every resolved term is in the repo glossary, and the user confirmed you share the same understanding.
 
 3. **Write the spec.** Follow [references/spec.md](references/spec.md): problem, solution, `done_when` agreed with the user, user stories with their journeys, promises, what is not verifiable, the seams to test at, decisions, testing decisions, out of scope. Check the seams with the user, then publish it as an issue labeled `spec`.
    The docs PR goes through a verdict and `babysit-pr`, as rule 2 of the constitution says.

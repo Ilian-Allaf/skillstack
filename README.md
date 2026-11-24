@@ -10,11 +10,11 @@ Agent skills that turn a task into a pull request you can merge without worry: p
 
 Coding agents fail the same ways, again and again. Each skill answers one of them.
 
-- **The agent declares done on green tests.** `ship` shows you its `done_when`, sees it fail on the base before any code, and proves it on the running app.
+- **The agent declares done on green tests.** `ship` shows you its `done_when`, sees it fail on the base before any code, and proves it on the running app. Each journey and promise of your spec becomes a case, proven at the highest level its kind allows.
 - **The change breaks something outside its diff.** `analyze-impact` finds the one fact the change is safe because of, and proves it by a run.
 - **The author grades its own work.** `verify-pr` is a fresh agent, from another model family when one is available, that tries to break the PR. A finding blocks only with the run that proves it.
 - **The same mistake comes back.** `add-guardrail` turns it into a check, red on the real mistake. `learn-from-mistakes` finds which layer let a bug through, and proposes the fix.
-- **The agent cannot drive your app.** `create-app-driver` writes a skill that launches, drives, and observes it the way a user does.
+- **The agent cannot drive your app.** `create-app-driver` writes a skill that launches, drives, and observes it the way a user does. A task on a surface with no driver builds it first, and repairs a stale formal check the same way, instead of leaving the case unproven.
 
 The choices behind them are recorded as decisions in [`docs/adr/`](docs/adr/).
 

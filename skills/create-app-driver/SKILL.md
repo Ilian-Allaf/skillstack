@@ -5,6 +5,7 @@ disable-model-invocation: true
 metadata:
   kind: kit
   produces: "repo:drive-<app> skill and feature map, in the project folder or in one PR when shared"
+  consumes: "the repo, and access/<app>.md in the project folder when shape-spec wrote it"
   hypothesis: "Without a scripted way to drive the real app, agents prove changes with proxies such as green tests, or improvise a new harness every run."
 ---
 
@@ -23,8 +24,8 @@ Two modes:
 
 ## Steps
 
-1. **Interview the repo, not the user.** Answer five questions from the code: which surface a user touches, how the app runs locally, how an agent can drive it (the repo's own harness first), what can be observed, and whether two instances can run side by side. Ask the user only what the code cannot show, such as a test account.
-   Done when: each answer cites a file or a command you ran, and each unknown is a question sent to the user.
+1. **Interview the repo, not the user.** Answer five questions from the code: which surface a user touches, how the app runs locally, how an agent can drive it (the repo's own harness first), what can be observed, and whether two instances can run side by side. Read `~/.agents/projects/<project>/access/<app>.md` first when it exists: `shape-spec` wrote there the account, the access, and where the secret lives. Ask the user only what the code and that file cannot show, such as a test account.
+   Done when: each answer cites a file or a command you ran, and each unknown is answered by `access/<app>.md` or is a question sent to the user.
 
 2. **Get the base to start.** Run the app from an empty data directory on the base branch, migrations and seed data included. Usable means a user could act, not that a process answers.
    Done when: you reached a usable state and wrote down the ready signal, or you reported the exact blocker and stopped.
@@ -36,10 +37,11 @@ Two modes:
    Done when: every feature file names where its entry points are declared, the ones no file declares, its drive steps, and the end state that proves it; and the check failed once and passes, or the report says the code declares no entry points.
 
 5. **Prove the generated skill.** Follow its own instructions end to end: launch, doctor, drive one mapped feature, capture evidence, clean up. Then check that the evidence still exists where the skill says. Fix what fails, and run the cleanup after every failed attempt. When a precondition is missing, the journey fails and the reason goes under Gotchas. Never weaken a journey to make it pass.
-   Done when: one full run passed, the evidence survived cleanup, and nothing the run started is still running.
+   When a task runs this skill before its change, a fresh subagent then follows the generated skill cold, with only its path, the same way: the builder of the task must not be the only one who saw the driver work.
+   Done when: one full run passed, the evidence survived cleanup, nothing the run started is still running, and, inside a task, the cold run passed too.
 
 6. **Hand it over.** A private driver is done once step 5 passed: report its path. A shared one goes in a PR in [the PR format](../constitution/references/pr-format.md). Proof holds the end to end run and its evidence. Not verified lists the features the map names but this run did not drive.
-   Then get a verdict and run `babysit-pr`, as rule 2 of the constitution says.
+   Then get a verdict and run `babysit-pr`, as rule 2 of the constitution says. Inside a task, its builder babysits the whole stack once instead.
    Done when: the private driver's run is reported with its evidence; or the PR is open with the run's evidence attached, and carries `ready` or `needs-human`.
 
 ## Reply

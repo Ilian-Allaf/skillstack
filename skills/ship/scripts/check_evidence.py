@@ -59,7 +59,22 @@ def check(record: object, root: Path, patch_id: str, base_sha: str, head_sha: st
     for name, value in current.items():
         if not isinstance(value, str) or not re.fullmatch(r"[0-9a-f]{40}|[0-9a-f]{64}", value):
             fail(name, f"compute and pass the full current {name}")
-    for row in rows("cases", "id"):
+    cases = rows("cases", "id")
+    if "spec_ids" in record:
+        spec_ids = record["spec_ids"]
+        if not isinstance(spec_ids, list) or not spec_ids:
+            fail("spec_ids", "list the spec's story and promise ids, such as S1 and P1, or drop the key for a task without a spec")
+            spec_ids = []
+        case_ids = {row.get("id") for row in cases if isinstance(row.get("id"), str)}
+        seen_spec = set()
+        for spec_id in spec_ids:
+            if not isinstance(spec_id, str) or not re.fullmatch(r"[SP][0-9]+[a-z]?", spec_id) or spec_id in seen_spec:
+                fail(f"spec id {spec_id!r}", "use each id once, as the spec numbers it: S1, S1b, P1")
+                continue
+            seen_spec.add(spec_id)
+            if spec_id not in case_ids:
+                fail(f"spec id {spec_id}", f"add a case with id {spec_id}, with evidence or a not_verified reason")
+    for row in cases:
         where = f"case {row.get('id')}"
         level = row.get("level")
         if type(level) is not int or not 1 <= level <= 5:

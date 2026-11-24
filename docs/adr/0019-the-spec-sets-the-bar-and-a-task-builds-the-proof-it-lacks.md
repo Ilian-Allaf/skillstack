@@ -1,9 +1,9 @@
 # 0019. The spec sets the bar, and a task builds the proof it lacks
 
-- **Status**: proposed, 2026-11-24.
-- **Supersedes, once accepted**:
+- **Status**: accepted, 2026-11-24; proposed 2026-11-24.
+- **Supersedes**:
   - in [0017](0017-a-formal-check-guards-every-task-that-touches-its-code.md), three clauses: "its case goes under Not verified, and the builder opens an issue for `/maintain-formal-verification`"; "The maintain pass stays outside the task"; and "A check stale on the base is not updated by the task".
-- **Extends, once accepted**:
+- **Extends**:
   - in 0017, the verifier's judgment of a check, now also for a check created or repaired in the task, not only one in sync on the base;
   - in [0014](0014-a-launched-task-runs-to-a-ready-pr.md) and rule 11 of the constitution, the list of stops, with one more: access only the user can give;
   - in [0016](0016-the-working-files-live-outside-the-repo.md), "chosen entry by entry when `setup-repo` runs": one entry is never shared and is written by `shape-spec`, `access/<app>.md`, since it says where a secret lives.

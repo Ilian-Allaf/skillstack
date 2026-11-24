@@ -45,11 +45,21 @@ Required levels:
 Level 5 needs the running app, driven the way a user does. The repo's drivers live in `~/.agents/projects/<project>/drive-*/SKILL.md`, one per surface: a repo with a web app and a CLI has two; a driver the team shares is a route to the repo. Look there, not only in the harness's skill list, which a subagent may not have.
 
 - Use the driver whose surface the change touches. A change across surfaces is proven on each surface, with its driver.
-- When no driver exists for a touched surface, prove what you can at level 4 and write the gap under Not verified. A missing driver is not a pass: for a `medium` or `high` task the `live` lane is INCONCLUSIVE, so the PR ends `needs-human`, with `/create-app-driver` as the recommendation.
+- When no driver exists for a touched surface, build it before the change, as [frame.md](../../ship/references/frame.md) says, through [create-app-driver](../../create-app-driver/SKILL.md), with the access `shape-spec` wrote to `access/<app>.md`. Stop only for access no earlier step collected (rule 11). When the app does not start, that is a dead end: prove what you can at level 4, write the gap under Not verified, and end `needs-human` with the blocker and its remedy. A missing driver is never a pass: for a `medium` or `high` task without one, the `live` lane is INCONCLUSIVE.
 
 The repo's formal checks live in `~/.agents/projects/<project>/prove-*/SKILL.md`, one per guarded area; a check the team shares is a route to the repo. Look there too, not in the harness's skill list. A check covers a touched file when its Covered code section lists that file: read that section of each check against the diff. [formal.md](formal.md#in-a-task) says what a task does with each check it touches.
 
 Where the project folder is absent, as in a cloud session or CI, read the shared drivers and checks at the repo paths [target-repo.md](target-repo.md) gives.
+
+## The target of a case
+
+Each case aims at the highest proof its kind allows, and says why when it falls short.
+
+- **A journey** reaches the highest certainty level its surface allows: level 5 through the driver where the surface has one. A case below the level this file requires names why.
+- **A property**, a claim about every order of steps or every input, follows a breadth order: a formal check, then generated inputs, then example tests. A property below a formal check names why.
+- **A promise in a hard zone** needs both: its journey at its level, and its property at its breadth.
+
+The levels measure how real an observation is; the breadth order measures how many cases it covers. Neither replaces the other.
 
 ## `done_when`
 

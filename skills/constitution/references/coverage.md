@@ -9,12 +9,12 @@ Exhaustive in coverage, not in footage: every case has evidence, and each case g
 `frame` writes the list before any code changes, and the user sees it in the frame. It holds:
 
 - the main case from `done_when`;
-- when the task is a spec issue, one case per user story of the spec;
+- when the task is a spec issue, one case per journey and one per promise of the spec, each with its spec id (`S1`, `P1`) as the case id. A `medium` or `high` task without a spec drafts its own journeys and promises in the frame, shows them, and goes on; a `low` task skips them. A promise outside a hard zone, or one the builder drafted, yields a recommendation for a formal check, never a new one;
 - one case per entry point of the touched feature: those its feature file's Declared in points to, and those the file lists by hand (button, shortcut, command, import, API call);
 - one case per path a user can reach that calls the changed code, found in the code itself (a search for its callers, `analyze-impact` step 1), not only in the map. A path the map lacks is added to its feature file in this PR, so the builder and the verifier do not share the map's blind spot;
 - the edge cases of the hard zones the change touches: double action, retry, error path, empty and long input, reload or back navigation mid-action, two users or two tabs;
 - for a bug, the reported case on the base and on the head;
-- the property of each formal check that covers a touched file, found as [proof.md](proof.md#drivers-and-formal-checks) says, with its check run as evidence; a check stale on the base proves nothing, so its case goes under Not verified, as [formal.md](formal.md#in-a-task) says.
+- the property of each formal check that covers a touched file, found as [proof.md](proof.md#drivers-and-formal-checks) says, with its check run as evidence; a check stale on the base is repaired first, as [formal.md](formal.md#in-a-task) says.
 
 A feature file whose code changed after the commit it was last driven at may be stale: say so in the frame, and drive its entry points before you trust it. Cases that what the code already forbids (a type, a lint) need no evidence; name the check instead. `analyze-impact` and the verifier may add cases; each one added goes in the table.
 
@@ -31,7 +31,7 @@ The PR opens with a table that has one row per case:
 | 4 | Import of a note file | not covered: see Not verified | - |
 ```
 
-The agent picks the evidence per case: a video chapter for a journey, a screenshot for a static state, command output for what is not visual. A case without evidence stays in the table and points to Not verified. No case is left out of the table.
+The agent picks the evidence per case, at the target [proof.md](proof.md#the-target-of-a-case) sets: a video chapter for a journey, a screenshot for a static state, command output for what is not visual. A case below its target says why in its Evidence cell. A case without evidence stays in the table and points to Not verified. No case is left out of the table.
 
 ## The demo video
 
