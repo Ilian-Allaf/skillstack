@@ -8,7 +8,7 @@ metadata:
   calls: "investigate"
   role: builder
   consumes: "a loose idea, a conversation, or a map issue"
-  produces: "a spec issue labeled spec, or a map issue labeled map with its decision issues"
+  produces: "a spec issue labeled spec, or a map issue labeled map with its decision issues; access/<app>.md in the project folder for a surface without a driver"
   hypothesis: "Without a spec, the builder under-scopes the work; without an interview, the spec carries the agent's guesses instead of the user's decisions."
 ---
 
@@ -32,11 +32,11 @@ You do not cut the spec into implementation slices for parallel agents. One buil
    Done when: the mode is named to the user with the reason.
 
 2. **Grill.** Interview the user in rounds, as [references/grill.md](references/grill.md) describes, and keep the repo's domain model up to date as [references/domain.md](references/domain.md) describes. Facts are your job; decisions are the user's.
-   Done when: no open decision is left, every resolved term is in the repo glossary, and the user confirmed you share the same understanding.
+   Done when: no open decision is left, every story has a journey and every promise its harm, confirmed by the user, the drivers and formal checks of the area are looked up, the access for any surface without a driver is written down, every resolved term is in the repo glossary, and the user confirmed you share the same understanding.
 
-3. **Write the spec.** Follow [references/spec.md](references/spec.md): problem, solution, `done_when` agreed with the user, user stories, the seams to test at, decisions, testing decisions, out of scope. Check the seams with the user, then publish it as an issue labeled `spec`.
+3. **Write the spec.** Follow [references/spec.md](references/spec.md): problem, solution, `done_when` agreed with the user, user stories with their journeys, promises, what is not verifiable, the seams to test at, decisions, testing decisions, out of scope. Check the seams with the user, then publish it as an issue labeled `spec`.
    The docs PR goes through a verdict and `babysit-pr`, as rule 2 of the constitution says.
-   Done when: the issue exists and links the docs PR that holds the glossary terms and ADRs, the user approved the seams, and each user story can become a case in `frame`.
+   Done when: the issue exists and links the docs PR that holds the glossary terms and ADRs, the user approved the seams, and every numbered journey and promise can become a case in `frame`.
 
 4. **Map.** For work too big for one session, chart or work the map as [references/map.md](references/map.md) describes. Resolve at most one decision per session, except research.
    Done when: charting: the map issue and its first decision issues exist, wired by blocking links. Working: one decision is resolved, recorded on the map, and the fog it cleared is turned into new decision issues.
@@ -46,4 +46,4 @@ You do not cut the spec into implementation slices for parallel agents. One buil
 
 ## Reply
 
-The mode, the decisions made and who made them, the terms added to the glossary, the ADRs written, the spec or map link, and what is still open.
+The mode, the decisions made and who made them, the terms added to the glossary, the ADRs written, the drivers and formal checks found (stale ones named) and the access collected, the spec or map link, and what is still open.

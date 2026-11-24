@@ -4,6 +4,8 @@ One entry per merged PR that changes what a skill does, or how the framework is 
 
 ## Unreleased (v0)
 
+- The spec sets the verification bar ([ADR 0019](docs/adr/0019-the-spec-sets-the-bar-and-a-task-builds-the-proof-it-lacks.md), part 1 of 3). `shape-spec`'s grill gains a verification branch: a journey per story, promises with their harm, and what cannot be verified, drafted by the agent and confirmed with a yes. It looks up the drivers and formal checks of the area, and writes the access for a surface without a driver to `access/<app>.md` in the project folder. The spec template gains journeys, Promises, and Not verifiable, numbered so the evidence names each one.
+
 - New skill `/show-me`: shows the current topic visually, with the smallest pseudocode, call tree, component tree, file tree, Mermaid diagram, diff, or focused HTML artifact that makes the point clear, instead of a wall of prose. You launch it; no other skill calls it.
 
 - Verdicts cover the tested base and head commits, with rules and replay environment recorded ([ADR 0018](docs/adr/0018-a-verdict-covers-the-tested-base-and-head.md)). A changed base or head requires fresh proof and verification, even after a conflict-free rebase with the same patch id. Babysitting and stacks use this rule; the local evidence checker requires full base and head SHAs and rejects older records that contain only a patch id. Per-run records stay in PR comments and existing artifacts.
