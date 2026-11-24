@@ -10,7 +10,7 @@
 - A check proves itself by failing on a real past mistake before it is trusted.
 - When the structural fix exists, use only it. The instruction was the symptom.
 - When the lesson needs judgment and cannot be encoded, make the instruction prominent and add an example of the failure.
-- A decision follows the same order. What the code holds needs no doc. An ADR keeps only what the code cannot say: the why, and the alternatives rejected.
+- A decision follows the same order: what the code holds needs no doc. What an ADR keeps beyond that is in `shape-spec`'s [domain.md](../../../shape-spec/references/domain.md).
 - `/add-guardrail` does this for a whole class of mistakes.
 
 ## Test
