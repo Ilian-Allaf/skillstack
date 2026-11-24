@@ -266,6 +266,7 @@ When a skill changes, update its section here, in the same PR.
 ## `skills/shape-spec/references/grill.md`
 
 - Source: Matt Pocock `grilling` and `grill-with-docs`.
+- 2026-11-24, [ADR 0019](adr/0019-the-spec-sets-the-bar-and-a-task-builds-the-proof-it-lacks.md): the verification branch. A journey per story follows Ray Amjad's account of Anthropic's practice, where the spec lists its flows and each is verified separately. Promises, what cannot be verified, and collecting access before the build are ours.
 
 ## `skills/shape-spec/references/map.md`
 
@@ -275,6 +276,7 @@ When a skill changes, update its section here, in the same PR.
 ## `skills/shape-spec/references/spec.md`
 
 - Source: Matt Pocock `to-spec`; the link between user stories and cases is ours.
+- 2026-11-24, [ADR 0019](adr/0019-the-spec-sets-the-bar-and-a-task-builds-the-proof-it-lacks.md), ours: a journey per story, the Promises and Not verifiable sections, numbered stories and promises, and the journeys' surfaces as seams.
 
 ## `skills/ship/references/clean.md`
 

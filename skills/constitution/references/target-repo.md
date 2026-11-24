@@ -19,6 +19,7 @@ The framework works on any repo without imposing a file on the people who share 
 | `coding-standards.md` | `CODING_STANDARDS.md` | judgment calls only; a mechanical rule becomes a check instead | the verifier, in the `standards` lane, not the builder |
 | `agent-rules.md` | `docs/agent-rules.md` | the rule table of `add-guardrail`: each rule and what enforces it | `add-guardrail`, `learn-from-mistakes`, the verifier |
 | `drive-<app>/` and `prove-<area>/` | `.agents/skills/drive-<app>/` and `.agents/skills/prove-<area>/` | the driver and its feature map: how to launch, drive, and observe the app; the formal checks | the builder, the verifier |
+| `access/<app>.md` | never shared | the account, the access, and where the secret lives for a surface, written by `shape-spec` before the driver exists; never the secret itself | `create-app-driver` |
 
 Standards belong to review because the builder carries the most context and the verifier the least.
 

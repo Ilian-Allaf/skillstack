@@ -49,7 +49,7 @@ The target repo can have its own glossary of domain terms. The builder and the v
 | design note | note de conception | the one-page rationale of a sketch: usage, shape, tradeoffs, rejected alternatives, deviations; in the PR's Design section | |
 | comment hunter | chasseur de commentaires | the fresh subagent in `clean` that deletes comments and flags `MUST KILL` | |
 | `MUST KILL` | MUST KILL | a symbol the comment hunter flags for a reshape that makes a comment unneeded | |
-| spec | spec | an issue labeled `spec`: problem, solution, user stories, seams, decisions; written by `shape-spec` | `PRD` |
+| spec | spec | an issue labeled `spec`: problem, solution, `done_when`, user stories with their journeys, promises, seams, decisions; written by `shape-spec` | `PRD` |
 | map | carte | an issue labeled `map` that charts decisions for work too big for one session | `roadmap issue` |
 | decision issue | issue de décision | one question on a map, resolved in one session | `decision ticket` |
 | frontier | frontière | the open decisions whose prerequisites are settled | |

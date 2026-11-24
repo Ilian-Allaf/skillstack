@@ -5,7 +5,7 @@ Synthesize what the interview settled; do not interview again.
 ## Before writing
 
 1. Read the code the spec touches, the repo glossary, and the ADRs of the area. Use the glossary's terms throughout.
-2. Choose the seams the feature will be tested at: existing seams before new ones, the highest seam possible, as few as possible; one is ideal. Check them with the user.
+2. Choose the seams the feature will be tested at: existing seams before new ones, the highest seam possible, as few as possible; one is ideal. For a feature with a user-facing surface, the journeys' surfaces are its seams; name only seams beyond them, such as a library's API. Check them with the user.
 
 ## Template
 
@@ -23,10 +23,18 @@ The observable condition that says the whole spec is delivered, agreed with the 
 
 ## User stories
 1. As a <actor>, I want <feature>, so that <benefit>.
-(A long list that covers every part of the feature, edge cases included.)
+   Journey: <surface>: <steps> → <the result the user expects>.
+(A long list that covers every part of the feature, edge cases included. Every story has its journey, confirmed with the user.)
+
+## Promises
+- **<what must never break, in one product sentence>.** Harm: <what the user loses when it breaks>.
+(Each one confirmed with the user. Write "none" when the grill found none.)
+
+## Not verifiable
+What no run can prove, and why, agreed in the grill. Write "nothing" when everything can be.
 
 ## Seams
-The public interfaces the tests will use, agreed with the user.
+The public interfaces the tests will use beyond the journeys' surfaces, agreed with the user.
 
 ## Decisions
 Modules built or changed, their interfaces, schema changes, API contracts, architecture choices, and the ADRs they rest on.
@@ -41,4 +49,4 @@ What this spec will not do.
 
 ## From spec to proof
 
-Each user story becomes at least one case in `frame` (see [coverage.md](../../constitution/references/coverage.md)), so the coverage table of the final PR answers the spec story by story. A story no case covers goes under Not verified.
+Each journey and each promise becomes a case in `frame` (see [coverage.md](../../constitution/references/coverage.md)), so the coverage table of the final PR answers the spec story by story and promise by promise. Number them in the spec, `S1`, `S2` for stories and `P1`, `P2` for promises, so the evidence record names each one. A journey or a promise no case covers goes under Not verified.

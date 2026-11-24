@@ -55,7 +55,7 @@ An independent review of the first draft checked it against these sources and fo
 - **Seams.** For a spec with a user-facing surface, the journeys' surfaces are its seams. The Seams section names only seams beyond them, such as a library's API.
 
 ### `shape-spec` looks up the means of proof
-It looks up the drivers and formal checks of the area as facts, stale or not, and writes nothing technical in the spec. For a surface with no driver, it asks the user for what only the user can give: the account, the access, and where the secret lives. It records them in the project folder, in the `drive-<app>/` folder that `create-app-driver` will fill, never in the spec and never the secret itself.
+It looks up the drivers and formal checks of the area as facts, stale or not, and writes nothing technical in the spec. For a surface with no driver, it asks the user for what only the user can give: the account, the access, and where the secret lives. It records them in the project folder, in `access/<app>.md`, apart from `drive-<app>/` so a shared driver's folder stays a route; never in the spec, and never the secret itself.
 
 ### The frame aims each case at the highest proof its kind allows
 - **A journey** reaches the highest certainty level its surface allows. A case below the level `proof.md` requires names why.
