@@ -143,7 +143,7 @@ class HookTest(unittest.TestCase):
         return self.repo / ".git" / "hooks"
 
     def test_install_hook_writes_post_merge_and_post_checkout(self) -> None:
-        self.assertEqual(link_skills.install_hook(self.repo), [])
+        self.assertEqual(self.install(self.repo), [])
         for name in ("post-merge", "post-checkout"):
             content = (self.hooks_dir() / name).read_text(encoding="utf-8")
             self.assertNotIn(link_skills.HOOK_PLACEHOLDER, content)
@@ -151,13 +151,44 @@ class HookTest(unittest.TestCase):
             self.assertIn("--quiet", content)
             self.assertNotIn("\r", content)
 
-    def test_installed_hook_points_at_the_main_clone(self) -> None:
-        link_skills.install_hook(self.repo)
+    def install(self, repo: Path, **kwargs) -> list[str]:
+        with contextlib.redirect_stdout(io.StringIO()):
+            return link_skills.install_hook(repo, **kwargs)
+
+    def git(self, *args: str) -> None:
+        subprocess.run(["git", "-C", str(self.repo), "-c", "user.name=t", "-c", "user.email=t@example.invalid", "-c", "commit.gpgsign=false", *args], check=True, capture_output=True)
+
+    def test_installed_from_a_worktree_the_hook_points_at_the_main_clone(self) -> None:
+        self.git("add", ".")
+        self.git("commit", "-q", "-m", "base")
+        worktree = Path(self.tmp.name) / "worktree"
+        self.git("worktree", "add", "-q", "--detach", str(worktree))
+        self.assertEqual(self.install(worktree), [])
         content = (self.hooks_dir() / "post-merge").read_text(encoding="utf-8")
         self.assertIn((self.repo / "tools" / "link_skills.py").as_posix(), content)
+        self.assertNotIn(worktree.as_posix(), content)
+
+    def test_a_hook_of_the_users_is_never_overwritten(self) -> None:
+        self.hooks_dir().mkdir(parents=True, exist_ok=True)
+        mine = "#!/bin/sh\necho mine\n"
+        (self.hooks_dir() / "post-merge").write_text(mine, encoding="utf-8")
+        problems = self.install(self.repo)
+        self.assertEqual(len(problems), 1)
+        self.assertIn("post-merge", problems[0])
+        self.assertEqual((self.hooks_dir() / "post-merge").read_text(encoding="utf-8"), mine)
+        self.assertIn("link_skills.py", (self.hooks_dir() / "post-checkout").read_text(encoding="utf-8"))
+
+    def test_install_again_replaces_our_own_hook(self) -> None:
+        self.assertEqual(self.install(self.repo), [])
+        self.assertEqual(self.install(self.repo), [])
+
+    def test_dry_run_writes_no_hook(self) -> None:
+        self.assertEqual(self.install(self.repo, dry_run=True), [])
+        for name in ("post-merge", "post-checkout"):
+            self.assertFalse((self.hooks_dir() / name).exists())
 
     def test_remove_hook_deletes_only_our_hooks(self) -> None:
-        link_skills.install_hook(self.repo)
+        self.install(self.repo)
         (self.hooks_dir() / "pre-push").write_text("#!/bin/sh\necho keep\n", encoding="utf-8")
         self.assertEqual(link_skills.remove_hook(self.repo), [])
         self.assertFalse((self.hooks_dir() / "post-merge").exists())

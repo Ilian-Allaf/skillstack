@@ -13,7 +13,9 @@ adding, removing, or renaming a skill, or install the hook once so it never need
   --install-hook writes post-merge and post-checkout hooks into the clone's git hooks, so every
   pull, merge, or checkout re-runs the linking and a skill added or renamed since the last run
   is linked without a command. The hook links the main clone (the parent of the git common dir),
-  never a temporary worktree, prints only changes, and never blocks the git operation.
+  never a temporary worktree, prints only changes, and never blocks the git operation. A hook of
+  that name the tool did not write is never overwritten: it is reported, and left as it is. With
+  --dry-run, it says which hooks it would write and writes none.
   --remove-hook deletes those hooks.
 
 Shared folders sit beside the skills because skills read them by relative path
@@ -148,8 +150,14 @@ def git_common_dir(repo: Path) -> Path | None:
     return None
 
 
-def install_hook(repo: Path) -> list[str]:
-    """Write the re-linking hooks into the clone's hooks dir. Returns the problems found."""
+def ours(path: Path) -> bool:
+    """Whether a hook file was written by install_hook."""
+    return path.is_file() and "link_skills.py" in path.read_text(encoding="utf-8", errors="replace")
+
+
+def install_hook(repo: Path, dry_run: bool = False) -> list[str]:
+    """Write the re-linking hooks into the clone's hooks dir, never over a hook of the user's.
+    Returns the problems found."""
     common = git_common_dir(repo)
     if common is None:
         return [f"{repo} is not a git clone (git rev-parse failed). Fix: run --install-hook from a clone of this repo."]
@@ -157,14 +165,21 @@ def install_hook(repo: Path) -> list[str]:
     script = (main / "tools" / "link_skills.py").as_posix()
     content = HOOK_TEMPLATE.replace(HOOK_PLACEHOLDER, script)
     hooks_dir = common / "hooks"
-    hooks_dir.mkdir(parents=True, exist_ok=True)
+    problems: list[str] = []
     for name in HOOK_NAMES:
         path = hooks_dir / name
+        if path.exists() and not ours(path):
+            problems.append(f"{path} is a hook this tool did not write; left as it is. Fix: add the line `python -I \"{script}\" --quiet || true` to it, or move it away and run --install-hook again.")
+            continue
+        print(f"hook    {path}")
+        if dry_run:
+            continue
+        hooks_dir.mkdir(parents=True, exist_ok=True)
         with open(path, "w", encoding="utf-8", newline="") as handle:
             handle.write(content)
         if os.name != "nt":
             path.chmod(0o755)
-    return []
+    return problems
 
 
 def remove_hook(repo: Path) -> list[str]:
@@ -174,7 +189,7 @@ def remove_hook(repo: Path) -> list[str]:
         return [f"{repo} is not a git clone (git rev-parse failed). Fix: delete post-merge and post-checkout from the clone's hooks by hand."]
     for name in HOOK_NAMES:
         path = common / "hooks" / name
-        if path.is_file() and "link_skills.py" in path.read_text(encoding="utf-8"):
+        if ours(path):
             path.unlink()
     return []
 
@@ -192,7 +207,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.remove_hook:
         problems += remove_hook(REPO)
     elif args.install_hook:
-        problems += install_hook(REPO)
+        problems += install_hook(REPO, args.dry_run)
     if not args.remove_hook:
         problems += run(REPO, args.dest or DEFAULT_DESTS, args.dry_run, args.unlink, args.quiet)
     for problem in problems:
