@@ -20,4 +20,4 @@ Judgment calls only: what `tools/check.py` already enforces is not repeated here
 
 - **Every idea in a doc or an ADR names its source**, or says it is ours. In the skills, sources never appear; they live in `docs/sources.md`.
 - **A doc is executed or dated.** A new doc either has a check that fails when it disagrees with the code, or is a dated record nobody rewrites. Example: `docs/adr/0013-a-doc-stays-fresh-by-running-or-by-date.md`.
-- **An ADR records one decision that is hard to reverse, surprising without context, and a real trade-off.** It carries Status, Applies to, and Enforced by, and names the alternatives it rejected. Example: `docs/adr/0001-the-user-always-merges.md`.
+- **An ADR records only what the code cannot say**, by the rules of `skills/shape-spec/references/domain.md` (ADRs, sparingly): the code holds what it can, and the ADR keeps the why and the alternatives rejected. Example: `docs/adr/0018-a-verdict-covers-the-tested-base-and-head.md`, whose rule a script holds under Enforced by.

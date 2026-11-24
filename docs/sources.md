@@ -109,7 +109,7 @@ When a skill changes, update its section here, in the same PR.
 - `verify-at-the-edge`: Ray Amjad, Anthropic "harness design"
 - `fix-root-causes`: pstack
 - `attack-the-premise`: pstack
-- `encode-lessons-in-structure`: pstack, Lauren Tan
+- `encode-lessons-in-structure`: pstack, Lauren Tan. 2026-11-24, ours: it also applies before a decision or a rule is written in a doc, and an ADR keeps only what the code cannot say.
 - `build-the-lever`: pstack
 - `design-the-data-first`, `redesign-from-first-principles`, `design-for-the-consumer`: pstack, added 2026-11-20
 - `model-the-domain`: pstack
@@ -271,6 +271,7 @@ When a skill changes, update its section here, in the same PR.
 ## `skills/shape-spec/references/domain.md`
 
 - Source: Matt Pocock `domain-modeling`.
+- 2026-11-24: ours, from pstack's `encode-lessons-in-structure` order (Lauren Tan): an ADR records only what the code cannot say. The code holds the decision first, and the ADR keeps the why.
 
 ## `skills/shape-spec/references/grill.md`
 

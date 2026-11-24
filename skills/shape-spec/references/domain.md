@@ -23,7 +23,9 @@ The glossary holds terms and nothing else: no implementation details, no spec, n
 
 ## ADRs, sparingly
 
-Offer an ADR only when all three hold:
+First ask whether the code can hold the decision, in this order: an architecture that leaves one way to do it, a type that rejects the other way, a check whose message names the fix, a test (`encode-lessons-in-structure`). Propose that form: a check through `add-guardrail`, a type or a structure as a decision of the spec. When the code then says all of the decision, write no ADR. When it holds the rule but not the reason, the ADR keeps only what the code cannot say, the why and the alternatives rejected, and names the check under Enforced by.
+
+For what the code cannot say, offer an ADR only when all three hold:
 
 1. **hard to reverse**: changing your mind later costs something real;
 2. **surprising without context**: a future reader would ask why;
@@ -36,8 +38,7 @@ An ADR is a dated record of a decision, not a description of the present. It hol
 - the context, the decision, the alternatives rejected and why, and the consequences;
 - **Enforced by**: the check that holds the decision, when one can.
 
-Keep it true in three ways:
+Keep it true in two ways:
 
 - **Never rewrite an accepted decision.** A new decision is a new ADR that supersedes the old one; the old one gets the status `superseded by ADR-NNNN` and stays as history, binding nothing.
-- **A decision a check can hold gets the check.** Propose it through `add-guardrail` when you write the ADR: the check fails when the code drifts, and the ADR keeps only the why.
 - **Read before you touch.** Work that touches a path an accepted ADR applies to reads that ADR first. To propose again what an ADR rejected, cite it and say what changed since; the user decides, and a yes becomes a superseding ADR.
