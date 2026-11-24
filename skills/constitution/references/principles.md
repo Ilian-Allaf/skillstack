@@ -52,7 +52,7 @@ Each row gives when the principle applies and its rule in one line. Its full for
 | Id | Apply when | Rule |
 |---|---|---|
 | `build-the-lever` | the work is not trivial | Build the script, codemod, or check that does the work or proves it. [Full form](principles/build-the-lever.md). |
-| `encode-lessons-in-structure` | the same correction comes back | Turn it into architecture, a type, a check that names the fix, or a test, and docs last. [Full form](principles/encode-lessons-in-structure.md). |
+| `encode-lessons-in-structure` | the same correction comes back, or you are about to write a decision or a rule in a doc | Turn it into architecture, a type, a check that names the fix, or a test, and docs last. [Full form](principles/encode-lessons-in-structure.md). |
 
 ## Running agents
 
