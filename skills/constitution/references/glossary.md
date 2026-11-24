@@ -31,6 +31,8 @@ The target repo can have its own glossary of domain terms. The builder and the v
 | escaped | échappé | a bug found after merge; label `escaped` | |
 | door | porte | `two-way` if a choice can be undone cheaply, `one-way` if not | `reversibility` |
 | case | cas | one situation the evidence must show: an entry point, an edge case, the main path | `scenario` |
+| journey | parcours | the steps a user takes on one surface and the result they expect; a spec states one per user story, and each is a case | `user flow` |
+| promise | promesse | what must never break, in one product sentence with the harm when it breaks; a spec lists them under Promises, each is a case, and a formal check proves one as its property | `guarantee` |
 | case list | liste des cas | the numbered cases `frame` fixes before any code, shown in the frame | |
 | seam | seam | a public interface the tests drive, agreed in `frame` or the spec | |
 | patch id | patch id | the hash of the diff, `git patch-id --stable`; unchanged does not make a verdict reusable | |
