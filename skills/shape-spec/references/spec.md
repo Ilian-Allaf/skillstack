@@ -22,12 +22,12 @@ The solution, from the user's side.
 The observable condition that says the whole spec is delivered, agreed with the user in the grill: a command, a test, or an app journey that answers yes or no. `ship` takes it as the task's `done_when`.
 
 ## User stories
-1. As a <actor>, I want <feature>, so that <benefit>.
-   Journey: <surface>: <steps> → <the result the user expects>.
+S1. As a <actor>, I want <feature>, so that <benefit>.
+   Journey: on <surface>, <steps>, then <the result the user expects>.
 (A long list that covers every part of the feature, edge cases included. Every story has its journey, confirmed with the user.)
 
 ## Promises
-- **<what must never break, in one product sentence>.** Harm: <what the user loses when it breaks>.
+- **P1. <what must never break, in one product sentence>.** Harm: <what the user loses when it breaks>.
 (Each one confirmed with the user. Write "none" when the grill found none.)
 
 ## Not verifiable
@@ -49,4 +49,4 @@ What this spec will not do.
 
 ## From spec to proof
 
-Each journey and each promise becomes a case in `frame` (see [coverage.md](../../constitution/references/coverage.md)), so the coverage table of the final PR answers the spec story by story and promise by promise. Number them in the spec, `S1`, `S2` for stories and `P1`, `P2` for promises, so the evidence record names each one. A journey or a promise no case covers goes under Not verified.
+Each journey and each promise becomes a case in `frame` (see [coverage.md](../../constitution/references/coverage.md)), so the coverage table of the final PR answers the spec story by story and promise by promise. The template numbers them, `S1`, `S2` for stories and `P1`, `P2` for promises, so the evidence record names each one; a second journey of a story takes the next letter, `S1b`. A journey or a promise no case covers goes under Not verified.

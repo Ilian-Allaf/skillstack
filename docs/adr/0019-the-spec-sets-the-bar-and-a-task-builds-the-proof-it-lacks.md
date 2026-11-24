@@ -5,10 +5,11 @@
   - in [0017](0017-a-formal-check-guards-every-task-that-touches-its-code.md), three clauses: "its case goes under Not verified, and the builder opens an issue for `/maintain-formal-verification`"; "The maintain pass stays outside the task"; and "A check stale on the base is not updated by the task".
 - **Extends, once accepted**:
   - in 0017, the verifier's judgment of a check, now also for a check created or repaired in the task, not only one in sync on the base;
-  - in [0014](0014-a-launched-task-runs-to-a-ready-pr.md) and rule 11 of the constitution, the list of stops, with one more: access only the user can give.
+  - in [0014](0014-a-launched-task-runs-to-a-ready-pr.md) and rule 11 of the constitution, the list of stops, with one more: access only the user can give;
+  - in [0016](0016-the-working-files-live-outside-the-repo.md), "chosen entry by entry when `setup-repo` runs": one entry is never shared and is written by `shape-spec`, `access/<app>.md`, since it says where a secret lives.
 
-  The rest of both ADRs stands.
-- **Applies to**: `skills/shape-spec/`, `skills/ship/` (frame, verification setup, the units of a task, `scripts/check_evidence.py`), `skills/verify-pr/` (the brief, `live`, `breakage`, `spec`), `skills/create-app-driver/`, `skills/constitution/README.md` (rule 11), `skills/constitution/references/proof.md`, `coverage.md`, `formal.md` (In a task), `glossary.md`
+  The rest of these ADRs stands.
+- **Applies to**: `skills/shape-spec/`, `skills/ship/` (frame, verification setup, the units of a task, `scripts/check_evidence.py`), `skills/verify-pr/` (the brief, `live`, `breakage`, `spec`), `skills/create-app-driver/`, `skills/constitution/README.md` (rule 11), `skills/constitution/references/proof.md`, `coverage.md`, `formal.md` (In a task), `glossary.md`, `target-repo.md`
 - **Enforced by**: `check_evidence.py` fails when a story or a promise of the spec has no case in the evidence record, with a test in `tools/test_check_evidence.py`. The rest by three blind `test-skill-change` runs and by review.
 
 ## Context

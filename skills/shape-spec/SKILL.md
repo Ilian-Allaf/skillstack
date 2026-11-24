@@ -8,7 +8,7 @@ metadata:
   calls: "investigate"
   role: builder
   consumes: "a loose idea, a conversation, or a map issue"
-  produces: "a spec issue labeled spec, or a map issue labeled map with its decision issues"
+  produces: "a spec issue labeled spec, or a map issue labeled map with its decision issues; access/<app>.md in the project folder for a surface without a driver"
   hypothesis: "Without a spec, the builder under-scopes the work; without an interview, the spec carries the agent's guesses instead of the user's decisions."
 ---
 

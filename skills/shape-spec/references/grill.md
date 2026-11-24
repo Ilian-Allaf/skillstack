@@ -24,10 +24,10 @@ Recommended: <your answer>
 
 ## The verification branch
 
-Every design tree has this branch; visit it once the stories are settled. Draft each answer and ask in one round, so a yes accepts it:
+The design tree of every spec has this branch; visit it once the stories are settled. A map's decisions skip it, and its destination's spec takes it. Draft each answer and ask in one round, so a yes accepts it:
 
 - **A journey per story**: the surface, the steps, and the result the user expects. One per story is the minimum and usually enough; a story in a hard zone adds its edge cases.
-- **Promises**: what must never break, one product sentence each with the harm when it breaks. A promise about every order of steps or every input, such as a race, a retry, or an invariant, is a property; any other promise is a journey.
+- **Promises**, as the [glossary](../../constitution/references/glossary.md) defines them, each with the harm when it breaks.
 - **What cannot be verified**, and why, so the user knows it before the build.
 
 The means of proof are facts: look up the drivers and formal checks of the area as [proof.md](../../constitution/references/proof.md#drivers-and-formal-checks) says, stale or not. For a touched surface with no driver, ask the user for what only they can give, the account, the access, and where the secret lives, and write it to `~/.agents/projects/<project>/access/<app>.md`, never the secret itself. Nothing technical goes in the spec.
