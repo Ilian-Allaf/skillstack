@@ -41,7 +41,7 @@ A folder entry (`adr/`, `drive-<app>/`) is a route when its only file is such a 
 
 ## Private or shared
 
-`setup-repo` asks, entry by entry. Private is the default: the entry lives in the project folder, is written there directly, and is listed in the reply. Shared: the entry lives in the repo, reaches it through a PR the team reviews, and the project folder holds a route to it.
+`setup-repo` asks, entry by entry, except for `access/<app>.md`, which is never shared since it says where a secret lives. Private is the default: the entry lives in the project folder, is written there directly, and is listed in the reply. Shared: the entry lives in the repo, reaches it through a PR the team reviews, and the project folder holds a route to it.
 
 - **The repo's own files win.** When the repo already has a tracker file, a glossary, standards, ADRs, or a driver, even in another place or another shape, the project folder routes to it instead of creating a second one.
 - **The agent file is the team's.** `AGENTS.md` (and `CLAUDE.md`, which imports it with `@AGENTS.md`) is edited only when the user shares an entry and the file needs a pointer to it, by the smallest diff.

@@ -58,6 +58,34 @@ class EvidenceTest(unittest.TestCase):
         self.record["cases"][0]["not_verified"] = "No live access; grant test access"
         self.assertEqual([], self.errors())
 
+    def test_spec_story_without_case_fails(self):
+        self.record["spec_ids"] = ["S1", "P1"]
+        self.record["cases"] = [
+            {"id": "S1", "level": 5, "evidence": ["run.txt"]},
+            {"id": "1", "level": 4, "evidence": ["run.txt"]},
+        ]
+        errors = self.errors()
+        self.assertEqual(1, len(errors))
+        self.assertIn("spec id P1", errors[0])
+
+    def test_spec_ids_each_matched_by_a_case(self):
+        self.record["spec_ids"] = ["S1", "S1b", "P1"]
+        self.record["cases"] = [
+            {"id": case_id, "level": 4, "evidence": ["run.txt"]} for case_id in ("S1", "S1b", "P1", "2")
+        ]
+        self.assertEqual([], self.errors())
+
+    def test_spec_ids_absent_for_a_task_without_spec(self):
+        self.record.pop("spec_ids", None)
+        self.assertEqual([], self.errors())
+
+    def test_invalid_spec_ids(self):
+        for spec_ids in ("S1", [], ["s1"], ["X1"], ["S"], ["S1", "S1"], [1]):
+            with self.subTest(spec_ids=spec_ids):
+                self.record["spec_ids"] = spec_ids
+                self.record["cases"] = [{"id": "S1", "level": 4, "evidence": ["run.txt"]}]
+                self.assertTrue(self.errors())
+
     def test_each_artifact_source_rejects_missing_empty_and_directory(self):
         for value in ("missing.mp4", "empty.txt", ".", "", None):
             (self.root / "empty.txt").touch()

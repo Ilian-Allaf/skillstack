@@ -27,8 +27,8 @@ When the build budget runs out or a second sketch is scrapped, still open the PR
 
 ## Steps
 
-1. **Frame.** Restate the task, fix `done_when`, list the cases, and name the risk class, the hard zones, and the playbook, as [references/frame.md](references/frame.md) describes. Try [the verification setup](references/verification.md) and show `done_when` red on the base. Show the frame to the user and go on: launching was the go (rule 11 of the constitution). Claim an issue task first, as the tracker file says.
-   Done when: the frame is in your first message, `done_when` ran red on the base, an issue task is claimed, and verification can start or its limits are disclosed.
+1. **Frame.** Restate the task, fix `done_when`, list the cases, and name the risk class, the hard zones, and the playbook, as [references/frame.md](references/frame.md) describes. Try [the verification setup](references/verification.md) and show `done_when` red on the base. Show the frame and go on: launching was the go (rule 11). Claim an issue task first, as the tracker file says.
+   Done when: the frame is in your first message, `done_when` ran red on the base, an issue task is claimed, its missing proof is built first, and verification can start or its limits are disclosed.
 
 2. **Build.** In a worktree and a branch of your own, made from the base (see [harness.md](../constitution/references/harness.md)). Design before any logic, as [references/design.md](references/design.md) describes: name the data shape, and for a feature or a change that crosses a function boundary, ground, sketch twice, write the design note, show it when the table there asks, and build against the sketch. Follow the playbook from [the list](references/frame.md#playbooks). The budget is 3 attempts; after the second failure, write the premise your attempts share and test it before the third.
    Done when: `done_when` is green, every playbook duty is met, each altered [formal check](../constitution/references/formal.md#in-a-task) describes the head, and a sketched change has its design note, Deviations filled; or the budget ran out and the PR is open and `needs-human`.

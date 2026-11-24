@@ -9,6 +9,7 @@ Framing costs a message; a misread task costs hours.
 - **Read the accepted ADRs** whose Applies to covers the code you will touch. A task that goes against one says so in the message, with a superseding ADR for the user to decide: it is a one-way door.
 - **Collect the cases** as [coverage.md](../../constitution/references/coverage.md) describes, and the risk class and hard zones as proof.md does.
 - **Try the verification setup** as [verification.md](verification.md) describes, before implementation. A failed startup is an environment limit, not the red behavior that proves `done_when`.
+- **Build the proof the task lacks, first.** A missing driver for a touched surface, a missing formal check for a promise the user stated in a hard zone, and a formal check stale on the base are built or repaired before the change, as [proof.md](../../constitution/references/proof.md#drivers-and-formal-checks) and [formal.md](../../constitution/references/formal.md#in-a-task) say. What the team shares lands as the task's first unit, its own PR, stacked under the change as the [bespoke](playbooks/bespoke.md) flow of units does; what stays private is written in place.
 
 ## What to send the user
 
@@ -17,9 +18,9 @@ Goal: <what the user wants, in their terms>
 Problem: <what is wrong or missing today>
 Smallest change: <the least that meets the goal>
 Done when: <observable condition>. Ran it on the base: <command> -> <red output>.
-Cases: <numbered list: the main case, each entry point, the edge cases of the hard zones>
+Cases: <numbered list: the spec's journeys and promises by their ids (S1, P1), the main case, each entry point, the edge cases of the hard zones; each with its target, a level or a breadth>
 Evidence: <demo video, state chart, screenshots, or command output, and why>
-Verification setup: <startup runs for builder and verifier, capture command, access limits and remedy>
+Verification setup: <startup runs for builder and verifier, capture command, the driver or formal check built or repaired first, access limits and remedy>
 Out of scope: <what this PR will not do>
 Risk: <low | medium | high>, because <path or reason>. Hard zones: <list, or none>.
 Playbook: <one from the list below>. Seams under test: <public interfaces>.
