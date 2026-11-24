@@ -6,7 +6,7 @@ argument-hint: "<task, or an issue number>"
 metadata:
   kind: entry
   role: builder
-  calls: "investigate, analyze-impact, verify-pr, babysit-pr, repo:drive-<app>"
+  calls: "investigate, analyze-impact, verify-pr, babysit-pr, create-app-driver, create-formal-verification, maintain-formal-verification, repo:drive-<app>"
   consumes: "a task from the user, or an issue"
   produces: "one PR labeled ready, or needs-human"
   budget: "3 build attempts; 2 FAIL verdicts"
@@ -28,7 +28,7 @@ When the build budget runs out or a second sketch is scrapped, still open the PR
 ## Steps
 
 1. **Frame.** Restate the task, fix `done_when`, list the cases, and name the risk class, the hard zones, and the playbook, as [references/frame.md](references/frame.md) describes. Try [the verification setup](references/verification.md) and show `done_when` red on the base. Show the frame and go on: launching was the go (rule 11). Claim an issue task first, as the tracker file says.
-   Done when: the frame is in your first message, `done_when` ran red on the base, an issue task is claimed, its missing proof is built first, and verification can start or its limits are disclosed.
+   Done when: the frame is in your first message, `done_when` ran red on the base, an issue task is claimed, the proof it lacks is built first by [create-app-driver](../create-app-driver/SKILL.md), [create-formal-verification](../create-formal-verification/SKILL.md), or [maintain-formal-verification](../maintain-formal-verification/SKILL.md), and verification can start or its limits are disclosed.
 
 2. **Build.** In a worktree and a branch of your own, made from the base (see [harness.md](../constitution/references/harness.md)). Design before any logic, as [references/design.md](references/design.md) describes: name the data shape, and for a feature or a change that crosses a function boundary, ground, sketch twice, write the design note, show it when the table there asks, and build against the sketch. Follow the playbook from [the list](references/frame.md#playbooks). The budget is 3 attempts; after the second failure, write the premise your attempts share and test it before the third.
    Done when: `done_when` is green, every playbook duty is met, each altered [formal check](../constitution/references/formal.md#in-a-task) describes the head, and a sketched change has its design note, Deviations filled; or the budget ran out and the PR is open and `needs-human`.
@@ -45,7 +45,7 @@ When the build budget runs out or a second sketch is scrapped, still open the PR
 6. **Open the PR.** [Audit activity and check evidence](references/verification.md), then push and open in [the PR format](../constitution/references/pr-format.md), linking an issue task.
    Done when: the formatted PR is open and the evidence check passes, or discrepancies are attached to a draft labeled `needs-human`.
 
-7. **Get a verdict.** Spawn a fresh verifier (see Roles in the constitution) to run [verify-pr](../verify-pr/SKILL.md) with the brief its step 1 lists, and write the outcome on the PR's Verdict line. On a FAIL, go back to step 2 with its run, or dispute it as verify-pr describes, once per PR. An axis INCONCLUSIVE means `needs-human`, with what would make the lane runnable: for a surface with no driver, `/create-app-driver`. The budget is 2 FAIL verdicts.
+7. **Get a verdict.** Spawn a fresh verifier (see Roles in the constitution) to run [verify-pr](../verify-pr/SKILL.md) with the brief its step 1 lists, and write the outcome on the PR's Verdict line. On a FAIL, go back to step 2 with its run, or dispute it as verify-pr describes, once per PR. An axis INCONCLUSIVE means `needs-human`, with what would make the lane runnable. The budget is 2 FAIL verdicts.
    Done when: both axes pass on the current base and head, or the PR is `needs-human`: budget spent, FAIL upheld, or an axis INCONCLUSIVE.
 
 8. **Hand over to babysit-pr.** Run [babysit-pr](../babysit-pr/SKILL.md) on the PR until it is `ready` or `needs-human`. Before handback, [refresh and check evidence](references/verification.md) against the final activity and verdict; unresolved discrepancies mean `needs-human`.

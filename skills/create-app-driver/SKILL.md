@@ -37,11 +37,11 @@ Two modes:
    Done when: every feature file names where its entry points are declared, the ones no file declares, its drive steps, and the end state that proves it; and the check failed once and passes, or the report says the code declares no entry points.
 
 5. **Prove the generated skill.** Follow its own instructions end to end: launch, doctor, drive one mapped feature, capture evidence, clean up. Then check that the evidence still exists where the skill says. Fix what fails, and run the cleanup after every failed attempt. When a precondition is missing, the journey fails and the reason goes under Gotchas. Never weaken a journey to make it pass.
-   When a task runs this skill as its first unit, a fresh subagent then follows the generated skill cold, with only its path, the same way: the builder of the task must not be the only one who saw the driver work.
+   When a task runs this skill before its change, a fresh subagent then follows the generated skill cold, with only its path, the same way: the builder of the task must not be the only one who saw the driver work.
    Done when: one full run passed, the evidence survived cleanup, nothing the run started is still running, and, inside a task, the cold run passed too.
 
 6. **Hand it over.** A private driver is done once step 5 passed: report its path. A shared one goes in a PR in [the PR format](../constitution/references/pr-format.md). Proof holds the end to end run and its evidence. Not verified lists the features the map names but this run did not drive.
-   Then get a verdict and run `babysit-pr`, as rule 2 of the constitution says.
+   Then get a verdict and run `babysit-pr`, as rule 2 of the constitution says. Inside a task, its builder babysits the whole stack once instead.
    Done when: the private driver's run is reported with its evidence; or the PR is open with the run's evidence attached, and carries `ready` or `needs-human`.
 
 ## Reply
