@@ -18,7 +18,7 @@ Name the shape in the domain's words. Its types, states, and events take their n
 
 ## 2. Ground
 
-Read every module the new code touches, and write a short note on how each works today: what it owns, who calls it, which invariants it holds. Naming a file is not grounding.
+Read every module the new code touches, and write a short note on how each works today: what it owns, who calls it, which invariants it holds. Naming a file is not grounding. For a change to what a user sees, ground the design system as [ui.md](../../constitution/references/ui.md#the-design-system-comes-from-the-code) says.
 
 When the design moves ownership or layering, read why the current shape exists: the ADRs that cover it, and the commits and PRs that introduced it (`git log --follow`, `git blame` on the load-bearing lines). Its reasons become constraints, not guesses.
 

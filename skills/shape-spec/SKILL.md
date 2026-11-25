@@ -30,7 +30,7 @@ You do not cut the spec into implementation slices for parallel agents. One buil
 
    A question of fact a run can answer, such as a timing or whether an approach works, is not the user's to decide: run [investigate](../investigate/SKILL.md) in prototype mode, and the observation decides. A question of look or feel gets a prototype too, but the user picks from its variants.
 
-   A story that adds a screen, redesigns one, or builds a page whose look is the point is a heavy visual change: say so with the reason, and propose prototypes before any other question; the pick becomes visual targets. A small change on an existing screen takes none, and follows the design system as it is.
+   When a story is a heavy visual change, as the [glossary](../constitution/references/glossary.md) defines it, say so with the reason: the grill adds its design mode and a pick among prototypes, which becomes visual targets. A small change on an existing screen takes none, and follows the design system as it is.
    Done when: the mode is named to the user with the reason, and whether the change is a heavy visual one.
 
 2. **Grill.** Interview the user in rounds, as [references/grill.md](references/grill.md) describes, and keep the repo's domain model up to date as [references/domain.md](references/domain.md) describes. Facts are your job; decisions are the user's.

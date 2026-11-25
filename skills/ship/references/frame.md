@@ -38,7 +38,7 @@ For a `high` task, or one that touches a hard zone, spawn a fresh verifier to re
 
 ## When the task is unclear
 
-Read the code, the issue, and the history first: most questions answer themselves there. Ask only what is the user's to decide, through the harness's question tool, one question at a time with your recommended answer, and stop asking once you can write an observable `done_when`. When the task needs one design decision first, say so and settle it with the smallest prototype, in the prototype mode of [investigate](../../investigate/SKILL.md). When it needs several decisions, is too big to frame, or is a heavy visual change with no visual target (a new screen, a redesign, a page whose look is the point), stop and propose `/shape-spec`: those decisions are the user's.
+Read the code, the issue, and the history first: most questions answer themselves there. Ask only what is the user's to decide, through the harness's question tool, one question at a time with your recommended answer, and stop asking once you can write an observable `done_when`. When the task needs one design decision first, say so and settle it with the smallest prototype, in the prototype mode of [investigate](../../investigate/SKILL.md). When it needs several decisions, is too big to frame, or is a heavy visual change with no visual target, stop and propose `/shape-spec`: those decisions are the user's.
 
 ## Playbooks
 

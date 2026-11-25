@@ -27,7 +27,7 @@ Recommended: <your answer>
 When step 1 of the skill found one, two decisions hang off the stories. Visit them once the stories are settled and before the verification branch, since the targets become cases.
 
 - **The design mode.** Ground the area's design system first: a fact a subagent finds, as [ui.md](../../constitution/references/ui.md#the-design-system-comes-from-the-code) says. Recommend a mode from what it found and what the story is for, with the reason; the user confirms.
-- **The pick.** Run [investigate](../../investigate/SKILL.md) in prototype mode on the visual decision, in that mode, until the user picks a variant. Draft the spec's Visual targets from the pick: a capture of each state the stories need at each width, a recording with its effect list for each part that moves, and the measured checks and bans of ui.md that apply. The user confirms them, or sets other thresholds.
+- **The pick.** Run [investigate](../../investigate/SKILL.md) in prototype mode on the visual decision, in the confirmed design mode, until the user picks a variant. Draft the spec's Visual targets from the pick: a capture of each state the stories need at each width, a recording with its effect list for each part that moves, and the measured checks and bans of ui.md that apply. Save their files to `~/.agents/projects/<project>/targets/<spec>/`, outside the repo, and link them from the issue when the tracker can host files. The user confirms them, or sets other thresholds.
 
 Done when: the user confirmed the design mode, picked a variant, and confirmed its visual targets.
 

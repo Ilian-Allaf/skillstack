@@ -12,8 +12,8 @@ Skills name a capability, never a tool. This table maps each capability to the t
 | find a project skill | `.claude/skills/` (Claude Code) or `.agents/skills/` (Codex), by the agent it runs | `.claude/skills/` only: link each skill from `.agents/skills/` | `.agents/skills/`, from the working directory up to the repo root |
 | read and write the project folder (`~/.agents/projects/`) | as the agent it runs | works; a write outside the working directory may ask the user's permission first | to confirm: the default sandbox may refuse writes outside the workspace; then ask the user to add the folder as a writable root |
 | read the agent file | as the agent it runs | `AGENTS.md` when no `CLAUDE.md` exists; otherwise `CLAUDE.md`, which imports it with `@AGENTS.md` | `AGENTS.md` |
-| search a library of real UI references (product screens, sites with their colors and fonts) | to confirm: an MCP server the user installed; else web search, or a real site driven in a browser | to confirm, same fallback | to confirm, same fallback |
-| record a page in a browser, and cut a video into frames | to confirm: the preview recording tools; `ffmpeg` when installed | to confirm | to confirm |
+| search a library of real UI references (product screens, sites with their colors and fonts) | to confirm: an MCP server the user installed, never one the agent installs; else web search, or a real site driven in a browser | to confirm, same fallback | to confirm, same fallback |
+| record a page in a browser, and cut a video into frames | to confirm: the preview recording tools; `ffmpeg` when installed. Without it, a motion reference is read from the user's words and its effect list is marked unchecked | to confirm, same fallback | to confirm, same fallback |
 | ask the user a question | `AskUserQuestion` | `AskUserQuestion` | `request_user_input` |
 | read a session transcript | to confirm | `~/.claude/projects/<project>/<session>.jsonl` | to confirm |
 | attach a video or image to a PR so it plays in the page | to confirm (`gh` has no upload command; CI artifact or branch link as fallback) | to confirm | to confirm |

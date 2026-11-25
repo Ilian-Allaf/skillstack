@@ -33,10 +33,11 @@ The target repo can have its own glossary of domain terms. The builder and the v
 | case | cas | one situation the evidence must show: an entry point, an edge case, the main path | `scenario` |
 | journey | parcours | the steps a user takes on one surface and the result they expect; a spec states one per user story, and each is a case | `user flow` |
 | promise | promesse | what must never break, in one product sentence with the harm when it breaks; a spec lists them under Promises, and each is a case. One about every order of steps or every input is a property, which a formal check can prove | `guarantee` |
+| heavy visual change | changement visuel lourd | a story that adds a screen, redesigns one, or builds a page whose look is the point; a small change on an existing screen is not one | |
 | visual target | cible visuelle | what a user picked from prototypes: a still, a screen captured at a state and a width, or a motion, a recording with its effect list; a spec lists them under Visual targets, and each is a case | `mockup` |
 | design mode | mode de design | how a visual change uses the repo's design system: `follow`, `extend`, or `break away`; the spec states it | |
 | target loop | boucle de cible | the passes `ship` makes until the head holds up next to each visual target, each pass scored by critics | |
-| critic | critique | a fresh subagent that scores one pass of the target loop from side-by-side images and the criteria alone; its score steers the build and proves nothing | |
+| critic | critique | a fresh subagent that scores one pass of the target loop from side-by-side images, the criteria, and a motion target's effect list alone; its score steers the build and proves nothing | |
 | case list | liste des cas | the numbered cases `frame` fixes before any code, shown in the frame | |
 | seam | seam | a public interface the tests drive, agreed in `frame` or the spec | |
 | patch id | patch id | the hash of the diff, `git patch-id --stable`; unchanged does not make a verdict reusable | |

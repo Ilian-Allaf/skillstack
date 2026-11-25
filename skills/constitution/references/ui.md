@@ -1,6 +1,6 @@
 # UI rules
 
-Read when a prototype or a diff changes what a user sees or how it moves: as the builder, as a critic in the [target loop](../../ship/references/visual-loop.md), and as the verifier. The repo's design system and its documented standards win over this file. What a spec's Visual targets take from it can block; the rest steers the build and yields notes.
+Read when a prototype or a diff changes what a user sees or how it moves: as the builder and as the verifier; a critic in the [target loop](../../ship/references/visual-loop.md) gets its criteria table. The repo's design system and its documented standards win over this file. What a spec's Visual targets take from it can block; the rest steers the build and yields notes.
 
 Left alone, an agent builds the safe, average page: functional, and like every other one. These rules name what to aim for and what to drop.
 
@@ -49,7 +49,7 @@ A check the repo needs on every change becomes a guardrail through `add-guardrai
 
 ## Motion
 
-Lay out still first; motion is its own slice, built on a still that already holds up. Each effect has a reason: it shows where something came from, what changed, or what to do next. Every control a pointer reaches answers it. Effects share a few durations and easings, as a type scale shares a few sizes. A reference video is read as an effect list, as [prototype.md](../../investigate/references/prototype.md) says; take from several references, and copy none one to one.
+Motion is its own slice, as the `feature` playbook orders it. Each effect has a reason: it shows where something came from, what changed, or what to do next. Every control a pointer reaches answers it. Effects share a few durations and easings, as a type scale shares a few sizes. A reference video is read as an effect list, as [prototype.md](../../investigate/references/prototype.md) says; take from several references, and copy none one to one.
 
 ## Generic defaults to drop
 

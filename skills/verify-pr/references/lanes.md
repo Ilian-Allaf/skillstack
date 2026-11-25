@@ -20,7 +20,7 @@ Drive the real app with the repo's `drive-<app>` skill, on the base and then on 
 
 List and drive the cases you would have expected from the spec, the feature map, `done_when`, and the hard zones. Save those results before reading the coverage table, then test the coverage itself (see [coverage.md](../../constitution/references/coverage.md)). A spec story, promise, or visual target missing from the table is a missing case like any other. A missing case that misbehaves is a FAIL. A missing case that behaves correctly is a coverage gap: report it with your evidence, so the builder adds it to the table.
 
-When the spec holds visual targets, capture the head yourself at each still target's state and width, and record it at each motion target, side by side with the target, before you look at the builder's images. A finding is one of: a measured check the Visual targets take that fails, an effect of a motion target missing or outside its tolerance, a ban they take visible on your capture, or a component the design mode does not allow; [verdict.md](verdict.md) grades it. Any other judgment of taste is a note, against the criteria of [ui.md](../../constitution/references/ui.md).
+When the spec holds visual targets, capture the head yourself at each still target's state and width, and record it at each motion target, side by side with the target, before you look at the builder's images. A finding is one of: a measured check the Visual targets take that fails, an effect of a motion target missing or outside its tolerance, or a ban they take that a command detects on the head; [verdict.md](verdict.md) grades it. Any other judgment of taste is a note, against the criteria of [ui.md](../../constitution/references/ui.md).
 
 Find the drivers as [proof.md](../../constitution/references/proof.md) describes. When no driver exists for a surface the change touches, this lane returns INCONCLUSIVE for it, with that reason. It never falls back to reading code.
 
@@ -42,7 +42,7 @@ Rerun each returned command yourself and keep what reproduces. Merge findings wi
 
 ### `spec`: does the code do what was asked, all of it, and nothing more?
 
-Compare the diff with the task and `done_when`, and with the spec issue when the brief holds one. Find missing parts of the request, parts the diff adds that nobody asked for, and behavior the spec's Out of scope excludes, and tests that do not test the asked behavior (tautological tests, tests coupled to internals, mocks of internal collaborators). Run the tests that claim to cover the change after reverting the fix: a test that still passes is a finding. Then check the duties of the PR's playbook, listed at the end of each [playbook](../../ship/references/frame.md#playbooks) as what the verifier checks.
+Compare the diff with the task and `done_when`, and with the spec issue when the brief holds one. Find missing parts of the request, parts the diff adds that nobody asked for, and behavior the spec's Out of scope excludes, and tests that do not test the asked behavior (tautological tests, tests coupled to internals, mocks of internal collaborators). Run the tests that claim to cover the change after reverting the fix: a test that still passes is a finding. With visual targets, a new component the spec's design mode does not allow is a part nobody asked for. Then check the duties of the PR's playbook, listed at the end of each [playbook](../../ship/references/frame.md#playbooks) as what the verifier checks.
 
 ### `standards`: does the code follow the repo's standards?
 
