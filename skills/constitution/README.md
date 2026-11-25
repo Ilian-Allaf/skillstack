@@ -36,7 +36,8 @@ Shared rules, not a skill: no harness lists this folder, and no one launches it.
 | [references/decision-log.md](references/decision-log.md) | before a long or unattended run, and before handing one back |
 | [references/formal.md](references/formal.md) | before you write, run, or update a formal check (`prove-<area>`), or when a touched file is one a formal check covers |
 | [references/statechart.md](references/statechart.md) | when a touched journey moves between states, or a hard zone needs a checked model |
-| [references/languages/typescript.md](references/languages/typescript.md) | when the diff touches a `.ts` or `.tsx` file, as builder or verifier |
+| [references/languages/typescript.md](references/languages/typescript.md) | when the diff touches a `.ts`, `.tsx`, `.mts`, or `.cts` file, as builder or verifier; another language's file in `references/languages/` when the diff touches that language |
+| [references/lint.md](references/lint.md) | before you run the lint pass, as the builder in `clean` or the verifier in `standards`, and before you write a decision on a language's rules for a repo |
 
 ## Roles
 

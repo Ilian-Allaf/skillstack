@@ -84,6 +84,18 @@ When a skill changes, update its section here, in the same PR.
 ## `skills/constitution/references/languages/typescript.md`
 
 - Source: pstack `typescript-best-practices` (Lauren Tan).
+- 2026-11-25, [ADR 0020](adr/0020-language-rules-reach-a-repo-as-a-lint-pass-the-user-decides.md): the rows checked by `lint` come from the generic rules of `dmmulroy/anti-slop` (Dillon Mulroy), `README.md` at commit `63dbb09f73438e550a6991dc6d778f979ffbf183`. Left out: `no-shape-in-symbol-names`, `require-readable-spacing`, `no-array-filter-map`, and the Effect rules. Changed to agree with it: `narrowing-order` (`typeof` only inside a type guard, its `no-runtime-typeof` option `allowInTypeGuards`) and the schema example (no helper takes `unknown`). The rule ids and the per-repo decisions are ours.
+
+## `skills/constitution/lint/` (2026-11-25)
+
+- `typescript/plugin/` is a copy of `src/` of `dmmulroy/anti-slop` at commit `63dbb09f73438e550a6991dc6d778f979ffbf183` (https://github.com/dmmulroy/anti-slop), MIT, its license in `typescript/LICENSE`. Kept: `shared/` whole, and 15 rules of `rules/` with their tests. Changed: `index.ts` registers only those rules, under the plugin name `typescript-rules`, and the tests name that plugin. To update, diff the upstream `src/` between that commit and the new one, and apply it here.
+- The idea of a vendored, editable rule set with an agent that installs it comes from the same repo's `install-anti-slop` skill. Ours does not install it in the repo by default: the pass runs from the user's machine ([ADR 0016](adr/0016-the-working-files-live-outside-the-repo.md)).
+- `lint_diff.py`, the pass on the lines a change adds or edits, the decisions file, and the shared mode through the repo's own linter are ours.
+- `cloudflare/oxlint-config` was considered and set aside: see the ADR.
+
+## `skills/constitution/references/lint.md` and `skills/setup-repo/references/language-rules.md` (2026-11-25)
+
+- Ours, [ADR 0020](adr/0020-language-rules-reach-a-repo-as-a-lint-pass-the-user-decides.md). Adopting a shared rule set with newly failing rules off, then one rule at a time, follows the migration advice of `cloudflare/oxlint-config`'s README.
 
 ## `skills/constitution/references/parallel.md`
 

@@ -192,7 +192,7 @@ The diagram shows the available lanes; the risk class selects which run. Each la
 | `breakage` | What breaks outside this diff? | Run `analyze-impact` independently, then compare safety facts and risks; judge each formal check made or repaired in the task against its base version |
 | `adversarial` | Can deliberate attempts break it? | Run three agents on a factual brief, rerun their reproductions, merge duplicate root causes |
 | `spec` | Is this all of the request, with no extra behavior? | Compare the diff with the task and its spec, Out of scope included, revert the fix to test the tests, and check the playbook's duties |
-| `standards` | Does the code follow the repo's rules and a sound design? | Read applicable standards, glossary, ADRs, and language rules; check smells, design red flags, and relevant principles |
+| `standards` | Does the code follow the repo's rules and a sound design? | Read applicable standards, glossary, ADRs, and language rules, minus the rules the user turned off; rerun the lint pass; check smells, design red flags, and relevant principles |
 
 ### Risk: spend verification where failures matter
 
@@ -228,8 +228,8 @@ The framework ships shared workflows. Project-specific knowledge lives separatel
 
 | Home | What lives there | How it is used |
 |---|---|---|
-| This framework's `skills/` | Skills, playbooks, shared rules, and language rules | Installed as folders; every workflow reads the shared references by path |
-| `~/.agents/projects/<project>/` | Tracker instructions, glossary, ADRs, coding standards, rule table, drivers, formal checks | Shared by the repo's worktrees; private entries are written in place |
+| This framework's `skills/` | Skills, playbooks, shared rules, language rules, and the lint packs that check them | Installed as folders; every workflow reads the shared references by path |
+| `~/.agents/projects/<project>/` | Tracker instructions, glossary, ADRs, coding standards, rule table, decisions on each language rule, drivers, formal checks | Shared by the repo's worktrees; private entries are written in place |
 | Target repo | Product code, tests, CI, the team's own docs, and any project entries explicitly shared | Changes go through a PR; existing team files take precedence |
 | Code host and issue tracker | PRs, issues, labels, verdict comments, review threads, task and decision records | Durable task state; reread before acting rather than trusting a session summary |
 | Work directory and linked artifacts | The local evidence index, run outputs, screenshots, demos, and other captures | Indexed and checked before PR opening and handback; the PR links the evidence |

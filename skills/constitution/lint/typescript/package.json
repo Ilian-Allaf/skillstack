@@ -1,0 +1,18 @@
+{
+  "name": "typescript-rules",
+  "private": true,
+  "type": "module",
+  "description": "The checks of the framework's TypeScript rules, run by ../lint_diff.py.",
+  "scripts": {
+    "test": "node run-tests.mjs"
+  },
+  "dependencies": {
+    "@oxlint/plugins": "1.78.0",
+    "esbuild": "0.25.12",
+    "oxlint": "1.78.0"
+  },
+  "devDependencies": {
+    "tsx": "4.23.12"
+  },
+  "license": "MIT"
+}

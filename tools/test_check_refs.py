@@ -90,6 +90,14 @@ class CheckRefsTest(unittest.TestCase):
         self.edit("skills/ship/SKILL.md", "`fix-root-causes`", "`needs-human` or `one-way`")
         self.assertNotIn("R004", self.codes())
 
+    def test_language_rule_ids_are_known(self) -> None:
+        table = "| Id | Rule | Check |\n|---|---|---|\n| `no-unknown-returns` | No `unknown` return. | lint |\n"
+        self.write("skills/constitution/references/languages/typescript.md", table)
+        self.edit("skills/ship/SKILL.md", "`fix-root-causes`", "`no-unknown-returns`")
+        self.assertNotIn("R004", self.codes())
+        self.edit("skills/ship/SKILL.md", "`no-unknown-returns`", "`no-unknown-return`")
+        self.assertIn("R004", self.codes())
+
     def test_generated_skill_names_are_known(self) -> None:
         self.edit("skills/ship/SKILL.md", "`fix-root-causes`", "`drive-<app>`")
         self.assertNotIn("R004", self.codes())

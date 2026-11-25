@@ -2,7 +2,7 @@
 
 This repo is the source of a skill framework. `skills/` is the folder the framework ships from: its skills are not active here, and you edit them like any other file.
 
-- **Check everything**: `python -I tools/check.py` runs the tool tests, the skill linter, and the reference checker. Run it before every commit; CI runs the same.
+- **Check everything**: `python -I tools/check.py` runs the tool tests, the skill linter, the reference checker, and the rule tests of the lint packs (on Node; skipped with a warning on a laptop without a supported Node, always run in CI). Run it before every commit; CI runs the same.
 - **Shared rules and glossary**: `skills/constitution/README.md` and `skills/constitution/references/glossary.md`, which is this repo's glossary.
 - **Decisions**: `docs/adr/`. Read the ADRs whose Applies to covers what you touch, before you touch it. Never rewrite an accepted ADR: a new decision supersedes it.
 - **What changes a skill**: `SCOPE.md`. A change contradicts no accepted ADR, and its PR says why it is worth it.

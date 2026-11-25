@@ -44,7 +44,7 @@ Skills install as whole folders beside [the constitution](skills/constitution/RE
 
 ## Getting started
 
-1. Run `/setup-repo` once per repo. It sets up the issue tracker, the labels, the glossary, the coding standards, and the app driver, and asks before each part. Each file stays private, in `~/.agents/projects/<repo>/` on your machine, unless you share it with the team in the repo ([ADR 0016](docs/adr/0016-the-working-files-live-outside-the-repo.md)).
+1. Run `/setup-repo` once per repo. It sets up the issue tracker, the labels, the glossary, the coding standards, the language rules, and the app driver, and asks before each part. Each file stays private, in `~/.agents/projects/<repo>/` on your machine, unless you share it with the team in the repo ([ADR 0016](docs/adr/0016-the-working-files-live-outside-the-repo.md)).
 2. Run `/ship <task>` for each task. It shows you its frame and runs to a PR labeled `ready`, stopping only for what is yours to decide. You merge.
 3. Not sure which skill fits? Run `/choose-skill` and describe your situation.
 
