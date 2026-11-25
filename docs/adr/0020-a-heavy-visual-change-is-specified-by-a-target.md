@@ -2,7 +2,7 @@
 
 - **Status**: proposed, 2026-11-25.
 - **Extends**: [0019](0019-the-spec-sets-the-bar-and-a-task-builds-the-proof-it-lacks.md), "the spec sets the bar": for a story that changes a visual surface heavily, the bar is also a visual target, and each target is a case. The rest of 0019 stands.
-- **Applies to**: `skills/shape-spec/` (SKILL.md, the grill's visual branch, the spec's Visual targets), `skills/investigate/references/prototype.md`, `skills/ship/` (`playbooks/feature.md`, `references/visual-loop.md`, `scripts/check_evidence.py`), `skills/verify-pr/references/lanes.md` (`live`, `standards`), `skills/constitution/references/` (`ui.md`, `proof.md`, `coverage.md`, `glossary.md`, `harness.md`)
+- **Applies to**: `skills/shape-spec/` (SKILL.md, the grill's visual branch, the spec's Visual targets), `skills/investigate/references/prototype.md`, `skills/ship/` (`playbooks/feature.md`, `references/visual-loop.md`, `scripts/check_evidence.py`), `skills/verify-pr/references/lanes.md` (`live`, `standards`), `skills/choose-skill/SKILL.md`, `skills/constitution/` (`README.md`, and in `references/`: `ui.md`, `proof.md`, `coverage.md`, `glossary.md`, `harness.md`)
 - **Enforced by**: `check_evidence.py` fails when a visual target of the spec (`V1`) has no case, with a test in `tools/test_check_evidence.py`. The rest by two blind `test-skill-change` runs on one UI task, with and without this change, and by review.
 
 ## Context
@@ -34,13 +34,14 @@ So the chain carries no target for how a page looks, and nobody but the builder 
 - One system: one button pair, one card style, one radius scale (342).
 - Every width from 1440 down to 320, with tap targets of 44px (355-361).
 
-**Eric Tech's summary** (`knowledge/sources/videos/2026-11-20-taste-skill-lessons-eric-tech/notes.md`) adds two things: lay out before you animate (07:43), and check three mockups at phone width (03:06).
+**Eric Tech's summary** (`knowledge/sources/videos/2026-11-20-taste-skill-lessons-eric-tech/notes.md`) adds three things: lay out before you animate (07:43), check three mockups at phone width (03:06), and give the agent an MCP server of captured sites, with their colors and fonts, and a browser tool to use a site like a visitor (01:16).
 
 **Ours**, settled with the user on 2026-11-25:
 - the trigger and the visual branch inside `shape-spec`;
 - the three design modes;
 - the rule that the repo's design system is read from the code and never written down;
-- the target as a case, and its place in `verify-pr`.
+- the target as a case, and its place in `verify-pr`;
+- the inspiration library as a harness capability, with the web and a browser as fallbacks.
 
 ## Decision
 
@@ -63,11 +64,11 @@ When the spec has a visual target, `feature` builds the layout before the motion
 - capture each target state at its widths;
 - put the target and the head side by side;
 - measure what a command can measure;
-- have at least two critics score it, each a fresh subagent (from another family when available) that sees only the images and the criteria;
+- have at least two critics score it, each a fresh subagent (from another family when available) that sees only the images and the criteria; with none, the round goes unscored rather than self-scored (ADR 0003);
 - fix the weakest gap;
 - log the round in the decision log, outside the repo.
 
-The loop stops when every critic median clears the bar after an attempt floor, or when the build budget is spent. The user's feedback ranks before the critics'.
+The loop stops when every critic median clears the bar after the round floor, or at the round limit. The user's feedback ranks before the critics'.
 
 ### Critic scores steer, the verdict proves
 A score is level 1: it chooses the next round and never decides a verdict. `live` captures the head at each target's states and widths, side by side with the target. A gap the spec's Visual targets or criteria name, shown on that capture, is a finding. Any other taste judgment is a note.
@@ -82,13 +83,13 @@ A score is level 1: it chooses the next round and never decides a verdict. `live
 - **The design system described in `coding-standards.md`**: the code already says it, and a prose copy goes stale with the next component. A mechanical rule, such as no raw color outside the tokens, becomes a check through `add-guardrail`.
 - **The criteria and bans in the project folder, seeded by `setup-repo`**: only `skills/` is installed, and `setup-repo` derives standards from the repo, never from a generic list.
 - **A playbook of its own**: two playbooks split a task into two PRs, which would cut a UI feature in two. The loop is a duty of `feature`.
-- **A time floor in hours**, as Cook sets: it spends usage without proof that it helps. An attempt floor is measurable, as `hillclimb` already does.
+- **A time floor in hours**, as Cook sets: it spends usage without proof that it helps. A round floor is measurable, as `hillclimb` already does.
 - **Run state in a folder of the repo**, as Cook keeps it: [ADR 0016](0016-the-working-files-live-outside-the-repo.md) keeps working files outside.
 - **No question after intake**, as Cook runs: `shape-spec` already settles every decision before the build, and `ship` stops only on the stops of the constitution.
 
 ## Consequences
 
 - A heavy visual spec takes one more branch in the grill and a round of prototypes. Small UI changes take none.
-- A UI feature with a target costs more to build: at least two critics a round, for several rounds. The attempt floor and the build budget cap it.
+- A UI feature with a target costs more to build: at least two critics a round, for several rounds. The round limit caps it, and all its rounds count as one build attempt.
 - The verifier's `live` lane captures more states, at more widths.
 - The criteria in `ui.md` steer every design the agent makes. Their wording is tested by the blind runs, since the harness design article reports that wording alone moved the output.

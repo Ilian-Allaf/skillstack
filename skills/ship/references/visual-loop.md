@@ -20,7 +20,7 @@ Build it once, so every round costs one command:
 
    > Each image shows a target on the left and a build on the right, for the first time. Score how close the right is to the left on each criterion, 0 to 10. Then list the three largest gaps per image: where, what is wrong, what to change. End with the weakest area across all images.
 
-   Never tell a critic who built it, how long it took, or your own score. Take the median per criterion; when two critics differ by more than 2 points, add one. With no subagent, a fresh session gets the same inputs; failing that, score it yourself and log it as self-scored.
+   Never tell a critic who built it, how long it took, or your own score. Take the median per criterion; when two critics differ by more than 2 points, add one. With no subagent, a fresh session gets the same inputs; failing that, the round has no score: log it as unscored and let the user's feedback pick the next focus.
 5. **Log the round** in the [decision log](../../constitution/references/decision-log.md): the focus and why, what changed, the measured numbers and the critics' medians, each marked measured or judged, and the next focus.
 6. **Show the user** the side-by-side images in one line of what changed, and keep going. When the user says the work is lower than the critics do, note the gap and subtract it from every later median.
 
@@ -30,7 +30,7 @@ A round that lowers a median is fixed or reverted before the next one. Commit ea
 
 Stop when every shot's median clears the bar on every criterion, after the round floor the spec sets (three rounds when it sets none), and the measured checks pass. Before the floor, a round that scores high means the bar was read too low: look again at full size, at the phone width, and at the weakest shot.
 
-The rounds are one build attempt, capped by the round limit the spec sets (ten when it sets none). When the cap is reached below the bar, the PR goes on with each shot's remaining gap under Not verified.
+All the rounds count as one build attempt, capped by the round limit the spec sets (ten when it sets none). When the cap is reached below the bar, the PR goes on with each shot's remaining gap under Not verified.
 
 ## What the PR carries
 

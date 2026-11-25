@@ -329,7 +329,7 @@ When a skill changes, update its section here, in the same PR.
 
 ## `skills/ship/references/visual-loop.md` (2026-11-25)
 
-- [ADR 0020](adr/0020-a-heavy-visual-change-is-specified-by-a-target.md). The loop is Leon Lin's Cook (`SKILL.md`, `references/loop-and-critics.md`): one shot per screen state at a fixed width, side-by-side images, at least two fresh critics with only the images and the rubric, the median, one more critic on disagreement, user feedback first, the user's estimate as calibration, a round that drops a score fixed or reverted. Ours: the round floor and limit instead of a time floor, the decision log outside the repo instead of a `cook/` folder, and scores that steer the build but never the verdict (ADR 0004).
+- [ADR 0020](adr/0020-a-heavy-visual-change-is-specified-by-a-target.md). The loop is Leon Lin's Cook (`SKILL.md`, `references/loop-and-critics.md`): one shot per screen state at a fixed width, side-by-side images, at least two fresh critics with only the images and the rubric, the median, one more critic on disagreement, user feedback first, the user's estimate as calibration, a round that drops a score fixed or reverted. Ours: a third critic when two differ by more than 2 points (Cook uses 1.0), an unscored round rather than a self-scored one, the round floor and limit instead of a time floor, the decision log outside the repo instead of a `cook/` folder, and scores that steer the build but never the verdict (ADR 0004).
 
 ## `skills/ship/references/frame.md`
 

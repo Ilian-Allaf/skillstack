@@ -18,7 +18,7 @@ Goal: <what the user wants, in their terms>
 Problem: <what is wrong or missing today>
 Smallest change: <the least that meets the goal>
 Done when: <observable condition>. Ran it on the base: <command> -> <red output>.
-Cases: <numbered list: the spec's journeys and promises by their ids (S1, P1), the main case, each entry point, the edge cases of the hard zones; each with its target, a level or a breadth>
+Cases: <numbered list: the spec's journeys, promises, and visual targets by their ids (S1, P1, V1), the main case, each entry point, the edge cases of the hard zones; each with its target, a level or a breadth>
 Evidence: <demo video, state chart, screenshots, or command output, and why>
 Verification setup: <startup runs for builder and verifier, capture command, the driver or formal check built or repaired first, access limits and remedy>
 Out of scope: <what this PR will not do>

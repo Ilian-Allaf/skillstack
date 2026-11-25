@@ -154,7 +154,7 @@ There are three separate checks on the result: the **builder's evidence**, the *
 
 ### Evidence: show the result through the right surface
 
-The builder maintains a case list before coding and a coverage table in the PR. Cases include the spec's journeys and promises by their ids, the request, entry points and callers, relevant edge cases, and formal properties covering touched files. Each aims at a target: a certainty level for a journey, a breadth for a property, with a reason when it falls short. `check_evidence.py` fails when a spec id has no case. Each row has replayable evidence or an explicit reason under **Not verified**. See [coverage](constitution/references/coverage.md).
+The builder maintains a case list before coding and a coverage table in the PR. Cases include the spec's journeys, promises, and visual targets by their ids, the request, entry points and callers, relevant edge cases, and formal properties covering touched files. Each aims at a target: a certainty level for a journey, a breadth for a property, with a reason when it falls short. `check_evidence.py` fails when a spec id has no case. Each row has replayable evidence or an explicit reason under **Not verified**. See [coverage](constitution/references/coverage.md).
 
 | Certainty level | What was actually established |
 |---|---|
