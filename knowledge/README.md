@@ -40,8 +40,11 @@ knowledge/
 | Article | Anthropic, *Harness design for long-running application development* | [nectar](sources/articles/2026-03-24-harness-design-long-running-apps/nectar.md) · [contenu](sources/articles/2026-03-24-harness-design-long-running-apps/content.md) |
 | Article | Addy Osmani, *How the Claude Code team thinks about verification* | [source](sources/articles/2026-11-16-claude-code-verification/SOURCE.md) · [reading notes](sources/articles/2026-11-16-claude-code-verification/content.md) · [nectar](sources/articles/2026-11-16-claude-code-verification/nectar.md) |
 | Video | Ray Amjad, *How Anthropic Verifies Code Written by Claude* | [source](sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad/SOURCE.md) · [transcript](sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad/transcript.md) · [timestamped notes](sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad/notes.md) · [nectar](sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad/nectar.md) |
+| Video | Eric Tech, *8 Taste Skill Lessons That Make Claude Code Design Better* | [source](sources/videos/2026-11-20-taste-skill-lessons-eric-tech/SOURCE.md) · [transcript](sources/videos/2026-11-20-taste-skill-lessons-eric-tech/transcript.md) · [timestamped notes](sources/videos/2026-11-20-taste-skill-lessons-eric-tech/notes.md) · [nectar](sources/videos/2026-11-20-taste-skill-lessons-eric-tech/nectar.md) |
 
 Added on 2026-11-23: the verification article and video are dated research records. The article has reading notes; the video has extracted captions, timestamped notes and analysis; the video discusses the article, so they are not independent confirmation of the same claims.
+
+Added on 2026-11-25: the Taste Skill video, a secondary source on visual quality for coding agents. Its nectar maps each lesson onto the framework and leaves integration as open questions.
 
 ## Synthèses
 

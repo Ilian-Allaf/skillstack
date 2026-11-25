@@ -1,0 +1,63 @@
+{
+  "id": "D5bQKp5_7Tc",
+  "title": "8 Taste Skill Lessons That Make Claude Code Design Better",
+  "uploader": "Eric Tech",
+  "channel_url": "https://www.youtube.com/channel/UCOXRjenlq9PmlTqd_JhAbMQ",
+  "webpage_url": "https://www.youtube.com/watch?v=D5bQKp5_7Tc",
+  "upload_date": "20261120",
+  "duration": 710,
+  "language": "en-US",
+  "chapters": [
+    {
+      "start_time": 0,
+      "title": "Taste Skill Workflow",
+      "end_time": 81
+    },
+    {
+      "start_time": 81,
+      "title": "Lesson 1",
+      "end_time": 195
+    },
+    {
+      "start_time": 195,
+      "title": "Lesson 2",
+      "end_time": 250
+    },
+    {
+      "start_time": 250,
+      "title": "Lesson 3",
+      "end_time": 308
+    },
+    {
+      "start_time": 308,
+      "title": "Lesson 4",
+      "end_time": 372
+    },
+    {
+      "start_time": 372,
+      "title": "Lesson 5",
+      "end_time": 463
+    },
+    {
+      "start_time": 463,
+      "title": "Lesson 6",
+      "end_time": 511
+    },
+    {
+      "start_time": 511,
+      "title": "Lesson 7",
+      "end_time": 545
+    },
+    {
+      "start_time": 545,
+      "title": "Lesson 8",
+      "end_time": 603
+    },
+    {
+      "start_time": 603,
+      "title": "Cook Skill",
+      "end_time": 710
+    }
+  ],
+  "description": "The Taste Skill is a design skill for coding agents with almost 117,000 GitHub stars, and its creator Leon Lin just shared his AI design workflow. I turn it into 8 lessons for Claude Code design: strong references, a target, a number to hit, time, a slop ban list, building in steps, clear feedback and a second judge. Then I show Cook, his free skill that runs it all as one loop.\n\n👋 𝗛𝗲𝘆, 𝗜’𝗺 𝗘𝗿𝗶𝗰.\nI'm a senior AI software engineer who worked at Amazon and Microsoft, and I'm building bookzero.ai with Claude Code.\n\n🔗 𝗟𝗶𝗻𝗸𝘀\n- Join our Skool community: https://www.skool.com/erictech/about\n- Check out AI Bookkeeping: https://bookzero.ai\n- Taste Skill: https://github.com/Leonxlnx/taste-skill\n- Cook skill: https://github.com/Leonxlnx/cook\n- Leon's article: https://x.com/LexnLin/status/2116662591363690999\n\n⌚️ 𝗦𝘁𝗮𝗺𝗽𝘀\n0:00 Taste Skill Workflow\n1:21 Lesson 1\n3:15 Lesson 2\n4:10 Lesson 3\n5:08 Lesson 4\n6:12 Lesson 5\n7:43 Lesson 6\n8:31 Lesson 7\n9:05 Lesson 8\n10:03 Cook Skill\n\n#claudecode #aidesign #webdesign"
+}

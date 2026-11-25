@@ -1,0 +1,1487 @@
+{
+  "video_id": "D5bQKp5_7Tc",
+  "title": "2026-11-20-taste-skill-lessons-eric-tech",
+  "language": "en",
+  "segments": [
+    {
+      "start": 0.0,
+      "duration": 4.1,
+      "text": "Okay, so if you've been building with"
+    },
+    {
+      "start": 2.0,
+      "duration": 4.2,
+      "text": "Claude code, you've probably heard of"
+    },
+    {
+      "start": 4.1,
+      "duration": 3.8,
+      "text": "taste skill. It's a design skill for"
+    },
+    {
+      "start": 6.2,
+      "duration": 4.0,
+      "text": "coding agents, and it's sitting at"
+    },
+    {
+      "start": 7.9,
+      "duration": 4.8,
+      "text": "almost 117,000"
+    },
+    {
+      "start": 10.2,
+      "duration": 5.5,
+      "text": "stars on GitHub. The guy who made it is"
+    },
+    {
+      "start": 12.7,
+      "duration": 5.2,
+      "text": "Leon Lin, and under every demo he posts,"
+    },
+    {
+      "start": 15.7,
+      "duration": 4.1,
+      "text": "people ask him for the prompt. So when"
+    },
+    {
+      "start": 17.9,
+      "duration": 4.4,
+      "text": "he shares how he prompts it, I pay"
+    },
+    {
+      "start": 19.8,
+      "duration": 5.2,
+      "text": "attention. Like recently, he wanted a"
+    },
+    {
+      "start": 22.3,
+      "duration": 5.9,
+      "text": "whole ancient Greek world, temples,"
+    },
+    {
+      "start": 25.0,
+      "duration": 5.9,
+      "text": "statues, waterfalls, a whole city, all"
+    },
+    {
+      "start": 28.2,
+      "duration": 4.8,
+      "text": "built in code, no 3D models, and no"
+    },
+    {
+      "start": 30.9,
+      "duration": 4.4,
+      "text": "downloaded textures. He calls it"
+    },
+    {
+      "start": 33.0,
+      "duration": 4.7,
+      "text": "Athenion, and the prompt he gave Claude"
+    },
+    {
+      "start": 35.3,
+      "duration": 4.7,
+      "text": "code was pretty short, nine reference"
+    },
+    {
+      "start": 37.7,
+      "duration": 5.1,
+      "text": "images, a number to hit, and an order to"
+    },
+    {
+      "start": 40.0,
+      "duration": 6.9,
+      "text": "keep going until it matched. Then Claude"
+    },
+    {
+      "start": 42.8,
+      "duration": 6.3,
+      "text": "Opus 5.5 ran for about 45 hours with 55"
+    },
+    {
+      "start": 46.9,
+      "duration": 5.2,
+      "text": "sub agents, up to 12 of them working at"
+    },
+    {
+      "start": 49.1,
+      "duration": 5.1,
+      "text": "the same time. So on October 31st, he"
+    },
+    {
+      "start": 52.1,
+      "duration": 4.7,
+      "text": "wrote up exactly how he does it in an"
+    },
+    {
+      "start": 54.2,
+      "duration": 4.9,
+      "text": "article on X called how I prompt AI to"
+    },
+    {
+      "start": 56.8,
+      "duration": 4.2,
+      "text": "build good-looking demos. And the funny"
+    },
+    {
+      "start": 59.1,
+      "duration": 3.7,
+      "text": "thing is the part most people think"
+    },
+    {
+      "start": 61.0,
+      "duration": 4.8,
+      "text": "matters most, the wording of your"
+    },
+    {
+      "start": 62.8,
+      "duration": 5.9,
+      "text": "prompt, he says barely matters. His"
+    },
+    {
+      "start": 65.8,
+      "duration": 4.8,
+      "text": "article has 11 tips. In this video, I've"
+    },
+    {
+      "start": 68.7,
+      "duration": 3.6,
+      "text": "boiled it down to eight lessons, and"
+    },
+    {
+      "start": 70.6,
+      "duration": 4.2,
+      "text": "I'll show you how to set each one up for"
+    },
+    {
+      "start": 72.3,
+      "duration": 4.5,
+      "text": "a website. Then I'll show you cook, the"
+    },
+    {
+      "start": 74.8,
+      "duration": 4.2,
+      "text": "free skill he made that runs the whole"
+    },
+    {
+      "start": 76.8,
+      "duration": 4.4,
+      "text": "workflow as one loop, and it works the"
+    },
+    {
+      "start": 79.0,
+      "duration": 4.5,
+      "text": "same in Codex or whatever coding agent"
+    },
+    {
+      "start": 81.2,
+      "duration": 4.9,
+      "text": "you use. All right, so first thing"
+    },
+    {
+      "start": 83.5,
+      "duration": 5.3,
+      "text": "first, keep your prompt short and give"
+    },
+    {
+      "start": 86.1,
+      "duration": 4.6,
+      "text": "the agent strong references. In Leon's"
+    },
+    {
+      "start": 88.8,
+      "duration": 3.8,
+      "text": "words, the most important thing I"
+    },
+    {
+      "start": 90.7,
+      "duration": 4.1,
+      "text": "learned is that the references carry"
+    },
+    {
+      "start": 92.6,
+      "duration": 4.8,
+      "text": "most of the quality in your prompt. The"
+    },
+    {
+      "start": 94.8,
+      "duration": 4.3,
+      "text": "text stuff barely matters."
+    },
+    {
+      "start": 97.4,
+      "duration": 3.6,
+      "text": "An image shows how the light, the"
+    },
+    {
+      "start": 99.1,
+      "duration": 4.2,
+      "text": "colors, and the materials look, and"
+    },
+    {
+      "start": 101.0,
+      "duration": 4.4,
+      "text": "that's really hard to describe. For a"
+    },
+    {
+      "start": 103.3,
+      "duration": 3.8,
+      "text": "website, it also shows how the sections"
+    },
+    {
+      "start": 105.4,
+      "duration": 4.2,
+      "text": "are laid out and how much space sits"
+    },
+    {
+      "start": 107.1,
+      "duration": 4.8,
+      "text": "between things. So where does Leon get"
+    },
+    {
+      "start": 109.6,
+      "duration": 5.1,
+      "text": "his references? For websites and apps,"
+    },
+    {
+      "start": 111.9,
+      "duration": 4.5,
+      "text": "he mostly uses Mobin. It's a library of"
+    },
+    {
+      "start": 114.7,
+      "duration": 3.8,
+      "text": "screens and sections from real"
+    },
+    {
+      "start": 116.4,
+      "duration": 4.692,
+      "text": "professional products, and his other"
+    },
+    {
+      "start": 118.5,
+      "duration": 4.192,
+      "text": "source is just X. Now, Leon doesn't"
+    },
+    {
+      "start": 121.092,
+      "duration": 4.2,
+      "text": "mention these next ones, but they're"
+    },
+    {
+      "start": 122.692,
+      "duration": 4.4,
+      "text": "good extra options. The simplest is"
+    },
+    {
+      "start": 125.292,
+      "duration": 3.9,
+      "text": "Dribbble. It's a site where designers"
+    },
+    {
+      "start": 127.092,
+      "duration": 4.6,
+      "text": "post their work. Screenshot the part you"
+    },
+    {
+      "start": 129.192,
+      "duration": 4.2,
+      "text": "want and paste it into your agent. And"
+    },
+    {
+      "start": 131.692,
+      "duration": 4.5,
+      "text": "if you don't want to do that by hand,"
+    },
+    {
+      "start": 133.392,
+      "duration": 4.9,
+      "text": "you got to check out Inspo. It's an MCP"
+    },
+    {
+      "start": 136.192,
+      "duration": 4.5,
+      "text": "server, which is basically a plugin that"
+    },
+    {
+      "start": 138.292,
+      "duration": 5.0,
+      "text": "gives your agent new tools. And this one"
+    },
+    {
+      "start": 140.692,
+      "duration": 4.9,
+      "text": "is full of real websites. Each one is"
+    },
+    {
+      "start": 143.292,
+      "duration": 4.8,
+      "text": "captured on desktop and mobile with its"
+    },
+    {
+      "start": 145.592,
+      "duration": 4.3,
+      "text": "colors and fonts pulled out. It's free"
+    },
+    {
+      "start": 148.092,
+      "duration": 6.2,
+      "text": "and open source, and you install it with"
+    },
+    {
+      "start": 149.892,
+      "duration": 6.7,
+      "text": "one command. Npx -y inspo-mcp"
+    },
+    {
+      "start": 154.292,
+      "duration": 4.4,
+      "text": "install. Then, whenever you give your"
+    },
+    {
+      "start": 156.592,
+      "duration": 5.0,
+      "text": "agent an app idea, it looks through that"
+    },
+    {
+      "start": 158.692,
+      "duration": 4.2,
+      "text": "library before it writes any UI. And if"
+    },
+    {
+      "start": 161.592,
+      "duration": 3.0,
+      "text": "there's a real app out there that's"
+    },
+    {
+      "start": 162.892,
+      "duration": 3.7,
+      "text": "close to what you're building, you can"
+    },
+    {
+      "start": 164.592,
+      "duration": 4.3,
+      "text": "just name it in your prompt. Your agent"
+    },
+    {
+      "start": 166.592,
+      "duration": 4.1,
+      "text": "will look at it with its web tools. But"
+    },
+    {
+      "start": 168.892,
+      "duration": 4.3,
+      "text": "if you want the agent to actually use"
+    },
+    {
+      "start": 170.692,
+      "duration": 4.7,
+      "text": "the site like a visitor would, use agent"
+    },
+    {
+      "start": 173.192,
+      "duration": 4.3,
+      "text": "browser. It's a free tool from Vercel"
+    },
+    {
+      "start": 175.392,
+      "duration": 3.9,
+      "text": "Labs. It lets your agent open any"
+    },
+    {
+      "start": 177.492,
+      "duration": 4.3,
+      "text": "website, click around, and take"
+    },
+    {
+      "start": 179.292,
+      "duration": 4.8,
+      "text": "screenshot. You just say something like,"
+    },
+    {
+      "start": 181.792,
+      "duration": 4.6,
+      "text": "use agent browser to study the design of"
+    },
+    {
+      "start": 184.092,
+      "duration": 3.6,
+      "text": "this site and build something similar."
+    },
+    {
+      "start": 186.392,
+      "duration": 3.4,
+      "text": "And if you want to go deeper on"
+    },
+    {
+      "start": 187.692,
+      "duration": 3.9,
+      "text": "references, I made a whole video on"
+    },
+    {
+      "start": 189.792,
+      "duration": 4.5,
+      "text": "pulling layouts from awards and"
+    },
+    {
+      "start": 191.592,
+      "duration": 4.4,
+      "text": "component prompts from 21st.dev."
+    },
+    {
+      "start": 194.292,
+      "duration": 4.2,
+      "text": "Check it out after this one. Once you"
+    },
+    {
+      "start": 195.992,
+      "duration": 5.1,
+      "text": "have your references, lesson two is to"
+    },
+    {
+      "start": 198.492,
+      "duration": 4.9,
+      "text": "make the target first. The agent needs a"
+    },
+    {
+      "start": 201.092,
+      "duration": 4.5,
+      "text": "goal before it builds anything. For his"
+    },
+    {
+      "start": 203.392,
+      "duration": 4.5,
+      "text": "3D demos, Leon makes the target by"
+    },
+    {
+      "start": 205.592,
+      "duration": 4.7,
+      "text": "generating the reference images first,"
+    },
+    {
+      "start": 207.892,
+      "duration": 3.4,
+      "text": "and then he asks Opus to build that in"
+    },
+    {
+      "start": 210.292,
+      "duration": 3.1,
+      "text": "code."
+    },
+    {
+      "start": 211.292,
+      "duration": 4.3,
+      "text": "For a web page, a good way to do this is"
+    },
+    {
+      "start": 213.392,
+      "duration": 5.0,
+      "text": "a mockup. That's a quick version of your"
+    },
+    {
+      "start": 215.592,
+      "duration": 5.7,
+      "text": "page. The agent builds it as one simple"
+    },
+    {
+      "start": 218.392,
+      "duration": 4.4,
+      "text": "HTML file from your references. And you"
+    },
+    {
+      "start": 221.292,
+      "duration": 2.8,
+      "text": "don't have to copy your references"
+    },
+    {
+      "start": 222.792,
+      "duration": 3.1,
+      "text": "exactly."
+    },
+    {
+      "start": 224.092,
+      "duration": 4.1,
+      "text": "You can ask for the same quality and"
+    },
+    {
+      "start": 225.892,
+      "duration": 4.6,
+      "text": "mood in your own style, so the page"
+    },
+    {
+      "start": 228.192,
+      "duration": 5.2,
+      "text": "still looks like your product. So here's"
+    },
+    {
+      "start": 230.492,
+      "duration": 5.1,
+      "text": "the setup. Ask your agent, build three"
+    },
+    {
+      "start": 233.392,
+      "duration": 4.5,
+      "text": "different HTML designs for a landing"
+    },
+    {
+      "start": 235.592,
+      "duration": 5.0,
+      "text": "page for my app and open them side by"
+    },
+    {
+      "start": 237.892,
+      "duration": 5.002,
+      "text": "side in one viewer. Then look at each"
+    },
+    {
+      "start": 240.592,
+      "duration": 4.402,
+      "text": "one. Check how it looks on a phone size"
+    },
+    {
+      "start": 242.894,
+      "duration": 4.3,
+      "text": "screen, too. Pick the one you like and"
+    },
+    {
+      "start": 244.994,
+      "duration": 4.5,
+      "text": "ask your agent to build that. And if you"
+    },
+    {
+      "start": 247.194,
+      "duration": 4.2,
+      "text": "want changes, ask for them now while"
+    },
+    {
+      "start": 249.494,
+      "duration": 4.5,
+      "text": "it's still cheap. Once your agent has a"
+    },
+    {
+      "start": 251.394,
+      "duration": 5.1,
+      "text": "target, lesson three is to set the bar"
+    },
+    {
+      "start": 253.994,
+      "duration": 5.1,
+      "text": "with a number. If you just say make it"
+    },
+    {
+      "start": 256.494,
+      "duration": 4.6,
+      "text": "look really good, the agent has no idea"
+    },
+    {
+      "start": 259.094,
+      "duration": 5.1,
+      "text": "how close it needs to get. A number"
+    },
+    {
+      "start": 261.094,
+      "duration": 5.6,
+      "text": "fixes that. So Leon's prompts say match"
+    },
+    {
+      "start": 264.194,
+      "duration": 5.1,
+      "text": "the references as closely as possible."
+    },
+    {
+      "start": 266.694,
+      "duration": 4.8,
+      "text": "Aim for 99.9%"
+    },
+    {
+      "start": 269.294,
+      "duration": 4.8,
+      "text": "and he admits that number probably isn't"
+    },
+    {
+      "start": 271.494,
+      "duration": 4.7,
+      "text": "realistic. He uses it anyway because it"
+    },
+    {
+      "start": 274.094,
+      "duration": 4.6,
+      "text": "tells the agent the job isn't done the"
+    },
+    {
+      "start": 276.194,
+      "duration": 5.3,
+      "text": "moment the page first works. But there's"
+    },
+    {
+      "start": 278.694,
+      "duration": 5.2,
+      "text": "a catch. Models score their own work way"
+    },
+    {
+      "start": 281.494,
+      "duration": 5.2,
+      "text": "too high. So Leon tells the agent his"
+    },
+    {
+      "start": 283.894,
+      "duration": 5.5,
+      "text": "own estimate. In his words, if it says"
+    },
+    {
+      "start": 286.694,
+      "duration": 5.9,
+      "text": "it's at 90% and I think it's at 60 to"
+    },
+    {
+      "start": 289.394,
+      "duration": 5.5,
+      "text": "70%, I tell it exactly that so it knows"
+    },
+    {
+      "start": 292.594,
+      "duration": 4.5,
+      "text": "how high my expectations are."
+    },
+    {
+      "start": 294.894,
+      "duration": 4.6,
+      "text": "So to try this, paste the link of a site"
+    },
+    {
+      "start": 297.094,
+      "duration": 4.4,
+      "text": "you like. Then say something like copy"
+    },
+    {
+      "start": 299.494,
+      "duration": 5.4,
+      "text": "the style of this website for my landing"
+    },
+    {
+      "start": 301.494,
+      "duration": 5.7,
+      "text": "page and it should match 99%. But even"
+    },
+    {
+      "start": 304.894,
+      "duration": 5.3,
+      "text": "with a number, the agent still decides"
+    },
+    {
+      "start": 307.194,
+      "duration": 6.0,
+      "text": "on its own when to stop. So lesson four"
+    },
+    {
+      "start": 310.194,
+      "duration": 4.3,
+      "text": "is to give it time. In Leon's words, the"
+    },
+    {
+      "start": 313.194,
+      "duration": 3.5,
+      "text": "same model gives you something"
+    },
+    {
+      "start": 314.494,
+      "duration": 5.1,
+      "text": "completely different in 20 minutes"
+    },
+    {
+      "start": 316.694,
+      "duration": 5.8,
+      "text": "versus 20 hours. So he always gives it a"
+    },
+    {
+      "start": 319.594,
+      "duration": 5.5,
+      "text": "time budget. For demos, it's a minimum."
+    },
+    {
+      "start": 322.494,
+      "duration": 5.1,
+      "text": "His prompt says this task should take at"
+    },
+    {
+      "start": 325.094,
+      "duration": 4.6,
+      "text": "least 8 hours. If you are done after 2"
+    },
+    {
+      "start": 327.594,
+      "duration": 4.3,
+      "text": "hours, something is wrong. For your"
+    },
+    {
+      "start": 329.694,
+      "duration": 4.1,
+      "text": "landing page, that's just one line."
+    },
+    {
+      "start": 331.894,
+      "duration": 3.5,
+      "text": "Something like build the landing page"
+    },
+    {
+      "start": 333.794,
+      "duration": 4.0,
+      "text": "for my app. It should feel like an"
+    },
+    {
+      "start": 335.394,
+      "duration": 4.4,
+      "text": "experience, not just a landing page."
+    },
+    {
+      "start": 337.794,
+      "duration": 5.1,
+      "text": "Take as long as you need, but I need the"
+    },
+    {
+      "start": 339.794,
+      "duration": 6.2,
+      "text": "highest quality. Then it stops rushing."
+    },
+    {
+      "start": 342.894,
+      "duration": 4.7,
+      "text": "Now a long run eats your plan. So Leon"
+    },
+    {
+      "start": 345.994,
+      "duration": 4.9,
+      "text": "puts his usage limits in the prompt,"
+    },
+    {
+      "start": 347.594,
+      "duration": 6.2,
+      "text": "too. Use about 99% of the 5-hour limit"
+    },
+    {
+      "start": 350.894,
+      "duration": 5.0,
+      "text": "in those 5 hours, but never hit 100."
+    },
+    {
+      "start": 353.794,
+      "duration": 4.4,
+      "text": "Otherwise, in his words, it burns"
+    },
+    {
+      "start": 355.894,
+      "duration": 4.6,
+      "text": "everything in 2 hours and waits for 3"
+    },
+    {
+      "start": 358.194,
+      "duration": 4.6,
+      "text": "hours. And since a long run is meant to"
+    },
+    {
+      "start": 360.494,
+      "duration": 5.201,
+      "text": "keep going without you, he adds one more"
+    },
+    {
+      "start": 362.794,
+      "duration": 5.101,
+      "text": "line. If you have questions, ask me now."
+    },
+    {
+      "start": 365.695,
+      "duration": 4.6,
+      "text": "Otherwise, start building. But a long"
+    },
+    {
+      "start": 367.895,
+      "duration": 4.3,
+      "text": "run on its own won't stop the agent from"
+    },
+    {
+      "start": 370.295,
+      "duration": 5.0,
+      "text": "reaching for the same AI looking"
+    },
+    {
+      "start": 372.195,
+      "duration": 5.9,
+      "text": "defaults. So lesson five is to ban the"
+    },
+    {
+      "start": 375.295,
+      "duration": 4.7,
+      "text": "slop. Every one of Leon's prompts has a"
+    },
+    {
+      "start": 378.095,
+      "duration": 4.7,
+      "text": "list of things the model isn't allowed"
+    },
+    {
+      "start": 379.995,
+      "duration": 5.4,
+      "text": "to use. His list has beige, glowing"
+    },
+    {
+      "start": 382.795,
+      "duration": 4.6,
+      "text": "orbs, and random serif fonts. It has"
+    },
+    {
+      "start": 385.395,
+      "duration": 4.7,
+      "text": "those little labels above every heading"
+    },
+    {
+      "start": 387.395,
+      "duration": 6.3,
+      "text": "and monospace uppercase text. And it has"
+    },
+    {
+      "start": 390.095,
+      "duration": 5.7,
+      "text": "01 02 03 counters, shockwave rings"
+    },
+    {
+      "start": 393.695,
+      "duration": 4.2,
+      "text": "popping out of everything, and em"
+    },
+    {
+      "start": 395.795,
+      "duration": 5.3,
+      "text": "dashes. That's the stuff that makes a"
+    },
+    {
+      "start": 397.895,
+      "duration": 5.7,
+      "text": "page look AI made at a glance. But a ban"
+    },
+    {
+      "start": 401.095,
+      "duration": 4.6,
+      "text": "list only stops what you name."
+    },
+    {
+      "start": 403.595,
+      "duration": 5.1,
+      "text": "So you end up adding to the list every"
+    },
+    {
+      "start": 405.695,
+      "duration": 4.7,
+      "text": "single time, and that gets old fast. And"
+    },
+    {
+      "start": 408.695,
+      "duration": 3.6,
+      "text": "I know some of you are asking where to"
+    },
+    {
+      "start": 410.395,
+      "duration": 4.1,
+      "text": "get a slop detector so you don't have to"
+    },
+    {
+      "start": 412.295,
+      "duration": 4.5,
+      "text": "keep that list by hand. Here's the one I"
+    },
+    {
+      "start": 414.495,
+      "duration": 4.8,
+      "text": "use. It's called Impeccable by Paul"
+    },
+    {
+      "start": 416.795,
+      "duration": 5.9,
+      "text": "Bakos. It's free and open source, and"
+    },
+    {
+      "start": 419.295,
+      "duration": 5.7,
+      "text": "it's got about 111,000 stars on GitHub."
+    },
+    {
+      "start": 422.695,
+      "duration": 5.0,
+      "text": "You install it with npm impeccable"
+    },
+    {
+      "start": 424.995,
+      "duration": 4.4,
+      "text": "install. It has a detector with 62"
+    },
+    {
+      "start": 427.695,
+      "duration": 3.2,
+      "text": "checks for the defaults agents keep"
+    },
+    {
+      "start": 429.395,
+      "duration": 4.0,
+      "text": "reaching for. I walked through"
+    },
+    {
+      "start": 430.895,
+      "duration": 4.4,
+      "text": "Impeccable step by step in my 1-hour web"
+    },
+    {
+      "start": 433.395,
+      "duration": 4.0,
+      "text": "design course. So check that one out if"
+    },
+    {
+      "start": 435.295,
+      "duration": 4.1,
+      "text": "you want the full setup. And if you're"
+    },
+    {
+      "start": 437.395,
+      "duration": 4.2,
+      "text": "designing a real product and want people"
+    },
+    {
+      "start": 439.395,
+      "duration": 4.2,
+      "text": "to look at it before you ship, come join"
+    },
+    {
+      "start": 441.595,
+      "duration": 4.1,
+      "text": "our school community. It's a community"
+    },
+    {
+      "start": 443.595,
+      "duration": 4.0,
+      "text": "for AI builders. People share what"
+    },
+    {
+      "start": 445.695,
+      "duration": 4.0,
+      "text": "they're building, ask questions, and get"
+    },
+    {
+      "start": 447.595,
+      "duration": 3.6,
+      "text": "feedback from other builders. The links"
+    },
+    {
+      "start": 449.695,
+      "duration": 4.1,
+      "text": "in the description."
+    },
+    {
+      "start": 451.195,
+      "duration": 5.1,
+      "text": "Leon lets an agent run 8 hours or more"
+    },
+    {
+      "start": 453.795,
+      "duration": 5.1,
+      "text": "on one design. Would you actually let it"
+    },
+    {
+      "start": 456.295,
+      "duration": 4.7,
+      "text": "run that long on your landing page or is"
+    },
+    {
+      "start": 458.895,
+      "duration": 4.7,
+      "text": "that just a waste of your usage? Comment"
+    },
+    {
+      "start": 460.995,
+      "duration": 5.0,
+      "text": "down below. I read every single comment."
+    },
+    {
+      "start": 463.595,
+      "duration": 5.6,
+      "text": "Once your page is free of slop, lesson"
+    },
+    {
+      "start": 465.995,
+      "duration": 5.4,
+      "text": "six is to build it in steps. This one"
+    },
+    {
+      "start": 469.195,
+      "duration": 4.9,
+      "text": "isn't from Leon's article. Don't ask for"
+    },
+    {
+      "start": 471.395,
+      "duration": 4.7,
+      "text": "the whole animated page in one go. When"
+    },
+    {
+      "start": 474.095,
+      "duration": 4.2,
+      "text": "you do, the agent has to juggle the"
+    },
+    {
+      "start": 476.095,
+      "duration": 5.1,
+      "text": "design and the animations at the same"
+    },
+    {
+      "start": 478.295,
+      "duration": 5.0,
+      "text": "time, and neither one comes out great."
+    },
+    {
+      "start": 481.195,
+      "duration": 4.2,
+      "text": "So first, ask for the page with no"
+    },
+    {
+      "start": 483.295,
+      "duration": 4.902,
+      "text": "animations at all so we can focus on"
+    },
+    {
+      "start": 485.395,
+      "duration": 4.802,
+      "text": "getting the design right. Only then ask"
+    },
+    {
+      "start": 488.197,
+      "duration": 4.5,
+      "text": "to add the animation. Now for the"
+    },
+    {
+      "start": 490.197,
+      "duration": 3.8,
+      "text": "animations themselves, Leon has a great"
+    },
+    {
+      "start": 492.697,
+      "duration": 3.2,
+      "text": "method."
+    },
+    {
+      "start": 493.997,
+      "duration": 4.4,
+      "text": "He gives the agent reference videos and"
+    },
+    {
+      "start": 495.897,
+      "duration": 5.2,
+      "text": "tells it to analyze every video frame by"
+    },
+    {
+      "start": 498.397,
+      "duration": 5.3,
+      "text": "frame and write down every small effect,"
+    },
+    {
+      "start": 501.097,
+      "duration": 4.5,
+      "text": "transition, and timing in a list."
+    },
+    {
+      "start": 503.697,
+      "duration": 4.0,
+      "text": "Then it takes inspiration from all of"
+    },
+    {
+      "start": 505.597,
+      "duration": 4.0,
+      "text": "them, but never copies one element"
+    },
+    {
+      "start": 507.697,
+      "duration": 4.6,
+      "text": "exactly. And while you're fixing the"
+    },
+    {
+      "start": 509.597,
+      "duration": 5.4,
+      "text": "design and the animations, lesson seven"
+    },
+    {
+      "start": 512.297,
+      "duration": 5.3,
+      "text": "is about how you give feedback. As Leon"
+    },
+    {
+      "start": 514.997,
+      "duration": 4.7,
+      "text": "puts it, make it better doesn't work"
+    },
+    {
+      "start": 517.597,
+      "duration": 5.0,
+      "text": "well. Always give the agent something"
+    },
+    {
+      "start": 519.697,
+      "duration": 5.4,
+      "text": "specific to change. So instead of saying"
+    },
+    {
+      "start": 522.597,
+      "duration": 5.1,
+      "text": "the colors feel off, you say exactly"
+    },
+    {
+      "start": 525.097,
+      "duration": 4.6,
+      "text": "which color should change and how. Or"
+    },
+    {
+      "start": 527.697,
+      "duration": 4.1,
+      "text": "you take a screenshot, draw on the parts"
+    },
+    {
+      "start": 529.697,
+      "duration": 3.8,
+      "text": "you don't like, and send it back."
+    },
+    {
+      "start": 531.797,
+      "duration": 4.5,
+      "text": "And sometimes you can tell something's"
+    },
+    {
+      "start": 533.497,
+      "duration": 4.5,
+      "text": "wrong, but you can't put it into words."
+    },
+    {
+      "start": 536.297,
+      "duration": 4.1,
+      "text": "For that, Leon asks the agent to"
+    },
+    {
+      "start": 537.997,
+      "duration": 5.3,
+      "text": "describe what it built, how it laid out"
+    },
+    {
+      "start": 540.397,
+      "duration": 5.0,
+      "text": "that section, which fonts, which colors."
+    },
+    {
+      "start": 543.297,
+      "duration": 4.3,
+      "text": "Once it tells you, you have the word."
+    },
+    {
+      "start": 545.397,
+      "duration": 5.1,
+      "text": "The last lesson is to let someone else"
+    },
+    {
+      "start": 547.597,
+      "duration": 5.0,
+      "text": "judge the design. In Leon 's words, the"
+    },
+    {
+      "start": 550.497,
+      "duration": 4.8,
+      "text": "agent that built something is the worst"
+    },
+    {
+      "start": 552.597,
+      "duration": 5.5,
+      "text": "judge of its own work. So he lets other"
+    },
+    {
+      "start": 555.297,
+      "duration": 5.1,
+      "text": "agents rate it with zero context. His"
+    },
+    {
+      "start": 558.097,
+      "duration": 5.0,
+      "text": "instruction is rate it with sub agents"
+    },
+    {
+      "start": 560.397,
+      "duration": 5.7,
+      "text": "that have no context. Don't stop before"
+    },
+    {
+      "start": 563.097,
+      "duration": 5.0,
+      "text": "it reaches 9.2 out of 10. And the agent"
+    },
+    {
+      "start": 566.097,
+      "duration": 3.5,
+      "text": "keeps fixing the work until the judges"
+    },
+    {
+      "start": 568.097,
+      "duration": 3.0,
+      "text": "give it that score."
+    },
+    {
+      "start": 569.597,
+      "duration": 4.9,
+      "text": "He also says the judge can be a"
+    },
+    {
+      "start": 571.097,
+      "duration": 6.5,
+      "text": "different model. His example is GPT-6.1"
+    },
+    {
+      "start": 574.497,
+      "duration": 5.1,
+      "text": "Soul judging Opus 5.5's work."
+    },
+    {
+      "start": 577.597,
+      "duration": 4.1,
+      "text": "So if you have Codex installed alongside"
+    },
+    {
+      "start": 579.597,
+      "duration": 4.1,
+      "text": "Claude Code, you can ask Claude to have"
+    },
+    {
+      "start": 581.697,
+      "duration": 3.7,
+      "text": "Codex review the design."
+    },
+    {
+      "start": 583.697,
+      "duration": 3.6,
+      "text": "I showed how to set up Codex inside"
+    },
+    {
+      "start": 585.397,
+      "duration": 4.0,
+      "text": "Claude Code for exactly this kind of"
+    },
+    {
+      "start": 587.297,
+      "duration": 4.5,
+      "text": "review in another video. So check that"
+    },
+    {
+      "start": 589.397,
+      "duration": 4.3,
+      "text": "one out too. Leon says the agent that"
+    },
+    {
+      "start": 591.797,
+      "duration": 4.3,
+      "text": "built your design is the worst one to"
+    },
+    {
+      "start": 593.697,
+      "duration": 4.7,
+      "text": "judge it. Do you agree? Would you trust"
+    },
+    {
+      "start": 596.097,
+      "duration": 4.4,
+      "text": "a second model to grade your work or do"
+    },
+    {
+      "start": 598.397,
+      "duration": 4.8,
+      "text": "you only trust your own eyes? Comment"
+    },
+    {
+      "start": 600.497,
+      "duration": 5.6,
+      "text": "down below. I read every single comment."
+    },
+    {
+      "start": 603.197,
+      "duration": 5.9,
+      "text": "Now doing all of this by hand every time"
+    },
+    {
+      "start": 606.097,
+      "duration": 5.901,
+      "text": "is a lot. So Leon turned his whole"
+    },
+    {
+      "start": 609.097,
+      "duration": 4.801,
+      "text": "strategy into a skill called cook. And"
+    },
+    {
+      "start": 611.998,
+      "duration": 3.9,
+      "text": "its tagline pretty much sums up this"
+    },
+    {
+      "start": 613.898,
+      "duration": 4.5,
+      "text": "whole video."
+    },
+    {
+      "start": 615.898,
+      "duration": 5.1,
+      "text": "Give your agent a target, a bar, and"
+    },
+    {
+      "start": 618.398,
+      "duration": 5.1,
+      "text": "time, then let it cook."
+    },
+    {
+      "start": 620.998,
+      "duration": 5.9,
+      "text": "It's free and open source. It runs every"
+    },
+    {
+      "start": 623.498,
+      "duration": 6.6,
+      "text": "step as one loop from design to review."
+    },
+    {
+      "start": 626.898,
+      "duration": 6.9,
+      "text": "To install it, you run npx skills add"
+    },
+    {
+      "start": 630.098,
+      "duration": 6.8,
+      "text": "leon x lnx / cook in your terminal."
+    },
+    {
+      "start": 633.798,
+      "duration": 5.1,
+      "text": "To use it, open your agent, type / cook,"
+    },
+    {
+      "start": 636.898,
+      "duration": 4.2,
+      "text": "and tell it what you want to build."
+    },
+    {
+      "start": 638.898,
+      "duration": 4.4,
+      "text": "First, it asks every question in one"
+    },
+    {
+      "start": 641.098,
+      "duration": 4.7,
+      "text": "message, each with a default, your"
+    },
+    {
+      "start": 643.298,
+      "duration": 4.6,
+      "text": "references, how close it should get, how"
+    },
+    {
+      "start": 645.798,
+      "duration": 3.1,
+      "text": "much time it can take, and your usage"
+    },
+    {
+      "start": 647.898,
+      "duration": 2.7,
+      "text": "limits."
+    },
+    {
+      "start": 648.898,
+      "duration": 4.4,
+      "text": "Or if you're happy with the defaults,"
+    },
+    {
+      "start": 650.598,
+      "duration": 5.5,
+      "text": "just reply defaults and walk away."
+    },
+    {
+      "start": 653.298,
+      "duration": 5.0,
+      "text": "Then it goes. If you've connected Inspo,"
+    },
+    {
+      "start": 656.098,
+      "duration": 4.3,
+      "text": "it pulls references from there. It"
+    },
+    {
+      "start": 658.298,
+      "duration": 4.3,
+      "text": "writes a brief into a cook folder inside"
+    },
+    {
+      "start": 660.398,
+      "duration": 3.5,
+      "text": "your project, and that folder holds"
+    },
+    {
+      "start": 662.598,
+      "duration": 3.7,
+      "text": "everything"
+    },
+    {
+      "start": 663.898,
+      "duration": 4.8,
+      "text": "and a rounds file that logs every round"
+    },
+    {
+      "start": 666.298,
+      "duration": 5.1,
+      "text": "with its scores. Then it builds round"
+    },
+    {
+      "start": 668.698,
+      "duration": 5.4,
+      "text": "one. It sends in fresh judges, and each"
+    },
+    {
+      "start": 671.398,
+      "duration": 4.7,
+      "text": "one reviews the work in its own context."
+    },
+    {
+      "start": 674.098,
+      "duration": 4.5,
+      "text": "It fixes the weakest part and starts the"
+    },
+    {
+      "start": 676.098,
+      "duration": 4.8,
+      "text": "next round. And it keeps going until the"
+    },
+    {
+      "start": 678.598,
+      "duration": 4.1,
+      "text": "work hits the bar you set."
+    },
+    {
+      "start": 680.898,
+      "duration": 3.4,
+      "text": "So which lesson are you trying first on"
+    },
+    {
+      "start": 682.698,
+      "duration": 3.7,
+      "text": "your next build? Let me know in the"
+    },
+    {
+      "start": 684.298,
+      "duration": 4.2,
+      "text": "comments. And if this helped, subscribe"
+    },
+    {
+      "start": 686.398,
+      "duration": 5.9,
+      "text": "for more videos on building real AI"
+    },
+    {
+      "start": 688.498,
+      "duration": 3.8,
+      "text": "products. I'll see you in the next one."
+    }
+  ]
+}

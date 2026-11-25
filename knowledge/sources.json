@@ -126,6 +126,29 @@
       "transcript_path": "sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad/transcript.md",
       "segments_path": "sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad/raw/segments.json",
       "reading_notes_path": "sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad/notes.md"
+    },
+    {
+      "id": "video-taste-skill-lessons",
+      "type": "video",
+      "title": "8 Taste Skill Lessons That Make Claude Code Design Better",
+      "author": "Eric Tech",
+      "url": "https://www.youtube.com/watch?v=D5bQKp5_7Tc",
+      "published_at": "2026-11-20",
+      "retrieved_at": "2026-11-25",
+      "duration": "11:50",
+      "language": "en",
+      "license": "No redistribution license verified",
+      "local_path": "sources/videos/2026-11-20-taste-skill-lessons-eric-tech",
+      "summary_path": "sources/videos/2026-11-20-taste-skill-lessons-eric-tech/SOURCE.md",
+      "content_path": "sources/videos/2026-11-20-taste-skill-lessons-eric-tech/transcript.md",
+      "content_format": "automatic English captions grouped into timestamped paragraphs",
+      "metadata_path": "sources/videos/2026-11-20-taste-skill-lessons-eric-tech/raw/metadata.json",
+      "nectar_path": "sources/videos/2026-11-20-taste-skill-lessons-eric-tech/nectar.md",
+      "notes": "Condenses Leon Lin's article on prompting for visual quality (Taste Skill, Cook). Secondary source; primary article and repos not imported.",
+      "transcript": "auto-generated",
+      "transcript_path": "sources/videos/2026-11-20-taste-skill-lessons-eric-tech/transcript.md",
+      "segments_path": "sources/videos/2026-11-20-taste-skill-lessons-eric-tech/raw/segments.json",
+      "reading_notes_path": "sources/videos/2026-11-20-taste-skill-lessons-eric-tech/notes.md"
     }
   ]
 }
