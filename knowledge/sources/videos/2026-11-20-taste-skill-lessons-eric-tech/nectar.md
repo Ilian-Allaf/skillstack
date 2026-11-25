@@ -43,4 +43,4 @@ Research questions, not adopted changes:
 - Is a look-and-feel review a check inside `live` (it already drives the app and takes screenshots), or a lane of its own?
 - Does a target-matching loop fit `hillclimb` with a measured metric, or does it need a playbook of its own?
 - Does a design with references and a target, judged against criteria, beat the same task without them, in a blind `test-skill-change` run? That is the proof the video does not give.
-- What do the primary sources say: Lin's article, the Taste Skill, Cook, and the Impeccable detector?
+- What do the primary sources say? Cook and the Taste Skill are now imported ([cook](../../repos/leonxlnx-cook/SOURCE.md), [taste-skill](../../repos/leonxlnx-taste-skill/SOURCE.md)); Lin's article and the Impeccable detector are not.

@@ -149,6 +149,36 @@
       "transcript_path": "sources/videos/2026-11-20-taste-skill-lessons-eric-tech/transcript.md",
       "segments_path": "sources/videos/2026-11-20-taste-skill-lessons-eric-tech/raw/segments.json",
       "reading_notes_path": "sources/videos/2026-11-20-taste-skill-lessons-eric-tech/notes.md"
+    },
+    {
+      "id": "leonxlnx-cook",
+      "type": "skill-repo",
+      "title": "cook",
+      "author": "Leon Lin (Leonxlnx)",
+      "url": "https://github.com/Leonxlnx/cook",
+      "license": "MIT",
+      "retrieved_at": "2026-11-25",
+      "revision": "b23cac6fd9439dfddcab61b14808e7bf72549b46",
+      "revision_date": "2026-10-31",
+      "local_path": "sources/repos/leonxlnx-cook/repo",
+      "summary_path": "sources/repos/leonxlnx-cook/SOURCE.md",
+      "catalog_path": "sources/repos/leonxlnx-cook/catalog.json",
+      "notes": "One skill: a loop of build, side-by-side stills, zero-context critics and fixes against a numeric bar. Primary source of the Taste Skill video's lessons. Full snapshot."
+    },
+    {
+      "id": "leonxlnx-taste-skill",
+      "type": "skill-repo",
+      "title": "taste-skill",
+      "author": "Leon Lin (Leonxlnx)",
+      "url": "https://github.com/Leonxlnx/taste-skill",
+      "license": "MIT",
+      "retrieved_at": "2026-11-25",
+      "revision": "d1a2bb41d927083ac7118f60cfc9cdf711810ea0",
+      "revision_date": "2026-11-24",
+      "local_path": "sources/repos/leonxlnx-taste-skill/repo",
+      "summary_path": "sources/repos/leonxlnx-taste-skill/SOURCE.md",
+      "catalog_path": "sources/repos/leonxlnx-taste-skill/catalog.json",
+      "notes": "One frontend design skill for marketing sites, with a browser-run checklist and finish gate. Text-only snapshot: .md files and license; assets and scripts left out."
     }
   ]
 }

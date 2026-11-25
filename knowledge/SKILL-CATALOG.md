@@ -1,6 +1,6 @@
 # Catalogue global des skills
 
-109 skills importés depuis 3 repos. Index détaillés par repo dans `sources/repos/<repo>/SKILLS-INDEX.md`.
+111 skills importés depuis 5 repos. Index détaillés par repo dans `sources/repos/<repo>/SKILLS-INDEX.md`.
 
 | Repo | Skill | Catégorie | Invocation | Description |
 |---|---|---|---|---|
@@ -65,6 +65,8 @@
 | cursor-pstack | [`typescript-best-practices`](sources/repos/cursor-pstack/repo/skills/typescript-best-practices/SKILL.md) | skills | user | TypeScript best practices. Use when reading or editing any .ts or .tsx file. |
 | cursor-pstack | [`unslop`](sources/repos/cursor-pstack/repo/skills/unslop/SKILL.md) | skills | user | Cut AI tells from any writing. |
 | cursor-pstack | [`why`](sources/repos/cursor-pstack/repo/skills/why/SKILL.md) | skills | user | Use for 'why does X work this way', 'why we picked Y', design rationale, regressions, postmortems, or data-backed thresholds. Returns a cited read on… |
+| leonxlnx-cook | [`cook`](sources/repos/leonxlnx-cook/repo/SKILL.md) |  | model | Runs the Cook Loop for ambitious visual builds that must match reference images, screens or videos through long autonomous iteration. Use it for 3D worlds… |
+| leonxlnx-taste-skill | [`design-taste-frontend`](sources/repos/leonxlnx-taste-skill/repo/skills/taste-skill/SKILL.md) | skills | model | tasteskill 2.5.1, the anti-slop frontend skill. Builds professional company websites at the level of figma.com and x.ai: plain copy in a voice of its own, one… |
 | mattpocock-skills | [`ask-matt`](sources/repos/mattpocock-skills/repo/skills/engineering/ask-matt/SKILL.md) | engineering | user | Ask which skill or flow fits your situation. A router over the skills in this repo. |
 | mattpocock-skills | [`code-review`](sources/repos/mattpocock-skills/repo/skills/engineering/code-review/SKILL.md) | engineering | model | Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes: Standards (does the code follow this repo's documented coding… |
 | mattpocock-skills | [`codebase-design`](sources/repos/mattpocock-skills/repo/skills/engineering/codebase-design/SKILL.md) | engineering | model | Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, find deepening opportunities, decide where a… |

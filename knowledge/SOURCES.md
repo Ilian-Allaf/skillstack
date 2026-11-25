@@ -7,7 +7,7 @@ Toutes les sources importées dans cette base de connaissance, avec leur provena
 
 **Additional import, 2026-11-23**: sources 7 and 8 below. Earlier source records are unchanged.
 
-**Additional import, 2026-11-25**: source 9 below.
+**Additional import, 2026-11-25**: sources 9 to 11 below.
 
 ---
 
@@ -24,6 +24,8 @@ Toutes les sources importées dans cette base de connaissance, avec leur provena
 | 7 | [How the Claude Code team thinks about verification](https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/) | Article | Addy Osmani (Anthropic) | 2026-11-16 | © Anthropic; no redistribution license identified | [`SOURCE.md`](sources/articles/2026-11-16-claude-code-verification/SOURCE.md) · [reading notes](sources/articles/2026-11-16-claude-code-verification/content.md) · [nectar](sources/articles/2026-11-16-claude-code-verification/nectar.md) |
 | 8 | [How Anthropic Verifies Code Written by Claude](https://www.youtube.com/watch?v=DNwMbJf5SAI) | Video | Ray Amjad | 2026-11-23 | No redistribution license verified | [`SOURCE.md`](sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad/SOURCE.md) · [transcript](sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad/transcript.md) · [timestamped notes](sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad/notes.md) · [nectar](sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad/nectar.md) |
 | 9 | [8 Taste Skill Lessons That Make Claude Code Design Better](https://www.youtube.com/watch?v=D5bQKp5_7Tc) | Video | Eric Tech | 2026-11-20 | No redistribution license verified | [`SOURCE.md`](sources/videos/2026-11-20-taste-skill-lessons-eric-tech/SOURCE.md) · [transcript](sources/videos/2026-11-20-taste-skill-lessons-eric-tech/transcript.md) · [timestamped notes](sources/videos/2026-11-20-taste-skill-lessons-eric-tech/notes.md) · [nectar](sources/videos/2026-11-20-taste-skill-lessons-eric-tech/nectar.md) |
+| 10 | [`Leonxlnx/cook`](https://github.com/Leonxlnx/cook) | Skill repo | Leon Lin | 2026-10-31 | MIT | [`SOURCE.md`](sources/repos/leonxlnx-cook/SOURCE.md) · [index](sources/repos/leonxlnx-cook/SKILLS-INDEX.md) |
+| 11 | [`Leonxlnx/taste-skill`](https://github.com/Leonxlnx/taste-skill) | Skill repo, text only | Leon Lin | 2026-11-24 | MIT | [`SOURCE.md`](sources/repos/leonxlnx-taste-skill/SOURCE.md) · [index](sources/repos/leonxlnx-taste-skill/SKILLS-INDEX.md) |
 
 ---
 
@@ -115,6 +117,21 @@ Toutes les sources importées dans cette base de connaissance, avec leur provena
 - **Collection**: title, channel, publication date, duration, description and chapters through `yt-dlp`; automatic English captions with `youtube-transcript-api` through `tools/fetch_youtube_transcript.py`. This import retains 296 timed segments in `raw/segments.json`, a readable timestamped transcript, selected metadata, reading notes and analysis.
 - **Dependency**: the video condenses Leon Lin's article "How I prompt AI to build good-looking demos" (X, 2026-10-31) and promotes his Taste Skill and Cook repos. None of these primary sources is imported. Lesson 6 and the tool suggestions are the presenter's own.
 - **Framework status**: reference material only. The analysis maps each lesson onto existing skills and flags the parts that conflict with accepted ADRs.
+
+### 10. `Leonxlnx/cook`
+
+- **URL**: <https://github.com/Leonxlnx/cook>
+- **Revision**: `b23cac6fd9439dfddcab61b14808e7bf72549b46`, 2026-10-31.
+- **Import**: full snapshot, `.git` excluded: 1 skill, its references, templates and side-by-side script.
+- **License**: MIT, Copyright (c) 2026 Leon Lin. See [`repo/LICENSE`](sources/repos/leonxlnx-cook/repo/LICENSE).
+- **Dependency**: the primary source of source 9.
+
+### 11. `Leonxlnx/taste-skill`
+
+- **URL**: <https://github.com/Leonxlnx/taste-skill>
+- **Revision**: `d1a2bb41d927083ac7118f60cfc9cdf711810ea0`, 2026-11-24.
+- **Import**: text only, every `.md` file and the license (32 files). Assets, scripts, images and plugin manifests, 39 MB, are left out; read them upstream at this revision.
+- **License**: MIT, Copyright (c) 2026 Leonxlnx. See [`repo/LICENSE`](sources/repos/leonxlnx-taste-skill/repo/LICENSE).
 
 ---
 

@@ -1,0 +1,45 @@
+{
+  "repo": "leonxlnx-cook",
+  "title": "cook",
+  "url": "https://github.com/Leonxlnx/cook",
+  "author": "Leon Lin (Leonxlnx)",
+  "license": "MIT",
+  "revision": "b23cac6fd9439dfddcab61b14808e7bf72549b46",
+  "retrieved_at": "2026-11-25",
+  "generated_at": "2026-11-25",
+  "skill_count": 1,
+  "skills": [
+    {
+      "repo": "leonxlnx-cook",
+      "name": "cook",
+      "description": "Runs the Cook Loop for ambitious visual builds that must match reference images, screens or videos through long autonomous iteration. Use it for 3D worlds made in code (three.js, WebGL, shaders), code-rendered films, launch and motion videos, games and polished UI that must hold up next to references, especially runs of many hours or days while the user is away. Trigger when the user types /cook or $cook, says \"cook\", \"go cook\", \"let it cook\", \"iterate until it matches\", \"match the references\", \"99%\", \"99.9%\", \"9/10 minimum\" or \"at least 8h\", or attaches reference images and asks for a recreation in code. It runs one intake, then loops build, stills, zero-context critics and fixes against a numeric bar, and holds the final render until the user approves.",
+      "category": "",
+      "invocation": "model",
+      "path": "sources/repos/leonxlnx-cook/repo/SKILL.md",
+      "words": 1411,
+      "frontmatter_extra": {},
+      "support": {
+        "file_count": 11,
+        "has_playbooks": false,
+        "has_references": true,
+        "has_scripts": true,
+        "has_assets": false,
+        "files": [
+          ".gitignore",
+          "LICENSE",
+          "README.md",
+          "references/intake.md",
+          "references/loop-and-critics.md",
+          "references/rules.md",
+          "references/ship.md",
+          "references/target-and-bar.md",
+          "scripts/side-by-side.mjs",
+          "templates/brief.md",
+          "templates/ROUNDS.md"
+        ]
+      },
+      "references": [],
+      "referenced_by": []
+    }
+  ]
+}
