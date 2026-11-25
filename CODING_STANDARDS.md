@@ -9,6 +9,7 @@ Judgment calls only: what `tools/check.py` already enforces is not repeated here
 - **State the behavior you want.** A prohibition earns its place only as a hard guardrail, next to its positive. Example: `skills/verify-pr/SKILL.md:22`, "You read, run, and comment", instead of a list of what the verifier must not do.
 - **One meaning, one home.** Link to the rule instead of restating it; a playbook names a principle by its id. Example: `skills/ship/references/playbooks/bug-fix.md:11` cites `fix-root-causes` instead of copying its rule.
 - **A repeated idea becomes a glossary term** the model already knows, used as a single word. Example: `run`, in `skills/constitution/references/glossary.md:18`, replaced "the command, the observed output, and the expected output" in four files.
+- **A borrowed flow lands in the homes that already hold its kind.** Before a third-party flow changes a skill, map each of its ideas to the concept of the framework it is a case of, and change that home; a new home only where none exists. Example: `docs/adr/0020-a-heavy-visual-change-is-specified-by-a-target.md`, whose map sends Cook's rounds to rule 7 and its critics to the race of `parallel.md`.
 - **A skill reads the code before it asks the user.** Questions are for decisions and for facts no file or command can give. Example: `skills/setup-repo/SKILL.md:23`.
 
 ## Writing a tool

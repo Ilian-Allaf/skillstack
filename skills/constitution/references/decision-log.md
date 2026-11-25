@@ -5,6 +5,7 @@ A trail of decisions for long or unattended work, so the user can come back and 
 ## When
 
 - a run that lasts hours, a `bespoke` playbook, or any run the user is not watching;
+- the target loop of `ship`, one row per pass;
 - a short task needs none: the PR's Decisions section is enough.
 
 ## Format

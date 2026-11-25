@@ -9,7 +9,7 @@ metadata:
   calls: "investigate, analyze-impact, verify-pr, babysit-pr, create-app-driver, create-formal-verification, maintain-formal-verification, repo:drive-<app>"
   consumes: "a task from the user, or an issue"
   produces: "one PR labeled ready, or needs-human"
-  budget: "3 build attempts; 2 FAIL verdicts"
+  budget: "3 build attempts; 10 target-loop passes per kind of target; 2 FAIL verdicts"
   hypothesis: "Without a fixed path, a model declares done on green tests, sets its own bar, and grades its own work."
 ---
 

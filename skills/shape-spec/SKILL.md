@@ -6,7 +6,6 @@ argument-hint: "<idea, issue number, or map issue>"
 metadata:
   kind: shaping
   calls: "investigate"
-  reads: "ship"
   role: builder
   consumes: "a loose idea, a conversation, or a map issue"
   produces: "a spec issue labeled spec, or a map issue labeled map with its decision issues; access/<app>.md in the project folder for a surface without a driver"
@@ -31,8 +30,8 @@ You do not cut the spec into implementation slices for parallel agents. One buil
 
    A question of fact a run can answer, such as a timing or whether an approach works, is not the user's to decide: run [investigate](../investigate/SKILL.md) in prototype mode, and the observation decides. A question of look or feel gets a prototype too, but the user picks from its variants.
 
-   A story that adds a screen, redesigns one, or builds a page whose look is the point is a heavy visual change: the grill takes its visual branch. Say so with the reason, and propose it before any other question. A small change on an existing screen takes none, and follows the design system as it is.
-   Done when: the mode is named to the user with the reason, and whether the visual branch applies.
+   A story that adds a screen, redesigns one, or builds a page whose look is the point is a heavy visual change: say so with the reason, and propose prototypes before any other question; the pick becomes visual targets. A small change on an existing screen takes none, and follows the design system as it is.
+   Done when: the mode is named to the user with the reason, and whether the change is a heavy visual one.
 
 2. **Grill.** Interview the user in rounds, as [references/grill.md](references/grill.md) describes, and keep the repo's domain model up to date as [references/domain.md](references/domain.md) describes. Facts are your job; decisions are the user's.
    Done when: no open decision is left, every story has a journey and every promise its harm, and what cannot be verified is named, all confirmed by the user, a heavy visual change has its design mode and a visual target the user picked, the drivers and formal checks of the area are looked up, the access for any surface without a driver is written down, every resolved term is in the repo glossary, and the user confirmed you share the same understanding.

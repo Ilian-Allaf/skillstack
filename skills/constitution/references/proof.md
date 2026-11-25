@@ -58,7 +58,7 @@ Each case aims at the highest proof its kind allows, and says why when it falls 
 - **A journey** reaches the highest certainty level its surface allows: level 5 through the driver where the surface has one. A case below the level this file requires names why.
 - **A property**, a claim about every order of steps or every input, follows a breadth order: a formal check, then generated inputs, then example tests. A property below a formal check names why.
 - **A promise in a hard zone** needs both: its journey at its level, and its property at its breadth.
-- **A visual target** reaches level 5: the head captured through the driver at the target's states and widths, side by side with the target, with the measured numbers of the [target loop](../../ship/references/visual-loop.md). A critic's score is level 1 and never reaches the target.
+- **A visual target** reaches level 5: the head captured or recorded through the driver at the target's state and width, side by side with the target, with the numbers of its measured checks. A judged score, a critic's or anyone's, is level 1 whatever its value: it steers the [target loop](../../ship/references/visual-loop.md) and proves nothing.
 
 The levels measure how real an observation is; the breadth order measures how many cases it covers. Neither replaces the other.
 

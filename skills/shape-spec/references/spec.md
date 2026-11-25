@@ -33,8 +33,9 @@ S1. As a <actor>, I want <feature>, so that <benefit>.
 ## Visual targets
 Only for a heavy visual change; otherwise "none".
 Design mode: <follow, extend, or break away>, because <reason>.
-- **V1. <screen and state, such as the empty inbox>.** Widths: <1440, 390>. Captures: <the picked variant's images, attached to this issue>. Serves: <S1>.
-Bar: <each criterion of the UI rules that applies, with its score out of 10>. Rounds: at least <3>, at most <10>.
+- **V1. <screen and state, such as the empty inbox>.** Still, at <the widths of the UI rules, or others>. Captures: <the picked variant's images, linked from this issue>. Serves: <S1>.
+- **V2. <what moves, such as a card opening>.** Motion, at <a width>. Recording: <linked from this issue>. Effects: <one line each: the trigger, what moves, the duration, the easing>. Serves: <S1>.
+Checks: <the measured checks of the UI rules this design takes, with any threshold the user set>.
 Banned: <the generic defaults this design must not use, and the user's own bans>.
 (Each target confirmed with the user, who picked it from the prototypes.)
 

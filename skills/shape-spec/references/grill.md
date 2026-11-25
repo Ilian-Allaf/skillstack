@@ -22,18 +22,14 @@ Recommended: <your answer>
 - A question whose answer depends on another open question in this round waits for a later round.
 - Each round of answers moves the frontier. Recompute it and ask the next round.
 
-## The visual branch
+## A heavy visual change
 
-For a heavy visual change, as step 1 of the skill detects it. Visit it once the stories are settled and before the verification branch, since its targets become cases. Every round still drafts and recommends, so a yes accepts it.
+When step 1 of the skill found one, two decisions hang off the stories. Visit them once the stories are settled and before the verification branch, since the targets become cases.
 
-1. **Read the design system.** Spawn a fresh subagent to find, in the code, where the tokens, components, and patterns of the area live, and which screens sit nearest to the change, as [ui.md](../../constitution/references/ui.md#the-design-system-comes-from-the-code) says. It is a fact: never ask the user for it, and write none of it in the spec.
-2. **Settle the design mode** (`follow`, `extend`, or `break away`, as ui.md defines them). Recommend one from what the subagent found and what the story is for, with the reason; the user confirms.
-3. **Gather references.** Ask for the user's own: screenshots, sites, apps, videos for motion. With none, or too few, propose five to eight from a library of real product screens when the harness has one (see [harness.md](../../constitution/references/harness.md)), else from the web, or by driving a real site in a browser. Show each with one line on what to take from it: the layout, the color, the type, the density. The user keeps some and drops the rest.
-4. **Prototype three variants** in the prototype mode of [investigate](../../investigate/SKILL.md), from the references kept, in the design mode: built from the repo's real components for `follow` and `extend`. Show them side by side, each at a desktop and a phone width.
-5. **Make feedback specific.** Ask what to change, where, and how. When the user feels something is off but cannot name it, describe in plain words how you built that part: its layout, fonts, colors, spacing, so they have the words. Change the variants and show them again, until the user picks one.
-6. **Fix the target.** Capture the pick at each state the stories need (empty, filled, error) and at each width. Draft the bar: the criteria of ui.md that apply, each with a score out of 10 to clear (8 when the user sets none), the generic defaults the spec bans, and the round floor and limit of the [target loop](../../ship/references/visual-loop.md), or its defaults when the user sets none.
+- **The design mode.** Ground the area's design system first: a fact a subagent finds, as [ui.md](../../constitution/references/ui.md#the-design-system-comes-from-the-code) says. Recommend a mode from what it found and what the story is for, with the reason; the user confirms.
+- **The pick.** Run [investigate](../../investigate/SKILL.md) in prototype mode on the visual decision, in that mode, until the user picks a variant. Draft the spec's Visual targets from the pick: a capture of each state the stories need at each width, a recording with its effect list for each part that moves, and the measured checks and bans of ui.md that apply. The user confirms them, or sets other thresholds.
 
-Done when: the user picked a variant, and confirmed the design mode, the captures, and the bar.
+Done when: the user confirmed the design mode, picked a variant, and confirmed its visual targets.
 
 ## The verification branch
 

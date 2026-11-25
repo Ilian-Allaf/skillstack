@@ -38,7 +38,7 @@ For a `high` task, or one that touches a hard zone, spawn a fresh verifier to re
 
 ## When the task is unclear
 
-Read the code, the issue, and the history first: most questions answer themselves there. Ask only what is the user's to decide, through the harness's question tool, one question at a time with your recommended answer, and stop asking once you can write an observable `done_when`. When the task needs one design decision first, say so and settle it with the smallest prototype, in the prototype mode of [investigate](../../investigate/SKILL.md). When it needs several decisions, or is too big to frame, stop and propose `/shape-spec`: those decisions are the user's.
+Read the code, the issue, and the history first: most questions answer themselves there. Ask only what is the user's to decide, through the harness's question tool, one question at a time with your recommended answer, and stop asking once you can write an observable `done_when`. When the task needs one design decision first, say so and settle it with the smallest prototype, in the prototype mode of [investigate](../../investigate/SKILL.md). When it needs several decisions, is too big to frame, or is a heavy visual change with no visual target (a new screen, a redesign, a page whose look is the point), stop and propose `/shape-spec`: those decisions are the user's.
 
 ## Playbooks
 
@@ -47,7 +47,7 @@ Pick one playbook per task, from the first column. A playbook names principles b
 | Task | Playbook | Ends with |
 |---|---|---|
 | a behavior is wrong | [bug-fix](playbooks/bug-fix.md) | a PR |
-| a behavior is missing | [feature](playbooks/feature.md) | a PR |
+| a behavior is missing, or a screen to build or redesign | [feature](playbooks/feature.md) | a PR |
 | the structure changes, the behavior does not | [refactoring](playbooks/refactoring.md) | a PR |
 | a path is too slow or uses too much | [perf](playbooks/perf.md) | a PR |
 | one metric must reach a target over many attempts | [hillclimb](playbooks/hillclimb.md) | a PR, one commit per kept change |
