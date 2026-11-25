@@ -1,4 +1,5 @@
-"""Run every check of the framework: the tests of the tools, the skill linter, and the reference checker.
+"""Run every check of the framework: the tests of the tools, the skill linter, the reference checker,
+and the rule tests of the lint packs.
 
 Usage: python -I tools/check.py
 
@@ -17,6 +18,7 @@ STEPS = [
     ("tests of the tools", [sys.executable, "-I", "-m", "unittest", "discover", "-s", str(TOOLS)]),
     ("skill linter", [sys.executable, "-I", str(TOOLS / "lint_skills.py")]),
     ("reference checker", [sys.executable, "-I", str(TOOLS / "check_refs.py")]),
+    ("rule tests of the lint packs", [sys.executable, "-I", str(TOOLS / "run_lint_packs.py")]),
 ]
 
 

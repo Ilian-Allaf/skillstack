@@ -1,0 +1,26 @@
+{
+  "language": "typescript",
+  "extensions": [".ts", ".tsx", ".mts", ".cts"],
+  "node": ["20.19", "22.12"],
+  "plugin": { "name": "typescript-rules", "entry": "plugin/index.ts" },
+  "rules": {
+    "no-chained-type-assertions": ["typescript-rules/no-chained-type-assertions"],
+    "no-widen-then-assert": ["typescript-rules/no-widen-then-assert"],
+    "require-safety-comment-for-type-assertion": ["typescript-rules/require-safety-comment-for-type-assertion"],
+    "no-known-value-widening": ["typescript-rules/no-known-value-widening"],
+    "no-unknown-parameters": ["typescript-rules/no-unknown-parameters"],
+    "no-unknown-returns": ["typescript-rules/no-unknown-returns"],
+    "no-unknown-type-aliases": ["typescript-rules/no-unknown-type-aliases"],
+    "no-unsafe-dictionary-type": ["typescript-rules/no-unsafe-dictionary-type"],
+    "no-object-parameters": ["typescript-rules/no-object-parameters"],
+    "no-runtime-typeof": ["typescript-rules/no-runtime-typeof"],
+    "no-reflect-get": ["typescript-rules/no-reflect-get"],
+    "no-reflect-apply": ["typescript-rules/no-reflect-apply"],
+    "no-conditional-empty-object-spread": ["typescript-rules/no-conditional-empty-object-spread"],
+    "no-reduce-accumulator-copy": ["typescript-rules/no-reduce-accumulator-copy", "oxc/no-accumulating-spread"],
+    "no-module-mocking": ["typescript-rules/no-module-mocking"]
+  },
+  "options": {
+    "typescript-rules/no-runtime-typeof": { "allowInTypeGuards": true }
+  }
+}

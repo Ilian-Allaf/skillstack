@@ -1,25 +1,41 @@
 # Language rules: TypeScript
 
-Read when the diff touches a `.ts` or `.tsx` file, as the builder in `build` and as the verifier in the `standards` lane. A documented repo standard wins over this file. Rules a linter already enforces are not repeated in review.
+Read when the diff touches a `.ts`, `.tsx`, `.mts`, or `.cts` file, as the builder in `build` and as the verifier in the `standards` lane. A documented repo standard wins over this file. Rules a linter already enforces are not repeated in review.
 
-| Rule | Summary |
-|---|---|
-| discriminated unions | Model variants with a `kind` literal so impossible states cannot be represented. No bags of optional fields. |
-| branded types | Brand primitives (`string & { readonly __brand: "UserId" }`) so they cannot be mixed up. A brand comes from a type guard that checks, never from `as`. |
-| constructive types | Build the shape so the illegal value cannot be built: `[T, ...T[]]` for non-empty, `start` plus `duration` for a range. |
-| simplest total type | Keep `T[]` while every operation stays total. Strengthen it only where the loose type forces `!`, a cast, or a "should never happen" throw. |
-| `unknown` over `any` | External data is `unknown` until parsed. |
-| schemas before guards | Use the repo's runtime schema library and infer the type from it before writing a guard by hand. |
-| no `as` | Cast only after validation. |
-| narrowing order | discriminant switch, then `in`, then `typeof` or `instanceof`, then a type guard, then `as` last. |
-| honest guards | A guard named `isX` checks every claim it makes. A lying guard is worse than `as`. |
-| exhaustiveness | `const _exhaustive: never = x;` in default arms, so a new variant fails the build. |
-| `satisfies` over `as` | Checks the value without widening literal types. |
-| parse at the boundary | Data that crosses in becomes a named domain type at the boundary. Inside, trust the types. |
-| derived types | `Pick`, `Omit`, `Parameters`, `ReturnType`, `Awaited`, `typeof` before a new interface. |
-| object arguments | Pass an object, not positional arguments, except on hot paths. |
-| real tests | Do not mock what can run locally. |
-| structured logs | A structured logger with enough context to debug from an id. No `console.log` in shipped code. |
+Each rule has an id. The user decides per id, for each repo, in `lint/typescript.md` of the project folder: a rule turned off there is neither checked nor judged in review. A rule with a check also runs in the lint pass on the lines a change adds or edits; [lint.md](../lint.md) says how, and what blocks.
+
+| Id | Rule | Check |
+|---|---|---|
+| `discriminated-unions` | Model variants with a `kind` literal so impossible states cannot be represented. No bags of optional fields. | review |
+| `branded-types` | Brand primitives (`string & { readonly __brand: "UserId" }`) so they cannot be mixed up. A brand comes from a type guard that checks, never from `as`. | review |
+| `constructive-types` | Build the shape so the illegal value cannot be built: `[T, ...T[]]` for non-empty, `start` plus `duration` for a range. | review |
+| `simplest-total-type` | Keep `T[]` while every operation stays total. Strengthen it only where the loose type forces `!`, a cast, or a "should never happen" throw. | review |
+| `unknown-at-the-boundary` | External data is `unknown`, never `any`, until parsed, and it is parsed where it enters. | review |
+| `no-unknown-parameters` | A parameter is never `unknown`, except the subject of a type guard and an error's `cause`. | lint |
+| `no-unknown-returns` | A function never returns `unknown`, `Promise<unknown>`, or an alias of them: it returns the parsed type. | lint |
+| `no-unknown-type-aliases` | No alias resolves to `unknown`. | lint |
+| `no-unsafe-dictionary-type` | No dictionary of `unknown`, `any`, `object`, or `{}` values, such as `Record<string, unknown>`, as a contract. A generic bound may use one. | lint |
+| `no-object-parameters` | A parameter is never typed `object`: it names the type it needs. | lint |
+| `schemas-before-guards` | Use the repo's runtime schema library and infer the type from it before writing a guard by hand. | review |
+| `no-as` | Cast only after validation, and only for a fact the types cannot say. | review |
+| `require-safety-comment-for-type-assertion` | An `as` other than `as const` has a `// SAFETY: <invariant>` comment just above it that says why it holds. | lint |
+| `no-chained-type-assertions` | Never chain casts (`x as object as User`): that builds a type no check proved. | lint |
+| `no-widen-then-assert` | Never widen a known value to `unknown`, `any`, or `object`, then cast it back. | lint |
+| `narrowing-order` | Discriminant switch, then `in` or `instanceof`, then a schema or a type guard, then `as` last. | review |
+| `no-runtime-typeof` | `typeof` narrows only inside a type guard, or to probe that a global exists (`typeof window === "undefined"`). Elsewhere, parse at the boundary. | lint |
+| `honest-guards` | A guard named `isX` checks every claim it makes. A lying guard is worse than `as`. | review |
+| `exhaustiveness` | `const _exhaustive: never = x;` in default arms, so a new variant fails the build. | review |
+| `satisfies-over-as` | Checks the value without widening literal types. | review |
+| `no-known-value-widening` | Do not annotate a known value with a wider type (`const handlers: Record<string, Handler> = { start }` loses the key `start`); keep inference, or use `satisfies`. | lint |
+| `no-reflect-get` | Read a property by typed access, or parse the value first; never `Reflect.get`. | lint |
+| `no-reflect-apply` | Call the function; never `Reflect.apply`. | lint |
+| `derived-types` | `Pick`, `Omit`, `Parameters`, `ReturnType`, `Awaited`, `typeof` before a new interface. | review |
+| `object-arguments` | Pass an object, not positional arguments, except on hot paths. | review |
+| `no-conditional-empty-object-spread` | No `...(cond ? { a } : {})`: omitting a key and setting it to `undefined` differ, so write which one you mean. | lint |
+| `no-reduce-accumulator-copy` | A reducer mutates the fresh accumulator it owns and returns it; copying it at each step is quadratic. | lint |
+| `real-tests` | Do not mock what can run locally. | review |
+| `no-module-mocking` | No `vi.mock` or `jest.mock`: pass the dependency through a seam the test can fill. | lint |
+| `structured-logs` | A structured logger with enough context to debug from an id. No `console.log` in shipped code. | review |
 
 ## Examples
 
@@ -76,16 +92,23 @@ const sum = (xs: number[]) => xs.reduce((a, b) => a + b, 0);
 const user = data as User;
 const isUser = (d: unknown): d is User => typeof d === "object" && d !== null && "id" in d;
 
-// Applied: the repo's schema library validates, and the type is inferred from it.
+// Applied: the repo's schema library validates where the data enters, and the type is inferred from it.
 const UserSchema = z.object({ id: z.string().uuid(), role: z.enum(["admin", "member"]) });
 type User = z.infer<typeof UserSchema>;
-const parseUser = (input: unknown): User => UserSchema.parse(input);
+const user = UserSchema.parse(await response.json());
 
 // When the type comes first, annotate the schema with it, so a schema that proves less fails to compile.
 const userSchema: z.ZodType<User> = z.object({ id: z.string().uuid(), role: z.enum(["admin", "member"]) });
 ```
 
-To remove an `as` from existing code, find why the compiler cannot infer: a missing tag (add one), a source type too wide (narrow it), an untyped boundary (parse it), or a fact the types cannot say (brand it, or use `satisfies`).
+No helper takes `unknown` and passes it on (`parseUser(input: unknown)`): the schema is called at the boundary itself, so `unknown` never reaches a signature.
+
+To remove an `as` from existing code, find why the compiler cannot infer: a missing tag (add one), a source type too wide (narrow it), an untyped boundary (parse it), or a fact the types cannot say (brand it, or use `satisfies`). An `as` that survives says why it holds:
+
+```ts
+// SAFETY: the map was filled from the same ids one line above, so every lookup hits.
+const owner = owners.get(id) as Owner;
+```
 
 ### Exhaustiveness
 
@@ -128,4 +151,4 @@ openFile(uri, 10, 1, 10, 1); // Skipped: swap two numbers and it still compiles
 openFile({ uri, selection: { startLine: 10, startColumn: 1, endLine: 10, endColumn: 1 } }); // Applied
 ```
 
-Another language gets its own file here, in the same shape, when a target repo needs it.
+Another language gets its own file here, in the same shape and with ids, when a target repo needs it; its checks, if a linter can hold some of its rules, go in a pack of their own, as [lint.md](../lint.md) says.

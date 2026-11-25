@@ -8,7 +8,7 @@ A reference is any place where one text names another thing:
   - R003 a path in backticks, such as `ship/references/design.md` or `tools/lint_skills.py`,
          that names a framework file that does not exist;
   - R004 a kebab-case name in backticks in a skill, such as `fix-root-causes`, that is not a skill,
-         a principle id, a playbook, a glossary term, or a generated skill;
+         a principle id, a language rule id, a playbook, a glossary term, or a generated skill;
   - R005 a skill name that was retired by a rename, so an agent never looks for a skill that is gone;
   - R006 a skill missing from the map in skills/README.md, so the diagram cannot fall behind the skills;
   - R007 .claude-plugin/plugin.json not listing exactly the skills, so the plugin ships every skill and no ghost;
@@ -44,6 +44,7 @@ PRINCIPLES = Path("skills/constitution/references/principles.md")
 PRINCIPLE_DIR = Path("skills/constitution/references/principles")
 GLOSSARY = Path("skills/constitution/references/glossary.md")
 PLAYBOOKS = Path("skills/ship/references/playbooks")
+LANGUAGES = Path("skills/constitution/references/languages")
 
 # Renamed on 2026-11-19. An old name in a skill sends the agent looking for a skill that is gone.
 RETIRED = {
@@ -142,6 +143,10 @@ def principle_ids(root: Path) -> dict[str, int]:
 def vocabulary(root: Path) -> set[str]:
     names = {p.name for p in (root / "skills").iterdir() if (p / "SKILL.md").exists()}
     names |= set(principle_ids(root))
+    if (root / LANGUAGES).is_dir():
+        # The rule ids of each language file: the first cell of a table row, in backticks, as in principles.md.
+        for language in (root / LANGUAGES).glob("*.md"):
+            names |= set(re.findall(r"^\| `([a-z0-9-]+)` \|", language.read_text(encoding="utf-8"), re.MULTILINE))
     if (root / PLAYBOOKS).is_dir():
         names |= {p.stem for p in (root / PLAYBOOKS).glob("*.md")}
     if (root / GLOSSARY).exists():
@@ -194,7 +199,7 @@ def check_file(path: Path, root: Path, vocab: set[str], in_skills: bool, out: li
             if bare in RETIRED:
                 out.append(Finding(path, number, "R005", f"`{token}` is a retired skill name. Fix: write `{RETIRED[bare]}`."))
             elif KEBAB_RE.match(token) and bare not in vocab and not GENERATED_RE.match(bare):
-                out.append(Finding(path, number, "R004", f"`{token}` is not a skill, principle id, playbook, glossary term, or generated skill. Fix: correct the name, or define it in the glossary."))
+                out.append(Finding(path, number, "R004", f"`{token}` is not a skill, principle id, language rule id, playbook, glossary term, or generated skill. Fix: correct the name, or define it in the glossary."))
             elif token.startswith("/") and KEBAB_RE.match(token) is None and re.fullmatch(r"/[a-z][a-z0-9-]*", token) and bare not in vocab:
                 out.append(Finding(path, number, "R004", f"`{token}` is a command for a skill that does not exist. Fix: use the name of a skill in skills/."))
 

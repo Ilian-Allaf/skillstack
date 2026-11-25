@@ -32,6 +32,7 @@ You are the index of this framework, so the user only has to remember you. You p
 | The situation | Command |
 |---|---|
 | the first time the framework works in this repo | `/setup-repo` |
+| you want the framework's TypeScript rules checked in this repo, or to decide them rule by rule | `/setup-repo` |
 | a bug you can reproduce, a missing feature, a refactoring, a slow path, a metric to push to a target, a UI migration, a change across many files | `/ship <the task, or an issue number>` |
 | several tasks to turn into PRs while you do something else, related or not | `/ship-queue <the tasks, one per line>` |
 | an idea with open decisions, or work too big for one session | `/shape-spec <the idea>` |

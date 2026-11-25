@@ -1,6 +1,6 @@
 ---
 name: setup-repo
-description: "Prepares a repo the first time you work in it: issue tracker, merge guard, labels, glossary, coding standards, app driver. Keeps each private or shares it with the team, as asked."
+description: "Prepares a repo the first time you work in it: issue tracker, merge guard, labels, glossary, coding standards, language rules, app driver. Keeps each private or shares it with the team, as asked."
 disable-model-invocation: true
 argument-hint: "<nothing, or the parts to run again>"
 metadata:
@@ -26,7 +26,7 @@ You prepare this repo so every later task starts from facts, not guesses, and im
 2. **Check what the agent can do here.** The code host's CLI is authenticated and the repo has a remote. Then each capability in [harness.md](../constitution/references/harness.md): spawn a subagent, spawn one of another family, wake on a PR change, ask the user a question, block the merge. Try each one; a capability you could not try is "not confirmed", never "works".
    Done when: every capability is listed as works, missing, or not confirmed, with what you tried.
 
-3. **Offer the plan.** Through the harness's question tool, show the user what the repo already has, what is missing, and the parts below, each with what it will write and what it costs. The first part is the issue tracker: recommend the one that matches the remote, and offer the others of [references/trackers/README.md](references/trackers/README.md). Each file part is private or shared, as target-repo.md says. The user picks. Parts the project folder already has are skipped, unless the user asked to run them again.
+3. **Offer the plan.** Through the harness's question tool, show the user what the repo already has, what is missing, and the parts below, each with what it will write and what it costs. The first part is the issue tracker: recommend the one that matches the remote, and offer the others of [references/trackers/README.md](references/trackers/README.md). Each file part is private or shared, as target-repo.md says. Language rules: [references/language-rules.md](references/language-rules.md). The user picks. Parts the project folder already has are skipped, unless the user asked to run them again.
    Done when: the user said which parts to run.
 
 4. **Record the issue tracker and install the merge guard.** Write `~/.agents/projects/<project>/issue-tracker.md` from the chosen template, or a route, and prove it with a read-only operation; then create the labels the user agreed to, issue labels through that file and PR labels on the code host. Install the hook that blocks merge commands, as [harness.md](../constitution/references/harness.md) describes for this harness, and prove it: a merge on a PR number that does not exist is refused.
