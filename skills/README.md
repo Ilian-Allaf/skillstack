@@ -64,7 +64,7 @@ The dotted arrows are recommendations, not automatic calls: you launch the sugge
 | What you arrive with | Start here | What you receive |
 |---|---|---|
 | An unfamiliar repo | [setup-repo](setup-repo/SKILL.md) | A readiness report and the private or shared setup parts you chose |
-| An idea with unresolved decisions | [shape-spec](shape-spec/SKILL.md) | A spec issue, or a map of decisions for work too large to settle in one session |
+| An idea with unresolved decisions | [shape-spec](shape-spec/SKILL.md) | A spec issue, or a map of decisions for work too large to settle in one session. A new screen, a redesign, or a page whose look matters also gets a visual target you picked from prototypes |
 | A question, unexplained symptom, or technical choice | [investigate](investigate/SKILL.md) | An answer with evidence and limits; a proposed task if a change is due |
 | A task or a spec ready to implement | [ship](ship/SKILL.md) | A PR labeled `ready`, or `needs-human` with the reason and recommendation |
 | An existing PR needing an independent verdict | [verify-pr](verify-pr/SKILL.md) | A verdict comment for behavior and code, with findings and notes |
@@ -139,7 +139,7 @@ For example, suppose a user reports that double-clicking Save creates two notes.
 | Playbook | Choose it when | What makes its method different | Required evidence |
 |---|---|---|---|
 | [bug-fix](ship/references/playbooks/bug-fix.md) | Existing behavior is wrong | Reproduce the reported symptom before framing; eliminate candidate causes; commit the repro before the fix; search for siblings. | The same repro red on base and green on head; the real app journey when user-visible |
-| [feature](ship/references/playbooks/feature.md) | Behavior is missing | Build one vertical slice at a time; integrate with the existing design; cover every entry point and every consumer of an improved primitive. | New tests fail when the implementation is reverted; the new journey works on the app |
+| [feature](ship/references/playbooks/feature.md) | Behavior is missing | Build one vertical slice at a time; integrate with the existing design; cover every entry point and every consumer of an improved primitive. With a visual target: lay out, close the gap in rounds scored by fresh critics, then add motion. | New tests fail when the implementation is reverted; the new journey works on the app |
 | [refactoring](ship/references/playbooks/refactoring.md) | Structure changes while behavior stays the same | Capture a behavior pin before moving code; subtract first; migrate callers and remove the old internal API. | A structural target red then green, a behavior pin green on both, and reduced reader load |
 | [perf](ship/references/playbooks/perf.md) | A specific path is too slow or costly | Validate the baseline, profile the limiter, try the cheapest effective fix, and compare under identical conditions. | Base/head numbers with units, repeated runs, median and range, plus correctness checks |
 | [hillclimb](ship/references/playbooks/hillclimb.md) | One metric needs sustained improvement toward a target | Freeze a validated measurement harness; log every hypothesis; measure one attempt at a time; keep or revert it. | The target and minimum attempt count, a regression gate, and one commit per kept improvement |
@@ -188,7 +188,7 @@ The diagram shows the available lanes; the risk class selects which run. Each la
 | Lane | The question it answers | What the verifier does |
 |---|---|---|
 | `replay` | Does the PR's claimed proof hold? | Rerun its commands and demos; compare the actual results and coverage with the claims |
-| `live` | Does the app satisfy the contract? | Drive the spec's journeys and promises, then its own journeys, on base and head; try entry points and edge cases, then check claimed coverage |
+| `live` | Does the app satisfy the contract? | Drive the spec's journeys and promises, then its own journeys, on base and head; capture each visual target side by side with the head; try entry points and edge cases, then check claimed coverage |
 | `breakage` | What breaks outside this diff? | Run `analyze-impact` independently, then compare safety facts and risks; judge each formal check made or repaired in the task against its base version |
 | `adversarial` | Can deliberate attempts break it? | Run three agents on a factual brief, rerun their reproductions, merge duplicate root causes |
 | `spec` | Is this all of the request, with no extra behavior? | Compare the diff with the task and its spec, Out of scope included, revert the fix to test the tests, and check the playbook's duties |

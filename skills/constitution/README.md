@@ -37,6 +37,7 @@ Shared rules, not a skill: no harness lists this folder, and no one launches it.
 | [references/formal.md](references/formal.md) | before you write, run, or update a formal check (`prove-<area>`), or when a touched file is one a formal check covers |
 | [references/statechart.md](references/statechart.md) | when a touched journey moves between states, or a hard zone needs a checked model |
 | [references/languages/typescript.md](references/languages/typescript.md) | when the diff touches a `.ts` or `.tsx` file, as builder or verifier |
+| [references/ui.md](references/ui.md) | when a prototype or a diff changes what a user sees, as the agent in `shape-spec`, builder, critic, or verifier |
 
 ## Roles
 

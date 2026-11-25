@@ -9,7 +9,7 @@ Exhaustive in coverage, not in footage: every case has evidence, and each case g
 `frame` writes the list before any code changes, and the user sees it in the frame. It holds:
 
 - the main case from `done_when`;
-- when the task is a spec issue, one case per journey and one per promise of the spec, each with its spec id (`S1`, `P1`) as the case id. A `medium` or `high` task without a spec drafts its own journeys and promises in the frame, shows them, and goes on; a `low` task skips them. A promise outside a hard zone, or one the builder drafted, yields a recommendation for a formal check, never a new one;
+- when the task is a spec issue, one case per journey, per promise, and per visual target of the spec, each with its spec id (`S1`, `P1`, `V1`) as the case id. A `medium` or `high` task without a spec drafts its own journeys and promises in the frame, shows them, and goes on; a `low` task skips them. A promise outside a hard zone, or one the builder drafted, yields a recommendation for a formal check, never a new one;
 - one case per entry point of the touched feature: those its feature file's Declared in points to, and those the file lists by hand (button, shortcut, command, import, API call);
 - one case per path a user can reach that calls the changed code, found in the code itself (a search for its callers, `analyze-impact` step 1), not only in the map. A path the map lacks is added to its feature file in this PR, so the builder and the verifier do not share the map's blind spot;
 - the edge cases of the hard zones the change touches: double action, retry, error path, empty and long input, reload or back navigation mid-action, two users or two tabs;

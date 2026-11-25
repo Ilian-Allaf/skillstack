@@ -22,6 +22,19 @@ Recommended: <your answer>
 - A question whose answer depends on another open question in this round waits for a later round.
 - Each round of answers moves the frontier. Recompute it and ask the next round.
 
+## The visual branch
+
+For a heavy visual change, as step 1 of the skill detects it. Visit it once the stories are settled and before the verification branch, since its targets become cases. Every round still drafts and recommends, so a yes accepts it.
+
+1. **Read the design system.** Spawn a fresh subagent to find, in the code, where the tokens, components, and patterns of the area live, and which screens sit nearest to the change, as [ui.md](../../constitution/references/ui.md#the-design-system-comes-from-the-code) says. It is a fact: never ask the user for it, and write none of it in the spec.
+2. **Settle the design mode** (`follow`, `extend`, or `break away`, as ui.md defines them). Recommend one from what the subagent found and what the story is for, with the reason; the user confirms.
+3. **Gather references.** Ask for the user's own: screenshots, sites, apps, videos for motion. With none, or too few, propose five to eight from a library of real product screens when the harness has one (see [harness.md](../../constitution/references/harness.md)), else from the web, or by driving a real site in a browser. Show each with one line on what to take from it: the layout, the color, the type, the density. The user keeps some and drops the rest.
+4. **Prototype three variants** in the prototype mode of [investigate](../../investigate/SKILL.md), from the references kept, in the design mode: built from the repo's real components for `follow` and `extend`. Show them side by side, each at a desktop and a phone width.
+5. **Make feedback specific.** Ask what to change, where, and how. When the user feels something is off but cannot name it, describe in plain words how you built that part: its layout, fonts, colors, spacing, so they have the words. Change the variants and show them again, until the user picks one.
+6. **Fix the target.** Capture the pick at each state the stories need (empty, filled, error) and at each width. Draft the bar: the criteria of ui.md that apply, each with a score out of 10 to clear (8 when the user sets none), the generic defaults the spec bans, and the round floor and limit of the [target loop](../../ship/references/visual-loop.md) (3 and 10 when the user sets none).
+
+Done when: the user picked a variant, and confirmed the design mode, the captures, and the bar.
+
 ## The verification branch
 
 The design tree of every spec has this branch; visit it once the stories are settled. A map's decisions skip it, and its destination's spec takes it. Draft each answer and ask in one round, so a yes accepts it:
