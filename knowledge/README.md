@@ -6,7 +6,7 @@ Corpus de référence pour concevoir un ensemble de skills orchestrés en graphe
 
 1. [`synthesis/00-executive-summary.md`](synthesis/00-executive-summary.md) : les dix idées clés, à lire en 10 min.
 2. [`synthesis/04-framework-blueprint.md`](synthesis/04-framework-blueprint.md) : la proposition d'architecture à valider.
-3. [`SKILL-CATALOG.md`](SKILL-CATALOG.md) : les 109 skills importés, classés et reliés.
+3. [`SKILL-CATALOG.md`](SKILL-CATALOG.md) : les 111 skills importés, classés et reliés.
 
 ## Organisation
 
@@ -32,6 +32,8 @@ knowledge/
 | Repo | `mattpocock/skills` (39 skills) | [index](sources/repos/mattpocock-skills/SKILLS-INDEX.md) |
 | Repo | `cursor/plugins/pstack` (61 skills) | [index](sources/repos/cursor-pstack/SKILLS-INDEX.md) |
 | Repo | `t3dotgg/tstack` (9 skills) | [index](sources/repos/t3dotgg-tstack/SKILLS-INDEX.md) |
+| Repo | `Leonxlnx/cook` (1 skill) | [source](sources/repos/leonxlnx-cook/SOURCE.md) · [index](sources/repos/leonxlnx-cook/SKILLS-INDEX.md) |
+| Repo | `Leonxlnx/taste-skill` (1 skill, text only) | [source](sources/repos/leonxlnx-taste-skill/SOURCE.md) · [index](sources/repos/leonxlnx-taste-skill/SKILLS-INDEX.md) |
 | Vidéo | Lauren Tan, *All Code Is Slop* | [nectar](sources/videos/2026-11-14-all-code-is-slop-lauren-tan/nectar.md) · [transcript](sources/videos/2026-11-14-all-code-is-slop-lauren-tan/transcript.md) |
 | Vidéo | Ray Amjad, *What Comes After Loops* | [nectar](sources/videos/2026-11-04-what-comes-after-loops-ray-amjad/nectar.md) · [transcript](sources/videos/2026-11-04-what-comes-after-loops-ray-amjad/transcript.md) |
 | Article | Anthropic, *Building always-on agents* | [nectar](sources/articles/2026-11-13-building-always-on-agents/nectar.md) · [contenu](sources/articles/2026-11-13-building-always-on-agents/content.md) |
@@ -40,8 +42,11 @@ knowledge/
 | Article | Anthropic, *Harness design for long-running application development* | [nectar](sources/articles/2026-03-24-harness-design-long-running-apps/nectar.md) · [contenu](sources/articles/2026-03-24-harness-design-long-running-apps/content.md) |
 | Article | Addy Osmani, *How the Claude Code team thinks about verification* | [source](sources/articles/2026-11-16-claude-code-verification/SOURCE.md) · [reading notes](sources/articles/2026-11-16-claude-code-verification/content.md) · [nectar](sources/articles/2026-11-16-claude-code-verification/nectar.md) |
 | Video | Ray Amjad, *How Anthropic Verifies Code Written by Claude* | [source](sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad/SOURCE.md) · [transcript](sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad/transcript.md) · [timestamped notes](sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad/notes.md) · [nectar](sources/videos/2026-11-23-how-anthropic-verifies-code-ray-amjad/nectar.md) |
+| Video | Eric Tech, *8 Taste Skill Lessons That Make Claude Code Design Better* | [source](sources/videos/2026-11-20-taste-skill-lessons-eric-tech/SOURCE.md) · [transcript](sources/videos/2026-11-20-taste-skill-lessons-eric-tech/transcript.md) · [timestamped notes](sources/videos/2026-11-20-taste-skill-lessons-eric-tech/notes.md) · [nectar](sources/videos/2026-11-20-taste-skill-lessons-eric-tech/nectar.md) |
 
 Added on 2026-11-23: the verification article and video are dated research records. The article has reading notes; the video has extracted captions, timestamped notes and analysis; the video discusses the article, so they are not independent confirmation of the same claims.
+
+Added on 2026-11-25: the Taste Skill video, a secondary source on visual quality for coding agents. Its nectar maps each lesson onto the framework and leaves integration as open questions. Its primary sources, Cook and the Taste Skill, are imported beside it.
 
 ## Synthèses
 
