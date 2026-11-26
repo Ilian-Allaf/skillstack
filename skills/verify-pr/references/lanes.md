@@ -16,7 +16,7 @@ Run every command in the PR's Proof section on the head SHA, the demo scripts in
 
 ### `live`: does the app do what `done_when` says?
 
-Drive the real app with the repo's `drive-<app>` skill, on the base and then on the head. When the brief holds a spec issue, read it yourself and start from its journeys and promises: drive each story's journey and each promise, by its id. Do not follow the builder's journey; build the rest of yours from `done_when` and the feature map. Try every entry point the map lists for the touched feature, then try what a real user would: double clicks, back navigation, reload mid-action, empty and long input, slow network.
+Drive the real app with the repo's `drive-<app>` skill, on the base and then on the head. When the brief holds a spec issue, read it yourself and start from its journeys, promises, and visual targets: drive each story's journey and each promise, by its id, and capture each visual target as below. Do not follow the builder's journey; build the rest of yours from `done_when` and the feature map. Try every entry point the map lists for the touched feature, then try what a real user would: double clicks, back navigation, reload mid-action, empty and long input, slow network.
 
 List and drive the cases you would have expected from the spec, the feature map, `done_when`, and the hard zones. Save those results before reading the coverage table, then test the coverage itself (see [coverage.md](../../constitution/references/coverage.md)). A spec story, promise, or visual target missing from the table is a missing case like any other. A missing case that misbehaves is a FAIL. A missing case that behaves correctly is a coverage gap: report it with your evidence, so the builder adds it to the table.
 

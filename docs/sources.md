@@ -312,7 +312,7 @@ When a skill changes, update its section here, in the same PR.
 - 2026-11-22: pstack `figure-it-out` puts the verification harness before implementation; `poteto-mode/playbooks/eval.md` checks activity rather than self-report; `poteto-mode/scripts/check-plan.mjs` mechanically checks plan structure. Our adaptation checks a local evidence index for certainty levels, nonempty artifact files, step results and traces, and stale verdicts. It cannot judge content or completeness against the original task. Tests live in `tools/test_check_evidence.py`. This is a local task check, not a framework CI gate in target repos (ADR 0001).
 - 2026-11-23: ours, [ADR 0017](adr/0017-a-formal-check-guards-every-task-that-touches-its-code.md): build's Done when requires each altered formal check to describe the head.
 - 2026-11-24, [ADR 0019](adr/0019-the-spec-sets-the-bar-and-a-task-builds-the-proof-it-lacks.md), ours: the frame builds the proof the task lacks first, and the evidence record lists the spec's ids in `spec_ids`; `check_evidence.py` fails when one is not a case.
-- 2026-11-25, [ADR 0020](adr/0020-a-heavy-visual-change-is-specified-by-a-target.md), ours: `check_evidence.py` accepts visual target ids, `V1`, and fails when one has no case. The glossary gains heavy visual change, visual target, design mode, target loop, and critic.
+- 2026-11-25, [ADR 0020](adr/0020-a-heavy-visual-change-is-specified-by-a-target.md), ours: `check_evidence.py` accepts visual target ids, `V1`, and fails when one has no case. The glossary gains heavy visual change, visual target, effect list, design mode, target loop, and critic.
 
 ## `skills/ship/references/design.md`
 
@@ -331,7 +331,7 @@ When a skill changes, update its section here, in the same PR.
 
 ## `skills/ship/references/visual-loop.md` (2026-11-25)
 
-- [ADR 0020](adr/0020-a-heavy-visual-change-is-specified-by-a-target.md). The loop is Leon Lin's Cook (`SKILL.md`, `references/loop-and-critics.md`, `references/target-and-bar.md`): one capture per screen state at a fixed width, contact sheets for motion, side-by-side images, at least two fresh critics with only the images and the rubric, the median, one more critic on disagreement, user feedback first, the user's estimate as calibration, a pass that drops a score fixed or reverted. Ours: a third critic when two differ by more than 2 points (Cook uses 1.0); critics run as a race; an unscored pass rather than a self-scored one; a budget of passes per kind of target under rule 7, ending `needs-human`, instead of a time floor; keep or revert past the critics' spread, after `hillclimb`; the decision log outside the repo instead of a `cook/` folder; and scores that steer the build but never the verdict (ADR 0004).
+- [ADR 0020](adr/0020-a-heavy-visual-change-is-specified-by-a-target.md). The loop is Leon Lin's Cook (`SKILL.md`, `references/loop-and-critics.md`, `references/target-and-bar.md`): one capture per screen state at a fixed width, contact sheets for motion, side-by-side images, at least two fresh critics with only the images and the rubric, the median, one more critic on disagreement, user feedback first, the user's estimate as calibration, a pass that drops a score fixed or reverted. Ours: a third critic when two differ by more than 2 points (Cook uses 1.0); critics run as a race; an unscored pass rather than a self-scored one; a budget of passes per kind of target under rule 7, instead of a time floor, ending `needs-human` only when a measured check still fails; keep or revert past the critics' spread, after `hillclimb`; the decision log outside the repo instead of a `cook/` folder; and scores that steer the build but never the verdict (ADR 0004).
 
 ## `skills/ship/references/frame.md`
 
@@ -341,7 +341,7 @@ When a skill changes, update its section here, in the same PR.
 - 2026-11-20, second coherence audit: a symptom that will not reproduce goes through `investigate`'s diagnosis and the task goes on or stops, as pstack's bug-fix playbook does ("synthesize the trigger, tighten conditions, or instrument until it fires"); several open decisions stop the task and propose `/shape-spec`, since they are the user's (pstack `poteto-mode`: "Reserve the question for a genuine product or preference call").
 - 2026-11-22: try verification setup before building, adapted from `figure-it-out`; see First-use corrections below.
 - 2026-11-24, [ADR 0019](adr/0019-the-spec-sets-the-bar-and-a-task-builds-the-proof-it-lacks.md), ours: the frame builds or repairs the proof the task lacks first, and lists each case with its target.
-- 2026-11-25, [ADR 0020](adr/0020-a-heavy-visual-change-is-specified-by-a-target.md), ours: `feature` covers a screen to build or redesign, and a heavy visual change with no visual target is proposed `/shape-spec`.
+- 2026-11-25, [ADR 0020](adr/0020-a-heavy-visual-change-is-specified-by-a-target.md), ours: `feature` covers a screen to build or redesign, and a heavy visual change with no visual target is proposed `/shape-spec`; `choose-skill` routes a new screen to `/shape-spec` the same way.
 
 ## `skills/ship/references/playbooks/bespoke.md`
 

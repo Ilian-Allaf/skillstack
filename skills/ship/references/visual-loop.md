@@ -22,7 +22,7 @@ The targets' files are in the project folder, as the spec names them. Without th
 
    > Each image shows a target on the left, or on top, and a build beside it, for the first time. Score how close the build is to the target on each criterion, 0 to 10. Then list the three largest gaps per image: where, what is wrong, what to change. End with the weakest area across all images.
 
-   Never tell a critic who built it, how long it took, or your own score. Take the median per criterion; when two critics differ by more than 2 points, add one. With no subagent, the pass goes unscored: the measured checks and the user's feedback alone steer it.
+   Take the median per criterion; when two critics differ by more than 2 points, add one. With no subagent, the pass goes unscored: the measured checks and the user's feedback alone steer it.
 5. **Keep or revert** as [hillclimb](playbooks/hillclimb.md) duty 5 says, with the measured checks as the gate and the critics' spread as the noise.
 6. **Log the pass** in the [decision log](../../constitution/references/decision-log.md): the focus, the change, the measured numbers and the medians, kept or reverted.
 7. **Show the user** the side-by-side images and one line of what changed, and keep going.
@@ -32,7 +32,7 @@ The targets' files are in the project folder, as the spec names them. Without th
 The loop ends when the measured checks pass and, after at least three passes, every median clears 8 on each criterion; an unscored loop ends when the measured checks pass and the user's feedback is met. Before the third pass, a high score means the criteria were read too loosely: look again at full size, at the phone width, and at the weakest target.
 
 The target-loop budget is ten passes per kind of target, with rule 7's plateau and premise. When it runs out:
-- a measured check still fails: its case fails, and the PR opens `needs-human`, as `ship` says for a spent budget;
+- a measured check still fails: its case fails, and the PR opens `needs-human`, as rule 8 of the constitution says for a spent budget;
 - only the medians fall short: the loop stops, and the PR goes on with each target's medians and remaining gaps under Proof, for the user to judge.
 
 ## What the PR carries

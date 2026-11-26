@@ -34,7 +34,7 @@ S1. As a <actor>, I want <feature>, so that <benefit>.
 Only for a heavy visual change; otherwise "none".
 Design mode: <follow, extend, or break away>, because <reason>.
 - **V1. <screen and state, such as the empty inbox>.** Still, at <the widths of the UI rules, or others>. Captures: <their files in the project folder's `targets/`, and a link when the tracker hosts them>. Serves: <S1>.
-- **V2. <what moves, such as a card opening>.** Motion, at <a width>. Recording: <its file, as for captures>. Effects: <one line each: the trigger, what moves, the duration, the easing>. Serves: <S1>.
+- **V2. <what moves, such as a card opening>.** Motion, at <a width>. Recording: <its file, as for captures>. Effects: <its effect list, one line each: the trigger, what moves, the duration, the easing, the direction>. Serves: <S1>.
 Checks: <the measured checks of the UI rules this design takes, with any threshold the user set>.
 Banned: <the generic defaults this design must not use, and the user's own bans>.
 (Each target confirmed with the user, who picked it from the prototypes.)
