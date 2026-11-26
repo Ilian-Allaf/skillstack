@@ -32,7 +32,7 @@ The targets' files are in the project folder, as the spec names them. Without th
 The loop ends when the measured checks pass and, after at least three passes, every median clears 8 on each criterion; an unscored loop ends when the measured checks pass and the user's feedback is met. Before the third pass, a high score means the criteria were read too loosely: look again at full size, at the phone width, and at the weakest target.
 
 The target-loop budget is ten passes per kind of target, with rule 7's plateau and premise. When it runs out:
-- a measured check still fails: its case fails, and the PR opens `needs-human`, as rule 8 of the constitution says for a spent budget;
+- a measured check still fails: its case fails, and the PR opens `needs-human`, as `ship` does when its build budget runs out;
 - only the medians fall short: the loop stops, and the PR goes on with each target's medians and remaining gaps under Proof, for the user to judge.
 
 ## What the PR carries
