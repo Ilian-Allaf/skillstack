@@ -30,6 +30,15 @@ S1. As a <actor>, I want <feature>, so that <benefit>.
 - **P1. <what must never break, in one product sentence>.** Harm: <what the user loses when it breaks>.
 (Each one confirmed with the user. Write "none" when the grill found none.)
 
+## Visual targets
+Only for a heavy visual change; otherwise "none".
+Design mode: <follow, extend, or break away>, because <reason>.
+- **V1. <screen and state, such as the empty inbox>.** Still, at <the widths of the UI rules, or others>. Captures: <their files in the project folder's `targets/`, and a link when the tracker hosts them>. Serves: <S1>.
+- **V2. <what moves, such as a card opening>.** Motion, at <a width>. Recording: <its file, as for captures>. Effects: <its effect list, one line each: the trigger, what moves, the duration, the easing, the direction>. Serves: <S1>.
+Checks: <the measured checks of the UI rules this design takes, with any threshold the user set>.
+Banned: <the generic defaults this design must not use, and the user's own bans>.
+(Each target confirmed with the user, who picked it from the prototypes.)
+
 ## Not verifiable
 What no run can prove, and why, agreed in the grill. Write "nothing" when everything can be.
 
@@ -49,4 +58,4 @@ What this spec will not do.
 
 ## From spec to proof
 
-Each journey and each promise becomes a case in `frame` (see [coverage.md](../../constitution/references/coverage.md)), so the coverage table of the final PR answers the spec story by story and promise by promise. The template numbers them, `S1`, `S2` for stories and `P1`, `P2` for promises, so the evidence record names each one; a second journey of a story takes the next letter, `S1b`. A journey or a promise no case covers goes under Not verified.
+Each journey, promise, and visual target becomes a case in `frame` (see [coverage.md](../../constitution/references/coverage.md)), so the coverage table of the final PR answers the spec story by story and promise by promise. The template numbers them, `S1`, `S2` for stories, `P1`, `P2` for promises, and `V1`, `V2` for visual targets, so the evidence record names each one; a second journey of a story takes the next letter, `S1b`. A journey, a promise, or a visual target no case covers goes under Not verified.

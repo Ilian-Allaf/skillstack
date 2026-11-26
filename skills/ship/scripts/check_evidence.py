@@ -63,13 +63,13 @@ def check(record: object, root: Path, patch_id: str, base_sha: str, head_sha: st
     if "spec_ids" in record:
         spec_ids = record["spec_ids"]
         if not isinstance(spec_ids, list) or not spec_ids:
-            fail("spec_ids", "list the spec's story and promise ids, such as S1 and P1, or drop the key for a task without a spec")
+            fail("spec_ids", "list the spec's story, promise, and visual target ids, such as S1, P1, and V1, or drop the key for a task without a spec")
             spec_ids = []
         case_ids = {row.get("id") for row in cases if isinstance(row.get("id"), str)}
         seen_spec = set()
         for spec_id in spec_ids:
-            if not isinstance(spec_id, str) or not re.fullmatch(r"[SP][0-9]+[a-z]?", spec_id) or spec_id in seen_spec:
-                fail(f"spec id {spec_id!r}", "use each id once, as the spec numbers it: S1, S1b, P1")
+            if not isinstance(spec_id, str) or not re.fullmatch(r"[SPV][0-9]+[a-z]?", spec_id) or spec_id in seen_spec:
+                fail(f"spec id {spec_id!r}", "use each id once, as the spec numbers it: S1, S1b, P1, V1")
                 continue
             seen_spec.add(spec_id)
             if spec_id not in case_ids:

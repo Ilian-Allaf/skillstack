@@ -69,17 +69,20 @@ When a skill changes, update its section here, in the same PR.
 - (pstack `ketchup-video`)
 - 2026-11-23: ours, [ADR 0017](adr/0017-a-formal-check-guards-every-task-that-touches-its-code.md): a formal check stale on the base proves nothing, so its case goes under Not verified.
 - 2026-11-24, [ADR 0019](adr/0019-the-spec-sets-the-bar-and-a-task-builds-the-proof-it-lacks.md): one case per journey and per promise of the spec, by its id; a case below its target says why. The journeys follow Ray Amjad's account of Anthropic's practice; the rest is ours.
+- 2026-11-25, [ADR 0020](adr/0020-a-heavy-visual-change-is-specified-by-a-target.md), ours: one case per visual target.
 
 ## `skills/constitution/references/decision-log.md`
 
 - Source: pstack `show-me-your-work` (Lauren Tan).
 - 2026-11-22: activity-first reconstruction comes from pstack `poteto-mode/playbooks/eval.md`, step 6; checking results as well as reads is our adaptation. Observed failures and the approved correction set are recorded below under First-use corrections.
+- 2026-11-25, [ADR 0020](adr/0020-a-heavy-visual-change-is-specified-by-a-target.md), ours: the target loop keeps a log, one row per pass, as `hillclimb` keeps one per attempt.
 
 ## `skills/constitution/references/harness.md`
 
 - 2026-11-20, Model per role: pstack `setup-pstack` and the "Match the model to the job" rules of `poteto-mode` (Lauren Tan). Adapted: roles map to the models of one subscription, Claude or Codex, never across providers; an override is a line in the user's agent file instead of a generated rule file.
 - (tstack)
 - 2026-11-20, second coherence audit: the verifier's verdict keeps ADR 0003's other family when the harness offers one.
+- 2026-11-25, [ADR 0020](adr/0020-a-heavy-visual-change-is-specified-by-a-target.md): the capability to search real UI references, after the MCP server of captured sites Eric Tech's video recommends, and the browser tool it shows; the fallbacks, the capability to record a page and cut a video into frames (after Cook's frame extraction), and the critics' row in Model per role are ours.
 
 ## `skills/constitution/references/languages/typescript.md`
 
@@ -138,6 +141,7 @@ When a skill changes, update its section here, in the same PR.
 - 2026-11-20, from the coherence audit: a missing driver is not a pass, from pstack "'Inconclusive' or wrong-surface is not a pass" and `autopilot-full` ("The verdict is not clean without the live lane"); a user-facing `low` change is proven on the app, from pstack `poteto-mode` ("Shipping UI: the matching control skill").
 - 2026-11-23: ours, [ADR 0017](adr/0017-a-formal-check-guards-every-task-that-touches-its-code.md): every file a formal check covers is a hard zone; where formal checks live and how a diff finds them, beside the drivers.
 - 2026-11-24, [ADR 0019](adr/0019-the-spec-sets-the-bar-and-a-task-builds-the-proof-it-lacks.md): a missing driver is built as the task's first unit, from Ray Amjad (the agent installs what it lacks during the task); the targets, a level for a journey and a breadth for a property, are ours, since no source sets them by kind of case.
+- 2026-11-25, [ADR 0020](adr/0020-a-heavy-visual-change-is-specified-by-a-target.md), ours: a visual target, still or motion, reaches level 5, and a judged score stays level 1, after Cook's split between measured and eyeballed numbers.
 
 ## `skills/constitution/references/target-repo.md` (where skills and instructions live, 2026-11-19)
 
@@ -157,6 +161,10 @@ When a skill changes, update its section here, in the same PR.
 ## `skills/constitution/references/statechart.md`
 
 - Source: pstack `statechart` (Lauren Tan). Adapted: pstack ships a script that runs TLC and draws the chart; here the method is described and the tool is the repo's, or TLC run directly.
+
+## `skills/constitution/references/ui.md` (2026-11-25)
+
+- [ADR 0020](adr/0020-a-heavy-visual-change-is-specified-by-a-target.md). Criteria to grade against instead of "is it beautiful", and the four criteria, from Anthropic "harness design". The generic defaults to drop, from Cook's slop ban list (`references/rules.md`) and the Taste Skill's Never list. One system, every width down to 320, tap targets of 44px, every control answering the pointer, and reduced motion where everything rests and nothing stays hidden, from the Taste Skill's checklist. The contrast ratios, 4.5:1 and 3:1, from WCAG 2.2 (1.4.3, 1.4.11). Layout before motion, from Eric Tech's video. The design system read from the code, the design modes, the motion criteria, and the 20% tolerance on an effect's duration are ours.
 
 ## `skills/create-app-driver/SKILL.md`
 
@@ -197,6 +205,7 @@ When a skill changes, update its section here, in the same PR.
 ## `skills/investigate/references/prototype.md`
 
 - Source: pstack `poteto-mode` prototype playbook and `principle-exhaust-the-design-space` (Lauren Tan).
+- 2026-11-25, [ADR 0020](adr/0020-a-heavy-visual-change-is-specified-by-a-target.md): the user's references first, then a library of real product screens, from Cook's "no references yet" path; a motion reference read frame by frame into an effect list, and no element copied one to one, from Cook (`references/target-and-bar.md`); describing how a part was built when the user cannot name a problem, from Cook (`references/loop-and-critics.md`); three variants checked at a phone width, from Eric Tech's video. The repo's real components under follow and extend, the recordings, and narrowing after three showings are ours.
 
 ## `skills/investigate/references/question.md`
 
@@ -267,6 +276,7 @@ When a skill changes, update its section here, in the same PR.
 - Sources for the modes: Matt Pocock `grilling`, `domain-modeling`, `grill-with-docs`, `to-spec`, `wayfinder`.
 - (Anthropic kept its planner for this reason)
 - 2026-11-20, from the coherence audit: a question of fact is settled by a run, one of look or feel by the user, from pstack `poteto-mode` ("If the answer is a fact you could observe by running something, it is not the human's to answer").
+- 2026-11-25, [ADR 0020](adr/0020-a-heavy-visual-change-is-specified-by-a-target.md), ours: the trigger for a heavy visual change, settled with the user.
 
 ## `skills/shape-spec/references/domain.md`
 
@@ -277,6 +287,7 @@ When a skill changes, update its section here, in the same PR.
 
 - Source: Matt Pocock `grilling` and `grill-with-docs`.
 - 2026-11-24, [ADR 0019](adr/0019-the-spec-sets-the-bar-and-a-task-builds-the-proof-it-lacks.md): the verification branch. A journey per story follows Ray Amjad's account of Anthropic's practice, where the spec lists its flows and each is verified separately. Promises, what cannot be verified, and collecting access before the build are ours.
+- 2026-11-25, [ADR 0020](adr/0020-a-heavy-visual-change-is-specified-by-a-target.md), ours: a heavy visual change adds two decisions, the design mode and the pick, whose steps are prototype mode's; the visual targets drafted for a yes.
 
 ## `skills/shape-spec/references/map.md`
 
@@ -287,6 +298,7 @@ When a skill changes, update its section here, in the same PR.
 
 - Source: Matt Pocock `to-spec`; the link between user stories and cases is ours.
 - 2026-11-24, [ADR 0019](adr/0019-the-spec-sets-the-bar-and-a-task-builds-the-proof-it-lacks.md), ours: a journey per story, the Promises and Not verifiable sections, numbered stories and promises, and the journeys' surfaces as seams.
+- 2026-11-25, [ADR 0020](adr/0020-a-heavy-visual-change-is-specified-by-a-target.md), ours: the Visual targets section, numbered `V1`, still or motion, with its design mode, measured checks, and bans. The motion target's effect list follows Cook's one line per effect (`references/target-and-bar.md`).
 
 ## `skills/ship/references/clean.md`
 
@@ -300,12 +312,14 @@ When a skill changes, update its section here, in the same PR.
 - 2026-11-22: pstack `figure-it-out` puts the verification harness before implementation; `poteto-mode/playbooks/eval.md` checks activity rather than self-report; `poteto-mode/scripts/check-plan.mjs` mechanically checks plan structure. Our adaptation checks a local evidence index for certainty levels, nonempty artifact files, step results and traces, and stale verdicts. It cannot judge content or completeness against the original task. Tests live in `tools/test_check_evidence.py`. This is a local task check, not a framework CI gate in target repos (ADR 0001).
 - 2026-11-23: ours, [ADR 0017](adr/0017-a-formal-check-guards-every-task-that-touches-its-code.md): build's Done when requires each altered formal check to describe the head.
 - 2026-11-24, [ADR 0019](adr/0019-the-spec-sets-the-bar-and-a-task-builds-the-proof-it-lacks.md), ours: the frame builds the proof the task lacks first, and the evidence record lists the spec's ids in `spec_ids`; `check_evidence.py` fails when one is not a case.
+- 2026-11-25, [ADR 0020](adr/0020-a-heavy-visual-change-is-specified-by-a-target.md), ours: `check_evidence.py` accepts visual target ids, `V1`, and fails when one has no case. The glossary gains heavy visual change, visual target, effect list, design mode, target loop, and critic.
 
 ## `skills/ship/references/design.md`
 
 - 2026-11-19, completed from pstack `principle-model-the-domain`: the small module boundary for invariants, structures chosen by access pattern, lifecycle risk, and the phase-named modules sign. The rule that the data shape takes its names from `GLOSSARY.md` is ours: it ties Matt's vocabulary to Lauren's code-as-truth.
 - Source: pstack `principle-model-the-domain`, `architect` and its `design-red-flags.md` (Lauren Tan). Adapted: the arena runs as [parallel.md](../skills/constitution/references/parallel.md) describes, with the harness's model families instead of pstack's model config.
 - 2026-11-20, architecture method brought closer to pstack (Lauren Tan, `knowledge/sources/repos/cursor-pstack/`): the method gains grounding in the history of the current shape (pstack `architect` Phase A, which runs `why`), the rules of a sketch (`sketch.md`), the design note (`design-note.md`), the design shown to the user for a one-way door or on request (pstack `architect` Phase C, opt-in there), building against the sketch, and the six tells and the procedure for scrapping it (pstack `architect` Phases D and E). The table of how much design a change needs adapts pstack's guide page "Design before you write code", and designs every feature, as pstack's feature playbook runs `architect` on every feature. Ours: the builder writes both sketches itself instead of an arena of models, and a task scraps once, then `needs-human`.
+- 2026-11-25, [ADR 0020](adr/0020-a-heavy-visual-change-is-specified-by-a-target.md), ours: grounding a change to what a user sees reads the design system, as `ui.md` says.
 
 ## `skills/ship/references/design-note.md`
 
@@ -315,6 +329,10 @@ When a skill changes, update its section here, in the same PR.
 
 - Source: pstack `architect/references/runner-prompt.md` (Lauren Tan). Adapted: the builder follows it for both of its sketches, each rule names its principle id, and rule 12 comes from `principle-laziness-protocol`.
 
+## `skills/ship/references/visual-loop.md` (2026-11-25)
+
+- [ADR 0020](adr/0020-a-heavy-visual-change-is-specified-by-a-target.md). The loop is Leon Lin's Cook (`SKILL.md`, `references/loop-and-critics.md`, `references/target-and-bar.md`): one capture per screen state at a fixed width, contact sheets for motion, side-by-side images, at least two fresh critics with only the images and the rubric, the median, one more critic on disagreement, user feedback first, the user's estimate as calibration, a pass that drops a score fixed or reverted. Ours: a third critic when two differ by more than 2 points (Cook uses 1.0); critics run as a race; an unscored pass rather than a self-scored one; a budget of passes per kind of target under rule 7, instead of a time floor, ending `needs-human` only when a measured check still fails; keep or revert past the critics' spread, after `hillclimb`; the decision log outside the repo instead of a `cook/` folder; and scores that steer the build but never the verdict (ADR 0004).
+
 ## `skills/ship/references/frame.md`
 
 - 2026-11-20: the frame is shown and the build goes on, as pstack `poteto-mode` restates the goal without waiting (ADR 0014).
@@ -323,6 +341,7 @@ When a skill changes, update its section here, in the same PR.
 - 2026-11-20, second coherence audit: a symptom that will not reproduce goes through `investigate`'s diagnosis and the task goes on or stops, as pstack's bug-fix playbook does ("synthesize the trigger, tighten conditions, or instrument until it fires"); several open decisions stop the task and propose `/shape-spec`, since they are the user's (pstack `poteto-mode`: "Reserve the question for a genuine product or preference call").
 - 2026-11-22: try verification setup before building, adapted from `figure-it-out`; see First-use corrections below.
 - 2026-11-24, [ADR 0019](adr/0019-the-spec-sets-the-bar-and-a-task-builds-the-proof-it-lacks.md), ours: the frame builds or repairs the proof the task lacks first, and lists each case with its target.
+- 2026-11-25, [ADR 0020](adr/0020-a-heavy-visual-change-is-specified-by-a-target.md), ours: `feature` covers a screen to build or redesign, and a heavy visual change with no visual target is proposed `/shape-spec`; `choose-skill` routes a new screen to `/shape-spec` the same way.
 
 ## `skills/ship/references/playbooks/bespoke.md`
 
@@ -339,6 +358,7 @@ When a skill changes, update its section here, in the same PR.
 
 - Source: Matt Pocock `tdd`, pstack `principle-sequence-verifiable-units`.
 - 2026-11-20: duty 2 from pstack `principle-redesign-from-first-principles` and `principle-foundational-thinking`.
+- 2026-11-25, [ADR 0020](adr/0020-a-heavy-visual-change-is-specified-by-a-target.md): duty 8. Stills before motion is Eric Tech's lesson 6; running the target loop on each kind is ours, and the loop is described under `visual-loop.md`.
 
 ## `skills/ship/references/playbooks/hillclimb.md` (2026-11-20)
 
@@ -388,6 +408,7 @@ When a skill changes, update its section here, in the same PR.
 - 2026-11-22: save independent live and breakage results before comparing the PR's evidence, paired with the information exposure change in `verify-pr` above.
 - 2026-11-23: ours, [ADR 0017](adr/0017-a-formal-check-guards-every-task-that-touches-its-code.md): the `breakage` lane judges a formal check the change altered, by breaking the guarded code once.
 - 2026-11-24, [ADR 0019](adr/0019-the-spec-sets-the-bar-and-a-task-builds-the-proof-it-lacks.md), ours: the brief carries the spec issue, `live` starts from its journeys and promises, `spec` reads its Out of scope, and `breakage` compares a check made or repaired in the task with its base version.
+- 2026-11-25, [ADR 0020](adr/0020-a-heavy-visual-change-is-specified-by-a-target.md): `live` captures or records each visual target itself before reading the builder's images, after Anthropic "harness design", whose evaluator drives the live page before scoring. Ours, by ADR 0004: only a measured check, a missing or mistimed effect, or a ban a command detects can be a finding; `spec` counts a component the design mode excludes as unasked; `standards` reads `ui.md` for notes only.
 
 ## First-use corrections (2026-11-22)
 

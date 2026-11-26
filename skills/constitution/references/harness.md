@@ -12,6 +12,8 @@ Skills name a capability, never a tool. This table maps each capability to the t
 | find a project skill | `.claude/skills/` (Claude Code) or `.agents/skills/` (Codex), by the agent it runs | `.claude/skills/` only: link each skill from `.agents/skills/` | `.agents/skills/`, from the working directory up to the repo root |
 | read and write the project folder (`~/.agents/projects/`) | as the agent it runs | works; a write outside the working directory may ask the user's permission first | to confirm: the default sandbox may refuse writes outside the workspace; then ask the user to add the folder as a writable root |
 | read the agent file | as the agent it runs | `AGENTS.md` when no `CLAUDE.md` exists; otherwise `CLAUDE.md`, which imports it with `@AGENTS.md` | `AGENTS.md` |
+| search a library of real UI references (product screens, sites with their colors and fonts) | to confirm: an MCP server the user installed, never one the agent installs; else web search, or a real site driven in a browser | to confirm, same fallback | to confirm, same fallback |
+| record a page in a browser, and cut a video into frames | to confirm: the preview recording tools; `ffmpeg` when installed. Without it, a motion reference's effect list comes from the user's words, and a motion target's case goes under Not verified | to confirm, same fallback | to confirm, same fallback |
 | ask the user a question | `AskUserQuestion` | `AskUserQuestion` | `request_user_input` |
 | read a session transcript | to confirm | `~/.claude/projects/<project>/<session>.jsonl` | to confirm |
 | attach a video or image to a PR so it plays in the page | to confirm (`gh` has no upload command; CI artifact or branch link as fallback) | to confirm | to confirm |
@@ -27,10 +29,10 @@ The user runs on one subscription, so each role takes the model of that subscrip
 | builder, coordinator | the session's model | the session's model |
 | the verifier's verdict, the adversarial lane | a family other than the builder's when the harness offers one (ADR 0003 of the framework), else the session's model | the same |
 | a design through a one-way door, a scrapped sketch | the strongest model, at its highest reasoning effort | the strongest model, highest reasoning effort |
-| the verifier's lanes, swarm workers, the comment hunter | a mid-size model, such as Sonnet | the session's model, medium reasoning effort |
+| the verifier's lanes, swarm workers, the comment hunter, the target loop's critics | a mid-size model, such as Sonnet | the session's model, medium reasoning effort |
 | bulk reading: a transcript, logs, a sweep of the codebase | the smallest model, such as Haiku | the session's model, low reasoning effort |
 
-Raise the effort one step for the subtlest work, and lower it for routine work. When the harness offers another family, it serves the roles that judge or search: the verifier's verdict and lanes, the swarms, a widened impact analysis, and the reader of a decision log. Every other role keeps the session's family.
+Raise the effort one step for the subtlest work, and lower it for routine work. When the harness offers another family, it serves the roles that judge or search: the verifier's verdict and lanes, the swarms, the target loop's critics, a widened impact analysis, and the reader of a decision log. Every other role keeps the session's family.
 
 ## Rules
 

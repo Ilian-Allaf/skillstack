@@ -9,5 +9,6 @@ Proof duties for a feature. Each duty is met, or skipped with its reason written
 5. **Every entry point, every consumer.** The feature works from every entry point the feature map lists or will list; new entry points are added to the map in this PR. When it improves a shared primitive, every consumer of that primitive gets the improvement and is checked.
 6. **Prove on the app.** Drive the new journey on the head with `drive-<app>`, and show the base does not have it.
 7. **Refactor after green, not during.** Clean-up goes in `clean`, with tests green before and after.
+8. **Close the gap to each visual target**, when the spec holds some. Ground the area's design system and build in the spec's design mode, with the rules of [ui.md](../../../constitution/references/ui.md). Build the stills, and run the [target loop](../visual-loop.md) on the still targets; then build motion as its own slice, and run the loop on the motion targets.
 
 The verifier reverts the implementation and checks that each new test fails, drives every entry point the feature map lists, and checks that a feature changing an existing design names the bolt-on it rejected.

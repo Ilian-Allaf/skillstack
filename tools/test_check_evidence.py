@@ -78,10 +78,20 @@ class EvidenceTest(unittest.TestCase):
         self.assertEqual(1, len(errors))
         self.assertIn("spec id P1", errors[0])
 
-    def test_spec_ids_each_matched_by_a_case(self):
-        self.record["spec_ids"] = ["S1", "S1b", "P1"]
+    def test_spec_visual_target_without_case_fails(self):
+        self.record["spec_ids"] = ["S1", "V1", "V2"]
         self.record["cases"] = [
-            {"id": case_id, "level": 4, "evidence": ["run.txt"]} for case_id in ("S1", "S1b", "P1", "2")
+            {"id": "S1", "level": 5, "evidence": ["run.txt"]},
+            {"id": "V1", "level": 5, "evidence": ["run.txt"]},
+        ]
+        errors = self.errors()
+        self.assertEqual(1, len(errors))
+        self.assertIn("spec id V2", errors[0])
+
+    def test_spec_ids_each_matched_by_a_case(self):
+        self.record["spec_ids"] = ["S1", "S1b", "P1", "V1"]
+        self.record["cases"] = [
+            {"id": case_id, "level": 4, "evidence": ["run.txt"]} for case_id in ("S1", "S1b", "P1", "V1", "2")
         ]
         self.assertEqual([], self.errors())
 
@@ -96,7 +106,7 @@ class EvidenceTest(unittest.TestCase):
                 self.record["cases"] = [{"id": "S1", "level": 4, "evidence": ["run.txt"]}]
                 errors = self.errors()
                 self.assertEqual(1, len(errors))
-                self.assertIn("spec_ids: Fix: list the spec's story and promise ids", errors[0])
+                self.assertIn("spec_ids: Fix: list the spec's story, promise, and visual target ids", errors[0])
 
     def test_malformed_spec_ids(self):
         # Each id also names a case, so only the format rule can reject it.

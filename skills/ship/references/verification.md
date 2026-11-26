@@ -12,14 +12,15 @@ A required proof that cannot start is a blocker to full verification. Prepare th
 
 Reconstruct the step list from the launched skill and applicable references, then compare it with recorded activity, commands, outputs, and subagent results. Include actions the summary omitted, such as a comment hunter already run. Reading a guide proves the read, not its application. Inspect the resulting diff or artifact too. See [decision-log.md](../../constitution/references/decision-log.md) for long runs.
 
-Write a JSON evidence record in the work directory, out of git. It is an index of existing artifacts, not a second narrative. Export the relevant activity and command outputs to files; paths below resolve from the record's directory. Copy every case id from the agreed case list and every step name from the launched skill. For a spec task, list the spec's story and promise ids in `spec_ids`; each must also be a case id, so a journey or a promise cannot drop out of the table. Include required captures in `required_artifacts`, even if missing. Cross-check both lists against their originals; the script cannot discover an omitted case or step.
+Write a JSON evidence record in the work directory, out of git. It is an index of existing artifacts, not a second narrative. Export the relevant activity and command outputs to files; paths below resolve from the record's directory. Copy every case id from the agreed case list and every step name from the launched skill. For a spec task, list the spec's story, promise, and visual target ids in `spec_ids`; each must also be a case id, so a journey, a promise, or a target cannot drop out of the table. Include required captures in `required_artifacts`, even if missing. Cross-check both lists against their originals; the script cannot discover an omitted case or step.
 
 ```json
 {
-  "spec_ids": ["S1", "P1"],
+  "spec_ids": ["S1", "P1", "V1"],
   "cases": [
     {"id": "S1", "level": 5, "evidence": ["runs/s1-demo.mp4"], "not_verified": ""},
     {"id": "P1", "level": 4, "evidence": ["runs/p1-prove.txt"], "not_verified": ""},
+    {"id": "V1", "level": 5, "evidence": ["runs/v1-side-by-side.png"], "not_verified": ""},
     {"id": "1", "level": 1, "evidence": [], "not_verified": "Live access unavailable; grant the verifier test access"}
   ],
   "steps": [

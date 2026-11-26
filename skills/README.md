@@ -64,7 +64,7 @@ The dotted arrows are recommendations, not automatic calls: you launch the sugge
 | What you arrive with | Start here | What you receive |
 |---|---|---|
 | An unfamiliar repo | [setup-repo](setup-repo/SKILL.md) | A readiness report and the private or shared setup parts you chose |
-| An idea with unresolved decisions | [shape-spec](shape-spec/SKILL.md) | A spec issue, or a map of decisions for work too large to settle in one session |
+| An idea with unresolved decisions | [shape-spec](shape-spec/SKILL.md) | A spec issue, or a map of decisions for work too large to settle in one session. A new screen, a redesign, or a page whose look matters also gets a visual target you picked from prototypes |
 | A question, unexplained symptom, or technical choice | [investigate](investigate/SKILL.md) | An answer with evidence and limits; a proposed task if a change is due |
 | A task or a spec ready to implement | [ship](ship/SKILL.md) | A PR labeled `ready`, or `needs-human` with the reason and recommendation |
 | An existing PR needing an independent verdict | [verify-pr](verify-pr/SKILL.md) | A verdict comment for behavior and code, with findings and notes |
@@ -107,7 +107,7 @@ flowchart TB
 
 | Step | What happens and why | Result you can inspect |
 |---|---|---|
-| **1. Frame** | Restate the request, list the cases and interfaces under test with the target each aims at, choose the risk class and playbook. A spec's journeys and promises become cases by their ids. Try startup, access, and evidence capture before implementation. What the proof lacks is built first: a driver for a touched surface, a formal check for a promise you stated in a hard zone, the repair of a check stale on the base. For high risk or a hard zone, a verifier checks the proposed contract before code exists. | The frame shown to you, the red base run, and any setup limits. [Frame](ship/references/frame.md), [verification setup](ship/references/verification.md) |
+| **1. Frame** | Restate the request, list the cases and interfaces under test with the target each aims at, choose the risk class and playbook. A spec's journeys, promises, and visual targets become cases by their ids. Try startup, access, and evidence capture before implementation. What the proof lacks is built first: a driver for a touched surface, a formal check for a promise you stated in a hard zone, the repair of a check stale on the base. For high risk or a hard zone, a verifier checks the proposed contract before code exists. | The frame shown to you, the red base run, and any setup limits. [Frame](ship/references/frame.md), [verification setup](ship/references/verification.md) |
 | **2. Design and build** | Name the data shape before logic. Features and changes to types, signatures, or module boundaries need grounding, two structurally different sketches, and a design note. Build against the chosen shape using the playbook. | The chosen and rejected designs, recorded deviations, and `done_when` green. [Design](ship/references/design.md) |
 | **3. Clean** | Remove dead code, debug output, and workarounds. A fresh comment hunter proposes deletions and flags symbols whose design should explain itself; the builder validates the patch and fixes the root causes. | A cleaned diff, resolved flags or linked issues, and green lint, types, and tests. [Clean](ship/references/clean.md) |
 | **4. Prove every case** | Run the case list through the relevant user paths. Keep scripts and captures, update changed feature maps, and identify what could not be verified. Visual journeys need a scripted demo; stateful journeys need a state chart. | A coverage table with evidence per case, plus explicit gaps. [Coverage](constitution/references/coverage.md) |
@@ -118,7 +118,7 @@ flowchart TB
 
 Launching is permission to continue through reversible work. Design approval is required for a one-way door, such as a public API, schema, or storage format, or when you asked to see it. Product or preference decisions that no run can settle, and evidence ruling out the request, also stop the task. These rules come from [the constitution](constitution/README.md).
 
-The limits are **3 build attempts**, **one scrapped sketch**, **2 FAIL verdicts per PR across build and babysitting**, and **5 babysitting rounds**. A round groups fixes into one push. Budgets trigger a replan and an explained stop, never a weaker `done_when`. A stop before the normal PR-opening step still opens a PR with what was proved and what remains. Your answer restarts the stopped loop with a fresh budget; [resume-task](resume-task/SKILL.md) resumes at the first unmet completion criterion, including directly in `babysit-pr` when only PR readiness remains.
+The limits are **3 build attempts**, **one scrapped sketch**, **10 target-loop passes** for the stills and 10 for motion, **2 FAIL verdicts per PR across build and babysitting**, and **5 babysitting rounds**. A round groups fixes into one push. Budgets trigger a replan and an explained stop, never a weaker `done_when`. A stop before the normal PR-opening step still opens a PR with what was proved and what remains. Your answer restarts the stopped loop with a fresh budget; [resume-task](resume-task/SKILL.md) resumes at the first unmet completion criterion, including directly in `babysit-pr` when only PR readiness remains.
 
 Every PR a skill opens follows the verdict and babysitting path, including setup, docs, and guardrail PRs. A `bespoke` stack gets a verdict per unit, then one babysitting pass over the stack. The agent stops before merging.
 
@@ -139,7 +139,7 @@ For example, suppose a user reports that double-clicking Save creates two notes.
 | Playbook | Choose it when | What makes its method different | Required evidence |
 |---|---|---|---|
 | [bug-fix](ship/references/playbooks/bug-fix.md) | Existing behavior is wrong | Reproduce the reported symptom before framing; eliminate candidate causes; commit the repro before the fix; search for siblings. | The same repro red on base and green on head; the real app journey when user-visible |
-| [feature](ship/references/playbooks/feature.md) | Behavior is missing | Build one vertical slice at a time; integrate with the existing design; cover every entry point and every consumer of an improved primitive. | New tests fail when the implementation is reverted; the new journey works on the app |
+| [feature](ship/references/playbooks/feature.md) | Behavior is missing, or a screen is built or redesigned | Build one vertical slice at a time; integrate with the existing design; cover every entry point and every consumer of an improved primitive. With visual targets: build the stills and close the gap in passes scored by fresh critics, then motion the same way. | New tests fail when the implementation is reverted; the new journey works on the app |
 | [refactoring](ship/references/playbooks/refactoring.md) | Structure changes while behavior stays the same | Capture a behavior pin before moving code; subtract first; migrate callers and remove the old internal API. | A structural target red then green, a behavior pin green on both, and reduced reader load |
 | [perf](ship/references/playbooks/perf.md) | A specific path is too slow or costly | Validate the baseline, profile the limiter, try the cheapest effective fix, and compare under identical conditions. | Base/head numbers with units, repeated runs, median and range, plus correctness checks |
 | [hillclimb](ship/references/playbooks/hillclimb.md) | One metric needs sustained improvement toward a target | Freeze a validated measurement harness; log every hypothesis; measure one attempt at a time; keep or revert it. | The target and minimum attempt count, a regression gate, and one commit per kept improvement |
@@ -154,7 +154,7 @@ There are three separate checks on the result: the **builder's evidence**, the *
 
 ### Evidence: show the result through the right surface
 
-The builder maintains a case list before coding and a coverage table in the PR. Cases include the spec's journeys and promises by their ids, the request, entry points and callers, relevant edge cases, and formal properties covering touched files. Each aims at a target: a certainty level for a journey, a breadth for a property, with a reason when it falls short. `check_evidence.py` fails when a spec id has no case. Each row has replayable evidence or an explicit reason under **Not verified**. See [coverage](constitution/references/coverage.md).
+The builder maintains a case list before coding and a coverage table in the PR. Cases include the spec's journeys, promises, and visual targets by their ids, the request, entry points and callers, relevant edge cases, and formal properties covering touched files. Each aims at a target: a certainty level for a journey, a breadth for a property, with a reason when it falls short. `check_evidence.py` fails when a spec id has no case. Each row has replayable evidence or an explicit reason under **Not verified**. See [coverage](constitution/references/coverage.md).
 
 | Certainty level | What was actually established |
 |---|---|
@@ -188,7 +188,7 @@ The diagram shows the available lanes; the risk class selects which run. Each la
 | Lane | The question it answers | What the verifier does |
 |---|---|---|
 | `replay` | Does the PR's claimed proof hold? | Rerun its commands and demos; compare the actual results and coverage with the claims |
-| `live` | Does the app satisfy the contract? | Drive the spec's journeys and promises, then its own journeys, on base and head; try entry points and edge cases, then check claimed coverage |
+| `live` | Does the app satisfy the contract? | Drive the spec's journeys and promises, then its own journeys, on base and head; capture or record each visual target side by side with the head; try entry points and edge cases, then check claimed coverage |
 | `breakage` | What breaks outside this diff? | Run `analyze-impact` independently, then compare safety facts and risks; judge each formal check made or repaired in the task against its base version |
 | `adversarial` | Can deliberate attempts break it? | Run three agents on a factual brief, rerun their reproductions, merge duplicate root causes |
 | `spec` | Is this all of the request, with no extra behavior? | Compare the diff with the task and its spec, Out of scope included, revert the fix to test the tests, and check the playbook's duties |
