@@ -51,8 +51,12 @@ flowchart TB
   shape["shape-spec<br/>Settle the idea"]
   investigate["investigate<br/>Find the facts"]
   ship["ship<br/>Deliver the change"]
+  setupdriver["create-app-driver<br/>The app driver"]
+  setupaudit["add-guardrail<br/>Audit what the code enforces"]
 
   you --> choose
+  setup -->|if you chose it| setupdriver
+  setup -->|if you chose it| setupaudit
   choose -.-> setup
   choose -.-> shape
   choose -.-> investigate
@@ -62,7 +66,7 @@ flowchart TB
   investigate -.->|a proposed task| ship
 ```
 
-The dotted arrows are recommendations, not automatic calls: you launch the suggested skill. You can also launch any skill directly. Once setup, a spec, or an investigation has prepared the task, you launch `ship` to implement it. During implementation, `ship` can itself call `investigate` to diagnose a symptom or prototype a choice. The detailed build and retry path is in the next section.
+The dotted arrows are recommendations, not automatic calls: you launch the suggested skill. The solid arrows are skills `setup-repo` runs itself, for the parts you chose. You can also launch any skill directly. Once setup, a spec, or an investigation has prepared the task, you launch `ship` to implement it. During implementation, `ship` can itself call `investigate` to diagnose a symptom or prototype a choice. The detailed build and retry path is in the next section.
 
 | What you arrive with | Start here | What you receive |
 |---|---|---|
