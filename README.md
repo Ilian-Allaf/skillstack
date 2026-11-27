@@ -1,10 +1,10 @@
 <img src="assets/icon.svg" width="64" height="64" alt="">
 
-# Software AI skills framework
+# Skillstack
 
 Agent skills that turn a task into a pull request you can merge without worry: proven on the real app, checked for what it breaks elsewhere, and judged by a verifier that did not write it. You launch every task, and you merge every PR.
 
-> **Status: v0.** Every skill is written and checked by the linters, and none has run on a real repo yet. Proving them on a testbed comes first ([#4](https://github.com/Ilian-Allaf/software-ai-skills-framework/issues/4)).
+> **Status: v0.** Every skill is written and checked by the linters, and none has run on a real repo yet. Proving them on a testbed comes first ([#4](https://github.com/Ilian-Allaf/skillstack/issues/4)).
 
 ## Why these skills exist
 
@@ -25,16 +25,16 @@ Pick one route per harness: installing both gives you every skill twice.
 **As a plugin**, which updates itself. In Claude Code 2.1.275 or later:
 
 ```text
-/plugin install software-ai-skills-framework --marketplace Ilian-Allaf/software-ai-skills-framework
+/plugin install skillstack --marketplace Ilian-Allaf/skillstack
 ```
 
-The skills then answer to `/software-ai-skills-framework:<skill>`. Codex and Copilot read the same marketplace file, `.claude-plugin/marketplace.json`; their install has not been tried yet. The repo is private, so the harness needs your GitHub access.
+The skills then answer to `/skillstack:<skill>`. Codex and Copilot read the same marketplace file, `.claude-plugin/marketplace.json`; their install has not been tried yet. The repo is private, so the harness needs your GitHub access.
 
 **From a clone**, to edit the skills as you use them:
 
 ```bash
-git clone https://github.com/Ilian-Allaf/software-ai-skills-framework.git
-cd software-ai-skills-framework
+git clone https://github.com/Ilian-Allaf/skillstack.git
+cd skillstack
 python -I tools/link_skills.py
 ```
 

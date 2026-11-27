@@ -4,6 +4,7 @@ One entry per merged PR that changes what a skill does, or how the framework is 
 
 ## Unreleased (v0)
 
+- The repo and the plugin are renamed `skillstack`, replacing `software-ai-skills-framework`: install with `/plugin install skillstack --marketplace Ilian-Allaf/skillstack`, and the skills answer to `/skillstack:<skill>`. GitHub redirects the old URL. The project folder becomes `~/.agents/projects/ilian-allaf__skillstack/`, since its name comes from `origin`.
 - `docs/history/` is removed ([ADR 0022](docs/adr/0022-the-first-design-notes-leave-the-repo.md)): the first design notes bound nothing, and git keeps them. Every file of the repo is in English, except `resources/`.
 - `evals/` is removed: it held only the format of verdict cases, and no case. `verify-pr`'s calibration no longer moves a fixed example into it; the example stays in `calibration.md` until its lesson becomes a rule. `knowledge/` is renamed `resources/`; `tools/check_refs.py` lists the rename under `MOVED`, so a living doc that names `knowledge/` fails, and a dated doc keeps its old path while the new one exists.
 - `skills/README.md` is removed; `skills/GRAPH.md` replaces it ([ADR 0021](docs/adr/0021-the-skill-graph-is-the-executed-map.md), superseding ADR 0013). `tools/check_refs.py` checks the graph's skill table: R006 now fails on a skill with no row, and the new R012 fails when a row's Runs or Run by disagrees with the skills' `calls:` frontmatter. Links from a file at the top of `skills/` are now checked (R001), and a removed file is allowed only in the dated docs.
