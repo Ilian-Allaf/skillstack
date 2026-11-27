@@ -25,8 +25,7 @@ A reference is any place where one text names another thing:
          so the graph draws no edge a skill does not declare, and misses none.
 
 Scanned: skills/, the root docs (README, AGENTS, SCOPE, CHANGELOG, CODING_STANDARDS), and docs/.
-Not scanned: resources/ (third-party sources) and docs/history/ (frozen design notes),
-which keep the names of their time on purpose.
+Not scanned: resources/ (third-party sources), which keeps the names of its time on purpose.
 
 Exit code: 0 when every reference resolves, 1 otherwise, 2 on bad usage. Standard library only.
 """

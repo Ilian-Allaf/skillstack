@@ -106,7 +106,6 @@ Every skill is launched by you; none is picked by the model on its own. Each one
 | [`tools/`](tools/) | The framework's checks. `python -I tools/check.py` runs them all, tests included; CI runs the same. |
 | [`docs/adr/`](docs/adr/) | Decisions, dated, superseded but never rewritten. |
 | [`docs/sources.md`](docs/sources.md) | Where each skill's ideas come from. Skills name no source themselves. |
-| [`docs/history/`](docs/history/) | The first design notes, in French, frozen. |
 | [`resources/`](resources/README.md) | The third-party skill sets, talks, and articles the framework was designed from. |
 
 What changes a skill, and what is out of scope: [`SCOPE.md`](SCOPE.md). What changed: [`CHANGELOG.md`](CHANGELOG.md).
