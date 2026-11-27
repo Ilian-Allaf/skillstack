@@ -1,6 +1,6 @@
 # Design before code
 
-The codebase is the largest input of the next agent, and that agent copies the nearest example. A shape chosen at write time is cheap; recovering it later reads as a refactor and gets deferred. So the builder picks the shape before the code, and reads the full form of each [principle](../../constitution/references/principles.md) its sketch relies on: those the rules of [sketch.md](sketch.md) name, one file each.
+The builder picks the shape before the code, with the method of [architecture.md](../../constitution/references/architecture.md), and within the technical decisions the spec holds.
 
 ## How much design the change needs
 
@@ -10,39 +10,27 @@ The codebase is the largest input of the next agent, and that agent copies the n
 | a feature, or any change that crosses a function boundary: a new or changed type, signature, or module | 1 to 5, then 7 and 8 |
 | the same, through a one-way door (a public API, a schema, a storage or wire format), or when the user asked to see the design | 1 to 8 |
 
-## 1. Name the data shape
+## The spec's technical decisions
 
-Before any logic, name the structure that encodes the domain (`model-the-domain`), and trace every way the data is read and written through it (`design-the-data-first`).
+A spec issue can hold Technical decisions, numbered `D1`, `D2`: the user made them, through `shape-architecture` or in the grill. Build within them as within an accepted ADR. A spec whose section says the shape is left to the builder holds none.
 
-Name the shape in the domain's words. Its types, states, and events take their names from the repo glossary, so the vocabulary settled with the user is the one the code carries. A domain concept the glossary lacks is added to it in the same PR, as `shape-spec`'s domain.md describes.
+- **Fresh.** At step 2, check that each decision still holds. The Grounded on line names a commit and the modules the decisions touch. When one of them changed since that commit, or the line is missing, as for a decision stated in the grill, ground those modules again. Sketches saved in the project folder, when this machine has them, are input to the grounding, never a draft: your sketches start from the code.
+- **Within.** Both sketches keep every decision and differ only on what the section leaves to the builder. When it leaves nothing open that crosses a boundary, write the one sketch the decisions give, and skip the second.
+- **A decision the code contradicts** is evidence against what the user asked for (rule 11 of the constitution): stop, with the decision's id, the file or run that contradicts it, and the replacement you recommend. Found before any body is filled, the stop costs only the frame. Found during the build, write it under Deviations with the decision's id, and open the PR as `needs-human`, as `ship` does when its build budget runs out.
+- **The user's answer replaces the decision.** Write it into the spec's Technical decisions with the tracker's Edit an issue, under a new id that names the one it replaces and quotes the answer or links the comment that holds it, as `shape-architecture`'s [decisions.md](../../shape-architecture/references/decisions.md) shapes it. When the replaced decision links an ADR, the PR carries the ADR that supersedes it. Then build within the new decision, and name it on the Deviations line.
+- **A decision you would rather change**, with no evidence against it, stays: make your case under Questions before the merge.
 
-## 2. Ground
+## 1 to 4. Name the data shape, ground, sketch twice, screen
 
-Read every module the new code touches, and write a short note on how each works today: what it owns, who calls it, which invariants it holds. Naming a file is not grounding. For a change to what a user sees, ground the design system as [ui.md](../../constitution/references/ui.md#the-design-system-comes-from-the-code) says.
-
-When the design moves ownership or layering, read why the current shape exists: the ADRs that cover it, and the commits and PRs that introduced it (`git log --follow`, `git blame` on the load-bearing lines). Its reasons become constraints, not guesses.
-
-Skip this step only for new code with nothing around it to integrate.
-
-## 3. Sketch twice
-
-Write two sketches, each as [sketch.md](sketch.md) describes (`design-it-twice`). The second differs from the first on a whole-shape axis: where the data lives and who owns it, where the boundary sits, or which structure encodes the domain. Two variants of one shape do not count. Write the second before you judge the first, so the first does not anchor it.
-
-When a run can settle the choice between them, such as a timing, a layout, or whether an approach works at all, prototype both in the prototype mode of [investigate](../../investigate/SKILL.md) and let the observation decide.
-
-## 4. Screen
-
-Check both sketches against the [red flags](#red-flags) below and the Test of each principle they rely on. A red flag is a reason to revise or reject the shape.
+Follow steps 1 to 4 of [architecture.md](../../constitution/references/architecture.md).
 
 ## 5. Pick and write the note
 
-Prefer the shape that hides more behind a smaller public surface, and where a change that looks right from one file is right for the whole repo. Take from the other sketch what is worth keeping, and fold it in by hand so the result keeps one design.
-
-Write the design note as [design-note.md](design-note.md) shapes it; it goes in the PR's Design section. The chosen shape and the rejected one also get one line each under Decisions. The sketch can land as its own commit, before the bodies are filled.
+Pick the shape the screen favors. Take from the other sketch what is worth keeping, and fold it in by hand so the result keeps one design. Write the design note as [design-note.md](design-note.md) shapes it; it goes in the PR's Design section. The chosen shape and the rejected one also get one line each under Decisions. The sketch can land as its own commit, before the bodies are filled.
 
 ## 6. Show the design
 
-For a one-way door, or when the user asked to see the design, stop before any body is filled. Show the user the note's Usage, Shape, Alternatives rejected, and Questions before the merge, and ask for a go on the design through the harness's question tool. Their pushback is grounding: go back to step 2 with it.
+For a one-way door, or when the user asked to see the design, stop before any body is filled. A one-way door a technical decision of the spec already settled needs no stop: the user made that call. Show the user the note's Usage, Shape, Alternatives rejected, and Questions before the merge, and ask for a go on the design through the harness's question tool. Their pushback is grounding: go back to step 2 with it.
 
 ## 7. Build against the sketch
 
@@ -61,19 +49,4 @@ One deviation is information; a pattern means the shape is wrong. The tells:
 
 Complexity in the data is not complexity in the design: a few edge cases do not condemn a shape.
 
-To scrap, trace what was built, then redesign as if the new constraints had been there from day one (`redesign-from-first-principles`). Cut before you grow: the new sketch is smaller than the old one before it gets bigger (`subtract-before-you-add`). Run step 3 again, with the tells in the grounding notes. A task scraps once. A second scrap means the frame was wrong: stop with `needs-human`, as `ship` says for a stop before its step 6, and give the user what the sketches taught.
-
-## Red flags
-
-Assume the next contributor is an agent that sees only the files it opened, copies the nearest example, and takes the shortest path that compiles.
-
-| Red flag | Sign | Fix |
-|---|---|---|
-| shallow module | callers coordinate several methods for one operation; options expose internal stages | a simple interface over substantial behavior |
-| information leakage | one representation, policy, or wire type appears in several modules | parse external data into domain types behind the interface |
-| temporal decomposition | modules named after steps repeat one representation and its rules | group code by the knowledge it owns |
-| pass-through method | a method forwards the same arguments to another of the same shape | remove it, or give it real policy |
-| split ownership | several modules write the same state or keep copies | one owner per piece of state; others read or ask |
-| two ways to do one task | the design offers two paths to the same result | keep one; move callers and delete the other in this change |
-| importable internals | a caller can import a module's internals | make them unreachable, so an outside import fails the build |
-| hand-synced list | adding an item means editing several lists | keep one list and derive the rest, or fail the build when they differ |
+To scrap, trace what was built, then redesign as if the new constraints had been there from day one (`redesign-from-first-principles`). Cut before you grow: the new sketch is smaller than the old one before it gets bigger (`subtract-before-you-add`). Run step 3 again, with the tells in the grounding notes, and within the spec's technical decisions: a scrap whose tells point at one of them is a decision the code contradicts, as above. A task scraps once. A second scrap means the frame was wrong: stop with `needs-human`, as `ship` says for a stop before its step 6, and give the user what the sketches taught.

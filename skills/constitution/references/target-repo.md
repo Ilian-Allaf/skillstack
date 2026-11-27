@@ -16,10 +16,11 @@ The framework works on any repo without imposing a file on the people who share 
 |---|---|---|---|
 | `issue-tracker.md` | `docs/agents/issue-tracker.md` | how to create, read, label, link, block, and close an issue in this repo's tracker, one heading per operation | every skill that touches an issue |
 | `issues/` | `.scratch/issues/` | the issues of the markdown tracker, one file each, the default tracker's included | every skill that touches an issue, through the tracker file |
-| `glossary.md` and `adr/` | `GLOSSARY.md` and `docs/adr/` | domain terms and hard-to-reverse decisions, in the shape of `shape-spec`'s [domain.md](../../shape-spec/references/domain.md) | `shape-spec`, the builder, the verifier |
+| `glossary.md` and `adr/` | `GLOSSARY.md` and `docs/adr/` | domain terms and hard-to-reverse decisions, in the shape of `shape-spec`'s [domain.md](../../shape-spec/references/domain.md) | `shape-spec`, `shape-architecture`, the builder, the verifier |
 | `coding-standards.md` | `CODING_STANDARDS.md` | judgment calls only; a mechanical rule becomes a check instead | the verifier, in the `standards` lane, not the builder |
 | `agent-rules.md` | `docs/agent-rules.md` | the rule table of `add-guardrail`: each rule and what enforces it | `add-guardrail`, `learn-from-mistakes`, the verifier |
 | `drive-<app>/` and `prove-<area>/` | `.agents/skills/drive-<app>/` and `.agents/skills/prove-<area>/` | the driver and its feature map: how to launch, drive, and observe the app; the formal checks | the builder, the verifier |
+| `sketches/<spec>/` | never shared | the sketches of a spec's architecture, with the base commit they were grounded on and the modules they touch, saved by `shape-architecture` | `ship` |
 | `targets/<spec>/` | never shared | the captures and recordings of a spec's visual targets, saved by `shape-spec` | `ship`, the verifier |
 | `access/<app>.md` | never shared | the account, the access, and where the secret lives for a surface, written by `shape-spec` before the driver exists; never the secret itself | `create-app-driver` |
 

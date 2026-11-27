@@ -7,6 +7,7 @@ Framing costs a message; a misread task costs hours.
 - **Resume what exists.** When a branch or PR for this task already exists, read its state and resume at the first step of `ship` whose Done when fails.
 - **Reproduce a bug first.** Drive the symptom the user reported, as the first duty of the [bug-fix playbook](playbooks/bug-fix.md) says, before you write `done_when`.
 - **Read the accepted ADRs** whose Applies to covers the code you will touch. A task that goes against one says so in the message, with a superseding ADR for the user to decide: it is a one-way door.
+- **Read the spec's technical decisions**, when the spec holds them, as [design.md](design.md#the-specs-technical-decisions) says: they bind the design.
 - **Collect the cases** as [coverage.md](../../constitution/references/coverage.md) describes, and the risk class and hard zones as proof.md does.
 - **Check the merge guard.** Look for the hook that blocks merge commands, as [harness.md](../../constitution/references/harness.md) names it for this harness, in the user's harness settings and the repo's. When none is there, name it on the Verification setup line and in the reply, with `/setup-repo` as the remedy, and go on: rule 1 binds you either way.
 - **Try the verification setup** as [verification.md](verification.md) describes, before implementation. A failed startup is an environment limit, not the red behavior that proves `done_when`.
@@ -25,7 +26,7 @@ Verification setup: <startup runs for builder and verifier, capture command, the
 Out of scope: <what this PR will not do>
 Risk: <low | medium | high>, because <path or reason>. Hard zones: <list, or none>.
 Playbook: <one from the list below>. Seams under test: <public interfaces>.
-Design: <none | two sketches | two sketches, shown to you before code>, because <the row of design.md's table>.
+Design: <none | one sketch, from the technical decisions | two sketches | two sketches, shown to you before code>, because <the row of design.md's table>. Within: <the spec's technical decisions by id, and what they leave open, or none>.
 Going on now. Stop me, or say "show me the design", at any time.
 ```
 

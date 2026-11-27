@@ -1,6 +1,6 @@
 # Parallel subagents
 
-How to run several subagents on one job: a swarm, for many slices of one job or a race on one brief, such as driving every feature, trying every attack, or measuring every commit. It returns one consolidated report. One artifact with several valid shapes, such as a design, is not a swarm: the builder sketches it twice itself, as `ship/references/design.md` describes.
+How to run several subagents on one job: a swarm, for many slices of one job or a race on one brief, such as driving every feature, trying every attack, or measuring every commit. It returns one consolidated report. One artifact with several valid shapes, such as a design, is not a swarm: the builder sketches it twice itself, as `constitution/references/architecture.md` describes.
 
 ## Rules
 

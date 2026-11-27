@@ -33,6 +33,9 @@ A new file `<issues>/<NNNN>-<slug>.md`, numbered one above the highest number in
 ## Read an issue
 Read the file whose name starts with its number. Comments are under `## Comments`.
 
+## Edit an issue
+Change only your section of the body, between the header lines and `## Comments`.
+
 ## List open issues by label
 Search `<issues>` for files with `Status: open` whose `Labels:` line holds the label.
 

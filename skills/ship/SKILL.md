@@ -7,6 +7,7 @@ metadata:
   kind: entry
   role: builder
   calls: "investigate, analyze-impact, verify-pr, babysit-pr, create-app-driver, create-formal-verification, maintain-formal-verification, repo:drive-<app>"
+  reads: "shape-architecture"
   consumes: "a task from the user, or an issue"
   produces: "one PR in state ready, or needs-human"
   budget: "3 build attempts; 10 target-loop passes per kind of target; 2 FAIL verdicts"
@@ -23,7 +24,7 @@ A question goes to [investigate](../investigate/SKILL.md) instead, which opens n
 
 The light path: for a `low` task, keep step 1 to the restatement and `done_when`, and keep the proof short.
 
-When the build budget runs out or a second sketch is scrapped, still open the PR as step 6 does, with the summary, as `needs-human` (rule 8).
+When the build budget runs out, a second sketch is scrapped, or the build contradicts a technical decision, open the PR as step 6 does, as `needs-human` with the summary (rule 8).
 
 ## Steps
 
@@ -31,7 +32,7 @@ When the build budget runs out or a second sketch is scrapped, still open the PR
    Done when: the frame is in your first message, `done_when` ran red on the base, an issue task is claimed, the proof it lacks is built first by [create-app-driver](../create-app-driver/SKILL.md), [create-formal-verification](../create-formal-verification/SKILL.md), or [maintain-formal-verification](../maintain-formal-verification/SKILL.md), and verification can start or its limits are disclosed.
 
 2. **Build.** In a worktree and a branch of your own, made from the base (see [harness.md](../constitution/references/harness.md)). Design before any logic, as [references/design.md](references/design.md) describes: name the data shape, and for a feature or a change that crosses a function boundary, ground, sketch twice, write the design note, show it when the table there asks, and build against the sketch. Follow the playbook from [the list](references/frame.md#playbooks). The budget is 3 attempts; after the second failure, write the premise your attempts share and test it before the third.
-   Done when: `done_when` is green, every playbook duty is met, each altered [formal check](../constitution/references/formal.md#in-a-task) describes the head, and a sketched change has its design note, Deviations filled; or the budget ran out and the PR is open and `needs-human`.
+   Done when: `done_when` is green, every playbook duty is met, each altered [formal check](../constitution/references/formal.md#in-a-task) describes the head, and a sketched change has its design note, Deviations filled; or a stop above left the PR `needs-human`.
 
 3. **Clean.** Remove slop, then spawn the comment hunter and fix each `MUST KILL` at the root, as [references/clean.md](references/clean.md) describes. A mistake you made twice in this task, and each constraint comment, goes to the user as a candidate for `/add-guardrail`.
    Done when: lint, types, and tests are green, and every `MUST KILL` is fixed or has an issue.

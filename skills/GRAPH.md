@@ -4,12 +4,13 @@ The main flow first, the side flows next, and the reference tables last. The rul
 
 ## At a glance
 
-What you usually do, in order. You launch steps 1, 2, 3, and 7; `ship` runs 4 and 5 itself.
+What you usually do, in order. You launch steps 1, 2, 3, and 7; `ship` runs 4 and 5 itself. Step 2b is optional: `shape-spec` offers it when the spec touches the shape of the code.
 
 ```mermaid
 flowchart TB
   setup["<b>1. setup-repo</b><br/>Once per repo: tracker, glossary, app driver"]
   shape["<b>2. shape-spec</b><br/>Only when the idea is loose: it becomes a spec issue"]
+  arch["<b>2b. shape-architecture</b><br/>Optional: you decide the shape of the code"]
   ship["<b>3. ship</b><br/>One task to a proven PR; ship-queue for a list"]
   verify["<b>4. verify-pr</b><br/>A fresh agent tries to break the PR"]
   babysit["<b>5. babysit-pr</b><br/>Review, CI, conflicts, until ready"]
@@ -17,6 +18,7 @@ flowchart TB
   learn["<b>7. learn-from-mistakes</b><br/>Find the layer that missed the bug, and fix it"]
 
   setup --> shape --> ship --> verify --> babysit --> merge
+  shape -->|on your yes| arch --> ship
   merge -->|a bug got through| learn
 
   classDef ready fill:#d3f5dc,stroke:#1a7f37,color:#1f2328
@@ -24,13 +26,14 @@ flowchart TB
 
   click setup href "https://github.com/Ilian-Allaf/skillstack/blob/master/skills/GRAPH.md#7-preparing-a-repo" _top
   click shape href "https://github.com/Ilian-Allaf/skillstack/blob/master/skills/GRAPH.md#8-shaping-a-spec" _top
+  click arch href "https://github.com/Ilian-Allaf/skillstack/blob/master/skills/GRAPH.md#8-shaping-a-spec" _top
   click ship href "https://github.com/Ilian-Allaf/skillstack/blob/master/skills/GRAPH.md#2-the-eight-steps" _top
   click verify href "https://github.com/Ilian-Allaf/skillstack/blob/master/skills/GRAPH.md#6-steps-7-and-8-verdict-and-babysitting" _top
   click babysit href "https://github.com/Ilian-Allaf/skillstack/blob/master/skills/GRAPH.md#6-steps-7-and-8-verdict-and-babysitting" _top
   click learn href "https://github.com/Ilian-Allaf/skillstack/blob/master/skills/GRAPH.md#12-learning-from-a-mistake" _top
 ```
 
-Open a step: [setup-repo](#7-preparing-a-repo) · [shape-spec](#8-shaping-a-spec) · [ship](#2-the-eight-steps) · [verify-pr and babysit-pr](#6-steps-7-and-8-verdict-and-babysitting) · [learn-from-mistakes](#12-learning-from-a-mistake)
+Open a step: [setup-repo](#7-preparing-a-repo) · [shape-spec and shape-architecture](#8-shaping-a-spec) · [ship](#2-the-eight-steps) · [verify-pr and babysit-pr](#6-steps-7-and-8-verdict-and-babysitting) · [learn-from-mistakes](#12-learning-from-a-mistake)
 
 At any time: `/choose-skill` names the skill to launch, `/investigate` answers a question without a PR, `/recall-context` and `/catch-me-up` tell you where things stand, and `/pause-task` and `/resume-task` stop a task and pick it up.
 
@@ -183,10 +186,11 @@ Next: [step 2, design and build](#4-step-2-design-and-build) · Leads to: [shapi
 
 [↑ The eight steps](#2-the-eight-steps)
 
-A change inside one function body names its data shape and builds. A change that crosses a function boundary runs the whole design loop. [design.md](ship/references/design.md)
+A change inside one function body names its data shape and builds. A change that crosses a function boundary runs the whole design loop. The spec's technical decisions, when it holds them, bind every sketch. [design.md](ship/references/design.md); steps 1 to 4 follow [architecture.md](constitution/references/architecture.md), which `shape-architecture` follows too.
 
 ```mermaid
 flowchart TB
+  decisions["<b>The spec's technical decisions</b><br/>D1, D2: the user's, grounded again when stale"]
   data["<b>1. Name the data shape</b><br/>In the glossary's words"]
   ground["<b>2. Ground</b><br/>How each touched module works today"]
   sketch["<b>3. Sketch twice</b><br/>Two different shapes"]
@@ -200,6 +204,11 @@ flowchart TB
   human[["needs-human"]]
   next(("step 3"))
 
+  answer["You answer the stop:<br/>the decision is replaced in the spec"]
+  decisions -->|bind| data
+  ground -.->|a technical decision the code contradicts| answer
+  answer -->|ground again| ground
+  build -.->|a technical decision the build contradicts| human
   data -->|crosses a function boundary| ground --> sketch --> pick --> show
   sketch -->|a run can settle it| proto --> pick
   show -->|yes| you
@@ -350,12 +359,17 @@ flowchart LR
 
 When an idea is too loose for `ship` to frame: several open decisions only you can make, a task too big to frame, or a heavy visual change with no visual target. `shape-spec` interviews you and writes a spec issue that `ship` then takes.
 
+When the spec touches the shape of the code, `shape-spec` offers `shape-architecture` before the hand over, on the signals that skill lists. It sketches two shapes, asks you, and writes the decisions you make into the spec's Technical decisions; what you leave open stays the builder's. You can also launch it later on a spec issue.
+
 ```mermaid
 flowchart LR
   shape["<b>shape-spec</b><br/>Idea to spec issue"]
+  arch["<b>shape-architecture</b><br/>Spec to technical decisions"]
   investigate["<b>investigate</b><br/>Answer, diagnose, prototype"]
 
   shape -->|prototype a decision| investigate
+  shape -->|a signal, on your yes| arch
+  arch -->|a run settles a choice| investigate
 ```
 
 ### 9. Building the project's tools
@@ -420,6 +434,7 @@ flowchart TB
   queue["<b>ship-queue</b><br/>Many tasks to many PRs"]
   ship["<b>ship</b><br/>One task to a ready PR"]
   shape["<b>shape-spec</b><br/>Idea to spec issue"]
+  arch["<b>shape-architecture</b><br/>Spec to technical decisions"]
   investigate["<b>investigate</b><br/>Answer, diagnose, prototype"]
   babysit["<b>babysit-pr</b><br/>Conflicts, review, CI to ready"]
 
@@ -427,6 +442,7 @@ flowchart TB
   resume --> ship
   resume --> queue
   resume --> shape
+  resume --> arch
   resume --> investigate
   resume --> babysit
   queue -->|one owner per task| ship
@@ -481,15 +497,16 @@ These run no other skill. Launch them when the situation fits.
 | [clean-worktrees](clean-worktrees/SKILL.md) | Removes finished worktrees safely | | |
 | [create-app-driver](create-app-driver/SKILL.md) | Writes `drive-<app>`, the skill that launches and drives the app like a user, with its feature map | writes drive-\<app\> | ship, setup-repo, learn-from-mistakes |
 | [create-formal-verification](create-formal-verification/SKILL.md) | Proves one property where a bug costs most, and writes `prove-<area>` | writes prove-\<area\> | ship |
-| [investigate](investigate/SKILL.md) | Answers a question, diagnoses a symptom, or settles a choice by prototype; opens no PR | drive-\<app\> | ship, shape-spec, resume-task |
+| [investigate](investigate/SKILL.md) | Answers a question, diagnoses a symptom, or settles a choice by prototype; opens no PR | drive-\<app\> | ship, shape-spec, shape-architecture, resume-task |
 | [learn-from-mistakes](learn-from-mistakes/SKILL.md) | Finds the layer that missed a mistake and proposes its fix; applies nothing unapproved | add-guardrail, create-app-driver | |
 | [maintain-formal-verification](maintain-formal-verification/SKILL.md) | Brings formal checks back in line with the code; says drift or bug for each failure | updates prove-\<area\> | ship |
 | [pause-task](pause-task/SKILL.md) | Stops a task safely with a resume note | | |
 | [recall-context](recall-context/SKILL.md) | Rebuilds where a topic stands from past sessions and the repo | resume-task | |
-| [resume-task](resume-task/SKILL.md) | Continues a task an earlier session left, without redoing what was done | ship, investigate, shape-spec, babysit-pr, ship-queue | recall-context |
+| [resume-task](resume-task/SKILL.md) | Continues a task an earlier session left, without redoing what was done | ship, investigate, shape-spec, shape-architecture, babysit-pr, ship-queue | recall-context |
 | [say-it-plainly](say-it-plainly/SKILL.md) | Restates the last reply in plain words | | |
 | [setup-repo](setup-repo/SKILL.md) | Prepares a repo the first time: tracker, labels, glossary, standards, driver | create-app-driver, add-guardrail | |
-| [shape-spec](shape-spec/SKILL.md) | Turns a loose idea into a spec issue through an interview, or a map of decisions | investigate | resume-task |
+| [shape-architecture](shape-architecture/SKILL.md) | Puts the architecture choices of a spec to you and records the ones you make before the build | investigate | shape-spec, resume-task |
+| [shape-spec](shape-spec/SKILL.md) | Turns a loose idea into a spec issue through an interview, or a map of decisions | investigate, shape-architecture | resume-task |
 | [sharpen-prompt](sharpen-prompt/SKILL.md) | Rewrites a prompt to ask for deeper work | | |
 | [ship](ship/SKILL.md) | Turns one task into a ready-to-merge PR, proven and independently verified | investigate, analyze-impact, verify-pr, babysit-pr, create-app-driver, create-formal-verification, maintain-formal-verification, drive-\<app\> | ship-queue, resume-task |
 | [ship-queue](ship-queue/SKILL.md) | Turns a list of tasks into as many PRs, one owner per task | ship | resume-task |
@@ -497,6 +514,6 @@ These run no other skill. Launch them when the situation fits.
 | [test-skill-change](test-skill-change/SKILL.md) | Compares the old and new version of a skill blind | | |
 | [verify-pr](verify-pr/SKILL.md) | Tries to break a PR and gives a verdict on behavior and on code | analyze-impact, drive-\<app\> | ship, babysit-pr |
 
-Four skills also read part of another without running it, through `reads:`: `learn-from-mistakes` reads `ship` and `verify-pr`, to know where a lesson lands; `setup-repo` reads the glossary rules of `shape-spec`; `ship-queue` reads the reply format of `catch-me-up`; `verify-pr` reads the playbook duties and design red flags of `ship`.
+Six skills also read part of another without running it, through `reads:`: `learn-from-mistakes` reads `ship` and `verify-pr`, to know where a lesson lands; `setup-repo` reads the glossary rules of `shape-spec`; `shape-architecture` reads the grill and the domain rules of `shape-spec`; `ship` reads the shape of a technical decision in `shape-architecture`, to record the user's answer to a stop; `ship-queue` reads the reply format of `catch-me-up`; `verify-pr` reads the playbook duties of `ship`. The design method and its red flags live in the constitution, for `ship`, `shape-architecture`, and `verify-pr` alike.
 
 `drive-<app>` and `prove-<area>` are not shipped by this framework: they are written for each repo, by the skills that point to them.

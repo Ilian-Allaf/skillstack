@@ -16,7 +16,7 @@ The design mode says how to use it. The spec states it; a task without one follo
 | `extend` | the product needs a part it lacks | new components or variants, built from the existing tokens, in the idiom of their neighbours |
 | `break away` | the look is the point and the product's own style does not fit it, such as a marketing page or a new product | a system of its own, still one system, with the rules below |
 
-A new component that duplicates an existing one is two ways to do one task ([design.md](../../ship/references/design.md#red-flags)).
+A new component that duplicates an existing one is two ways to do one task ([architecture.md](architecture.md#red-flags)).
 
 ## Criteria
 

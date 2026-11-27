@@ -1,0 +1,5 @@
+interface:
+  display_name: "Shape Architecture"
+  short_description: "Decide the shape of the code before the build"
+policy:
+  allow_implicit_invocation: false

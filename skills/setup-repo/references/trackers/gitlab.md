@@ -13,6 +13,9 @@ Issues live in this project's GitLab Issues. Use the `glab` CLI; it finds the pr
 ## Read an issue
 `glab issue view <n> --comments -F json`
 
+## Edit an issue
+Read the description first, change only your section, then `glab issue update <n> --description "..."`.
+
 ## List open issues by label
 `glab issue list --label "<label>" -O json`
 

@@ -71,6 +71,7 @@ PLANNED = {
 # Files removed on purpose, each with what replaced it. Living docs must not name them; dated docs may.
 REMOVED = {
     "skills/README.md": "skills/GRAPH.md",
+    "skills/ship/references/sketch.md": "skills/constitution/references/sketch.md",
 }
 # Folders renamed on purpose, old prefix to new. A dated doc keeps the old path when the new one exists.
 MOVED = {

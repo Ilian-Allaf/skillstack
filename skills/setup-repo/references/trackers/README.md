@@ -19,12 +19,13 @@ Propose the tracker that matches the repo's `git remote`, and let the user chang
 
 ## The operations
 
-Every template, and every file written from `other.md`, answers each of these, under these headings. A skill that needs an operation the file does not answer never guesses: outside a running task it asks the user; during a task it lists the operation in its reply and the decision log, and goes on.
+Every template, and every file written from `other.md`, answers each of these, under these headings. A skill that needs an operation the file does not answer, in a file written from a template that answers it now, copies that heading from the template into the file and says so in its reply. Otherwise it never guesses: outside a running task it asks the user; during a task it lists the operation in its reply and the decision log, and goes on.
 
 | Operation | Used by |
 |---|---|
 | Create an issue, with a title, a body, and labels | `shape-spec`, `ship`, `babysit-pr`, `analyze-impact`, `add-guardrail`, `learn-from-mistakes` |
-| Read an issue, with its comments and labels | `ship`, `learn-from-mistakes`, `shape-spec` |
+| Read an issue, with its comments and labels | `ship`, `learn-from-mistakes`, `shape-spec`, `shape-architecture` |
+| Edit an issue's body, one section at a time | `shape-architecture` and `ship` (a spec's Technical decisions), `shape-spec` (a map's index) |
 | List open issues by label | `shape-spec`, `learn-from-mistakes` |
 | Comment on an issue | `shape-spec` |
 | Add or remove a label | `shape-spec`, the user (`escaped`) |

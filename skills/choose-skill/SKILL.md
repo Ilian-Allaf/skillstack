@@ -36,6 +36,7 @@ You are the index of this framework, so the user only has to remember you. You p
 | several tasks to turn into PRs while you do something else, related or not | `/ship-queue <the tasks, one per line>` |
 | an idea with open decisions, or work too big for one session | `/shape-spec <the idea>` |
 | a new screen, a redesign, or a page whose look is the point, with or without references, even when the task is clear | `/shape-spec <the idea>`: it shows you prototypes before any build; a small change on an existing screen goes to `/ship` |
+| a spec whose code shape you want to decide before the build, such as a schema or a public API | `/shape-architecture <spec issue>` |
 | a question about the code, a symptom you cannot reproduce, or a choice an experiment can settle | `/investigate <the question>` |
 | you must stop now, or the session is about to end, and want to resume later | `/pause-task` |
 | you start or come back to a topic and want what happened around it first | `/recall-context <the topic, and a window>` |
@@ -56,7 +57,6 @@ You are the index of this framework, so the user only has to remember you. You p
 | you changed a skill and want to know whether it helps before you keep it | `/test-skill-change <the skill and the change>` |
 | you are about to send a prompt and want it aimed deeper | `/sharpen-prompt <your prompt>` |
 | the last reply was too dense to act on | `/say-it-plainly` |
-
 | the current topic, a reply, or a diff is too dense to read | `/show-me` |
 | a bug got past the checks, or a session went badly and needs reconstruction from recorded activity | `/learn-from-mistakes <issue, PR, or nothing for this session>` |
 

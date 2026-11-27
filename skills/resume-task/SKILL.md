@@ -5,7 +5,7 @@ disable-model-invocation: true
 argument-hint: "<branch, PR number, issue, or nothing for the last paused task>"
 metadata:
   kind: entry
-  calls: "ship, investigate, shape-spec, babysit-pr, ship-queue"
+  calls: "ship, investigate, shape-spec, shape-architecture, babysit-pr, ship-queue"
   consumes: "a branch, a PR, or a paused task"
   produces: "the task carried on by the skill that owns it"
   hypothesis: "A new session distrusts the work it inherits and redoes it, or trusts a summary and skips what was never verified."
@@ -28,7 +28,7 @@ The earlier session's trail is your input, and it is authoritative: you continue
 3. **Check what the next step relies on.** Rerun only the cheap checks the next step builds on, such as `done_when` and the build. A claim with no evidence is pending, not done. Do not rerun what has its evidence.
    Done when: each claim the next step relies on is confirmed, or moved back to pending.
 
-4. **Hand over and continue.** On a `needs-human` PR, the user's answer, in the session or in the PR's latest comments, is a new directive: set the State line back to `in progress`, remove the `needs-human` label if it carries one, and the loop that stopped starts again with a fresh budget (rule 11 of the constitution). Undo the `wip:` commit into the working tree if the tree was broken, or keep it; when it was pushed, push the undo with `git push --force-with-lease`, since the branch is yours. Then continue in the skill that owns the task, at its first step whose Done when fails: [ship](../ship/SKILL.md), [investigate](../investigate/SKILL.md), [shape-spec](../shape-spec/SKILL.md), [babysit-pr](../babysit-pr/SKILL.md) for a PR that only needs to reach `ready`, or [ship-queue](../ship-queue/SKILL.md) for a queue note, which resumes each task through its own note.
+4. **Hand over and continue.** On a `needs-human` PR, the user's answer, in the session or in the PR's latest comments, is a new directive: set the State line back to `in progress`, remove the `needs-human` label if it carries one, and the loop that stopped starts again with a fresh budget (rule 11 of the constitution). Undo the `wip:` commit into the working tree if the tree was broken, or keep it; when it was pushed, push the undo with `git push --force-with-lease`, since the branch is yours. Then continue in the skill that owns the task, at its first step whose Done when fails: [ship](../ship/SKILL.md), [investigate](../investigate/SKILL.md), [shape-spec](../shape-spec/SKILL.md), [shape-architecture](../shape-architecture/SKILL.md), [babysit-pr](../babysit-pr/SKILL.md) for a PR that only needs to reach `ready`, or [ship-queue](../ship-queue/SKILL.md) for a queue note, which resumes each task through its own note.
    Done when: the owning skill is running from its resume point.
 
 ## Reply

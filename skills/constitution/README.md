@@ -25,11 +25,12 @@ Shared rules, not a skill: no harness lists this folder, and no one launches it.
 |---|---|
 | [references/proof.md](references/proof.md) | before you write `done_when`, prove a change, give a verdict, or size the verification to the risk class |
 | [references/coverage.md](references/coverage.md) | before you list the cases in `frame`, build the coverage table or the demo video, or check coverage as the verifier |
+| [references/architecture.md](references/architecture.md) | before you shape code: name its data shape, ground it, sketch it twice, or screen a shape against the red flags, as builder, `shape-architecture`, or verifier |
 | [references/principles.md](references/principles.md) | when a step names a principle by its id, or a decision is not covered by a skill; then the full form of each principle you apply, as [Reading a principle](#reading-a-principle) says |
 | [references/glossary.md](references/glossary.md) | before you write a skill, a PR, or a verdict, and whenever a term is ambiguous |
 | [references/pr-format.md](references/pr-format.md) | before you open or edit a PR body |
 | [references/writing.md](references/writing.md) | before you write what a person reads: a PR body, a commit message, an issue, a reply, a doc, a skill |
-| `~/.agents/projects/<project>/issue-tracker.md` | before you create, read, comment on, label, link, or close an issue; it says how in this repo's tracker. When it is missing, write it from the private markdown template, [local.md](../setup-repo/references/trackers/local.md), as that file says, name it in your reply, and go on |
+| `~/.agents/projects/<project>/issue-tracker.md` | before you create, read, comment on, label, link, or close an issue; it says how in this repo's tracker. When it is missing, write it from the private markdown template, [local.md](../setup-repo/references/trackers/local.md), as that file says, name it in your reply, and go on. When it lacks an operation its template now answers, copy that heading from the template, as [the trackers](../setup-repo/references/trackers/README.md#the-operations) say |
 | [references/target-repo.md](references/target-repo.md) | before you read the project folder the first time in a session, to name `<project>`; and before you create or edit the agent file, the glossary, the coding standards, the rule table, the driver, or a label |
 | [references/harness.md](references/harness.md) | before you spawn a subagent, ask the user a question, wait on a PR, or read a session transcript |
 | [references/parallel.md](references/parallel.md) | before you run several subagents on one job |

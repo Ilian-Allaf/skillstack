@@ -15,6 +15,7 @@
   "skills": [
     "./skills/choose-skill",
     "./skills/setup-repo",
+    "./skills/shape-architecture",
     "./skills/shape-spec",
     "./skills/investigate",
     "./skills/ship",

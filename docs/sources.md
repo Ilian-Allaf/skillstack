@@ -162,6 +162,10 @@ When a skill changes, update its section here, in the same PR.
 
 - Source: pstack `statechart` (Lauren Tan). Adapted: pstack ships a script that runs TLC and draws the chart; here the method is described and the tool is the repo's, or TLC run directly.
 
+## `skills/constitution/references/architecture.md` (2026-11-27)
+
+- [ADR 0024](adr/0024-the-architecture-is-shaped-apart-from-the-intent.md), ours: steps 1 to 4 of `skills/ship/references/design.md` and its red flags move here, so `ship` and `shape-architecture` follow one method. The screen now keeps both sketches, and the pick and its fold-in stay in `ship`. Their sources stay those listed under `skills/ship/references/design.md`.
+
 ## `skills/constitution/references/ui.md` (2026-11-25)
 
 - [ADR 0020](adr/0020-a-heavy-visual-change-is-specified-by-a-target.md). Criteria to grade against instead of "is it beautiful", and the four criteria, from Anthropic "harness design". The generic defaults to drop, from Cook's slop ban list (`references/rules.md`) and the Taste Skill's Never list. One system, every width down to 320, tap targets of 44px, every control answering the pointer, and reduced motion where everything rests and nothing stays hidden, from the Taste Skill's checklist. The contrast ratios, 4.5:1 and 3:1, from WCAG 2.2 (1.4.3, 1.4.11). Layout before motion, from Eric Tech's video. The design system read from the code, the design modes, the motion criteria, and the 20% tolerance on an effect's duration are ours.
@@ -270,6 +274,11 @@ When a skill changes, update its section here, in the same PR.
 
 - Ours: the operation "Link a PR to the issue it delivers", with each tracker's own form (GitHub and GitLab closing keywords, a `PR:` line in a local file).
 
+## `skills/shape-architecture/SKILL.md` and its references (2026-11-27)
+
+- [ADR 0024](adr/0024-the-architecture-is-shaped-apart-from-the-intent.md), ours: the architecture shaped apart from the intent, the four signals that make a run worth it, every question that can be left to the builder, the Technical decisions section, and `ship` building within it.
+- The rounds and the frontier of `references/questions.md` come from `shape-spec`'s grill, so from Matt Pocock `grilling`. The design method, sketching in code and the red flags, comes from pstack `architect` (Lauren Tan), through `skills/constitution/references/architecture.md`.
+
 ## `skills/shape-spec/SKILL.md`
 
 - Source: Ray Amjad (splitting a spec into parallel units gives worse results, the work is tangled in ways nobody expected), Anthropic "harness design" (planner kept, sprints dropped).
@@ -277,6 +286,8 @@ When a skill changes, update its section here, in the same PR.
 - (Anthropic kept its planner for this reason)
 - 2026-11-20, from the coherence audit: a question of fact is settled by a run, one of look or feel by the user, from pstack `poteto-mode` ("If the answer is a fact you could observe by running something, it is not the human's to answer").
 - 2026-11-25, [ADR 0020](adr/0020-a-heavy-visual-change-is-specified-by-a-target.md), ours: the trigger for a heavy visual change, settled with the user.
+
+- 2026-11-27, [ADR 0024](adr/0024-the-architecture-is-shaped-apart-from-the-intent.md), ours: the hand over looks for the signals of `shape-architecture` and offers it.
 
 ## `skills/shape-spec/references/domain.md`
 
@@ -300,6 +311,8 @@ When a skill changes, update its section here, in the same PR.
 - 2026-11-24, [ADR 0019](adr/0019-the-spec-sets-the-bar-and-a-task-builds-the-proof-it-lacks.md), ours: a journey per story, the Promises and Not verifiable sections, numbered stories and promises, and the journeys' surfaces as seams.
 - 2026-11-25, [ADR 0020](adr/0020-a-heavy-visual-change-is-specified-by-a-target.md), ours: the Visual targets section, numbered `V1`, still or motion, with its design mode, measured checks, and bans. The motion target's effect list follows Cook's one line per effect (`references/target-and-bar.md`).
 
+- 2026-11-27, [ADR 0024](adr/0024-the-architecture-is-shaped-apart-from-the-intent.md), ours: the Technical decisions section, numbered `D1`; the Decisions section keeps the product decisions.
+
 ## `skills/ship/references/clean.md`
 
 - Source: pstack `no-comments` and its `comment-sicko` agent (Lauren Tan). Adapted: constraint encodings go to `/add-guardrail` instead of an inline approval.
@@ -321,11 +334,13 @@ When a skill changes, update its section here, in the same PR.
 - 2026-11-20, architecture method brought closer to pstack (Lauren Tan, `knowledge/sources/repos/cursor-pstack/`): the method gains grounding in the history of the current shape (pstack `architect` Phase A, which runs `why`), the rules of a sketch (`sketch.md`), the design note (`design-note.md`), the design shown to the user for a one-way door or on request (pstack `architect` Phase C, opt-in there), building against the sketch, and the six tells and the procedure for scrapping it (pstack `architect` Phases D and E). The table of how much design a change needs adapts pstack's guide page "Design before you write code", and designs every feature, as pstack's feature playbook runs `architect` on every feature. Ours: the builder writes both sketches itself instead of an arena of models, and a task scraps once, then `needs-human`.
 - 2026-11-25, [ADR 0020](adr/0020-a-heavy-visual-change-is-specified-by-a-target.md), ours: grounding a change to what a user sees reads the design system, as `ui.md` says.
 
+- 2026-11-27, [ADR 0024](adr/0024-the-architecture-is-shaped-apart-from-the-intent.md), ours: steps 1 to 4 and the red flags move to `skills/constitution/references/architecture.md`; the build within the spec's technical decisions is new.
+
 ## `skills/ship/references/design-note.md`
 
 - Source: pstack `architect/references/rationale-template.md` (Lauren Tan). Adapted: Synthesis becomes Choice between the builder's two sketches, a Deviations section is filled during the build, and "Next implementation step" is dropped.
 
-## `skills/ship/references/sketch.md`
+## `skills/ship/references/sketch.md`, now `skills/constitution/references/sketch.md`
 
 - Source: pstack `architect/references/runner-prompt.md` (Lauren Tan). Adapted: the builder follows it for both of its sketches, each rule names its principle id, and rule 12 comes from `principle-laziness-protocol`.
 
