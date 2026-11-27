@@ -23,7 +23,7 @@ Spawn a fresh subagent. Its scope is the diff against the base, working tree inc
 ## 3. Act on the report
 
 1. **Check the report against the diff.** Reject any edit to application code, any change outside the scope, and any deletion a keep clause protects. On an invalid report, discard its patch and revert only unauthorized edits by the hunter; retry once with the exact violation. A second invalid report leaves `clean` incomplete: stop with `needs-human`. Apply only a valid patch, resolving uncertain keeps by tracing their symbols first.
-2. **Fix each `MUST KILL` at the root.** Delete the dead path, drop the parameter, use the real API, or rename. When a fix needs a new shape, sketch it once for all flags together, as [design.md](design.md) describes. Never add a guard that hides the symptom.
+2. **Fix each `MUST KILL` at the root.** Delete the dead path, drop the parameter, use the real API, or rename. When a fix needs a new shape, sketch it once for all flags together, as [sketch.md](../../constitution/references/sketch.md) describes. Never add a guard that hides the symptom.
 3. **Turn constraints into checks.** A constraint comment (`do not remove`, `do not change wording`, `talk to X first`) becomes a candidate for `/add-guardrail`: the cheapest type, test, or lint that enforces it. List it for the user, then delete the comment. If the root cause is outside the task, fix what is in scope and open an issue for the rest.
 4. **Run the checks.** Lint, types, and tests are green.
 

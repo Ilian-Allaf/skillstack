@@ -72,6 +72,7 @@ Every skill is launched by you; none is picked by the model on its own. Each one
 - **[choose-skill](skills/choose-skill/SKILL.md)**: Tells you which skill to launch for your situation, and with what command.
 - **[setup-repo](skills/setup-repo/SKILL.md)**: Prepares a repo the first time you work in it, asking before each part, and keeps each file private or shares it with the team.
 - **[shape-spec](skills/shape-spec/SKILL.md)**: Turns a loose idea into a spec issue through an interview, or into a map of decisions when the work is too big for one session.
+- **[shape-architecture](skills/shape-architecture/SKILL.md)**: Puts the architecture choices of a spec to you, two real shapes at a time, and records the ones you make before the build. Optional: without it, `ship` picks the shape itself.
 - **[investigate](skills/investigate/SKILL.md)**: Answers a question about the code, diagnoses a runtime symptom, or settles a decision with a throwaway prototype. Opens no PR.
 - **[ship](skills/ship/SKILL.md)**: Turns one task into a ready-to-merge PR, with verification tried before the build and evidence checked against recorded activity.
 - **[ship-queue](skills/ship-queue/SKILL.md)**: Turns a list of tasks into as many ready-to-merge PRs, one owner per task, each with its own verifier; tasks that touch the same files are stacked. Stops before every merge.

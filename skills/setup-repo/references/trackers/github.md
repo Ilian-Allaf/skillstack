@@ -13,6 +13,9 @@ Issues live in this repo's GitHub Issues. Use the `gh` CLI; it finds the repo fr
 ## Read an issue
 `gh issue view <n> --json number,title,body,labels,comments,state`
 
+## Edit an issue
+Read the body first, change only your section in a file, then `gh issue edit <n> --body-file <file>`.
+
 ## List open issues by label
 `gh issue list --state open --label "<label>" --json number,title,labels`
 

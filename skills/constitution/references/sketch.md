@@ -1,6 +1,6 @@
 # Sketch
 
-How to write one sketch. [design.md](design.md) says when to sketch and what to do with the two you write.
+How to write one sketch. [architecture.md](architecture.md) says what to do with the two you write.
 
 ## What a sketch holds
 
@@ -9,7 +9,7 @@ How to write one sketch. [design.md](design.md) says when to sketch and what to 
 
 ## Rules
 
-Each rule names its principle. Before your sketch relies on a rule, read the full form of its principle, with its test and its example, as [principles.md](../../constitution/references/principles.md) says; read only those your sketch relies on.
+Each rule names its principle. Before your sketch relies on a rule, read the full form of its principle, with its test and its example, as [principles.md](principles.md) says; read only those your sketch relies on.
 
 1. **The usage is the spec** (`design-for-the-consumer`). When the shape and the usage disagree, change the shape.
 2. **Data structures first** (`design-the-data-first`). Trace each main read and write through the structure. "We will add a map, an index, or a cache later" means the structure is wrong now.

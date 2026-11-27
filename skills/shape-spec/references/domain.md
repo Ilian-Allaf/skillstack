@@ -23,7 +23,7 @@ The glossary holds terms and nothing else: no implementation details, no spec, n
 
 ## ADRs, sparingly
 
-First ask whether the code can hold the decision (`encode-lessons-in-structure`). A check goes to `add-guardrail`; a type or a structure becomes a decision of the spec. When the code then says all of the decision, write no ADR. When it holds the rule but not the reason, the ADR keeps only what the code cannot say, the why and the alternatives rejected, and names the check under Enforced by.
+First ask whether the code can hold the decision (`encode-lessons-in-structure`). A check goes to `add-guardrail`; a type or a structure becomes a technical decision of the spec. When the code then says all of the decision, write no ADR. When it holds the rule but not the reason, the ADR keeps only what the code cannot say, the why and the alternatives rejected, and names the check under Enforced by.
 
 For what the code cannot say, offer an ADR only when all three hold:
 

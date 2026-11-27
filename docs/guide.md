@@ -30,6 +30,7 @@ Swap in the real paths, numbers, and checks.
 /setup-repo
 /create-app-driver
 /shape-spec let users share a read-only link to a board
+/shape-architecture 12
 ```
 
 ### Understand

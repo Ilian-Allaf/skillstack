@@ -46,8 +46,12 @@ What no run can prove, and why, agreed in the grill. Write "nothing" when everyt
 The public interfaces the tests will use beyond the journeys' surfaces, agreed with the user.
 
 ## Decisions
-Modules built or changed, their interfaces, schema changes, API contracts, architecture choices, and the ADRs they rest on.
+The product decisions the grill settled that the stories do not show, such as a rule, a limit, or a policy, and the ADRs they rest on.
 No file paths and no code: they go stale. Exception: a snippet from a prototype that pins a decision better than prose (a state machine, a type, a schema), trimmed to the decision.
+
+## Technical decisions
+None: the shape is left to the builder.
+(`shape-architecture` replaces this section when the user shapes the architecture. A decision on the shape of the code that the user stated in the grill goes here already, as its [decisions.md](../../shape-architecture/references/decisions.md) shapes one, without a Grounded on line, so `ship` builds within it.)
 
 ## Testing decisions
 What a good test is here (external behavior only), which modules get tests, and the existing tests to copy.
@@ -58,4 +62,4 @@ What this spec will not do.
 
 ## From spec to proof
 
-Each journey, promise, and visual target becomes a case in `frame` (see [coverage.md](../../constitution/references/coverage.md)), so the coverage table of the final PR answers the spec story by story and promise by promise. The template numbers them, `S1`, `S2` for stories, `P1`, `P2` for promises, and `V1`, `V2` for visual targets, so the evidence record names each one; a second journey of a story takes the next letter, `S1b`. A journey, a promise, or a visual target no case covers goes under Not verified.
+Each journey, promise, and visual target becomes a case in `frame` (see [coverage.md](../../constitution/references/coverage.md)), so the coverage table of the final PR answers the spec story by story and promise by promise. The template numbers them, `S1`, `S2` for stories, `P1`, `P2` for promises, and `V1`, `V2` for visual targets, so the evidence record names each one; technical decisions are numbered `D1`, `D2`, but they bind the design and are no case. A second journey of a story takes the next letter, `S1b`. A journey, a promise, or a visual target no case covers goes under Not verified.

@@ -39,13 +39,15 @@ The design tree of every spec has this branch; visit it once the stories are set
 - **Promises**, as the [glossary](../../constitution/references/glossary.md) defines them, each with the harm when it breaks.
 - **What cannot be verified**, and why, so the user knows it before the build.
 
-The means of proof are facts: look up the drivers and formal checks of the area as [proof.md](../../constitution/references/proof.md#drivers-and-formal-checks) says, stale or not. For a touched surface with no driver, ask the user for what only they can give, the account, the access, and where the secret lives, and write it to `~/.agents/projects/<project>/access/<app>.md`, never the secret itself. Nothing technical goes in the spec.
+The means of proof are facts: look up the drivers and formal checks of the area as [proof.md](../../constitution/references/proof.md#drivers-and-formal-checks) says, stale or not. For a touched surface with no driver, ask the user for what only they can give, the account, the access, and where the secret lives, and write it to `~/.agents/projects/<project>/access/<app>.md`, never the secret itself. The means of proof stay out of the spec.
 
 ## Facts are yours, decisions are the user's
 
 When a question needs a fact from the code, the docs, or a tool, spawn a fresh subagent to find it. Never ask the user for something you could look up. Do not wait for it: only the questions downstream of that fact wait; ask the rest now.
 
 When an answer is something you could observe by running a small experiment, prototype instead of asking.
+
+A decision on the shape of the code that the user states unasked, such as a storage or a library, is theirs: keep it for Technical decisions, and ask nothing more about the shape.
 
 ## Done
 

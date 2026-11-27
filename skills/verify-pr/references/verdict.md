@@ -6,8 +6,8 @@ The one place that defines a FAIL. Every other file points here.
 
 A finding is a FAIL when all three hold:
 
-1. **It is proven.** It comes with its run on the head of the PR, and you reran that command yourself and saw the same output. A breach of a documented repo standard (`coding-standards.md` in the project folder, the agent file, the repo's glossary, or an accepted ADR whose Applies to covers the hunk) is proven instead by quoting the file, the rule, and the hunk. A PR that changes such a decision on purpose carries the ADR that supersedes it.
-2. **It is in the task's scope**: it breaks the task or `done_when`, or the diff itself breaks a documented standard. A finding outside the task's scope is a note, however real.
+1. **It is proven.** It comes with its run on the head of the PR, and you reran that command yourself and saw the same output. A breach of a documented repo standard (`coding-standards.md` in the project folder, the agent file, the repo's glossary, or an accepted ADR whose Applies to covers the hunk) is proven instead by quoting the file, the rule, and the hunk. A PR that changes such an ADR on purpose carries the ADR that supersedes it. A breach of a technical decision the spec holds is proven the same way, by quoting the decision and the hunk, whether or not Deviations names it: a replaced decision has left the spec.
+2. **It is in the task's scope**: it breaks the task or `done_when`, or the diff itself breaks a documented standard or a technical decision of the spec. A finding outside the task's scope is a note, however real.
 3. **Its grade is blocker or should**, in the table below.
 
 A defect you observed stays a FAIL unless `done_when` excludes it: keep it, whatever reason to wave it off comes to mind. Anything not proven is a note, however likely it looks.
@@ -17,7 +17,7 @@ A defect you observed stays a FAIL unless `done_when` excludes it: keep it, what
 | Grade | Meaning | Effect |
 |---|---|---|
 | blocker | breaks `done_when`, loses or corrupts data, opens a security hole, or breaks a feature that worked on the base | FAIL |
-| should | a real bug in the task's own scope that a user will hit; a row of the coverage table whose evidence is missing or does not show its case; a breach of a documented repo standard | FAIL |
+| should | a real bug in the task's own scope that a user will hit; a row of the coverage table whose evidence is missing or does not show its case; a breach of a documented repo standard, or of a technical decision the spec holds | FAIL |
 | nit | a real but minor issue, or a judgment call | note |
 | coverage gap | a case missing from the coverage table that behaves correctly when driven | the builder adds it with the verifier's evidence before `ready`; not a FAIL |
 
