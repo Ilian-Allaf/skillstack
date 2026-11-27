@@ -1,11 +1,11 @@
 {
-  "name": "software-ai-skills-framework",
+  "name": "skillstack",
   "version": "0.1.0",
   "description": "Skills that turn a task into a PR you can merge without worry: proven on the real app, checked for what it breaks, judged by a verifier that did not write it. You launch every task and merge every PR.",
   "author": {
     "name": "Ilian Allaf"
   },
-  "repository": "https://github.com/Ilian-Allaf/software-ai-skills-framework",
+  "repository": "https://github.com/Ilian-Allaf/skillstack",
   "keywords": [
     "skills",
     "verification",
