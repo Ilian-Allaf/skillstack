@@ -4,7 +4,7 @@ This framework carries a software task from your request to a PR you can assess 
 
 Start with [the layers](#1-the-layers), follow [one task](#3-one-task-from-request-to-merge), then read [the playbooks](#4-the-seven-playbooks) and [verification](#5-how-verification-works). The last sections cover [project files](#6-where-the-files-and-state-live), [supporting skills](#7-working-across-tasks-and-sessions), and [lessons](#8-how-the-framework-learns).
 
-This is a reading map of the current skill files. Each section links to the instructions that define the behavior. For installation, see the [root README](../README.md); for prompts to copy, see [the user guide](../docs/guide.md). The framework is v0: written procedures and passing tool checks do not establish that every workflow works in a real repo.
+This is a reading map of the current skill files. Each section links to the instructions that define the behavior. For every skill on one page with the skills it runs, see [the skill graph](GRAPH.md); for installation, see the [root README](../README.md); for prompts to copy, see [the user guide](../docs/guide.md). The framework is v0: written procedures and passing tool checks do not establish that every workflow works in a real repo.
 
 ## 1. The layers
 
