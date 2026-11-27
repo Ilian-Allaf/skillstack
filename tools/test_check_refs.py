@@ -106,11 +106,40 @@ class CheckRefsTest(unittest.TestCase):
         self.edit("skills/ship/SKILL.md", "`fix-root-causes`.\n", "`fix-root-causes`.\n\n```\n[x](missing.md) `probe`\n```\n")
         self.assertEqual(self.codes(), [])
 
-    def test_skill_missing_from_the_map(self) -> None:
-        self.write("skills/README.md", "# Skills\n\n```mermaid\nflowchart TB\n  a[other]\n```\n")
+    def graph(self, *rows: str) -> None:
+        table = "| Skill | What it does | Runs | Run by |\n|---|---|---|---|\n" + "".join(r + "\n" for r in rows)
+        self.write("skills/GRAPH.md", "# The skill graph\n\n## Every skill, with its edges\n\n" + table)
+
+    def test_skill_missing_from_the_graph(self) -> None:
+        self.graph()
         self.assertIn("R006", self.codes())
-        self.write("skills/README.md", "# Skills\n\n```mermaid\nflowchart TB\n  s[\"ship\"]\n```\n")
+        self.graph("| [ship](ship/SKILL.md) | One task to a PR | | |")
         self.assertNotIn("R006", self.codes())
+
+    def test_graph_edges_match_the_frontmatter(self) -> None:
+        self.write("skills/verify-pr/SKILL.md", '---\nname: verify-pr\nmetadata:\n  calls: "repo:drive-<app>"\n---\n\n# Verify\n')
+        self.edit("skills/ship/SKILL.md", "# Ship\n", '---\nname: ship\nmetadata:\n  calls: "verify-pr, repo:drive-<app>"\n---\n\n# Ship\n')
+        self.edit("README.md", "See [ship]", "See [verify-pr](skills/verify-pr/SKILL.md), [ship]")
+        self.graph("| [ship](ship/SKILL.md) | One task | verify-pr, drive-\\<app\\> | |",
+                   "| [verify-pr](verify-pr/SKILL.md) | A verdict | drive-\\<app\\> | ship |")
+        self.assertEqual(self.codes(), [])
+        self.graph("| [ship](ship/SKILL.md) | One task | drive-\\<app\\> | |",
+                   "| [verify-pr](verify-pr/SKILL.md) | A verdict | | ship |")
+        self.assertEqual(self.codes(), ["R012"])
+        self.graph("| [ship](ship/SKILL.md) | One task | verify-pr | |",
+                   "| [verify-pr](verify-pr/SKILL.md) | A verdict | | |")
+        self.assertEqual(self.codes(), ["R012"])
+
+    def test_removed_file_is_allowed_only_in_dated_docs(self) -> None:
+        self.write("CHANGELOG.md", "- The map moved out of `skills/README.md`.\n")
+        self.write("docs/adr/0001-x.md", "# 0001\n\nThe map lives in `skills/README.md`.\n")
+        self.assertEqual(self.codes(), [])
+        self.edit("README.md", "`tools/check_refs.py`", "`skills/README.md`")
+        self.assertEqual(self.codes(), ["R003"])
+
+    def test_link_from_the_top_of_skills_is_checked(self) -> None:
+        self.write("skills/GRAPH.md", "# Graph\n\nRead [the map](README.md).\n\n| [ship](ship/SKILL.md) | x | | |\n")
+        self.assertIn("R001", self.codes())
 
     def test_plugin_lists_exactly_the_skills(self) -> None:
         self.write(".claude-plugin/plugin.json", '{"name": "x", "skills": ["./skills/ship"]}')

@@ -15,10 +15,10 @@ This repo is the source of a skill framework. `skills/` is the folder the framew
 
 ## When a skill changes
 
-A skill added, renamed, removed, or changed in what it does updates, in the same PR (`tools/check.py` fails on a missing map node, plugin entry, README line, router command, or `openai.yaml`; the rest is on you):
+A skill added, renamed, removed, or changed in what it does updates, in the same PR (`tools/check.py` fails on a missing or wrong row in the graph's table, plugin entry, README line, router command, or `openai.yaml`; the rest is on you):
 
 - `README.md`: its line in Reference, linked to its `SKILL.md`;
-- `skills/README.md`: its node and edges in the map;
+- `skills/GRAPH.md`: its row in the table at the end, and its node and edges in the diagram of its flow;
 - `.claude-plugin/plugin.json`: its path in `skills`, and `agents/openai.yaml` beside its `SKILL.md`;
 - `skills/choose-skill/SKILL.md`: the situations that route to it;
 - `docs/sources.md`: its section;

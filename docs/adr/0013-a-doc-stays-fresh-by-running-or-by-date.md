@@ -1,6 +1,6 @@
 # 0013. A doc stays fresh by running or by its date
 
-- **Status**: accepted, 2026-11-19
+- **Status**: superseded by [0021](0021-the-skill-graph-is-the-executed-map.md), 2026-11-27; accepted 2026-11-19
 - **Applies to**: every doc of this repo, and the feature maps and ADRs the framework writes in target repos
 - **Enforced by**: `tools/check_refs.py` (R006: the skills map lists every skill); the entry-point check that `create-app-driver` writes beside each feature map
 
