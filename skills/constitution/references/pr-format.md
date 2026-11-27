@@ -5,7 +5,7 @@ The user reads the PR body to decide the merge without running anything. It is a
 ```markdown
 <title that says why, not what>
 
-Closes #<n> | Part of #<n>, when the task is an issue, in the form the repo's tracker file gives
+Closes #<n> | Part of #<n>, when the task is an issue, in the form the repo's tracker file gives; none for an issue the PR's readers cannot open
 
 ## Why
 Who notices the change and what changes for them, then the problem, in one or two sentences. Then one line on what the next engineer who owns this code inherits. If you cannot say what either would notice, the change or the explanation is off.
@@ -27,6 +27,7 @@ What no run could prove. Write "nothing" when everything was proven.
 ## Risk
 Class: low | medium | high. Door: two-way | one-way, and the irreversible choice when one-way.
 Verdict: behavior <outcome>, code <outcome>, base-sha <full SHA>, sha <full head SHA>, <link to the verifier's comment>
+State: in progress | ready | needs-human, <what it waits on, in one sentence>
 
 <details><summary>Proof, breakage, decisions</summary>
 
@@ -56,7 +57,8 @@ Created with <model> in <harness> (+ subagent models, never guessed)
 - **No case is dropped from Coverage.** A case the agent could not prove stays in the table and points to Not verified.
 - **A `one-way` door** names the irreversible choice on the Risk line, outside the folded part, so the user sees it before merging.
 - **Captures and videos** go through a secret scan before upload, frames included. They are attached to the PR so they play in the page when the harness can upload; otherwise they live in CI artifacts and the body links them.
+- **The State line is the PR's state**, the one the skills read and write: `in progress` until a skill sets `ready` or `needs-human`, and again when a skill drops `ready`; always exactly one of the three. A skill that sets `ready` or `needs-human` also adds the label of that name and removes the other, when the label exists on the code host; only `setup-repo` creates one, with the user's go. A PR without the line, opened before it existed, takes its state from its label.
 - **The task's issue** is linked at the top: the PR that completes it closes it when the user merges; an earlier PR of a stack only refers to it, so the issue stays open until the last one merges.
-- **Out of scope findings** of the builder become issues, linked from the PR. They never grow the PR. The verifier's notes stay notes until the user asks (rule 4).
+- **Out of scope findings** of the builder become issues, linked from the PR when its readers can open them, listed by title otherwise. They never grow the PR. The verifier's notes stay notes until the user asks (rule 4).
 - **A docs PR**, such as `setup-repo`'s or `shape-spec`'s, has as `done_when` that each file holds what the step that wrote it asks, and one case per file; its Proof is the runs of those steps.
 - **Model names** come from the session, never from a guess.

@@ -14,7 +14,7 @@ metadata:
 
 # Learn from mistakes
 
-Read [the constitution](../constitution/README.md) first, and `~/.agents/projects/<project>/issue-tracker.md`: this skill reads escaped bugs and files backlog issues, so without that file it stops and asks the user to run `/setup-repo`.
+Read [the constitution](../constitution/README.md) first, and `~/.agents/projects/<project>/issue-tracker.md`: this skill reads escaped bugs and files backlog issues. Without that file, write the default tracker as the constitution says; an issue labeled `escaped` is then one the user filed there.
 
 A mistake that reached the user is a hole in one layer of the system. You find the layer, and you make the hole smaller. You change nothing before the user approves: a skill change affects every future run, and the user stays in charge of what gets launched.
 

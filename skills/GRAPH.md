@@ -48,7 +48,7 @@ At any time: `/choose-skill` names the skill to launch, `/investigate` answers a
 
 ## The main flow: delivering one task
 
-`ship` carries one task to a PR labeled `ready`, which you merge. First the skills it runs, then its eight steps, then a zoom on each step that loops. Each zoom links the file that holds its rules.
+`ship` carries one task to a PR in state `ready`, which you merge. First the skills it runs, then its eight steps, then a zoom on each step that loops. Each zoom links the file that holds its rules.
 
 ### 1. The skills ship runs
 
@@ -126,7 +126,7 @@ flowchart TB
 
 Zoom in: [1. Frame](#3-step-1-framing) · [2. Build](#4-step-2-design-and-build) · [the playbooks](#5-the-playbooks) · [7-8. Verdict and babysitting](#6-steps-7-and-8-verdict-and-babysitting) · [every stop and budget](#every-loop-and-its-budget)
 
-Your answer to a `needs-human` PR, in the session or as a PR comment, removes the label and restarts the loop that stopped, with a fresh budget (rule 11 of [the constitution](constitution/README.md)).
+Your answer to a `needs-human` PR, in the session or as a PR comment, sets its State line back to `in progress` and restarts the loop that stopped, with a fresh budget (rule 11 of [the constitution](constitution/README.md)).
 
 ### 3. Step 1, framing
 
@@ -332,7 +332,7 @@ Each one runs when its situation comes up, around the main flow. With [the skill
 
 ### 7. Preparing a repo
 
-Once per repo, before the first task: the tracker, the labels, the glossary, the standards, and the driver if you chose it.
+Once per repo, best before the first task: the tracker, the labels, the glossary, the standards, and the driver if you chose it. Without it, the skills still run: issues go to the default tracker, private in the project folder, and a PR's state lives on its State line alone.
 
 ```mermaid
 flowchart LR

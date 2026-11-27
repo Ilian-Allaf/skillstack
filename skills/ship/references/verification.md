@@ -40,6 +40,6 @@ python -I <ship-folder>/scripts/check_evidence.py <record.json> --patch-id <curr
 
 Use the installed folder containing this reference for `<ship-folder>`. The check rejects a spec id that is not a case id, invalid certainty levels, missing or empty local artifacts, completed steps without a result and trace, and an existing verdict for another base, head, or patch id. Older records with only a patch id need a new verdict with both SHAs. Every case needs evidence or a `not_verified` reason. Fix discrepancies in the source evidence and PR, then update the index. A passing check confirms structure and file presence only; inspect whether artifacts show the expected result. Unverified cases remain visible and readiness still follows the verifier's axes.
 
-When a discrepancy cannot be resolved, preserve the failing check output and link it under Not verified in a draft PR labeled `needs-human`. Missing mandatory captures stay in the record; removing them to obtain a passing check does not complete the proof.
+When a discrepancy cannot be resolved, preserve the failing check output and link it under Not verified in a draft PR in state `needs-human`. Missing mandatory captures stay in the record; removing them to obtain a passing check does not complete the proof.
 
 If session activity is unavailable, retain command outputs and subagent reports and disclose the missing activity in the PR's Not verified section. Mark affected steps `unverified` with that reason. Never reconstruct a successful action from memory alone.

@@ -54,7 +54,7 @@ Give each check one outcome, or both `updated` and `bug`:
    Done when: the skill describes the check as it now is, and its own command ran from it.
 
 7. **Hand it over.** A private check is updated in place. A shared one goes in one PR in [the PR format](../constitution/references/pr-format.md), holding only verification changes, through a verdict and `babysit-pr` (rule 2), which a task runs once over its stack. Each bug becomes an issue with its counterexample, harm, and introducing commit; the user fixes it through `/ship`. Close or link the issue that asked for this pass.
-   Done when: every check has its outcome reported, each bug has its issue, and the verification changes are in place or in an open PR labeled `ready` or `needs-human`.
+   Done when: every check has its outcome reported, each bug has its issue, and the verification changes are in place or in an open PR in state `ready` or `needs-human`.
 
 ## Reply
 

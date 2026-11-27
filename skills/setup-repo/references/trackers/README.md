@@ -4,18 +4,22 @@ The skills never name a tracker. They name an operation, such as "publish to the
 
 `setup-repo` writes that file from one of the templates below, then proves it with a read-only operation.
 
+Without `setup-repo`, the tracker is the private markdown one. The first skill that needs an issue and finds no `issue-tracker.md` writes it from [local.md](local.md), as that template says, and names the file in its reply. Its first line marks it as written without `setup-repo`.
+
+A default tracker is not a choice, so `setup-repo` offers the tracker part anyway, with the number of open issues it holds. When the user keeps the markdown tracker, remove that first line. When the user picks another, first create each open issue of `issues/` in the new tracker, with its labels and comments, then comment on the old file with the new issue's link and close it.
+
 | Tracker | Template | Needs |
 |---|---|---|
 | GitHub Issues | [github.md](github.md) | the `gh` CLI, authenticated |
 | GitLab Issues | [gitlab.md](gitlab.md) | the `glab` CLI, authenticated |
-| Markdown files in the repo | [local.md](local.md) | nothing, not even a remote |
+| Markdown files, in the project folder or the repo | [local.md](local.md) | nothing, not even a remote; the default when no tracker file exists |
 | Anything else: Linear, Jira, Azure DevOps… | [other.md](other.md) | the user describes the workflow; the file records it |
 
 Propose the tracker that matches the repo's `git remote`, and let the user change it. One tracker per repo.
 
 ## The operations
 
-Every template, and every file written from `other.md`, answers each of these, under these headings. A skill that needs an operation the file does not answer never guesses: outside a running task it asks the user; during a task it lists the operation in its reply and the decision log, and goes on, as the constitution says for a missing tracker file.
+Every template, and every file written from `other.md`, answers each of these, under these headings. A skill that needs an operation the file does not answer never guesses: outside a running task it asks the user; during a task it lists the operation in its reply and the decision log, and goes on.
 
 | Operation | Used by |
 |---|---|
@@ -33,4 +37,4 @@ Every template, and every file written from `other.md`, answers each of these, u
 
 ## The code host is separate
 
-Pull requests, their labels (`ready`, `needs-human`), verdict comments, and CI live on the code host, not in the issue tracker, even when both are GitHub. The skills drive the code host with `gh` today; a GitLab code host would need the pull request side of `ship`, `verify-pr`, and `babysit-pr` adapted, which is not done yet.
+Pull requests, their state (the State line of the body, mirrored by the labels `ready` and `needs-human` when they exist), verdict comments, and CI live on the code host, not in the issue tracker, even when both are GitHub. The skills drive the code host with `gh` today; a GitLab code host would need the pull request side of `ship`, `verify-pr`, and `babysit-pr` adapted, which is not done yet.
