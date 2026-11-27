@@ -1,24 +1,49 @@
 # The skill graph
 
-Every skill, what it does in a few words, and which skills it runs. For how a task flows from request to merge, read [How the framework works](README.md). The first part is the graph between skills; [the second](#inside-ship) opens `ship`: its steps, its loops, its playbooks, and its budgets.
+What each skill does, which skill runs which, and what happens inside `ship`. For the reasons behind each step, read [How the framework works](README.md).
 
-Each edge here comes from the skill's own frontmatter: `calls:` is a solid arrow, `reads:` a dashed one. A skill with no edge works alone. You can launch any skill yourself; an arrow means the skill also runs the other one inside its own work.
+## At a glance
+
+What you usually do, in order. You launch steps 1, 2, 3, and 7; `ship` runs 4 and 5 itself.
+
+```mermaid
+flowchart TB
+  setup["<b>1. setup-repo</b><br/>Once per repo: tracker, glossary, app driver"]
+  shape["<b>2. shape-spec</b><br/>Only when the idea is loose: it becomes a spec issue"]
+  ship["<b>3. ship</b><br/>One task to a proven PR; ship-queue for a list"]
+  verify["<b>4. verify-pr</b><br/>A fresh agent tries to break the PR"]
+  babysit["<b>5. babysit-pr</b><br/>Review, CI, conflicts, until ready"]
+  merge[["6. ready: you merge"]]
+  learn["<b>7. learn-from-mistakes</b><br/>Find the layer that missed the bug, and fix it"]
+
+  setup --> shape --> ship --> verify --> babysit --> merge
+  merge -->|a bug got through| learn
+
+  classDef ready fill:#d3f5dc,stroke:#1a7f37,color:#1f2328
+  class merge ready
+```
+
+At any time: `/choose-skill` names the skill to launch, `/investigate` answers a question without a PR, `/recall-context` and `/catch-me-up` tell you where things stand, and `/pause-task` and `/resume-task` stop a task and pick it up.
 
 ## Legend
 
-| Arrow | Meaning |
+| You see | It means |
 |---|---|
-| `A --> B` | A runs B as one of its steps |
-| `A -.-> B` | A reads B's files, its rules or its reply format, without running it |
-| `A ==> B` | A writes or updates B, a skill generated in your repo |
+| a solid arrow | the skill runs the other one as one of its steps; in [At a glance](#at-a-glance) only, what comes next |
+| a thick arrow | the skill writes or updates a tool in your repo |
+| a dashed arrow | inside `ship`: a stop, the task hands back to you |
+| a blue cylinder | a tool generated in your repo: `drive-<app>` launches and drives the app, `prove-<area>` runs one formal check |
+| a green box | `ready`: the PR waits for your merge |
+| an orange box | `needs-human`: the PR waits for your answer |
+| a red box | a stop with no PR |
 
-## The graph, in six small pieces
+## Which skill runs which
 
-One diagram with every edge is unreadable, so the graph is cut by question. Each piece shows every edge of its topic; together they hold every edge, and [the table below](#every-skill-with-its-edges) lists them per skill.
+One diagram with every edge is unreadable, so the graph is cut by question. Each edge comes from the skill's `calls:` frontmatter; together, the six pieces hold every one, and [the table below](#every-skill-with-its-edges) lists them per skill.
 
 ### 1. Delivering one task
 
-`ship` owns the task from start to ready PR. Inside, it runs the review chain.
+`ship` owns the task from start to ready PR. Each arrow names the step of `ship` that runs the other skill.
 
 ```mermaid
 flowchart TB
@@ -28,13 +53,12 @@ flowchart TB
   verify["<b>verify-pr</b><br/>Independent verdict on a PR"]
   babysit["<b>babysit-pr</b><br/>Conflicts, review, CI to ready"]
 
-  ship -->|a symptom or a choice| investigate
-  ship -->|medium or high risk| impact
-  ship -->|PR opened| verify
-  ship -->|both verdicts PASS| babysit
-  babysit -->|new base or head| verify
-  verify -->|breakage lane| impact
-  verify -.->|playbook duties, design red flags| ship
+  ship -->|"steps 1-2: a symptom or a choice"| investigate
+  ship -->|"step 5: medium or high risk"| impact
+  ship -->|"step 7: the PR is open"| verify
+  ship -->|"step 8: both axes PASS"| babysit
+  babysit -->|a new base or head| verify
+  verify -->|its breakage lane| impact
 ```
 
 ### 2. Starting and resuming work
@@ -48,7 +72,6 @@ flowchart LR
   shape["<b>shape-spec</b><br/>Idea to spec issue"]
   investigate["<b>investigate</b><br/>Answer, diagnose, prototype"]
   babysit["<b>babysit-pr</b><br/>Conflicts, review, CI to ready"]
-  catchup["<b>catch-me-up</b><br/>What changed while away"]
 
   recall -->|one task left mid-way| resume
   resume -->|hands back to its owner| ship
@@ -57,23 +80,30 @@ flowchart LR
   resume --> investigate
   resume --> babysit
   queue -->|one owner per task| ship
-  queue -.->|its reply format| catchup
 ```
 
-### 3. Preparing a repo and a spec
+### 3. Preparing a repo, and shaping a spec
+
+Two separate jobs: one runs once per repo, the other whenever an idea is still loose.
 
 ```mermaid
 flowchart LR
-  setup["<b>setup-repo</b><br/>Prepare a new repo"]
-  driver["<b>create-app-driver</b><br/>Write the app driver"]
-  guard["<b>add-guardrail</b><br/>Turn a mistake into a check"]
-  shape["<b>shape-spec</b><br/>Idea to spec issue"]
-  investigate["<b>investigate</b><br/>Answer, diagnose, prototype"]
+  subgraph spec["When an idea is loose"]
+    shape["<b>shape-spec</b><br/>Idea to spec issue"]
+    investigate["<b>investigate</b><br/>Answer, diagnose, prototype"]
+  end
+  subgraph repo["Once per repo"]
+    setup["<b>setup-repo</b><br/>Prepare a new repo"]
+    driver["<b>create-app-driver</b><br/>Write the app driver"]
+    guard["<b>add-guardrail</b><br/>Turn a mistake into a check"]
+  end
 
   setup -->|if you chose it| driver
   setup -->|if you chose it| guard
-  setup -.->|its glossary rules| shape
   shape -->|prototype a decision| investigate
+
+  style repo fill:none,stroke:#8c959f
+  style spec fill:none,stroke:#8c959f
 ```
 
 ### 4. Building the project's tools
@@ -95,6 +125,9 @@ flowchart LR
   driver ==> drive
   createfv ==> prove
   maintainfv ==> prove
+
+  classDef tool fill:#ddf4ff,stroke:#0969da,color:#1f2328
+  class drive,prove tool
 ```
 
 ### 5. Using the project's tools
@@ -115,6 +148,9 @@ flowchart LR
   verify --> drive
   babysit --> drive
   impact --> prove
+
+  classDef tool fill:#ddf4ff,stroke:#0969da,color:#1f2328
+  class drive,prove tool
 ```
 
 ### 6. Learning from a mistake
@@ -124,13 +160,9 @@ flowchart LR
   learn["<b>learn-from-mistakes</b><br/>Fix the layer that missed it"]
   guard["<b>add-guardrail</b><br/>Turn a mistake into a check"]
   driver["<b>create-app-driver</b><br/>Write the app driver"]
-  ship["<b>ship</b><br/>One task to a ready PR"]
-  verify["<b>verify-pr</b><br/>Independent verdict on a PR"]
 
   learn -->|approved code-level lesson| guard
   learn -->|approved feature-map gap| driver
-  learn -.->|where a lesson lands| ship
-  learn -.-> verify
 ```
 
 ## Inside ship
@@ -166,6 +198,13 @@ flowchart TB
   build -.->|"3 attempts spent, or a second sketch scrapped"| human
   verdict -.->|"INCONCLUSIVE, or the FAIL budget spent"| human
   babysit -.->|"5 rounds spent, or a call only you can make"| human
+
+  classDef ready fill:#d3f5dc,stroke:#1a7f37,color:#1f2328
+  classDef human fill:#fff1c2,stroke:#9a6700,color:#1f2328
+  classDef stop fill:#ffe0e0,stroke:#cf222e,color:#1f2328
+  class ready ready
+  class human human
+  class nopr stop
 ```
 
 Your answer to a `needs-human` PR, in the session or as a PR comment, removes the label and restarts the loop that stopped, with a fresh budget (rule 11 of [the constitution](constitution/README.md)).
@@ -206,6 +245,11 @@ flowchart TB
   frame -->|"a surface with no driver, a promise with no check, a stale check"| lacks --> go
   frame -->|high risk or a hard zone| pre --> go
   frame -->|otherwise| go
+
+  classDef ready fill:#d3f5dc,stroke:#1a7f37,color:#1f2328
+  classDef human fill:#fff1c2,stroke:#9a6700,color:#1f2328
+  classDef stop fill:#ffe0e0,stroke:#cf222e,color:#1f2328
+  class nopr,shape stop
 ```
 
 ### 9. Step 2, design and build
@@ -241,6 +285,11 @@ flowchart TB
   scrap -->|once: sketch again| sketch
   scrap -.->|a second time| human
   you -->|pushback| ground
+
+  classDef ready fill:#d3f5dc,stroke:#1a7f37,color:#1f2328
+  classDef human fill:#fff1c2,stroke:#9a6700,color:#1f2328
+  classDef stop fill:#ffe0e0,stroke:#cf222e,color:#1f2328
+  class human human
 ```
 
 ### 10. The playbooks
@@ -261,20 +310,25 @@ Step 1 picks one playbook per task, step 2 follows it, and `verify-pr` checks it
 
 ```mermaid
 flowchart TB
-  hyp["<b>Hypothesis</b><br/>Grounded in a mechanism"]
+  hyp["<b>Hypothesis</b><br/>Grounded in a mechanism; after several reverts, a new kind"]
   change["<b>One change</b><br/>The smallest"]
   measure["<b>Measure</b><br/>Same frozen check"]
   keep{"Past the noise,<br/>gate green?"}
   commit["Keep it:<br/>one commit"]
   revert["Revert it<br/>in full"]
   log["Log the attempt"]
-  done[["target met"]]
+  done[["Stop: the target is met"]]
 
   hyp --> change --> measure --> keep
   keep -->|yes| commit --> log
   keep -->|no| revert --> log
-  log -->|"not yet; after several reverts, change the kind of hypothesis"| hyp
-  log -->|target met| done
+  log -->|not yet| hyp
+  log -->|met| done
+
+  classDef ready fill:#d3f5dc,stroke:#1a7f37,color:#1f2328
+  classDef human fill:#fff1c2,stroke:#9a6700,color:#1f2328
+  classDef stop fill:#ffe0e0,stroke:#cf222e,color:#1f2328
+  class done ready
 ```
 
 ### 11. Steps 7 and 8, verdict and babysitting
@@ -305,6 +359,12 @@ flowchart TB
   round -->|pushed: a new head| verify
   round -->|replies only| state
   round -.->|"5 rounds spent, or an ask for you"| human
+
+  classDef ready fill:#d3f5dc,stroke:#1a7f37,color:#1f2328
+  classDef human fill:#fff1c2,stroke:#9a6700,color:#1f2328
+  classDef stop fill:#ffe0e0,stroke:#cf222e,color:#1f2328
+  class ready ready
+  class human human
 ```
 
 ### Every loop and its budget
@@ -333,12 +393,11 @@ These run no other skill. Launch them when the situation fits.
 | [choose-skill](choose-skill/SKILL.md) | Tells you which skill to launch and with what command; launches nothing |
 | [sharpen-prompt](sharpen-prompt/SKILL.md) | Rewrites a prompt you are about to send so it asks for deeper work |
 | [pause-task](pause-task/SKILL.md) | Stops the running task at a safe point and leaves a resume note |
+| [catch-me-up](catch-me-up/SKILL.md) | Tells you what changed while you were away, and each call waiting on you |
 | [clean-worktrees](clean-worktrees/SKILL.md) | Removes the worktrees of finished tasks, never losing unsaved work |
 | [say-it-plainly](say-it-plainly/SKILL.md) | Says the last reply again, shorter, with no jargon |
 | [show-me](show-me/SKILL.md) | Shows the current topic as the smallest clear diagram or diff |
 | [test-skill-change](test-skill-change/SKILL.md) | Tests blind whether a skill change makes the agent work better |
-
-`catch-me-up` is in the graph only because `ship-queue` reuses its reply format; you launch it alone too.
 
 ## Every skill, with its edges
 
@@ -347,7 +406,7 @@ These run no other skill. Launch them when the situation fits.
 | [add-guardrail](add-guardrail/SKILL.md) | Turns a repeated mistake into a check, proven red on the real mistake | | setup-repo, learn-from-mistakes |
 | [analyze-impact](analyze-impact/SKILL.md) | Finds what a change breaks outside its diff and proves the fact it is safe because of | drive-\<app\>, prove-\<area\> | ship, verify-pr |
 | [babysit-pr](babysit-pr/SKILL.md) | Drives an open PR to ready: conflicts, review, CI; stops before the merge | verify-pr, drive-\<app\> | ship, resume-task |
-| [catch-me-up](catch-me-up/SKILL.md) | Tells you what changed while you were away, and each call waiting on you | | (format read by ship-queue) |
+| [catch-me-up](catch-me-up/SKILL.md) | Tells you what changed while you were away, and each call waiting on you | | |
 | [choose-skill](choose-skill/SKILL.md) | Tells you which skill to launch | | |
 | [clean-worktrees](clean-worktrees/SKILL.md) | Removes finished worktrees safely | | |
 | [create-app-driver](create-app-driver/SKILL.md) | Writes `drive-<app>`, the skill that launches and drives the app like a user, with its feature map | writes drive-\<app\> | ship, setup-repo, learn-from-mistakes |
@@ -367,5 +426,7 @@ These run no other skill. Launch them when the situation fits.
 | [show-me](show-me/SKILL.md) | Shows the topic as the smallest clear visual | | |
 | [test-skill-change](test-skill-change/SKILL.md) | Compares the old and new version of a skill blind | | |
 | [verify-pr](verify-pr/SKILL.md) | Tries to break a PR and gives a verdict on behavior and on code | analyze-impact, drive-\<app\> | ship, babysit-pr |
+
+Four skills also read part of another without running it, through `reads:`: `learn-from-mistakes` reads `ship` and `verify-pr`, to know where a lesson lands; `setup-repo` reads the glossary rules of `shape-spec`; `ship-queue` reads the reply format of `catch-me-up`; `verify-pr` reads the playbook duties and design red flags of `ship`.
 
 `drive-<app>` and `prove-<area>` are not shipped by this framework: they are written for each repo, by the skills that point to them.
