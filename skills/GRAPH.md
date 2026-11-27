@@ -78,6 +78,7 @@ flowchart TB
   babysit["<b>8. babysit-pr</b><br/>Conflicts, review, CI; reverifies each push"]
   ready[["ready: you merge"]]
   human[["needs-human: you answer"]]
+  shapestop[["stop: propose /shape-spec"]]
   nopr[["stop, no PR"]]
 
   start --> frame --> build --> clean --> prove
@@ -86,7 +87,8 @@ flowchart TB
   open --> verdict
   verdict -->|PASS| babysit --> ready
   verdict -->|"FAIL: fix it, 2 FAILs max"| build
-  frame -.->|"several decisions, or a symptom that never fires"| nopr
+  frame -.->|several open decisions| shapestop
+  frame -.->|a symptom that never fires| nopr
   build -.->|"3 attempts spent, or a second sketch scrapped"| human
   verdict -.->|"INCONCLUSIVE, or the FAIL budget spent"| human
   babysit -.->|"5 rounds spent, or a call only you can make"| human
@@ -96,7 +98,7 @@ flowchart TB
   classDef stop fill:#ffe0e0,stroke:#cf222e,color:#1f2328
   class ready ready
   class human human
-  class nopr stop
+  class nopr,shapestop stop
 ```
 
 Your answer to a `needs-human` PR, in the session or as a PR comment, removes the label and restarts the loop that stopped, with a fresh budget (rule 11 of [the constitution](constitution/README.md)).
@@ -133,7 +135,7 @@ flowchart TB
   diag -->|none fires| nopr
   clear -->|yes| frame
   clear -->|one decision first| proto --> frame
-  clear -->|"several decisions, too big, or a heavy visual change with no target"| shape
+  clear -->|"several open decisions, too big, or a heavy visual change with no target"| shape
   frame -->|"a surface with no driver, a promise with no check, a stale check"| lacks --> go
   frame -->|high risk or a hard zone| pre --> go
   frame -->|otherwise| go
@@ -274,7 +276,7 @@ Rule 7 of [the constitution](constitution/README.md) holds for each: inside the 
 | CI flake | `babysit-pr` step 4 | 1 rerun | reported as a flake |
 | Waiting with no PR watcher | `babysit-pr` | a check every 5 to 10 minutes, for 2 hours | `needs-human`, with what the PR waits on |
 
-Three stops are not loops: a frame that needs several decisions from you and a symptom no trigger makes fire, both before any PR, and an evidence check that finds discrepancies when the PR opens, which leaves a draft labeled `needs-human`.
+Three stops are not loops: a frame with several decisions still open for you and a symptom no trigger makes fire, both before any PR, and an evidence check that finds discrepancies when the PR opens, which leaves a draft labeled `needs-human`.
 
 ## Side flows
 
@@ -296,7 +298,7 @@ flowchart LR
 
 ### 8. Shaping a spec
 
-When an idea is too loose for `ship` to frame: several decisions only you can make, a task too big to frame, or a heavy visual change with no visual target. `shape-spec` interviews you and writes a spec issue that `ship` then takes.
+When an idea is too loose for `ship` to frame: several open decisions only you can make, a task too big to frame, or a heavy visual change with no visual target. `shape-spec` interviews you and writes a spec issue that `ship` then takes.
 
 ```mermaid
 flowchart LR
