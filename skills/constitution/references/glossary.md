@@ -50,7 +50,7 @@ The target repo can have its own glossary of domain terms. The builder and the v
 | formal check | check formel | a project-local `prove-<area>` skill that checks one property over every order of steps, or every input up to a bound; `create-formal-verification` writes it | |
 | sync commit | commit de synchro | the commit at which a formal check was last confirmed to describe the code it covers, with its date and the content id of each covered file | |
 | stale | périmé | said of a formal check whose covered files no longer match the content ids it records, or of a feature file whose code changed after the commit it was last driven at; what it says proves nothing until it is checked again | |
-| feature map | feature map | one file per user-facing feature in `drive-<app>` | `feature list` |
+| feature map | feature map | one file per user-facing feature mapped so far in `drive-<app>`; it grows by maintenance, so a feature without a file is not proven safe | `feature list` |
 | seeded defect | défaut semé | a bug planted in a real PR to test the verifier | `fake bug` |
 | pin | pin | a test, snapshot, or script that captures today's behavior before a refactoring moves structure | `golden master` |
 | sketch | esquisse | types, signatures, and module layout with empty bodies, made before code | |

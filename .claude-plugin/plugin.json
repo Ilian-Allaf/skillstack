@@ -26,6 +26,7 @@
     "./skills/catch-me-up",
     "./skills/clean-worktrees",
     "./skills/create-app-driver",
+    "./skills/maintain-app-driver",
     "./skills/create-formal-verification",
     "./skills/maintain-formal-verification",
     "./skills/add-guardrail",

@@ -164,7 +164,7 @@ When a skill changes, update its section here, in the same PR.
 
 ## `skills/constitution/references/architecture.md` (2026-11-27)
 
-- [ADR 0024](adr/0024-the-architecture-is-shaped-apart-from-the-intent.md), ours: steps 1 to 4 of `skills/ship/references/design.md` and its red flags move here, so `ship` and `shape-architecture` follow one method. The screen now keeps both sketches, and the pick and its fold-in stay in `ship`. Their sources stay those listed under `skills/ship/references/design.md`.
+- [ADR 0025](adr/0024-the-architecture-is-shaped-apart-from-the-intent.md), ours: steps 1 to 4 of `skills/ship/references/design.md` and its red flags move here, so `ship` and `shape-architecture` follow one method. The screen now keeps both sketches, and the pick and its fold-in stay in `ship`. Their sources stay those listed under `skills/ship/references/design.md`.
 
 ## `skills/constitution/references/ui.md` (2026-11-25)
 
@@ -176,14 +176,15 @@ When a skill changes, update its section here, in the same PR.
 - Source: pstack `create-verification-skill` and `maintain-verification-skill`.
 - 2026-11-23: the formal mode moved out to `create-formal-verification` and `maintain-formal-verification`.
 - 2026-11-24, [ADR 0019](adr/0019-the-spec-sets-the-bar-and-a-task-builds-the-proof-it-lacks.md): the skill reads the access `shape-spec` collected; inside a task, a fresh subagent follows the driver cold, after Ray Amjad's checker that makes sure the driver did not cheat.
+- 2026-11-28, [ADR 0025](adr/0025-the-feature-map-grows-by-maintenance.md): the maintain mode moved out to `maintain-app-driver`, and the entry-point check is gone: the map starts with 3 to 5 features and grows by maintenance, as in pstack `create-verification-skill` ("aim for the top 3-5 to start", "the map exists so later runs can cover the rest"). The stand-in rule and "mocks only where a production boundary already isolates the external system" come back from it. A browser control CLI before a shipped script, after pstack's `control-ui` (`poteto-mode` multi-phase-plan playbook). Ours: a seed for a state no user path reaches, beside the driver, without asking; the driver's tools never in the repo's manifest.
 
 ## `skills/create-app-driver/references/feature-map.md`
 
 - Source: pstack `create-verification-skill`, example `create-note.md`.
 
-## `skills/create-app-driver/references/maintain.md`
+## `skills/maintain-app-driver/SKILL.md` (2026-11-28)
 
-- Source: pstack `maintain-verification-skill`.
+- Source: pstack `maintain-verification-skill` (Lauren Tan), which this repo first kept as `create-app-driver`'s maintain mode: the index, the read-only source wave, the reconcile, the live pass with its three invariants, the triage, and the three outcomes. pstack guide page "Verify the result and open a PR": run it often. Ours, [ADR 0025](adr/0025-the-feature-map-grows-by-maintenance.md): each pass maps up to five missing features, those `learn-from-mistakes` named first; the user launches it, by hand or from a schedule of their own ([ADR 0026](adr/0026-a-schedule-is-the-users-own.md)). The rule that a prerequisite the map omits is drift, from pstack.
 
 ## `skills/create-formal-verification/SKILL.md`
 
@@ -276,7 +277,7 @@ When a skill changes, update its section here, in the same PR.
 
 ## `skills/shape-architecture/SKILL.md` and its references (2026-11-27)
 
-- [ADR 0024](adr/0024-the-architecture-is-shaped-apart-from-the-intent.md), ours: the architecture shaped apart from the intent, the four signals that make a run worth it, every question that can be left to the builder, the Technical decisions section, and `ship` building within it.
+- [ADR 0025](adr/0024-the-architecture-is-shaped-apart-from-the-intent.md), ours: the architecture shaped apart from the intent, the four signals that make a run worth it, every question that can be left to the builder, the Technical decisions section, and `ship` building within it.
 - The rounds and the frontier of `references/questions.md` come from `shape-spec`'s grill, so from Matt Pocock `grilling`. The design method, sketching in code and the red flags, comes from pstack `architect` (Lauren Tan), through `skills/constitution/references/architecture.md`.
 
 ## `skills/shape-spec/SKILL.md`
@@ -287,7 +288,7 @@ When a skill changes, update its section here, in the same PR.
 - 2026-11-20, from the coherence audit: a question of fact is settled by a run, one of look or feel by the user, from pstack `poteto-mode` ("If the answer is a fact you could observe by running something, it is not the human's to answer").
 - 2026-11-25, [ADR 0020](adr/0020-a-heavy-visual-change-is-specified-by-a-target.md), ours: the trigger for a heavy visual change, settled with the user.
 
-- 2026-11-27, [ADR 0024](adr/0024-the-architecture-is-shaped-apart-from-the-intent.md), ours: the hand over looks for the signals of `shape-architecture` and offers it.
+- 2026-11-27, [ADR 0025](adr/0024-the-architecture-is-shaped-apart-from-the-intent.md), ours: the hand over looks for the signals of `shape-architecture` and offers it.
 
 ## `skills/shape-spec/references/domain.md`
 
@@ -311,7 +312,7 @@ When a skill changes, update its section here, in the same PR.
 - 2026-11-24, [ADR 0019](adr/0019-the-spec-sets-the-bar-and-a-task-builds-the-proof-it-lacks.md), ours: a journey per story, the Promises and Not verifiable sections, numbered stories and promises, and the journeys' surfaces as seams.
 - 2026-11-25, [ADR 0020](adr/0020-a-heavy-visual-change-is-specified-by-a-target.md), ours: the Visual targets section, numbered `V1`, still or motion, with its design mode, measured checks, and bans. The motion target's effect list follows Cook's one line per effect (`references/target-and-bar.md`).
 
-- 2026-11-27, [ADR 0024](adr/0024-the-architecture-is-shaped-apart-from-the-intent.md), ours: the Technical decisions section, numbered `D1`; the Decisions section keeps the product decisions.
+- 2026-11-27, [ADR 0025](adr/0024-the-architecture-is-shaped-apart-from-the-intent.md), ours: the Technical decisions section, numbered `D1`; the Decisions section keeps the product decisions.
 
 ## `skills/ship/references/clean.md`
 
@@ -334,7 +335,7 @@ When a skill changes, update its section here, in the same PR.
 - 2026-11-20, architecture method brought closer to pstack (Lauren Tan, `knowledge/sources/repos/cursor-pstack/`): the method gains grounding in the history of the current shape (pstack `architect` Phase A, which runs `why`), the rules of a sketch (`sketch.md`), the design note (`design-note.md`), the design shown to the user for a one-way door or on request (pstack `architect` Phase C, opt-in there), building against the sketch, and the six tells and the procedure for scrapping it (pstack `architect` Phases D and E). The table of how much design a change needs adapts pstack's guide page "Design before you write code", and designs every feature, as pstack's feature playbook runs `architect` on every feature. Ours: the builder writes both sketches itself instead of an arena of models, and a task scraps once, then `needs-human`.
 - 2026-11-25, [ADR 0020](adr/0020-a-heavy-visual-change-is-specified-by-a-target.md), ours: grounding a change to what a user sees reads the design system, as `ui.md` says.
 
-- 2026-11-27, [ADR 0024](adr/0024-the-architecture-is-shaped-apart-from-the-intent.md), ours: steps 1 to 4 and the red flags move to `skills/constitution/references/architecture.md`; the build within the spec's technical decisions is new.
+- 2026-11-27, [ADR 0025](adr/0024-the-architecture-is-shaped-apart-from-the-intent.md), ours: steps 1 to 4 and the red flags move to `skills/constitution/references/architecture.md`; the build within the spec's technical decisions is new.
 
 ## `skills/ship/references/design-note.md`
 

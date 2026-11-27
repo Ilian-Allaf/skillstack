@@ -10,8 +10,8 @@ Exhaustive in coverage, not in footage: every case has evidence, and each case g
 
 - the main case from `done_when`;
 - when the task is a spec issue, one case per journey, per promise, and per visual target of the spec, each with its spec id (`S1`, `P1`, `V1`) as the case id. A `medium` or `high` task without a spec drafts its own journeys and promises in the frame, shows them, and goes on; a `low` task skips them. A promise outside a hard zone, or one the builder drafted, yields a recommendation for a formal check, never a new one;
-- one case per entry point of the touched feature: those its feature file's Declared in points to, and those the file lists by hand (button, shortcut, command, import, API call);
-- one case per path a user can reach that calls the changed code, found in the code itself (a search for its callers, `analyze-impact` step 1), not only in the map. A path the map lacks is added to its feature file in this PR, so the builder and the verifier do not share the map's blind spot;
+- one case per entry point its feature file lists for the touched feature (button, shortcut, command, route, import, API call);
+- one case per path a user can reach that calls the changed code, found in the code itself (a search for its callers, `analyze-impact` step 1), not only in the map. A path the map lacks is added to its feature file, so the builder and the verifier do not share the map's blind spot; when the touched feature has no file, the builder writes one, in the shape of the driver's feature map, with the entry points found in the code. Either goes where the driver lives: in this PR when the driver is in the repo, in the project folder otherwise;
 - the edge cases of the hard zones the change touches: double action, retry, error path, empty and long input, reload or back navigation mid-action, two users or two tabs;
 - for a bug, the reported case on the base and on the head;
 - the property of each formal check that covers a touched file, found as [proof.md](proof.md#drivers-and-formal-checks) says, with its check run as evidence; a check stale on the base is repaired first, as [formal.md](formal.md#in-a-task) says.

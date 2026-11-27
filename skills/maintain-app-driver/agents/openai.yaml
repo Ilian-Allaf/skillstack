@@ -1,0 +1,5 @@
+interface:
+  display_name: "Maintain App Driver"
+  short_description: "Resync the app driver and grow its feature map"
+policy:
+  allow_implicit_invocation: false

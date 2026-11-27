@@ -1,6 +1,6 @@
 # 0014. A launched task runs to a ready PR
 
-- **Status**: accepted, 2026-11-20. Supersedes [0002](0002-nothing-starts-without-the-user.md).
+- **Status**: accepted, 2026-11-20; amended by [0026](0026-a-schedule-is-the-users-own.md). Supersedes [0002](0002-nothing-starts-without-the-user.md).
 - **Applies to**: every skill; `skills/ship/` (frame, design, the long-run rules), `skills/constitution/README.md` (rules 7, 11, 12, 13)
 - **Enforced by**: `tools/lint_skills.py` keeps every skill for the user to launch (F017 for Claude Code, F018 for Codex); the rest by review
 

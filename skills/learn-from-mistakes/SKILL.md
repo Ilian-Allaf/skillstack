@@ -5,7 +5,7 @@ disable-model-invocation: true
 argument-hint: "<nothing for this session, a PR number, or an issue labeled escaped>"
 metadata:
   kind: meta
-  calls: "add-guardrail, create-app-driver"
+  calls: "add-guardrail, maintain-app-driver"
   reads: "ship, verify-pr"
   consumes: "a session transcript, a PR, or an issue labeled escaped"
   produces: "an approved list of changes, each in its own PR, and issues for the backlog"
@@ -40,7 +40,7 @@ A mistake that reached the user is a hole in one layer of the system. You find t
 5. **Ask the user.** Show the three lists through the harness's question tool. The user approves rows, drops them, or changes their route.
    Done when: the user answered for every Accepted row.
 
-6. **Apply the approved rows,** each in its own PR outside any task, by the route routes.md gives it: a check through [add-guardrail](../add-guardrail/SKILL.md), a feature map gap through [create-app-driver](../create-app-driver/SKILL.md) in maintain mode, a verifier miss through [calibration.md](../verify-pr/references/calibration.md) and its replay. A change to a file of this framework, a calibration example included, goes to the framework's own repo, as a PR when you can reach it or an issue with the proposed diff, never as an edit of the installed copy; offer `/test-skill-change` on it before it is kept. Every PR goes through a verdict and `babysit-pr`, as rule 2 of the constitution says. Backlog rows become issues.
+6. **Apply the approved rows,** each in its own PR outside any task, by the route routes.md gives it: a check through [add-guardrail](../add-guardrail/SKILL.md), a feature map gap through [maintain-app-driver](../maintain-app-driver/SKILL.md), a verifier miss through [calibration.md](../verify-pr/references/calibration.md) and its replay. A change to a file of this framework, a calibration example included, goes to the framework's own repo, as a PR when you can reach it or an issue with the proposed diff, never as an edit of the installed copy; offer `/test-skill-change` on it before it is kept. Every PR goes through a verdict and `babysit-pr`, as rule 2 of the constitution says. Backlog rows become issues.
    Done when: each approved row has a PR or an issue, linked in the reply, and a verifier change shows its replayed FAIL.
 
 ## Reply

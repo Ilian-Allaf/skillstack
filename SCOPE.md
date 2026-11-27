@@ -18,7 +18,7 @@ A new skill faces the same bar as any change, and its PR says why no existing sk
 |---|---|
 | The agent merging, in any form | [ADR 0001](docs/adr/0001-the-user-always-merges.md) |
 | A trust ladder, a `.trust/` folder, a CI gate of the framework's own | [ADR 0001](docs/adr/0001-the-user-always-merges.md) |
-| Tasks that start without the user: scheduled runs, crons, a queue started by a timer | [ADR 0014](docs/adr/0014-a-launched-task-runs-to-a-ready-pr.md) |
+| A schedule the framework sets up or starts: a cron, a timer, a queue that starts itself. A schedule the user sets up outside the framework is the user launching | [ADR 0014](docs/adr/0014-a-launched-task-runs-to-a-ready-pr.md), [ADR 0026](docs/adr/0026-a-schedule-is-the-users-own.md) |
 | Splitting a spec into tickets for parallel agents | [ADR 0011](docs/adr/0011-no-split-into-tickets.md) |
 | Deploying | The framework stops at a PR labeled `ready`. |
 | A server, a database, a message queue | The code host, the issue tracker, and the harness hold all the state. |

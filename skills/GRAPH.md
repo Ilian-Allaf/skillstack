@@ -460,12 +460,17 @@ When a bug got through to you: `learn-from-mistakes` finds the layer that missed
 flowchart LR
   learn["<b>learn-from-mistakes</b><br/>Fix the layer that missed it"]
   guard["<b>add-guardrail</b><br/>Turn a mistake into a check"]
-  driver["<b>create-app-driver</b><br/>Write the app driver"]
+  maintaindriver["<b>maintain-app-driver</b><br/>Resync the driver, grow its map"]
+  drive[("<b>drive-#lt;app#gt;</b><br/>Launch and drive the app")]
 
   learn -->|approved code-level lesson| guard
-  learn -->|approved feature-map gap| driver
+  learn -->|approved feature-map gap| maintaindriver
+  maintaindriver ==> drive
 
-  click driver href "https://github.com/Ilian-Allaf/skillstack/blob/master/skills/GRAPH.md#9-building-the-projects-tools" _top
+  classDef tool fill:#ddf4ff,stroke:#0969da,color:#1f2328
+  class drive tool
+
+  click drive href "https://github.com/Ilian-Allaf/skillstack/blob/master/skills/GRAPH.md#10-using-the-projects-tools" _top
 ```
 
 ## Reference
@@ -495,10 +500,11 @@ These run no other skill. Launch them when the situation fits.
 | [catch-me-up](catch-me-up/SKILL.md) | Tells you what changed while you were away, and each call waiting on you | | |
 | [choose-skill](choose-skill/SKILL.md) | Tells you which skill to launch | | |
 | [clean-worktrees](clean-worktrees/SKILL.md) | Removes finished worktrees safely | | |
-| [create-app-driver](create-app-driver/SKILL.md) | Writes `drive-<app>`, the skill that launches and drives the app like a user, with its feature map | writes drive-\<app\> | ship, setup-repo, learn-from-mistakes |
+| [create-app-driver](create-app-driver/SKILL.md) | Writes `drive-<app>`, the skill that launches and drives the app like a user, with its feature map | writes drive-\<app\> | ship, setup-repo |
 | [create-formal-verification](create-formal-verification/SKILL.md) | Proves one property where a bug costs most, and writes `prove-<area>` | writes prove-\<area\> | ship |
 | [investigate](investigate/SKILL.md) | Answers a question, diagnoses a symptom, or settles a choice by prototype; opens no PR | drive-\<app\> | ship, shape-spec, shape-architecture, resume-task |
-| [learn-from-mistakes](learn-from-mistakes/SKILL.md) | Finds the layer that missed a mistake and proposes its fix; applies nothing unapproved | add-guardrail, create-app-driver | |
+| [learn-from-mistakes](learn-from-mistakes/SKILL.md) | Finds the layer that missed a mistake and proposes its fix; applies nothing unapproved | add-guardrail, maintain-app-driver | |
+| [maintain-app-driver](maintain-app-driver/SKILL.md) | Brings `drive-<app>` back in line with the app and maps a few more features per pass | updates drive-\<app\> | learn-from-mistakes |
 | [maintain-formal-verification](maintain-formal-verification/SKILL.md) | Brings formal checks back in line with the code; says drift or bug for each failure | updates prove-\<area\> | ship |
 | [pause-task](pause-task/SKILL.md) | Stops a task safely with a resume note | | |
 | [recall-context](recall-context/SKILL.md) | Rebuilds where a topic stands from past sessions and the repo | resume-task | |

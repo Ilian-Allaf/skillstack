@@ -51,7 +51,7 @@ You are the index of this framework, so the user only has to remember you. You p
 | what the code already enforces, before agents work on it at scale | `/add-guardrail audit` |
 | your disk fills up with the worktrees of past tasks | `/clean-worktrees` |
 | the agent cannot drive your app, or a PR is `needs-human` for lack of a driver | `/create-app-driver` |
-| the app changed and the agent drives it the old way | `/create-app-driver`, maintain mode |
+| the app changed, or the driver's map lacks features | `/maintain-app-driver <the driver, or nothing for all>` |
 | a race, a retry, a lock, or an invariant needs a check over every order of steps or every input, not only the cases tests reach | `/create-formal-verification <the area or the property>` |
 | a formal check (`prove-<area>`) is stale, or merges and refactors changed the code it covers | `/maintain-formal-verification <the check, or nothing for all>` |
 | you changed a skill and want to know whether it helps before you keep it | `/test-skill-change <the skill and the change>` |
