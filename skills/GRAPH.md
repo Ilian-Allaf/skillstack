@@ -115,7 +115,7 @@ flowchart TB
   class human human
   class nopr,shapestop stop
 
-  click frame "#3-step-1-framing"
+  click frame href "https://github.com/Ilian-Allaf/software-ai-skills-framework/blob/t3/add-readable-graph-md/skills/GRAPH.md#3-step-1-framing" _top
   click build "#4-step-2-design-and-build"
   click verdict "#6-steps-7-and-8-verdict-and-babysitting"
   click babysit "#6-steps-7-and-8-verdict-and-babysitting"
