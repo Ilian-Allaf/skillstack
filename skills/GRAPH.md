@@ -1,6 +1,6 @@
 # The skill graph
 
-What each skill does, which skill runs which, and what happens inside `ship`. For the reasons behind each step, read [How the framework works](README.md).
+The main flow first, the side flows next, and the reference tables last. For the reasons behind each step, read [How the framework works](README.md).
 
 ## At a glance
 
@@ -31,19 +31,19 @@ At any time: `/choose-skill` names the skill to launch, `/investigate` answers a
 |---|---|
 | a solid arrow | the skill runs the other one as one of its steps; in [At a glance](#at-a-glance) only, what comes next |
 | a thick arrow | the skill writes or updates a tool in your repo |
-| a dashed arrow | inside `ship`: a stop, the task hands back to you |
+| a dashed arrow | in the main flow: a stop, the task hands back to you |
 | a blue cylinder | a tool generated in your repo: `drive-<app>` launches and drives the app, `prove-<area>` runs one formal check |
 | a green box | `ready`: the PR waits for your merge |
 | an orange box | `needs-human`: the PR waits for your answer |
 | a red box | a stop with no PR |
 
-## Which skill runs which
+## The main flow: delivering one task
 
-One diagram with every edge is unreadable, so the graph is cut by question. Each edge comes from the skill's `calls:` frontmatter; together, the six pieces hold every one, and [the table below](#every-skill-with-its-edges) lists them per skill.
+`ship` carries one task to a PR labeled `ready`, which you merge. First the skills it runs, then its eight steps, then a zoom on each step that loops. Each zoom links the file that holds its rules.
 
-### 1. Delivering one task
+### 1. The skills ship runs
 
-`ship` owns the task from start to ready PR. Each arrow names the step of `ship` that runs the other skill.
+Each arrow names the step of `ship` that runs the other skill.
 
 ```mermaid
 flowchart TB
@@ -61,115 +61,7 @@ flowchart TB
   verify -->|its breakage lane| impact
 ```
 
-### 2. Starting and resuming work
-
-```mermaid
-flowchart LR
-  recall["<b>recall-context</b><br/>Where a topic stands"]
-  resume["<b>resume-task</b><br/>Continue a stopped task"]
-  queue["<b>ship-queue</b><br/>Many tasks to many PRs"]
-  ship["<b>ship</b><br/>One task to a ready PR"]
-  shape["<b>shape-spec</b><br/>Idea to spec issue"]
-  investigate["<b>investigate</b><br/>Answer, diagnose, prototype"]
-  babysit["<b>babysit-pr</b><br/>Conflicts, review, CI to ready"]
-
-  recall -->|one task left mid-way| resume
-  resume -->|hands back to its owner| ship
-  resume --> queue
-  resume --> shape
-  resume --> investigate
-  resume --> babysit
-  queue -->|one owner per task| ship
-```
-
-### 3. Preparing a repo, and shaping a spec
-
-Two separate jobs: one runs once per repo, the other whenever an idea is still loose.
-
-```mermaid
-flowchart LR
-  subgraph spec["When an idea is loose"]
-    shape["<b>shape-spec</b><br/>Idea to spec issue"]
-    investigate["<b>investigate</b><br/>Answer, diagnose, prototype"]
-  end
-  subgraph repo["Once per repo"]
-    setup["<b>setup-repo</b><br/>Prepare a new repo"]
-    driver["<b>create-app-driver</b><br/>Write the app driver"]
-    guard["<b>add-guardrail</b><br/>Turn a mistake into a check"]
-  end
-
-  setup -->|if you chose it| driver
-  setup -->|if you chose it| guard
-  shape -->|prototype a decision| investigate
-
-  style repo fill:none,stroke:#8c959f
-  style spec fill:none,stroke:#8c959f
-```
-
-### 4. Building the project's tools
-
-A task builds the proof it lacks before it changes the code.
-
-```mermaid
-flowchart LR
-  ship["<b>ship</b><br/>One task to a ready PR"]
-  driver["<b>create-app-driver</b><br/>Write the app driver"]
-  createfv["<b>create-formal-verification</b><br/>Prove one property"]
-  maintainfv["<b>maintain-formal-verification</b><br/>Resync formal checks"]
-  drive[("<b>drive-#lt;app#gt;</b><br/>Launch and drive the app")]
-  prove[("<b>prove-#lt;area#gt;</b><br/>One formal check")]
-
-  ship -->|a touched surface has no driver| driver
-  ship -->|your promise in a hard zone, no check| createfv
-  ship -->|a check is stale on the base| maintainfv
-  driver ==> drive
-  createfv ==> prove
-  maintainfv ==> prove
-
-  classDef tool fill:#ddf4ff,stroke:#0969da,color:#1f2328
-  class drive,prove tool
-```
-
-### 5. Using the project's tools
-
-```mermaid
-flowchart LR
-  ship["<b>ship</b><br/>One task to a ready PR"]
-  investigate["<b>investigate</b><br/>Answer, diagnose, prototype"]
-  impact["<b>analyze-impact</b><br/>What breaks outside the diff"]
-  verify["<b>verify-pr</b><br/>Independent verdict on a PR"]
-  babysit["<b>babysit-pr</b><br/>Conflicts, review, CI to ready"]
-  drive[("<b>drive-#lt;app#gt;</b><br/>Launch and drive the app")]
-  prove[("<b>prove-#lt;area#gt;</b><br/>One formal check")]
-
-  ship --> drive
-  investigate --> drive
-  impact --> drive
-  verify --> drive
-  babysit --> drive
-  impact --> prove
-
-  classDef tool fill:#ddf4ff,stroke:#0969da,color:#1f2328
-  class drive,prove tool
-```
-
-### 6. Learning from a mistake
-
-```mermaid
-flowchart LR
-  learn["<b>learn-from-mistakes</b><br/>Fix the layer that missed it"]
-  guard["<b>add-guardrail</b><br/>Turn a mistake into a check"]
-  driver["<b>create-app-driver</b><br/>Write the app driver"]
-
-  learn -->|approved code-level lesson| guard
-  learn -->|approved feature-map gap| driver
-```
-
-## Inside ship
-
-The six pieces above show which skill runs which. This part opens `ship` itself: its eight steps, the loop each step runs, the playbooks, and where each loop stops. Each piece links the file that holds its rules.
-
-### 7. The eight steps
+### 2. The eight steps
 
 The main path, top to bottom. A dashed arrow is a stop; [the budget table](#every-loop-and-its-budget) lists every one.
 
@@ -209,7 +101,7 @@ flowchart TB
 
 Your answer to a `needs-human` PR, in the session or as a PR comment, removes the label and restarts the loop that stopped, with a fresh budget (rule 11 of [the constitution](constitution/README.md)).
 
-### 8. Step 1, framing
+### 3. Step 1, framing
 
 Before the frame, `ship` checks what already exists, reproduces a bug, and settles what is unclear. [frame.md](ship/references/frame.md)
 
@@ -252,7 +144,7 @@ flowchart TB
   class nopr,shape stop
 ```
 
-### 9. Step 2, design and build
+### 4. Step 2, design and build
 
 A change inside one function body names its data shape and builds. A change that crosses a function boundary runs the whole design loop. [design.md](ship/references/design.md)
 
@@ -292,7 +184,7 @@ flowchart TB
   class human human
 ```
 
-### 10. The playbooks
+### 5. The playbooks
 
 Step 1 picks one playbook per task, step 2 follows it, and `verify-pr` checks its duties. A task that fits two rows is two units, one PR each, the second stacked on the first. [frame.md](ship/references/frame.md#playbooks)
 
@@ -331,7 +223,7 @@ flowchart TB
   class done ready
 ```
 
-### 11. Steps 7 and 8, verdict and babysitting
+### 6. Steps 7 and 8, verdict and babysitting
 
 The verifier is a fresh agent that tries to break the PR. A FAIL goes back to the builder, and every push goes back to the verifier. [verify-pr](verify-pr/SKILL.md), [babysit-pr](babysit-pr/SKILL.md)
 
@@ -384,7 +276,125 @@ Rule 7 of [the constitution](constitution/README.md) holds for each: inside the 
 
 Three stops are not loops: a frame that needs several decisions from you and a symptom no trigger makes fire, both before any PR, and an evidence check that finds discrepancies when the PR opens, which leaves a draft labeled `needs-human`.
 
-## Skills that work alone
+## Side flows
+
+Each one runs when its situation comes up, around the main flow. With [the skills ship runs](#1-the-skills-ship-runs), these pieces hold every `calls:` edge of the frontmatter; [the table below](#every-skill-with-its-edges) lists them per skill.
+
+### 7. Preparing a repo
+
+Once per repo, before the first task: the tracker, the labels, the glossary, the standards, and the driver if you chose it.
+
+```mermaid
+flowchart LR
+  setup["<b>setup-repo</b><br/>Prepare a new repo"]
+  driver["<b>create-app-driver</b><br/>Write the app driver"]
+  guard["<b>add-guardrail</b><br/>Turn a mistake into a check"]
+
+  setup -->|if you chose it| driver
+  setup -->|if you chose it| guard
+```
+
+### 8. Shaping a spec
+
+When an idea is too loose for `ship` to frame: several decisions only you can make, a task too big to frame, or a heavy visual change with no visual target. `shape-spec` interviews you and writes a spec issue that `ship` then takes.
+
+```mermaid
+flowchart LR
+  shape["<b>shape-spec</b><br/>Idea to spec issue"]
+  investigate["<b>investigate</b><br/>Answer, diagnose, prototype"]
+
+  shape -->|prototype a decision| investigate
+```
+
+### 9. Building the project's tools
+
+When step 1 of `ship` finds the proof lacking, the task builds it before it changes the code.
+
+```mermaid
+flowchart LR
+  ship["<b>ship</b><br/>One task to a ready PR"]
+  driver["<b>create-app-driver</b><br/>Write the app driver"]
+  createfv["<b>create-formal-verification</b><br/>Prove one property"]
+  maintainfv["<b>maintain-formal-verification</b><br/>Resync formal checks"]
+  drive[("<b>drive-#lt;app#gt;</b><br/>Launch and drive the app")]
+  prove[("<b>prove-#lt;area#gt;</b><br/>One formal check")]
+
+  ship -->|a touched surface has no driver| driver
+  ship -->|your promise in a hard zone, no check| createfv
+  ship -->|a check is stale on the base| maintainfv
+  driver ==> drive
+  createfv ==> prove
+  maintainfv ==> prove
+
+  classDef tool fill:#ddf4ff,stroke:#0969da,color:#1f2328
+  class drive,prove tool
+```
+
+### 10. Using the project's tools
+
+Every skill that must see the app runs `drive-<app>`; `analyze-impact` also runs the formal checks of the code it follows.
+
+```mermaid
+flowchart LR
+  ship["<b>ship</b><br/>One task to a ready PR"]
+  investigate["<b>investigate</b><br/>Answer, diagnose, prototype"]
+  impact["<b>analyze-impact</b><br/>What breaks outside the diff"]
+  verify["<b>verify-pr</b><br/>Independent verdict on a PR"]
+  babysit["<b>babysit-pr</b><br/>Conflicts, review, CI to ready"]
+  drive[("<b>drive-#lt;app#gt;</b><br/>Launch and drive the app")]
+  prove[("<b>prove-#lt;area#gt;</b><br/>One formal check")]
+
+  ship --> drive
+  investigate --> drive
+  impact --> drive
+  verify --> drive
+  babysit --> drive
+  impact --> prove
+
+  classDef tool fill:#ddf4ff,stroke:#0969da,color:#1f2328
+  class drive,prove tool
+```
+
+### 11. Resuming work
+
+When a session ended mid-task, or you come back to a topic. `resume-task` hands the task back to the skill that owns it, at its first unfinished step.
+
+```mermaid
+flowchart TB
+  recall["<b>recall-context</b><br/>Where a topic stands"]
+  resume["<b>resume-task</b><br/>Continue a stopped task"]
+  queue["<b>ship-queue</b><br/>Many tasks to many PRs"]
+  ship["<b>ship</b><br/>One task to a ready PR"]
+  shape["<b>shape-spec</b><br/>Idea to spec issue"]
+  investigate["<b>investigate</b><br/>Answer, diagnose, prototype"]
+  babysit["<b>babysit-pr</b><br/>Conflicts, review, CI to ready"]
+
+  recall -->|one task left mid-way| resume
+  resume --> ship
+  resume --> queue
+  resume --> shape
+  resume --> investigate
+  resume --> babysit
+  queue -->|one owner per task| ship
+```
+
+### 12. Learning from a mistake
+
+When a bug got through to you: `learn-from-mistakes` finds the layer that missed it and, once you approve, has the fix built.
+
+```mermaid
+flowchart LR
+  learn["<b>learn-from-mistakes</b><br/>Fix the layer that missed it"]
+  guard["<b>add-guardrail</b><br/>Turn a mistake into a check"]
+  driver["<b>create-app-driver</b><br/>Write the app driver"]
+
+  learn -->|approved code-level lesson| guard
+  learn -->|approved feature-map gap| driver
+```
+
+## Reference
+
+### Skills that work alone
 
 These run no other skill. Launch them when the situation fits.
 
@@ -399,7 +409,7 @@ These run no other skill. Launch them when the situation fits.
 | [show-me](show-me/SKILL.md) | Shows the current topic as the smallest clear diagram or diff |
 | [test-skill-change](test-skill-change/SKILL.md) | Tests blind whether a skill change makes the agent work better |
 
-## Every skill, with its edges
+### Every skill, with its edges
 
 | Skill | What it does | Runs | Run by |
 |---|---|---|---|
