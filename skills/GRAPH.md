@@ -1,6 +1,6 @@
 # The skill graph
 
-The main flow first, the side flows next, and the reference tables last. For the reasons behind each step, read [How the framework works](README.md).
+The main flow first, the side flows next, and the reference tables last. The rules behind each step live in [the constitution](constitution/README.md) and in each skill's `SKILL.md`. `tools/check_refs.py` checks [the skill table](#every-skill-with-its-edges) against each skill's `calls:` frontmatter; the diagrams and the rest of the page follow it by hand.
 
 ## At a glance
 

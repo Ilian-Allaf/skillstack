@@ -1,6 +1,6 @@
 # Guide: how to work with the skills
 
-How to write a prompt, prompts to copy for each kind of work, and the mistakes that cost the most. `tools/check_refs.py` checks that every command here names a skill that exists (R011). Which skill does what is in the [README](../README.md#reference) and the [map](../skills/README.md); when unsure, run `/choose-skill`.
+How to write a prompt, prompts to copy for each kind of work, and the mistakes that cost the most. `tools/check_refs.py` checks that every command here names a skill that exists (R011). Which skill does what is in the [README](../README.md#reference) and the [graph](../skills/GRAPH.md); when unsure, run `/choose-skill`.
 
 ## What to put in a prompt
 

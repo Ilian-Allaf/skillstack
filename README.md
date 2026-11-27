@@ -48,7 +48,7 @@ Skills install as whole folders beside [the constitution](skills/constitution/RE
 2. Run `/ship <task>` for each task. It shows you its frame and runs to a PR labeled `ready`, stopping only for what is yours to decide. You merge.
 3. Not sure which skill fits? Run `/choose-skill` and describe your situation.
 
-The map of every skill and the path of one task, in a diagram: [`skills/README.md`](skills/README.md). Every skill on one page, with a short description and the skills it runs: [`skills/GRAPH.md`](skills/GRAPH.md). How to write a prompt, prompts to copy, and the mistakes that cost the most: [`docs/guide.md`](docs/guide.md).
+Every skill on one page, the path of one task, and the loops inside `ship`, in diagrams: [`skills/GRAPH.md`](skills/GRAPH.md). How to write a prompt, prompts to copy, and the mistakes that cost the most: [`docs/guide.md`](docs/guide.md).
 
 ## Steer with principle names
 

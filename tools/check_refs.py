@@ -6,18 +6,21 @@ A reference is any place where one text names another thing:
   - R001 a Markdown link whose file does not exist (docs outside skills/; lint_skills.py covers skills/);
   - R002 a link whose #anchor matches no heading in the target file;
   - R003 a path in backticks, such as `ship/references/design.md` or `tools/lint_skills.py`,
-         that names a framework file that does not exist;
+         that names a framework file that does not exist; a file the repo removed on purpose
+         stays allowed in the dated docs (the changelog, docs/sources.md, the ADRs), which keep their history;
   - R004 a kebab-case name in backticks in a skill, such as `fix-root-causes`, that is not a skill,
          a principle id, a playbook, a glossary term, or a generated skill;
   - R005 a skill name that was retired by a rename, so an agent never looks for a skill that is gone;
-  - R006 a skill missing from the map in skills/README.md, so the diagram cannot fall behind the skills;
+  - R006 a skill without its row in the table of skills/GRAPH.md, so the graph cannot fall behind the skills;
   - R007 .claude-plugin/plugin.json not listing exactly the skills, so the plugin ships every skill and no ghost;
   - R008 a skill the top-level README.md does not link, so the reference list stays whole;
   - R009 a skill the router, choose-skill, never names as a command, so it cannot point at a skill it forgot;
   - R010 a principle id in principles.md without its full form in principles/<id>.md, or a full form without its row,
          so an agent that reads an id always finds the whole rule;
   - R011 a command in the user guide, docs/guide.md, code blocks included, that names no skill,
-         so a prompt the user copies always launches something.
+         so a prompt the user copies always launches something;
+  - R012 a row of that table whose Runs or Run by disagrees with the skills' `calls:` frontmatter,
+         so the graph draws no edge a skill does not declare, and misses none.
 
 Scanned: skills/, the root docs (README, AGENTS, SCOPE, CHANGELOG, CODING_STANDARDS), docs/ and evals/.
 Not scanned: knowledge/ (third-party sources) and docs/history/ (frozen design notes),
@@ -64,6 +67,15 @@ PLANNED = {
     "tools/graph.py": "roadmap step 4",
     "evals/e2e/": "end-to-end cases, decided on the testbed",
 }
+# Files removed on purpose, each with what replaced it. Living docs must not name them; dated docs may.
+REMOVED = {
+    "skills/README.md": "skills/GRAPH.md",
+}
+DATED_DOCS = {"CHANGELOG.md", "docs/sources.md"}
+GRAPH = Path("skills/GRAPH.md")
+# A row of the skill table in GRAPH.md: | [name](name/SKILL.md) | what it does | runs | run by |
+GRAPH_ROW_RE = re.compile(r"(?m)^\| \[([a-z0-9-]+)\]\(\1/SKILL\.md\) \|[^|]*\|([^|]*)\|([^|]*)\|\s*$")
+CALLS_RE = re.compile(r'(?m)^\s+calls:\s*"([^"]*)"')
 # Literal names from code that are not framework vocabulary, each with why it is here.
 CODE_NAMES = {
     "record-demo": "the demo helper a drive-<app> skill ships",
@@ -170,8 +182,16 @@ def framework_path(token: str, root: Path) -> Path | None:
     return None
 
 
+def is_dated(path: Path, root: Path) -> bool:
+    rel = path.relative_to(root).as_posix()
+    return rel in DATED_DOCS or rel.startswith("docs/adr/")
+
+
 def check_file(path: Path, root: Path, vocab: set[str], in_skills: bool, out: list[Finding]) -> None:
     lines = path.read_text(encoding="utf-8").splitlines()
+    # lint_skills.py checks the links of each skill folder (L001); a file at the top of skills/ is ours.
+    linted = in_skills and path.parent != root / "skills"
+    dated = is_dated(path, root)
     for number, raw in text_lines(lines):
         for target in LINK_RE.findall(raw):
             if re.match(r"^[a-z][a-z0-9+.-]*:", target):
@@ -179,7 +199,7 @@ def check_file(path: Path, root: Path, vocab: set[str], in_skills: bool, out: li
             file_part, _, anchor = target.partition("#")
             resolved = (path.parent / file_part).resolve() if file_part else path
             if file_part and not resolved.exists():
-                if not in_skills:  # lint_skills.py reports these inside skills/ (L001)
+                if not linted:
                     out.append(Finding(path, number, "R001", f"link {target!r} points at a file that does not exist. Fix: point it at an existing file, relative to this one."))
                 continue
             if anchor and resolved.suffix == ".md" and anchor not in anchors(resolved):
@@ -187,7 +207,11 @@ def check_file(path: Path, root: Path, vocab: set[str], in_skills: bool, out: li
         for token in CODE_SPAN_RE.findall(raw):
             target = framework_path(token, root)
             if target is not None and not target.exists() and token not in PLANNED:
-                out.append(Finding(path, number, "R003", f"path `{token}` names a framework file that does not exist. Fix: correct the path, or remove the reference."))
+                if token in REMOVED:
+                    if not dated:
+                        out.append(Finding(path, number, "R003", f"path `{token}` names a file the repo removed. Fix: write `{REMOVED[token]}`, or remove the reference."))
+                else:
+                    out.append(Finding(path, number, "R003", f"path `{token}` names a framework file that does not exist. Fix: correct the path, or remove the reference."))
             if not in_skills:
                 continue
             bare = token.lstrip("/")
@@ -199,15 +223,41 @@ def check_file(path: Path, root: Path, vocab: set[str], in_skills: bool, out: li
                 out.append(Finding(path, number, "R004", f"`{token}` is a command for a skill that does not exist. Fix: use the name of a skill in skills/."))
 
 
-def check_map(root: Path, out: list[Finding]) -> None:
-    """The diagram in skills/README.md names every skill, so it is checked like code, not trusted like prose."""
-    readme = root / "skills" / "README.md"
-    if not readme.exists():
+def declared_calls(root: Path, skills: list[str]) -> dict[str, set[str]]:
+    """The skills each skill runs, from its `calls:` frontmatter; repo skills such as drive-<app> are left out."""
+    calls: dict[str, set[str]] = {}
+    for name in skills:
+        text = (root / "skills" / name / "SKILL.md").read_text(encoding="utf-8")
+        front = text.split("---", 2)[1] if text.startswith("---") else ""
+        match = CALLS_RE.search(front)
+        listed = {c.strip() for c in match.group(1).split(",")} if match else set()
+        calls[name] = {c for c in listed if c in skills}
+    return calls
+
+
+def check_graph(root: Path, out: list[Finding]) -> None:
+    """The skill table in skills/GRAPH.md matches the frontmatter, so it is checked like code, not trusted like prose."""
+    graph = root / GRAPH
+    if not graph.exists():
         return
-    diagram = " ".join(re.findall(r"```mermaid\r?\n(.*?)```", readme.read_text(encoding="utf-8"), re.S))
-    for skill in skill_names(root):
-        if not re.search(rf"(?<![\w-]){re.escape(skill)}(?![\w-])", diagram):
-            out.append(Finding(readme, 1, "R006", f"the skill {skill!r} is missing from the map. Fix: add its node and its edges to the mermaid diagram of its section."))
+    text = graph.read_text(encoding="utf-8")
+    skills = skill_names(root)
+    rows = {m.group(1): (m.group(2), m.group(3), text.count("\n", 0, m.start()) + 1) for m in GRAPH_ROW_RE.finditer(text)}
+    calls = declared_calls(root, skills)
+
+    def named(cell: str) -> set[str]:
+        return {t for t in re.findall(r"[a-z][a-z0-9-]*", cell) if t in skills}
+
+    for skill in skills:
+        if skill not in rows:
+            out.append(Finding(graph, 1, "R006", f"the skill {skill!r} has no row in the table. Fix: add `| [{skill}]({skill}/SKILL.md) | what it does | runs | run by |`, and its node and edges to the diagram of its flow."))
+            continue
+        runs, run_by, line = rows[skill]
+        callers = {other for other in skills if skill in calls[other]}
+        if named(runs) != calls[skill]:
+            out.append(Finding(graph, line, "R012", f"{skill!r} runs {sorted(calls[skill])} by its calls:, the table says {sorted(named(runs))}. Fix: correct the Runs cell and the diagrams, or the frontmatter."))
+        if named(run_by) != callers:
+            out.append(Finding(graph, line, "R012", f"{skill!r} is run by {sorted(callers)} by their calls:, the table says {sorted(named(run_by))}. Fix: correct the Run by cell and the diagrams, or the frontmatter."))
 
 
 def skill_names(root: Path) -> list[str]:
@@ -284,7 +334,7 @@ def check(root: Path) -> list[Finding]:
             docs += sorted((root / d).rglob("*.md"))
     for path in docs:
         check_file(path, root, vocab, False, out)
-    check_map(root, out)
+    check_graph(root, out)
     check_lists(root, out)
     check_principles(root, out)
     check_guide(root, out)
