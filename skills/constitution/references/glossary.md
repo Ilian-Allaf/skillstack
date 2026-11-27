@@ -8,7 +8,8 @@ The target repo can have its own glossary of domain terms. The builder and the v
 |---|---|---|---|
 | task | tâche | what the user asks for and launches, in one `/ship` | `ticket` |
 | unit | unité | one PR of a task, green on its own check; a task is one unit, or several when it spans several PRs, stacked | `work item` |
-| issue tracker | issue tracker | the tool where tasks, specs, maps, and bugs live, such as GitHub Issues, GitLab, Linear, or markdown files; `issue-tracker.md` in the project folder says which and how | `ticket tracker` |
+| issue tracker | issue tracker | the tool where tasks, specs, maps, and bugs live, such as GitHub Issues, GitLab, Linear, or markdown files; `issue-tracker.md` in the project folder says which and how; without it, the default tracker | `ticket tracker` |
+| default tracker | tracker par défaut | the private markdown tracker in the project folder, written by the first skill that needs an issue when no tracker file exists, until `setup-repo` confirms or replaces it | |
 | issue | issue | one item in the issue tracker | |
 | code host | code host | where the repo, its pull requests, and its CI live, such as GitHub | |
 | builder | builder | the agent that carries a PR from `frame` to ready | `implementer`, `coder agent` |
@@ -25,9 +26,10 @@ The target repo can have its own glossary of domain terms. The builder and the v
 | verdict | verdict | PASS, FAIL, or INCONCLUSIVE, per axis, on one base and head pair | `LGTM` |
 | axis | axe | behavior or code; each gets its own verdict | |
 | note | note | a finding that does not block; listed in the verdict comment, an issue only when the user asks | |
-| ready | prête | the PR needs nothing but the user's merge; label `ready` | `merge-ready` |
+| ready | prête | the PR needs nothing but the user's merge; its State line says `ready`, and the label `ready` mirrors it where it exists | `merge-ready` |
 | round | round | one pass of `babysit-pr` after something changed on the PR | |
-| `needs-human` | needs-human | a label: the run stopped on a call only the user can make; the user's answer, in their own words, restarts it | `escalated` |
+| `needs-human` | needs-human | a PR state, on its State line and mirrored by the label where it exists: the run stopped on a call only the user can make; the user's answer, in their own words, restarts it | `escalated` |
+| State line | ligne State | the line of a PR body that holds its state, `in progress`, `ready`, or `needs-human`, as `pr-format.md` shapes it | |
 | escaped | échappé | a bug found after merge; label `escaped` | |
 | door | porte | `two-way` if a choice can be undone cheaply, `one-way` if not | `reversibility` |
 | case | cas | one situation the evidence must show: an entry point, an edge case, the main path | `scenario` |

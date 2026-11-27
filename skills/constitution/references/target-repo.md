@@ -15,6 +15,7 @@ The framework works on any repo without imposing a file on the people who share 
 | In the project folder | Shared in the repo at | Holds | Read by |
 |---|---|---|---|
 | `issue-tracker.md` | `docs/agents/issue-tracker.md` | how to create, read, label, link, block, and close an issue in this repo's tracker, one heading per operation | every skill that touches an issue |
+| `issues/` | `.scratch/issues/` | the issues of the markdown tracker, one file each, the default tracker's included | every skill that touches an issue, through the tracker file |
 | `glossary.md` and `adr/` | `GLOSSARY.md` and `docs/adr/` | domain terms and hard-to-reverse decisions, in the shape of `shape-spec`'s [domain.md](../../shape-spec/references/domain.md) | `shape-spec`, the builder, the verifier |
 | `coding-standards.md` | `CODING_STANDARDS.md` | judgment calls only; a mechanical rule becomes a check instead | the verifier, in the `standards` lane, not the builder |
 | `agent-rules.md` | `docs/agent-rules.md` | the rule table of `add-guardrail`: each rule and what enforces it | `add-guardrail`, `learn-from-mistakes`, the verifier |
@@ -24,7 +25,7 @@ The framework works on any repo without imposing a file on the people who share 
 
 Standards belong to review because the builder carries the most context and the verifier the least.
 
-Only `issue-tracker.md` is required: a skill that touches an issue without it does as the constitution says for a missing tracker file. Every other entry is created when it has something to hold; a missing one means the project has none yet.
+Only `issue-tracker.md` is required, and it has a default: the first skill that needs an issue and finds none writes it from the private markdown template, [local.md](../../setup-repo/references/trackers/local.md), as the constitution says. Every other entry is created when it has something to hold; a missing one means the project has none yet.
 
 ## Routes
 
@@ -47,7 +48,7 @@ A folder entry (`adr/`, `drive-<app>/`) is a route when its only file is such a 
 - **The repo's own files win.** When the repo already has a tracker file, a glossary, standards, ADRs, or a driver, even in another place or another shape, the project folder routes to it instead of creating a second one.
 - **The agent file is the team's.** `AGENTS.md` (and `CLAUDE.md`, which imports it with `@AGENTS.md`) is edited only when the user shares an entry and the file needs a pointer to it, by the smallest diff.
 - **The merge guard** goes in the user's harness settings when nothing is shared, in the repo's when the user shares it.
-- **Labels** live on the code host, so the team sees them. `setup-repo` names them in its plan and creates them only when the user says so.
+- **Labels** live on the code host, so the team sees them. `setup-repo` names them in its plan and creates them only when the user says so. No skill needs them: a PR's state is the State line of its body, and the labels only mirror it.
 
 ## Where shared skills and instructions live
 
@@ -65,7 +66,7 @@ A shared entry stays usable by any agent, whatever its provider. Each file has o
 
 ## Labels
 
-The skills read and write these labels. `setup-repo` creates the issue labels with the tracker file's "create a label" operation, and the PR labels on the code host (`gh label create <name> --force` on GitHub), once the user agreed.
+The skills read and write these labels where they exist. A PR's `ready` and `needs-human` are first the State line of its body, as [pr-format.md](pr-format.md) says; the PR labels mirror that line, so the team can filter PRs by state, and a skill that finds no such label on the code host writes the line alone. In the markdown tracker, an issue label exists once an issue uses it. `setup-repo` creates the issue labels with the tracker file's "create a label" operation, and the PR labels on the code host (`gh label create <name> --force` on GitHub), once the user agreed.
 
 | Label | Set by | Means |
 |---|---|---|

@@ -44,8 +44,9 @@ Skills install as whole folders beside [the constitution](skills/constitution/RE
 
 ## Getting started
 
-1. Run `/setup-repo` once per repo. It sets up the issue tracker, the labels, the glossary, the coding standards, and the app driver, and asks before each part. Each file stays private, in `~/.agents/projects/<repo>/` on your machine, unless you share it with the team in the repo ([ADR 0016](docs/adr/0016-the-working-files-live-outside-the-repo.md)).
-2. Run `/ship <task>` for each task. It shows you its frame and runs to a PR labeled `ready`, stopping only for what is yours to decide. You merge.
+1. Run `/setup-repo` once per repo, best before the first task. It sets up the issue tracker, the labels, the glossary, the coding standards, and the app driver, and asks before each part. Each file stays private, in `~/.agents/projects/<repo>/` on your machine, unless you share it with the team in the repo ([ADR 0016](docs/adr/0016-the-working-files-live-outside-the-repo.md)).
+   Skipped, the skills still work: issues go to a private markdown tracker in the project folder, and a PR's state is the State line of its body, until you pick a tracker and labels the team sees ([ADR 0023](docs/adr/0023-the-framework-works-before-setup-repo.md)). The merge guard is the one part with no default.
+2. Run `/ship <task>` for each task. It shows you its frame and runs to a PR in state `ready`, stopping only for what is yours to decide. You merge.
 3. Not sure which skill fits? Run `/choose-skill` and describe your situation.
 
 Every skill on one page, the path of one task, and the loops inside `ship`, in diagrams: [`skills/GRAPH.md`](skills/GRAPH.md). How to write a prompt, prompts to copy, and the mistakes that cost the most: [`docs/guide.md`](docs/guide.md).

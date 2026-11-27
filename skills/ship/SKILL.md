@@ -8,7 +8,7 @@ metadata:
   role: builder
   calls: "investigate, analyze-impact, verify-pr, babysit-pr, create-app-driver, create-formal-verification, maintain-formal-verification, repo:drive-<app>"
   consumes: "a task from the user, or an issue"
-  produces: "one PR labeled ready, or needs-human"
+  produces: "one PR in state ready, or needs-human"
   budget: "3 build attempts; 10 target-loop passes per kind of target; 2 FAIL verdicts"
   hypothesis: "Without a fixed path, a model declares done on green tests, sets its own bar, and grades its own work."
 ---
@@ -23,7 +23,7 @@ A question goes to [investigate](../investigate/SKILL.md) instead, which opens n
 
 The light path: for a `low` task, keep step 1 to the restatement and `done_when`, and keep the proof short.
 
-When the build budget runs out or a second sketch is scrapped, still open the PR as step 6 does, with the summary, labeled `needs-human` (rule 8).
+When the build budget runs out or a second sketch is scrapped, still open the PR as step 6 does, with the summary, as `needs-human` (rule 8).
 
 ## Steps
 
@@ -43,7 +43,7 @@ When the build budget runs out or a second sketch is scrapped, still open the PR
    Done when: the safety fact is at level 4 or marked `unproven`, and every confirmed risk is fixed or has an issue.
 
 6. **Open the PR.** [Audit activity and check evidence](references/verification.md), then push and open in [the PR format](../constitution/references/pr-format.md), linking an issue task.
-   Done when: the formatted PR is open and the evidence check passes, or discrepancies are attached to a draft labeled `needs-human`.
+   Done when: the formatted PR is open and the evidence check passes, or discrepancies are attached to a `needs-human` draft.
 
 7. **Get a verdict.** Spawn a fresh verifier (see Roles in the constitution) to run [verify-pr](../verify-pr/SKILL.md) with the brief its step 1 lists, and write the outcome on the PR's Verdict line. On a FAIL, go back to step 2 with its run, or dispute it as verify-pr describes, once per PR. An axis INCONCLUSIVE means `needs-human`, with what would make the lane runnable. The budget is 2 FAIL verdicts.
    Done when: both axes pass on the current base and head, or the PR is `needs-human`: budget spent, FAIL upheld, or an axis INCONCLUSIVE.
