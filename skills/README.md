@@ -14,7 +14,7 @@ A **skill** owns a workflow, a **playbook** supplies the build duties for a kind
 flowchart TB
   user["You<br/>Goal, product decisions, final merge"]
   workflow["Skills: who carries the work?<br/>ship owns one task from frame to ready"]
-  build["Playbook: how is this change built?<br/>Bug fix, feature, refactoring, performance, migration"]
+  build["Playbook: how is this change built?<br/>bug-fix, feature, refactoring, perf,<br/>hillclimb, visual-parity, bespoke"]
   evidence["Project tools: what can we observe?<br/>App drivers, formal checks, tests, captured output"]
   review["Verification lanes: does the result hold?<br/>Independent behavior and code verdicts"]
   handback["Delivery<br/>Reviewed PR, green CI, evidence and limits"]
@@ -57,6 +57,9 @@ flowchart TB
   choose -.-> shape
   choose -.-> investigate
   choose -.-> ship
+  setup -.->|one first task to try| ship
+  shape -.->|a spec issue| ship
+  investigate -.->|a proposed task| ship
 ```
 
 The dotted arrows are recommendations, not automatic calls: you launch the suggested skill. You can also launch any skill directly. Once setup, a spec, or an investigation has prepared the task, you launch `ship` to implement it. During implementation, `ship` can itself call `investigate` to diagnose a symptom or prototype a choice. The detailed build and retry path is in the next section.
@@ -81,7 +84,7 @@ The normal path is `/ship <task or issue>`. Its contract is **`done_when`**: an 
 flowchart TB
   start(("You launch ship"))
   frame["1. Frame<br/>Fix the contract, cases, risk, and verification setup"]
-  lacks["First unit<br/>Build the missing driver or formal check; repair a stale one"]
+  lacks["The proof it lacks, first<br/>Build a missing driver or formal check; repair a stale one"]
   build["2. Design and build<br/>Choose the shape, then follow the playbook"]
   clean["3. Clean<br/>Remove slop; fix the comment hunter's root causes"]
   proof["4. Prove every case<br/>Capture replayable evidence and its limits"]
@@ -95,8 +98,12 @@ flowchart TB
 
   start --> frame
   frame -->|the proof lacks a driver or a check| lacks --> build
-  frame --> build --> clean --> proof --> impact --> open --> verdict
+  frame --> build --> clean --> proof
+  proof -->|medium or high risk| impact --> open
+  proof -->|low risk| open
+  open --> verdict
   verdict -->|yes| babysit --> ready
+  frame -->|a decision only you can make| human
   verdict -->|first FAIL: fix| build
   verdict -->|budget spent or verification blocked| human
   build -->|build budget spent or second scrapped sketch| human
@@ -246,7 +253,7 @@ flowchart TB
     create["create-formal-verification<br/>Check one property; prove it can fail"]
     prove[("prove-#lt;area#gt;<br/>Property, covered code, command, bounds")]
     ship["ship<br/>Find covered files; check base staleness; build the proof first"]
-    update["Build<br/>Update checks in sync on base; catch a break"]
+    update["ship's build step<br/>Update each check with the code; prove it catches a break"]
     maintain["maintain-formal-verification<br/>Bring skipped checks back in line"]
     verify["verify-pr<br/>Judge checks in sync, made, or repaired, in the breakage lane"]
     setup -.->|recommend| create
@@ -264,7 +271,7 @@ These generated skills are project-specific, not additional skills shipped by th
 
 ## 7. Working across tasks and sessions
 
-These skills support the lifecycle; they are not extra mandatory stages of every PR. The following maps separate preparation, continuity, and improvement so each stays readable. Solid arrows show work within a launched workflow; dotted arrows show a user handoff, recommendation, or optional next command.
+These skills support the lifecycle; they are not extra mandatory stages of every PR. The following maps separate preparation, continuity, reading, and improvement so each stays readable. Solid arrows show work within a launched workflow; dotted arrows show a user handoff, recommendation, or optional next command.
 
 **Prepare the next task.** Improve the request or recover the history before deciding what to launch.
 
@@ -272,30 +279,41 @@ These skills support the lifecycle; they are not extra mandatory stages of every
 flowchart TB
     sharpen["sharpen-prompt<br/>Rewrite the request; do not execute it"]
     recall["recall-context<br/>Rebuild the state of a topic"]
+    resume["resume-task<br/>One task left mid-way"]
     next["You launch the next task"]
     sharpen -.-> next
     recall -.-> next
+    recall -->|the topic is one task left mid-way| resume
 ```
 
-**Carry work across time.** A queue owns the tasks you chose. Each owner can pause safely; you can resume, request a report, or clean up afterward.
+**Carry work across time.** `ship` runs one task, `ship-queue` several. A task can pause safely and resume later; you can ask for a report, or clean up afterward.
 
 ```mermaid
 flowchart TB
     queue["ship-queue<br/>One owner per chosen task"]
-    owners["Each owner runs ship"]
+    owners["ship<br/>One task, one owner"]
     pause["pause-task<br/>Make work durable; leave a resume note"]
     resume["resume-task<br/>Continue at the first incomplete step"]
     catchup["catch-me-up<br/>Evidence, live state, and decisions waiting on you"]
-    plain["say-it-plainly<br/>Restate the last reply"]
-    showme["show-me<br/>Show the current topic as a diagram"]
     cleanwt["clean-worktrees<br/>Remove finished worktrees; protect unsaved work"]
     queue --> owners
     owners -->|context runs low or you ask| pause
     pause -.->|next session| resume
+    owners -.->|needs-human, and you answered| resume
+    resume -->|hands back to the owning skill| owners
     owners -.->|you ask for status| catchup
-    catchup -.->|you ask for plain words| plain
-    owners -.->|you ask to see the current topic| showme
-    queue -.->|you launch cleanup| cleanwt
+    owners -.->|tasks finished| cleanwt
+```
+
+**Read a reply more easily.** Any reply, `catch-me-up`'s included, can be restated.
+
+```mermaid
+flowchart TB
+    reply["A reply, a diff, or a design<br/>too dense to act on"]
+    plain["say-it-plainly<br/>The same facts, shorter, no jargon"]
+    showme["show-me<br/>The smallest visual that makes it clear"]
+    reply -.->|you ask for plain words| plain
+    reply -.->|you ask to see it| showme
 ```
 
 **Improve the layer that failed.** A lesson can change enforced checks, project tools, or the framework itself, after you approve it.
@@ -321,7 +339,6 @@ flowchart TB
 | [clean-worktrees](clean-worktrees/SKILL.md) | Finished or abandoned tasks consume disk | Worktrees removed safely; unsaved work requires your decision and branches are retained |
 | [sharpen-prompt](sharpen-prompt/SKILL.md) | You want a better request before launching work | A rewritten prompt asking for stronger methods and evidence; no task execution |
 | [say-it-plainly](say-it-plainly/SKILL.md) | The previous reply is hard to act on | The same facts and pending decisions, shorter and without jargon |
-
 | [show-me](show-me/SKILL.md) | The current topic, a reply, or a diff is too dense to read | The same point as the smallest visual that makes it clear |
 
 A `ship-queue` coordinates tasks you supplied; it does not split one spec into assignments for agents. A large spec uses `bespoke`, preserving one builder's context. Queue handoff checks the actual PR evidence and current verdict, not just an owner's report.

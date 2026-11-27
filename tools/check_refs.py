@@ -207,7 +207,7 @@ def check_map(root: Path, out: list[Finding]) -> None:
     diagram = " ".join(re.findall(r"```mermaid\r?\n(.*?)```", readme.read_text(encoding="utf-8"), re.S))
     for skill in skill_names(root):
         if not re.search(rf"(?<![\w-]){re.escape(skill)}(?![\w-])", diagram):
-            out.append(Finding(readme, 1, "R006", f"the skill {skill!r} is missing from the map. Fix: add its node and its edges to the first mermaid diagram."))
+            out.append(Finding(readme, 1, "R006", f"the skill {skill!r} is missing from the map. Fix: add its node and its edges to the mermaid diagram of its section."))
 
 
 def skill_names(root: Path) -> list[str]:
