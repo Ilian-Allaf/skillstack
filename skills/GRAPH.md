@@ -21,7 +21,16 @@ flowchart TB
 
   classDef ready fill:#d3f5dc,stroke:#1a7f37,color:#1f2328
   class merge ready
+
+  click setup "#7-preparing-a-repo"
+  click shape "#8-shaping-a-spec"
+  click ship "#2-the-eight-steps"
+  click verify "#6-steps-7-and-8-verdict-and-babysitting"
+  click babysit "#6-steps-7-and-8-verdict-and-babysitting"
+  click learn "#12-learning-from-a-mistake"
 ```
+
+Open a step: [setup-repo](#7-preparing-a-repo) · [shape-spec](#8-shaping-a-spec) · [ship](#2-the-eight-steps) · [verify-pr and babysit-pr](#6-steps-7-and-8-verdict-and-babysitting) · [learn-from-mistakes](#12-learning-from-a-mistake)
 
 At any time: `/choose-skill` names the skill to launch, `/investigate` answers a question without a PR, `/recall-context` and `/catch-me-up` tell you where things stand, and `/pause-task` and `/resume-task` stop a task and pick it up.
 
@@ -59,7 +68,13 @@ flowchart TB
   ship -->|"step 8: both axes PASS"| babysit
   babysit -->|a new base or head| verify
   verify -->|its breakage lane| impact
+
+  click ship "#2-the-eight-steps"
+  click verify "#6-steps-7-and-8-verdict-and-babysitting"
+  click babysit "#6-steps-7-and-8-verdict-and-babysitting"
 ```
+
+Open: [ship's eight steps](#2-the-eight-steps) · [verify-pr and babysit-pr](#6-steps-7-and-8-verdict-and-babysitting) · [investigate](investigate/SKILL.md) · [analyze-impact](analyze-impact/SKILL.md)
 
 ### 2. The eight steps
 
@@ -99,11 +114,23 @@ flowchart TB
   class ready ready
   class human human
   class nopr,shapestop stop
+
+  click frame "#3-step-1-framing"
+  click build "#4-step-2-design-and-build"
+  click verdict "#6-steps-7-and-8-verdict-and-babysitting"
+  click babysit "#6-steps-7-and-8-verdict-and-babysitting"
+  click shapestop "#8-shaping-a-spec"
+  click nopr "#every-loop-and-its-budget"
+  click human "#every-loop-and-its-budget"
 ```
+
+Zoom in: [1. Frame](#3-step-1-framing) · [2. Build](#4-step-2-design-and-build) · [the playbooks](#5-the-playbooks) · [7-8. Verdict and babysitting](#6-steps-7-and-8-verdict-and-babysitting) · [every stop and budget](#every-loop-and-its-budget)
 
 Your answer to a `needs-human` PR, in the session or as a PR comment, removes the label and restarts the loop that stopped, with a fresh budget (rule 11 of [the constitution](constitution/README.md)).
 
 ### 3. Step 1, framing
+
+[↑ The eight steps](#2-the-eight-steps)
 
 Before the frame, `ship` checks what already exists, reproduces a bug, and settles what is unclear. [frame.md](ship/references/frame.md)
 
@@ -144,9 +171,17 @@ flowchart TB
   classDef human fill:#fff1c2,stroke:#9a6700,color:#1f2328
   classDef stop fill:#ffe0e0,stroke:#cf222e,color:#1f2328
   class nopr,shape stop
+
+  click shape "#8-shaping-a-spec"
+  click lacks "#9-building-the-projects-tools"
+  click go "#4-step-2-design-and-build"
 ```
 
+Next: [step 2, design and build](#4-step-2-design-and-build) · Leads to: [shaping a spec](#8-shaping-a-spec) · [building the project's tools](#9-building-the-projects-tools)
+
 ### 4. Step 2, design and build
+
+[↑ The eight steps](#2-the-eight-steps)
 
 A change inside one function body names its data shape and builds. A change that crosses a function boundary runs the whole design loop. [design.md](ship/references/design.md)
 
@@ -184,9 +219,16 @@ flowchart TB
   classDef human fill:#fff1c2,stroke:#9a6700,color:#1f2328
   classDef stop fill:#ffe0e0,stroke:#cf222e,color:#1f2328
   class human human
+
+  click build "#5-the-playbooks"
+  click human "#every-loop-and-its-budget"
 ```
 
+The playbook's loop: [the playbooks](#5-the-playbooks) · Stops: [every loop and its budget](#every-loop-and-its-budget)
+
 ### 5. The playbooks
+
+[↑ The eight steps](#2-the-eight-steps)
 
 Step 1 picks one playbook per task, step 2 follows it, and `verify-pr` checks its duties. A task that fits two rows is two units, one PR each, the second stacked on the first. [frame.md](ship/references/frame.md#playbooks)
 
@@ -227,6 +269,8 @@ flowchart TB
 
 ### 6. Steps 7 and 8, verdict and babysitting
 
+[↑ The eight steps](#2-the-eight-steps)
+
 The verifier is a fresh agent that tries to break the PR. A FAIL goes back to the builder, and every push goes back to the verifier. [verify-pr](verify-pr/SKILL.md), [babysit-pr](babysit-pr/SKILL.md)
 
 ```mermaid
@@ -259,7 +303,11 @@ flowchart TB
   classDef stop fill:#ffe0e0,stroke:#cf222e,color:#1f2328
   class ready ready
   class human human
+
+  click human "#every-loop-and-its-budget"
 ```
+
+Stops: [every loop and its budget](#every-loop-and-its-budget)
 
 ### Every loop and its budget
 
@@ -294,6 +342,8 @@ flowchart LR
 
   setup -->|if you chose it| driver
   setup -->|if you chose it| guard
+
+  click driver "#9-building-the-projects-tools"
 ```
 
 ### 8. Shaping a spec
@@ -330,6 +380,8 @@ flowchart LR
 
   classDef tool fill:#ddf4ff,stroke:#0969da,color:#1f2328
   class drive,prove tool
+
+  click ship "#2-the-eight-steps"
 ```
 
 ### 10. Using the project's tools
@@ -378,6 +430,10 @@ flowchart TB
   resume --> investigate
   resume --> babysit
   queue -->|one owner per task| ship
+
+  click ship "#2-the-eight-steps"
+  click shape "#8-shaping-a-spec"
+  click babysit "#6-steps-7-and-8-verdict-and-babysitting"
 ```
 
 ### 12. Learning from a mistake
@@ -392,6 +448,8 @@ flowchart LR
 
   learn -->|approved code-level lesson| guard
   learn -->|approved feature-map gap| driver
+
+  click driver "#9-building-the-projects-tools"
 ```
 
 ## Reference
