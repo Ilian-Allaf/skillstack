@@ -1,6 +1,6 @@
 # Outils de la base de connaissance
 
-Scripts à lancer depuis `knowledge/`. Python 3.10+.
+Scripts à lancer depuis `resources/`. Python 3.10+.
 
 | Script | Rôle | Dépendances |
 |---|---|---|

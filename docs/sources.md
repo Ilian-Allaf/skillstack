@@ -222,7 +222,7 @@ When a skill changes, update its section here, in the same PR.
 
 ## `skills/learn-from-mistakes/references/routes.md`
 
-- Source: our verification layers ([design 02](history/02-architecture.md), section 5); Matt Pocock `retro` for the target repo files.
+- Source: our verification layers (design note 02, section 5, removed with `docs/history/` by ADR 0022); Matt Pocock `retro` for the target repo files.
 - (Matt Pocock `retro`)
 - 2026-11-23: ours, [ADR 0017](adr/0017-a-formal-check-guards-every-task-that-touches-its-code.md): the formal check route.
 

@@ -1,6 +1,6 @@
 """Build the skill catalog and human-readable indexes from imported repo snapshots.
 
-Reads knowledge/sources.json for repo metadata, scans every SKILL.md under each
+Reads resources/sources.json for repo metadata, scans every SKILL.md under each
 repo's local_path, and writes:
   - <repo>/catalog.json          full machine-readable catalog
   - <repo>/SKILLS-INDEX.md       per-repo index grouped by category

@@ -137,6 +137,16 @@ class CheckRefsTest(unittest.TestCase):
         self.edit("README.md", "`tools/check_refs.py`", "`skills/README.md`")
         self.assertEqual(self.codes(), ["R003"])
 
+    def test_renamed_folder_is_allowed_only_in_dated_docs(self) -> None:
+        self.write("resources/sources/talk.md", "# A talk\n")
+        self.write("docs/adr/0001-x.md", "# 0001\n\nFrom `knowledge/sources/talk.md`.\n")
+        self.assertEqual(self.codes(), [])
+        self.write("docs/adr/0001-x.md", "# 0001\n\nFrom `knowledge/sources/gone.md`.\n")
+        self.assertEqual(self.codes(), ["R003"])
+        self.write("docs/adr/0001-x.md", "# 0001\n")
+        self.edit("README.md", "`tools/check_refs.py`", "`knowledge/sources/talk.md`")
+        self.assertEqual(self.codes(), ["R003"])
+
     def test_link_from_the_top_of_skills_is_checked(self) -> None:
         self.write("skills/GRAPH.md", "# Graph\n\nRead [the map](README.md).\n\n| [ship](ship/SKILL.md) | x | | |\n")
         self.assertIn("R001", self.codes())
