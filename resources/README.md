@@ -11,7 +11,7 @@ Corpus de référence pour concevoir un ensemble de skills orchestrés en graphe
 ## Organisation
 
 ```text
-knowledge/
+resources/
 ├── README.md                 ← ce fichier
 ├── SOURCES.md                registre humain : provenance, révisions, licences
 ├── sources.json              registre machine

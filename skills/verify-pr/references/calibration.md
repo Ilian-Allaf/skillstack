@@ -18,4 +18,4 @@ user ruled: <FAIL | note>, because <reason>
 lesson: <one sentence the next verifier applies>
 ```
 
-Add an example each time the user overrules a verdict, each time a seeded defect slips through, and each time `learn-from-mistakes` traces an escaped bug to the verifier. A change made for such an example counts only once a fresh verifier, run on that PR's head, gives the FAIL it missed; the case then joins `evals/verdicts/`. A check never seen failing proves nothing. Keep at most twenty; when a lesson becomes a rule above, delete its examples.
+Add an example each time the user overrules a verdict, each time a seeded defect slips through, and each time `learn-from-mistakes` traces an escaped bug to the verifier. A change made for such an example counts only once a fresh verifier, run on that PR's head, gives the FAIL it missed. A check never seen failing proves nothing. Keep at most twenty; when a lesson becomes a rule above, delete its examples.

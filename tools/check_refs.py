@@ -7,8 +7,9 @@ A reference is any place where one text names another thing:
          lint_skills.py covers each skill folder);
   - R002 a link whose #anchor matches no heading in the target file;
   - R003 a path in backticks, such as `ship/references/design.md` or `tools/lint_skills.py`,
-         that names a framework file that does not exist; a file the repo removed on purpose
-         stays allowed in the dated docs (the changelog, docs/sources.md, the ADRs), which keep their history;
+         that names a framework file that does not exist; a file the repo removed on purpose, or a path
+         under a folder it renamed, stays allowed in the dated docs (the changelog, docs/sources.md, the ADRs),
+         which keep their history;
   - R004 a kebab-case name in backticks in a skill, such as `fix-root-causes`, that is not a skill,
          a principle id, a playbook, a glossary term, or a generated skill;
   - R005 a skill name that was retired by a rename, so an agent never looks for a skill that is gone;
@@ -23,8 +24,8 @@ A reference is any place where one text names another thing:
   - R012 a row of that table whose Runs or Run by disagrees with the skills' `calls:` frontmatter,
          so the graph draws no edge a skill does not declare, and misses none.
 
-Scanned: skills/, the root docs (README, AGENTS, SCOPE, CHANGELOG, CODING_STANDARDS), docs/ and evals/.
-Not scanned: knowledge/ (third-party sources) and docs/history/ (frozen design notes),
+Scanned: skills/, the root docs (README, AGENTS, SCOPE, CHANGELOG, CODING_STANDARDS), and docs/.
+Not scanned: resources/ (third-party sources) and docs/history/ (frozen design notes),
 which keep the names of their time on purpose.
 
 Exit code: 0 when every reference resolves, 1 otherwise, 2 on bad usage. Standard library only.
@@ -42,8 +43,9 @@ from pathlib import Path
 DOCS = ["README.md", "AGENTS.md", "SCOPE.md", "CHANGELOG.md", "CODING_STANDARDS.md", "docs/sources.md", "docs/guide.md"]
 GUIDE = Path("docs/guide.md")
 COMMAND_RE = re.compile(r"(?:^|[\s`(])/([a-z][a-z0-9-]*)(?![\w/.-])")
-DOC_DIRS = ["evals", "docs/adr", "docs/agents"]
-FRAMEWORK_DIRS = {"skills", "design", "tools", "evals", "knowledge", ".github"}
+DOC_DIRS = ["docs/adr", "docs/agents"]
+# "knowledge" is the old name of resources/, kept so a stale path to it is still caught (see MOVED).
+FRAMEWORK_DIRS = {"skills", "design", "tools", "resources", "knowledge", ".github"}
 PRINCIPLES = Path("skills/constitution/references/principles.md")
 PRINCIPLE_DIR = Path("skills/constitution/references/principles")
 GLOSSARY = Path("skills/constitution/references/glossary.md")
@@ -66,11 +68,14 @@ GENERATED_RE = re.compile(r"^(drive|prove)-<[a-z]+>$")
 # Files the design names before they are built. Remove a line once its file exists.
 PLANNED = {
     "tools/graph.py": "roadmap step 4",
-    "evals/e2e/": "end-to-end cases, decided on the testbed",
 }
 # Files removed on purpose, each with what replaced it. Living docs must not name them; dated docs may.
 REMOVED = {
     "skills/README.md": "skills/GRAPH.md",
+}
+# Folders renamed on purpose, old prefix to new. A dated doc keeps the old path when the new one exists.
+MOVED = {
+    "knowledge/": "resources/",
 }
 DATED_DOCS = {"CHANGELOG.md", "docs/sources.md"}
 GRAPH = Path("skills/GRAPH.md")
@@ -208,9 +213,13 @@ def check_file(path: Path, root: Path, vocab: set[str], in_skills: bool, out: li
         for token in CODE_SPAN_RE.findall(raw):
             target = framework_path(token, root)
             if target is not None and not target.exists() and token not in PLANNED:
+                moved = next((new + token[len(old):] for old, new in MOVED.items() if token.startswith(old)), None)
                 if token in REMOVED:
                     if not dated:
                         out.append(Finding(path, number, "R003", f"path `{token}` names a file the repo removed. Fix: write `{REMOVED[token]}`, or remove the reference."))
+                elif moved is not None and (root / moved).exists():
+                    if not dated:
+                        out.append(Finding(path, number, "R003", f"path `{token}` names a folder the repo renamed. Fix: write `{moved}`."))
                 else:
                     out.append(Finding(path, number, "R003", f"path `{token}` names a framework file that does not exist. Fix: correct the path, or remove the reference."))
             if not in_skills:
