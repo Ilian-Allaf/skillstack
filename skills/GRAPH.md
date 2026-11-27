@@ -22,12 +22,12 @@ flowchart TB
   classDef ready fill:#d3f5dc,stroke:#1a7f37,color:#1f2328
   class merge ready
 
-  click setup "#7-preparing-a-repo"
-  click shape "#8-shaping-a-spec"
-  click ship "#2-the-eight-steps"
-  click verify "#6-steps-7-and-8-verdict-and-babysitting"
-  click babysit "#6-steps-7-and-8-verdict-and-babysitting"
-  click learn "#12-learning-from-a-mistake"
+  click setup href "https://github.com/Ilian-Allaf/software-ai-skills-framework/blob/master/skills/GRAPH.md#7-preparing-a-repo" _top
+  click shape href "https://github.com/Ilian-Allaf/software-ai-skills-framework/blob/master/skills/GRAPH.md#8-shaping-a-spec" _top
+  click ship href "https://github.com/Ilian-Allaf/software-ai-skills-framework/blob/master/skills/GRAPH.md#2-the-eight-steps" _top
+  click verify href "https://github.com/Ilian-Allaf/software-ai-skills-framework/blob/master/skills/GRAPH.md#6-steps-7-and-8-verdict-and-babysitting" _top
+  click babysit href "https://github.com/Ilian-Allaf/software-ai-skills-framework/blob/master/skills/GRAPH.md#6-steps-7-and-8-verdict-and-babysitting" _top
+  click learn href "https://github.com/Ilian-Allaf/software-ai-skills-framework/blob/master/skills/GRAPH.md#12-learning-from-a-mistake" _top
 ```
 
 Open a step: [setup-repo](#7-preparing-a-repo) · [shape-spec](#8-shaping-a-spec) · [ship](#2-the-eight-steps) · [verify-pr and babysit-pr](#6-steps-7-and-8-verdict-and-babysitting) · [learn-from-mistakes](#12-learning-from-a-mistake)
@@ -69,9 +69,9 @@ flowchart TB
   babysit -->|a new base or head| verify
   verify -->|its breakage lane| impact
 
-  click ship "#2-the-eight-steps"
-  click verify "#6-steps-7-and-8-verdict-and-babysitting"
-  click babysit "#6-steps-7-and-8-verdict-and-babysitting"
+  click ship href "https://github.com/Ilian-Allaf/software-ai-skills-framework/blob/master/skills/GRAPH.md#2-the-eight-steps" _top
+  click verify href "https://github.com/Ilian-Allaf/software-ai-skills-framework/blob/master/skills/GRAPH.md#6-steps-7-and-8-verdict-and-babysitting" _top
+  click babysit href "https://github.com/Ilian-Allaf/software-ai-skills-framework/blob/master/skills/GRAPH.md#6-steps-7-and-8-verdict-and-babysitting" _top
 ```
 
 Open: [ship's eight steps](#2-the-eight-steps) · [verify-pr and babysit-pr](#6-steps-7-and-8-verdict-and-babysitting) · [investigate](investigate/SKILL.md) · [analyze-impact](analyze-impact/SKILL.md)
@@ -115,13 +115,13 @@ flowchart TB
   class human human
   class nopr,shapestop stop
 
-  click frame href "https://github.com/Ilian-Allaf/software-ai-skills-framework/blob/t3/add-readable-graph-md/skills/GRAPH.md#3-step-1-framing" _top
-  click build "#4-step-2-design-and-build"
-  click verdict "#6-steps-7-and-8-verdict-and-babysitting"
-  click babysit "#6-steps-7-and-8-verdict-and-babysitting"
-  click shapestop "#8-shaping-a-spec"
-  click nopr "#every-loop-and-its-budget"
-  click human "#every-loop-and-its-budget"
+  click frame href "https://github.com/Ilian-Allaf/software-ai-skills-framework/blob/master/skills/GRAPH.md#3-step-1-framing" _top
+  click build href "https://github.com/Ilian-Allaf/software-ai-skills-framework/blob/master/skills/GRAPH.md#4-step-2-design-and-build" _top
+  click verdict href "https://github.com/Ilian-Allaf/software-ai-skills-framework/blob/master/skills/GRAPH.md#6-steps-7-and-8-verdict-and-babysitting" _top
+  click babysit href "https://github.com/Ilian-Allaf/software-ai-skills-framework/blob/master/skills/GRAPH.md#6-steps-7-and-8-verdict-and-babysitting" _top
+  click shapestop href "https://github.com/Ilian-Allaf/software-ai-skills-framework/blob/master/skills/GRAPH.md#8-shaping-a-spec" _top
+  click nopr href "https://github.com/Ilian-Allaf/software-ai-skills-framework/blob/master/skills/GRAPH.md#every-loop-and-its-budget" _top
+  click human href "https://github.com/Ilian-Allaf/software-ai-skills-framework/blob/master/skills/GRAPH.md#every-loop-and-its-budget" _top
 ```
 
 Zoom in: [1. Frame](#3-step-1-framing) · [2. Build](#4-step-2-design-and-build) · [the playbooks](#5-the-playbooks) · [7-8. Verdict and babysitting](#6-steps-7-and-8-verdict-and-babysitting) · [every stop and budget](#every-loop-and-its-budget)
@@ -172,9 +172,9 @@ flowchart TB
   classDef stop fill:#ffe0e0,stroke:#cf222e,color:#1f2328
   class nopr,shape stop
 
-  click shape "#8-shaping-a-spec"
-  click lacks "#9-building-the-projects-tools"
-  click go "#4-step-2-design-and-build"
+  click shape href "https://github.com/Ilian-Allaf/software-ai-skills-framework/blob/master/skills/GRAPH.md#8-shaping-a-spec" _top
+  click lacks href "https://github.com/Ilian-Allaf/software-ai-skills-framework/blob/master/skills/GRAPH.md#9-building-the-projects-tools" _top
+  click go href "https://github.com/Ilian-Allaf/software-ai-skills-framework/blob/master/skills/GRAPH.md#4-step-2-design-and-build" _top
 ```
 
 Next: [step 2, design and build](#4-step-2-design-and-build) · Leads to: [shaping a spec](#8-shaping-a-spec) · [building the project's tools](#9-building-the-projects-tools)
@@ -220,8 +220,8 @@ flowchart TB
   classDef stop fill:#ffe0e0,stroke:#cf222e,color:#1f2328
   class human human
 
-  click build "#5-the-playbooks"
-  click human "#every-loop-and-its-budget"
+  click build href "https://github.com/Ilian-Allaf/software-ai-skills-framework/blob/master/skills/GRAPH.md#5-the-playbooks" _top
+  click human href "https://github.com/Ilian-Allaf/software-ai-skills-framework/blob/master/skills/GRAPH.md#every-loop-and-its-budget" _top
 ```
 
 The playbook's loop: [the playbooks](#5-the-playbooks) · Stops: [every loop and its budget](#every-loop-and-its-budget)
@@ -304,7 +304,7 @@ flowchart TB
   class ready ready
   class human human
 
-  click human "#every-loop-and-its-budget"
+  click human href "https://github.com/Ilian-Allaf/software-ai-skills-framework/blob/master/skills/GRAPH.md#every-loop-and-its-budget" _top
 ```
 
 Stops: [every loop and its budget](#every-loop-and-its-budget)
@@ -343,7 +343,7 @@ flowchart LR
   setup -->|if you chose it| driver
   setup -->|if you chose it| guard
 
-  click driver "#9-building-the-projects-tools"
+  click driver href "https://github.com/Ilian-Allaf/software-ai-skills-framework/blob/master/skills/GRAPH.md#9-building-the-projects-tools" _top
 ```
 
 ### 8. Shaping a spec
@@ -381,7 +381,7 @@ flowchart LR
   classDef tool fill:#ddf4ff,stroke:#0969da,color:#1f2328
   class drive,prove tool
 
-  click ship "#2-the-eight-steps"
+  click ship href "https://github.com/Ilian-Allaf/software-ai-skills-framework/blob/master/skills/GRAPH.md#2-the-eight-steps" _top
 ```
 
 ### 10. Using the project's tools
@@ -431,9 +431,9 @@ flowchart TB
   resume --> babysit
   queue -->|one owner per task| ship
 
-  click ship "#2-the-eight-steps"
-  click shape "#8-shaping-a-spec"
-  click babysit "#6-steps-7-and-8-verdict-and-babysitting"
+  click ship href "https://github.com/Ilian-Allaf/software-ai-skills-framework/blob/master/skills/GRAPH.md#2-the-eight-steps" _top
+  click shape href "https://github.com/Ilian-Allaf/software-ai-skills-framework/blob/master/skills/GRAPH.md#8-shaping-a-spec" _top
+  click babysit href "https://github.com/Ilian-Allaf/software-ai-skills-framework/blob/master/skills/GRAPH.md#6-steps-7-and-8-verdict-and-babysitting" _top
 ```
 
 ### 12. Learning from a mistake
@@ -449,7 +449,7 @@ flowchart LR
   learn -->|approved code-level lesson| guard
   learn -->|approved feature-map gap| driver
 
-  click driver "#9-building-the-projects-tools"
+  click driver href "https://github.com/Ilian-Allaf/software-ai-skills-framework/blob/master/skills/GRAPH.md#9-building-the-projects-tools" _top
 ```
 
 ## Reference
