@@ -3,7 +3,8 @@
 Usage: python -I tools/check_refs.py [--root PATH]
 
 A reference is any place where one text names another thing:
-  - R001 a Markdown link whose file does not exist (docs outside skills/; lint_skills.py covers skills/);
+  - R001 a Markdown link whose file does not exist (docs outside the skill folders, such as skills/GRAPH.md;
+         lint_skills.py covers each skill folder);
   - R002 a link whose #anchor matches no heading in the target file;
   - R003 a path in backticks, such as `ship/references/design.md` or `tools/lint_skills.py`,
          that names a framework file that does not exist; a file the repo removed on purpose
