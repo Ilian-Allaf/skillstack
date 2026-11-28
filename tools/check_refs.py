@@ -72,6 +72,7 @@ PLANNED = {
 REMOVED = {
     "skills/README.md": "skills/GRAPH.md",
     "skills/ship/references/sketch.md": "skills/constitution/references/sketch.md",
+    "skills/create-app-driver/references/maintain.md": "skills/maintain-app-driver/SKILL.md",
 }
 # Folders renamed on purpose, old prefix to new. A dated doc keeps the old path when the new one exists.
 MOVED = {

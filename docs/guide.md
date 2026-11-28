@@ -93,6 +93,7 @@ You merge. A stack merges from the bottom.
 /add-guardrail
 /learn-from-mistakes 123
 /test-skill-change the new feature playbook in branch better-feature-playbook
+/maintain-app-driver
 /maintain-formal-verification
 /clean-worktrees
 ```

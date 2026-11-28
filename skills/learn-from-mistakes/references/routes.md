@@ -8,7 +8,7 @@ Where a lesson goes, by the layer that should have caught the mistake.
 |---|---|---|
 | the code allowed it | the code itself | `/add-guardrail`: architecture, a type, a lint whose message names the fix, a test |
 | `done_when` did not describe what the user wanted | the contract | `ship`'s [frame.md](../../ship/references/frame.md), or `shape-spec` if the task needed decisions first |
-| no case covered that path | coverage | the feature map, through `create-app-driver` in maintain mode, and the case list rules in [coverage.md](../../constitution/references/coverage.md) |
+| no case covered that path | coverage | the feature map, through `/maintain-app-driver`, and the case list rules in [coverage.md](../../constitution/references/coverage.md) |
 | the proof drove the app the wrong way | proof on the app | the target repo's `drive-<app>` skill |
 | the change broke something outside its diff | breakage | the `analyze-impact` skill |
 | a formal check covered the code and passed, or its property missed the case | formal check | `/maintain-formal-verification` when the check was stale or its model wrong; `/create-formal-verification` for a property no check holds |

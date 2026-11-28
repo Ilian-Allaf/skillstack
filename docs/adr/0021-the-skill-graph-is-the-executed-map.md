@@ -1,6 +1,6 @@
 # 0021. The skill graph is the executed map
 
-- **Status**: accepted, 2026-11-27; amended by [0022](0022-the-first-design-notes-leave-the-repo.md). Supersedes [0013](0013-a-doc-stays-fresh-by-running-or-by-date.md).
+- **Status**: accepted, 2026-11-27; amended by [0022](0022-the-first-design-notes-leave-the-repo.md) and [0025](0025-the-feature-map-grows-by-maintenance.md). Supersedes [0013](0013-a-doc-stays-fresh-by-running-or-by-date.md).
 - **Applies to**: every doc of this repo, and the feature maps and ADRs the framework writes in target repos; `skills/GRAPH.md`
 - **Enforced by**: `tools/check_refs.py` (R006: every skill has its row in the table of `skills/GRAPH.md`; R012: each row's Runs and Run by match the skills' `calls:` frontmatter); the entry-point check that `create-app-driver` writes beside each feature map
 

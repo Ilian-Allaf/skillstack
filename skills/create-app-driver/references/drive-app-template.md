@@ -35,6 +35,7 @@ Check side effects too: <rows written, files created, messages sent>.
 Save evidence to <path>. Name files <feature>-<step>-<base|head>.<ext>.
 Profile: <command that captures a CPU profile, a heap snapshot, or a trace of the running app, and where it writes them>.
 A dry run proves only what it observably skipped.
+Mock only at a boundary the code already has around an outside system, never the app's own database or routes.
 
 ## Demo
 
@@ -48,7 +49,7 @@ Evidence stays where Evidence put it.
 
 ## Features
 
-The [feature map](features/README.md) lists every user-facing feature, where the code declares its entry points, the ones no file declares, and the end state that proves it. `<check command>` fails when a declared entry point has no feature file.
+The [feature map](features/README.md) lists the user-facing features mapped so far, each with its entry points and the end state that proves it. It grows a few features per maintenance pass, and a task that touches a feature with no file writes it, as the coverage rules say.
 A proof that drives one convenient entry point is incomplete when the map lists others.
 ```
 
@@ -58,3 +59,5 @@ A proof that drives one convenient entry point is incomplete when the map lists 
 - **A short-lived CLI has no server.** Launch builds the binary once; each drive starts its own isolated session.
 - **Add a command, not a throwaway script.** When a drive needs a step the CLI lacks, add it as a command with `--help` and JSON output, so the next run reuses it.
 - **Scaffolding is marked.** When an unrelated missing asset blocks startup, the skill may create it, labeled as verification scaffolding, and Cleanup removes it.
+- **A seed lives with the driver.** A state no user path reaches gets a seed in the driver's `scripts/`: in the project folder for a private driver, in the repo only when the driver already lives there. Never ask where. Launch runs it, and the features that need it say so under Preconditions.
+- **The driver's tools live with the driver.** They install in its folder or globally, never in the repo's manifest or lockfile, unless the repo already uses them.

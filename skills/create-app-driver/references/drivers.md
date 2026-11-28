@@ -1,11 +1,12 @@
 # Drivers
 
-Fallback recipes, for when the repo has no harness of its own, then how to grow the driver into a small CLI. Prefer what the repo already uses. Copy the recipe into the generated skill and adapt it; the target repo never calls this file.
+Fallback recipes, for when the repo has no harness of its own, then how to grow the driver into a small CLI. Prefer what the repo already uses. Copy the recipe into the generated skill and adapt it; the target repo never calls this file. A tool a recipe needs installs as the template's [rules](drive-app-template.md#rules-for-the-generated-skill) say.
 
 ## Web app or Electron: a browser driver
 
-- Playwright, driven by a small script the skill ships, for example `scripts/drive.mjs <action> [args]`.
-- Select by role and accessible name (`getByRole('button', { name: 'Save note' })`) or test id. Never by CSS position.
+- First a ready-made browser control CLI, installed globally, such as Playwright's command line for agents: the skill calls it, with no code to write.
+- A small Playwright script the skill ships, for example `scripts/drive.mjs <action> [args]`, only when that CLI cannot do a step, such as recording one clip per case.
+- Select by role and accessible name (`getByRole('button', { name: 'Save note' })`) or test id. Never by CSS position, and never by the element refs a snapshot hands out: they change from one run to the next, so a step written with one never replays.
 - Evidence: a screenshot and an accessibility snapshot after each step; network responses for the calls that matter; the database row or API state after the action.
 - Before and after: run the same journey on the base checkout and the head checkout, on two ports.
 - Video: open the browser context with `recordVideo: { dir, size }`; Playwright writes one video per page when the context closes. Record each case in its own context, so each case is its own clip.

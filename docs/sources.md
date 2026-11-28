@@ -176,14 +176,15 @@ When a skill changes, update its section here, in the same PR.
 - Source: pstack `create-verification-skill` and `maintain-verification-skill`.
 - 2026-11-23: the formal mode moved out to `create-formal-verification` and `maintain-formal-verification`.
 - 2026-11-24, [ADR 0019](adr/0019-the-spec-sets-the-bar-and-a-task-builds-the-proof-it-lacks.md): the skill reads the access `shape-spec` collected; inside a task, a fresh subagent follows the driver cold, after Ray Amjad's checker that makes sure the driver did not cheat.
+- 2026-11-28, [ADR 0025](adr/0025-the-feature-map-grows-by-maintenance.md): the maintain mode moved out to `maintain-app-driver`, and the entry-point check is gone: the map starts with 3 to 5 features and grows by maintenance, as in pstack `create-verification-skill` ("aim for the top 3-5 to start", "the map exists so later runs can cover the rest"). The stand-in rule and "mocks only where a production boundary already isolates the external system" come back from it. A browser control CLI before a shipped script, after pstack's `control-ui` (`poteto-mode` multi-phase-plan playbook). Ours: a seed for a state no user path reaches, beside the driver, without asking; the driver's tools never in the repo's manifest.
 
 ## `skills/create-app-driver/references/feature-map.md`
 
 - Source: pstack `create-verification-skill`, example `create-note.md`.
 
-## `skills/create-app-driver/references/maintain.md`
+## `skills/maintain-app-driver/SKILL.md` (2026-11-28)
 
-- Source: pstack `maintain-verification-skill`.
+- Source: pstack `maintain-verification-skill` (Lauren Tan), which this repo first kept as `create-app-driver`'s maintain mode: the index, the read-only source wave, the reconcile, the live pass with its three invariants, the triage, and the three outcomes. pstack guide page "Verify the result and open a PR": run it often. Ours, [ADR 0025](adr/0025-the-feature-map-grows-by-maintenance.md): each pass maps up to five missing features, those `learn-from-mistakes` named first; the user launches it, by hand or from a schedule of their own ([ADR 0026](adr/0026-a-schedule-is-the-users-own.md)). The rule that a prerequisite the map omits is drift, from pstack.
 
 ## `skills/create-formal-verification/SKILL.md`
 

@@ -1,6 +1,6 @@
 ---
 name: create-app-driver
-description: "Writes the repo's driver, a skill that launches, drives, and observes the app like a user, with its feature map; keeps it in sync."
+description: "Writes the repo's driver, a skill that launches, drives, and observes the app like a user, with the first few features of its feature map."
 disable-model-invocation: true
 metadata:
   kind: kit
@@ -15,35 +15,32 @@ Read [the constitution](../constitution/README.md) first.
 
 Every agent that proves a change needs the same three things: start the app from nothing, use it the way a user does, and capture what happened. This skill writes them once, as a skill in the project folder, or in the repo when the user shares it with the team, so `prove` in a builder run and the `live` lane in a verifier run drive the app the same way.
 
-You write for an agent that reads the generated skill cold, mid-task, and has never seen the app.
+Write for an agent that reads it cold, mid-task, and never saw the app.
 
-Two modes:
-
-- **create** (default): the repo has no `drive-<app>` skill. Run the steps below.
-- **maintain**: the skill exists and the app has changed. Follow [references/maintain.md](references/maintain.md). Run it when the user asks, and after a `learn-from-mistakes` the user approved that found a gap in the feature map.
+Run it when the repo has no `drive-<app>` skill. Once one exists, `/maintain-app-driver` keeps it in line and grows its feature map, so this run maps only a few features.
 
 ## Steps
 
 1. **Interview the repo, not the user.** Answer five questions from the code: which surface a user touches, how the app runs locally, how an agent can drive it (the repo's own harness first), what can be observed, and whether two instances can run side by side. Read `~/.agents/projects/<project>/access/<app>.md` first when it exists: `shape-spec` wrote there the account, the access, and where the secret lives. Ask the user only what the code and that file cannot show, such as a test account.
    Done when: each answer cites a file or a command you ran, and each unknown is answered by `access/<app>.md` or is a question sent to the user.
 
-2. **Get the base to start.** Run the app from an empty data directory on the base branch, migrations and seed data included. Usable means a user could act, not that a process answers.
-   Done when: you reached a usable state and wrote down the ready signal, or you reported the exact blocker and stopped.
+2. **Get the base to start.** Run the app from an empty data directory on the base branch, migrations and seed data included. Usable means a user could act, not that a process answers. Reach each state a journey needs through the user's path; for one no user path reaches, such as an admin role, write a seed, and install the driver's tools, as the template's [rules](references/drive-app-template.md#rules-for-the-generated-skill) say.
+   Done when: you reached a usable state, wrote down the ready signal, and named each seed you wrote; or you reported the exact blocker and stopped.
 
-3. **Write the skill.** Create `~/.agents/projects/<project>/drive-<app>/SKILL.md`, or, when the user shares it, `.agents/skills/drive-<app>/SKILL.md` in the repo with the links and the route [target-repo.md](../constitution/references/target-repo.md) asks for, from [references/drive-app-template.md](references/drive-app-template.md). Pick the driver from [references/drivers.md](references/drivers.md) only when the repo has no harness of its own. Use the repo's real commands and stable handles (accessible names, test ids, prompt strings, routes). Scripts the skill ships are executable, and the skill shows how to call them; when the drive outgrows a few lines, make it a small control CLI, as [references/drivers.md](references/drivers.md#a-control-cli) describes.
+3. **Write the skill.** Create `~/.agents/projects/<project>/drive-<app>/SKILL.md`, or, when the user shares it, `.agents/skills/drive-<app>/SKILL.md` in the repo with the links and the route [target-repo.md](../constitution/references/target-repo.md) asks for, from [references/drive-app-template.md](references/drive-app-template.md). Pick the driver from [references/drivers.md](references/drivers.md) only when the repo has no harness of its own. Use the repo's real commands and stable handles (accessible names, test ids, prompt strings, routes). Shipped scripts are executable and the skill shows how to call them; a drive that outgrows a few lines becomes a [control CLI](references/drivers.md#a-control-cli).
    Done when: Launch, Doctor, Drive, Evidence, Demo, and Cleanup hold no placeholder, and every command in them ran once.
 
-4. **Seed the feature map, and its check.** Find the top 3 to 5 user-facing features from routes, commands, menus, and docs, and write one file each in the shape of [references/feature-map.md](references/feature-map.md). Where the code declares entry points, add a check that fails when one has no feature file, and see it fail once by hiding a file. A shared driver runs the check in CI; a private one ships it as a script its Doctor runs.
-   Done when: every feature file names where its entry points are declared, the ones no file declares, its drive steps, and the end state that proves it; and the check failed once and passes, or the report says the code declares no entry points.
+4. **Seed the feature map.** Find the top 3 to 5 user-facing features from routes, commands, menus, and docs, and write one file each in the shape of [references/feature-map.md](references/feature-map.md). Map no more: the rest comes through `/maintain-app-driver`.
+   Done when: 3 to 5 feature files, no more, each listing its entry points, its drive steps, and the end state that proves it.
 
-5. **Prove the generated skill.** Follow its own instructions end to end: launch, doctor, drive one mapped feature, capture evidence, clean up. Then check that the evidence still exists where the skill says. Fix what fails, and run the cleanup after every failed attempt. When a precondition is missing, the journey fails and the reason goes under Gotchas. Never weaken a journey to make it pass.
+5. **Prove the generated skill.** Follow its own instructions end to end: launch, doctor, drive one mapped feature, capture evidence, clean up. Then check that the evidence still exists where the skill says. Fix what fails, and run the cleanup after every failed attempt. A precondition no user path or seed gives, such as an outside account, fails the journey, with the reason under Gotchas. Never weaken a journey to make it pass. Proved in a stand-in, such as a container in place of the real machine, list each setup step the target will not do: those stay unverified.
    When a task runs this skill before its change, a fresh subagent then follows the generated skill cold, with only its path, the same way: the builder of the task must not be the only one who saw the driver work.
    Done when: one full run passed, the evidence survived cleanup, nothing the run started is still running, and, inside a task, the cold run passed too.
 
-6. **Hand it over.** A private driver is done once step 5 passed: report its path. A shared one goes in a PR in [the PR format](../constitution/references/pr-format.md). Proof holds the end to end run and its evidence. Not verified lists the features the map names but this run did not drive.
+6. **Hand it over.** A private driver is done once step 5 passed: report its path. A shared one goes in a PR in [the PR format](../constitution/references/pr-format.md). Proof holds the end to end run and its evidence. Not verified lists the features the map names but this run did not drive, and the steps a stand-in did.
    Then get a verdict and run `babysit-pr`, as rule 2 of the constitution says. Inside a task, its builder babysits the whole stack once instead.
    Done when: the private driver's run is reported with its evidence; or the PR is open with the run's evidence attached, and carries `ready` or `needs-human`.
 
 ## Reply
 
-The surface and driver chosen, the features mapped, the proof run with its evidence path, and what stays unverified.
+The surface and driver chosen, the seeds written and where they live, the features mapped, the proof run with its evidence path, and what stays unverified.
