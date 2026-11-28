@@ -305,7 +305,8 @@ When a skill changes, update its section here, in the same PR.
 - Source: Matt Pocock `grilling` and `grill-with-docs`.
 - 2026-11-24, [ADR 0019](adr/0019-the-spec-sets-the-bar-and-a-task-builds-the-proof-it-lacks.md): the verification branch. A journey per story follows Ray Amjad's account of Anthropic's practice, where the spec lists its flows and each is verified separately. Promises, what cannot be verified, and collecting access before the build are ours.
 - 2026-11-25, [ADR 0020](adr/0020-a-heavy-visual-change-is-specified-by-a-target.md), ours: a heavy visual change adds two decisions, the design mode and the pick, whose steps are prototype mode's; the visual targets drafted for a yes.
-- 2026-11-28, from a first run on a real codebase: a round is a message the user answers in their own words, as Matt Pocock `grilling` sends it, not a form of buttons. Showing the branches still open and digging into each answer are ours.
+- 2026-11-28, from a first run on a real codebase: a round is a message the user answers in their own words, as Matt Pocock `grilling` sends it, not a form of buttons. Digging into each answer is ours.
+- 2026-11-28, from a second run on a real codebase: the round's format, ❓ and ➡️ lines separated by `---`, is Matt Pocock `grilling`'s, as written. The round alone in its message, and the recommendation never inside the body, are ours.
 - 2026-11-28, [ADR 0027](adr/0027-behavior-is-settled-in-the-spec-the-shape-in-the-architecture.md), ours: the branch What the code already does, whose collisions become the product questions.
 
 ## `skills/shape-spec/references/map.md`
