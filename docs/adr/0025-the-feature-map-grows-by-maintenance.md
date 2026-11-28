@@ -16,7 +16,7 @@ pstack, where the driver comes from, has no such check. Its map starts with a fe
 - `maintain-app-driver`, a skill of its own, replaces the maintain mode of `create-app-driver`. Each pass checks every feature file against the source, drives every feature, and maps at most five features the map lacks, those a `learn-from-mistakes` row named first.
 - A feature map is the one doc kept by maintenance instead of a check: `Last driven` dates each file, and a file whose code changed after it is stale until driven again.
 - The user launches it whenever the app has changed, by hand or from a schedule of their own, as [ADR 0026](0026-a-schedule-is-the-users-own.md) allows.
-- A path the map lacks is still caught in a task: coverage finds the callers of the changed code in the code itself, and adds a missing path to the map in the PR.
+- A path the map lacks is still caught in a task: coverage finds the callers of the changed code in the code itself, and adds a missing path to the map where the driver lives: in the PR when the driver is in the repo, in the project folder otherwise.
 
 ## Alternatives rejected
 
