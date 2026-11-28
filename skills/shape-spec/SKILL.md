@@ -24,6 +24,7 @@ You do not cut the spec into implementation slices for parallel agents. One buil
 
 1. **Pick the mode.** From what the user brings:
    - a loose idea, or a plan with open decisions: **grill**, then **spec**;
+   - a spec issue with an open product decision: **grill** it, then edit the spec in place;
    - a conversation that already settled the decisions: **spec** directly;
    - work too big for one session, where the way to the goal is not visible yet: **map**;
    - a map issue: **map**, working its next decision.

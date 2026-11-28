@@ -37,7 +37,7 @@ Raise the effort one step for the subtlest work, and lower it for routine work. 
 ## Rules
 
 - **A fresh context means a new subagent**, not a continued one. Codex can fork the parent context; check that a Codex verifier starts empty before you trust its independence.
-- **Ask through the question tool** when the user is present. A plain message is easy to miss.
+- **Ask through the question tool** when the user is present. A plain message is easy to miss. The exception is an interview round, as `shape-spec`'s grill describes it: it is a message that ends the turn, so the user answers in their own words.
 - **When a subagent cannot spawn its own**, it runs the work it would have spread out one piece after another, and says so in its result.
 - **When the other family is missing**, the verifier is a fresh agent of the same family. Say so in the verdict.
 - **The merge hook** blocks `gh pr merge`, `gh pr merge --auto`, and merge queue commands, including variants passed through `git -c` or an alias.

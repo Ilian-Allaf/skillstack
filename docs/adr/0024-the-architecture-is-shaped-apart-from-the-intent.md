@@ -1,6 +1,6 @@
 # 0024. The architecture is shaped apart from the intent
 
-- **Status**: accepted, 2026-11-27
+- **Status**: accepted, 2026-11-27; amended by [0027](0027-behavior-is-settled-in-the-spec-the-shape-in-the-architecture.md).
 - **Extends**:
   - in [0019](0019-the-spec-sets-the-bar-and-a-task-builds-the-proof-it-lacks.md), "writes nothing technical in the spec": the means of proof stay out of the spec, but a technical decision the user made goes in;
   - in [0014](0014-a-launched-task-runs-to-a-ready-pr.md), the stop for a one-way door: a door a technical decision of the spec settled needs no stop, since the user made that call.

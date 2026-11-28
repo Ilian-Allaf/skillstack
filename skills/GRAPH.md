@@ -359,7 +359,7 @@ flowchart LR
 
 When an idea is too loose for `ship` to frame: several open decisions only you can make, a task too big to frame, or a heavy visual change with no visual target. `shape-spec` interviews you and writes a spec issue that `ship` then takes.
 
-When the spec touches the shape of the code, `shape-spec` offers `shape-architecture` before the hand over, on the signals that skill lists. It sketches two shapes, asks you, and writes the decisions you make into the spec's Technical decisions; what you leave open stays the builder's. You can also launch it later on a spec issue.
+When the spec touches the shape of the code, `shape-spec` offers `shape-architecture` before the hand over, on the signals that skill lists. It sketches two shapes, asks you, and writes the decisions you make into the spec's Technical decisions; what you leave open stays the builder's. You can also launch it later on a spec issue. It asks nothing about how the app behaves: a product decision the spec lacks is named, and its hand over is `/shape-spec <issue>` instead of `/ship`.
 
 ```mermaid
 flowchart LR
