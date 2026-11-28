@@ -177,10 +177,12 @@ When a skill changes, update its section here, in the same PR.
 - 2026-11-23: the formal mode moved out to `create-formal-verification` and `maintain-formal-verification`.
 - 2026-11-24, [ADR 0019](adr/0019-the-spec-sets-the-bar-and-a-task-builds-the-proof-it-lacks.md): the skill reads the access `shape-spec` collected; inside a task, a fresh subagent follows the driver cold, after Ray Amjad's checker that makes sure the driver did not cheat.
 - 2026-11-28, [ADR 0025](adr/0025-the-feature-map-grows-by-maintenance.md): the maintain mode moved out to `maintain-app-driver`, and the entry-point check is gone: the map starts with 3 to 5 features and grows by maintenance, as in pstack `create-verification-skill` ("aim for the top 3-5 to start", "the map exists so later runs can cover the rest"). The stand-in rule and "mocks only where a production boundary already isolates the external system" come back from it. A browser control CLI before a shipped script, after pstack's `control-ui` (`poteto-mode` multi-phase-plan playbook). Ours: a seed for a state no user path reaches, beside the driver, without asking; the driver's tools never in the repo's manifest.
+- 2026-11-28: from pstack `create-verification-skill`: the repo's own documented dev command first, the primary surface picked and the others noted; from `maintain-verification-skill`: one long-lived instance driven serially, and one retry that restarts only what the fix invalidated. pstack writes no demo at creation; with [ADR 0019](adr/0019-the-spec-sets-the-bar-and-a-task-builds-the-proof-it-lacks.md), the first task that requires one adds it. Ours, after a 50-minute first run on a Next.js and Postgres repo on Windows: the preflight before any install, the `Windows hosts` recipes, each run on Windows 11, a `Profile` line only when cheap, the side by side question answered from the code and proven by the first task that needs it, and a control CLI that starts with four commands.
 
 ## `skills/create-app-driver/references/feature-map.md`
 
 - Source: pstack `create-verification-skill`, example `create-note.md`.
+- 2026-11-28: the header of `features/README.md` (the baseline every recipe starts from, "never drive an instance that was not started by this verification run", restore seeded data after a mutation, what a UI, CLI, and mutation proof holds, the feature and entry point on every artifact, a skipped entry point never verified through a different path), from pstack's example `feature-map-example/README.md`.
 
 ## `skills/maintain-app-driver/SKILL.md` (2026-11-28)
 

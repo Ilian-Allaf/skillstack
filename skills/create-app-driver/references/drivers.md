@@ -4,11 +4,12 @@ Fallback recipes, for when the repo has no harness of its own, then how to grow 
 
 ## Web app or Electron: a browser driver
 
-- First a ready-made browser control CLI, installed globally, such as Playwright's command line for agents: the skill calls it, with no code to write.
+- First a ready-made browser control CLI, installed globally, such as Playwright's command line for agents (the `@playwright/cli` package): the skill calls it, with no code to write.
 - A small Playwright script the skill ships, for example `scripts/drive.mjs <action> [args]`, only when that CLI cannot do a step, such as recording one clip per case.
 - Select by role and accessible name (`getByRole('button', { name: 'Save note' })`) or test id. Never by CSS position, and never by the element refs a snapshot hands out: they change from one run to the next, so a step written with one never replays.
 - Evidence: a screenshot and an accessibility snapshot after each step; network responses for the calls that matter; the database row or API state after the action.
-- Before and after: run the same journey on the base checkout and the head checkout, on two ports.
+- Before and after: run the same journey on the base checkout and the head checkout, on two ports. The driver says from the code whether that works; the first task that needs it proves it.
+- Some dev servers lock their checkout, such as Next.js with `.next/dev`: two instances side by side then need a worktree each.
 - Video: open the browser context with `recordVideo: { dir, size }`; Playwright writes one video per page when the context closes. Record each case in its own context, so each case is its own clip.
 
 ## CLI or TUI: a terminal session
@@ -41,6 +42,8 @@ When the drive takes more than a few lines of script, or agents keep writing thr
 - errors that say what to do next: "port 3000 is taken; pass --port or run `reset`";
 - one command that brings the environment up the same way every time: dependencies, migrations, seed data, test users.
 
+It starts with `launch`, `doctor`, `drive`, and `stop`, and gains a command each time a run needs a step it lacks.
+
 
 A helper `record-demo` turns the per-case clips into one video, as [coverage.md](../../constitution/references/coverage.md) describes:
 
@@ -56,3 +59,25 @@ A helper `record-demo` turns the per-case clips into one video, as [coverage.md]
 - Simulator or emulator driven by the platform's UI test tool.
 - Video: the simulator's own screen recording, one clip per case.
 - This is the hardest surface. When the repo has no harness, report that and agree a scope with the user before writing one.
+
+## Windows hosts
+
+Copy this into the generated skill's Gotchas when the machine runs Windows. Each command was run in Git Bash on Windows 11, with Windows PowerShell 5.1 and PowerShell 7.
+
+- **A detached launch.** `nohup cmd &` gives an MSYS pid that `taskkill` does not know, and can die with the shell when the harness ends its process tree; `cmd //c start //b` is mangled by MSYS. Start the app through PowerShell, with Windows paths, and every handle of the PowerShell call redirected to a file: a child inherits the caller's stdout, so `| tr` or the harness's own pipe never closes and the call hangs.
+
+  ```bash
+  RUN="$(cygpath -w "$RUN_DIR")"
+  powershell -NoProfile -Command "Start-Process -FilePath '$(cygpath -w "$(command -v node)")' -ArgumentList 'server.js','4791' -WorkingDirectory '$(cygpath -w "$PWD")' -RedirectStandardOutput '$RUN\app.out' -RedirectStandardError '$RUN\app.err' -WindowStyle Hidden -PassThru | ForEach-Object Id" > "$RUN_DIR/app.pid" 2> "$RUN_DIR/launch.err" < /dev/null
+  ```
+
+  The process survives the shell. Stop it by the PID in the run directory, tree included: `taskkill //F //T //PID "$(tr -d '\r' < "$RUN_DIR/app.pid")"`. Never by process name.
+- **Paths.** A native Windows program (node, python, PowerShell, docker) reads `/c/...` as a missing path: pass `"$(cygpath -w "$path")"`. MSYS also rewrites an argument that looks like a path, such as `/FI`, or the container side of `-v C:\x:/w`: double the slash (`tasklist //FI "PID eq 4"`), or set `MSYS2_ARG_CONV_EXCL='*'` or `MSYS_NO_PATHCONV=1` for that command.
+- **PowerShell automatic variables.** Never name a variable `$pid`, `$host`, or `$error`: they are read-only, and the script fails. `$args` and `$input` are reset inside every function and script block. Use `$procId`.
+- **Processes and ports.** `ps` lists only MSYS processes; `ps -W`, `tasklist //FI "PID eq <pid>"`, or `Get-Process -Id <pid>` list native ones. For the owner of a port: `netstat -ano | grep ":<port> .*LISTENING"`, or `Get-NetTCPConnection -LocalPort <port> -State Listen | Select-Object -ExpandProperty OwningProcess`.
+- **Python.** `python3` can be the Microsoft Store alias, which opens the Store instead of running. Write the driver's small scripts for node, which the app already needs, and give them Windows paths too.
+- **Every wait has a timeout.** A ready or doctor loop stops at a deadline and prints the cause, such as the end of the app's log:
+
+  ```bash
+  deadline=$((SECONDS+60)); until curl -fsS "http://127.0.0.1:$PORT/" >/dev/null 2>&1; do [ $SECONDS -ge $deadline ] && { echo "not ready after 60s:"; tail -5 "$RUN_DIR/app.err"; exit 1; }; sleep 1; done
+  ```
