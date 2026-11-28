@@ -1,6 +1,28 @@
 # Feature map
 
-`features/README.md` indexes one file per user-facing feature mapped so far; the map grows by maintenance. Each file is written from the user's point of view, with four sections.
+`features/README.md` indexes one file per user-facing feature mapped so far; the map grows by maintenance. It opens with the rules every recipe shares:
+
+```markdown
+# <app> feature map
+
+## Baseline
+
+- <the state every recipe starts from: URL or command, data directory, seed data, tools on PATH>
+- Never drive an instance this run did not start.
+- Restore the seed data after a recipe changes it.
+
+## Proof
+
+- A screen: an accessibility snapshot and a screenshot that shows it is the right app.
+- A command: the command, stdout, stderr, and the exit code.
+- A skipped entry point is never reported verified because another path worked.
+
+## Features
+
+- [<Feature>](<feature>.md): <what it covers>
+```
+
+Each feature file is written from the user's point of view, with four sections.
 
 ```markdown
 # <Feature>
