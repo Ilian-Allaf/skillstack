@@ -8,17 +8,14 @@
 ## Baseline
 
 - <the state every recipe starts from: URL or command, data directory, seed data, tools on PATH>
-- Run Doctor and require <the URL, data directory, and build it must report>.
 - Never drive an instance this run did not start.
-- Restore the seed data after a recipe changes it. Cleanup never removes evidence.
+- Restore the seed data after a recipe changes it.
 
 ## Proof
 
 - A screen: an accessibility snapshot and a screenshot that shows it is the right app.
 - A command: the command, stdout, stderr, and the exit code.
-- A change: a read-only second view of the stored state.
-- Every evidence file names the feature and the entry point it used.
-- An unreachable entry point is reported with the command tried and the missing precondition. A skipped entry point is never reported verified because another path worked.
+- A skipped entry point is never reported verified because another path worked.
 
 ## Features
 

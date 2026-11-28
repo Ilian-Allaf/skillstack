@@ -8,7 +8,7 @@ Fallback recipes, for when the repo has no harness of its own, then how to grow 
 - A small Playwright script the skill ships, for example `scripts/drive.mjs <action> [args]`, only when that CLI cannot do a step, such as recording one clip per case.
 - Select by role and accessible name (`getByRole('button', { name: 'Save note' })`) or test id. Never by CSS position, and never by the element refs a snapshot hands out: they change from one run to the next, so a step written with one never replays.
 - Evidence: a screenshot and an accessibility snapshot after each step; network responses for the calls that matter; the database row or API state after the action.
-- Before and after: run the same journey on the base checkout and the head checkout, on two ports. The driver says from the code whether that works; the first task that needs it proves it.
+- Before and after: run the same journey on the base checkout and the head checkout, on two ports, once a task needs it: creation only answers from the code whether it works.
 - Some dev servers lock their checkout, such as Next.js with `.next/dev`: two instances side by side then need a worktree each.
 - Video: open the browser context with `recordVideo: { dir, size }`; Playwright writes one video per page when the context closes. Record each case in its own context, so each case is its own clip.
 
@@ -35,14 +35,12 @@ Fallback recipes, for when the repo has no harness of its own, then how to grow 
 
 When the drive takes more than a few lines of script, or agents keep writing throwaway scripts to click through the app, grow the script the skill ships into a small control CLI (`build-the-lever`). Every run then drives the app the same way, for fewer tokens, and the evidence replays. A CLI agents use well has:
 
-- a few composable commands that each do real work, such as `launch`, `drive <feature>`, `capture`, `reset`, rather than many thin ones;
+- a few composable commands that each do real work, rather than many thin ones: `launch`, `doctor`, `drive <feature>`, and `stop` at first, and one more each time a run needs a step they lack;
 - `--dry-run` on anything that deletes or writes outside the run's own directory;
 - `--help` on every command, with an example;
 - machine-readable output, such as JSON, beside the human one;
-- errors that say what to do next: "port 3000 is taken; pass --port or run `reset`";
+- errors that say what to do next: "port 3000 is taken; pass --port or run `stop`";
 - one command that brings the environment up the same way every time: dependencies, migrations, seed data, test users.
-
-It starts with `launch`, `doctor`, `drive`, and `stop`, and gains a command each time a run needs a step it lacks.
 
 
 A helper `record-demo` turns the per-case clips into one video, as [coverage.md](../../constitution/references/coverage.md) describes:
@@ -62,7 +60,7 @@ A helper `record-demo` turns the per-case clips into one video, as [coverage.md]
 
 ## Windows hosts
 
-Copy this into the generated skill's Gotchas when the machine runs Windows. Each command was run in Git Bash on Windows 11, with Windows PowerShell 5.1 and PowerShell 7.
+Copy this into the generated skill's Gotchas when the machine runs Windows, Git Bash and PowerShell.
 
 - **A detached launch.** `nohup cmd &` gives an MSYS pid that `taskkill` does not know, and can die with the shell when the harness ends its process tree; `cmd //c start //b` is mangled by MSYS. Start the app through PowerShell, with Windows paths, and every handle of the PowerShell call redirected to a file: a child inherits the caller's stdout, so `| tr` or the harness's own pipe never closes and the call hangs.
 
@@ -75,7 +73,7 @@ Copy this into the generated skill's Gotchas when the machine runs Windows. Each
 - **Paths.** A native Windows program (node, python, PowerShell, docker) reads `/c/...` as a missing path: pass `"$(cygpath -w "$path")"`. MSYS also rewrites an argument that looks like a path, such as `/FI`, or the container side of `-v C:\x:/w`: double the slash (`tasklist //FI "PID eq 4"`), or set `MSYS2_ARG_CONV_EXCL='*'` or `MSYS_NO_PATHCONV=1` for that command.
 - **PowerShell automatic variables.** Never name a variable `$pid`, `$host`, or `$error`: they are read-only, and the script fails. `$args` and `$input` are reset inside every function and script block. Use `$procId`.
 - **Processes and ports.** `ps` lists only MSYS processes; `ps -W`, `tasklist //FI "PID eq <pid>"`, or `Get-Process -Id <pid>` list native ones. For the owner of a port: `netstat -ano | grep ":<port> .*LISTENING"`, or `Get-NetTCPConnection -LocalPort <port> -State Listen | Select-Object -ExpandProperty OwningProcess`.
-- **Python.** `python3` can be the Microsoft Store alias, which opens the Store instead of running. Write the driver's small scripts for node, which the app already needs, and give them Windows paths too.
+- **Python.** `python3` can be the Microsoft Store alias, which opens the Store instead of running. Write the driver's small scripts in the runtime the app already runs, such as node, and give them Windows paths too.
 - **Every wait has a timeout.** A ready or doctor loop stops at a deadline and prints the cause, such as the end of the app's log:
 
   ```bash

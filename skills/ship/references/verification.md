@@ -2,7 +2,7 @@
 
 ## Before implementation
 
-For each required proof, name the driver, command, expected result, environment, access needed, and capture method. Start the app and run a harmless read through each touched surface on the base. Try the capture command too when a demo is required; a driver with no demo command gets `record-demo` first, from [drivers.md](../../create-app-driver/references/drivers.md#a-control-cli). Save commands and outputs as replayable scripts and artifacts. A missing setup goes to the driver preparation already described in [proof.md](../../constitution/references/proof.md).
+For each required proof, name the driver, command, expected result, environment, access needed, and capture method. Start the app and run a harmless read through each touched surface on the base. Try the capture command too when a demo is required. When the driver lacks what a required proof needs, such as a demo command, a Profile line, or two instances side by side, add it first, from [drivers.md](../../create-app-driver/references/drivers.md), as the driver's own change that [frame.md](frame.md#before-you-frame) routes. Save commands and outputs as replayable scripts and artifacts. A missing setup goes to the driver preparation already described in [proof.md](../../constitution/references/proof.md).
 
 Check that a fresh verifier can use that setup: include safe startup commands, driver paths, and how it obtains access, never credentials or the builder's conclusions. When isolation or access differs, try the harmless read there too; an untried environment stays an explicit limit. Keep the baseline capture before implementation.
 
