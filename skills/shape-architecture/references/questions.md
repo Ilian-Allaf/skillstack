@@ -6,12 +6,18 @@ The grill of `shape-spec`, as its [grill.md](../../shape-spec/references/grill.m
 
 The sketches are code; the questions are not. From the two sketches, take the decisions that carry the shape, the ones a design note's Shape names: who owns each piece of state, where the boundary sits, which structure encodes the domain, what the public surface hides, and what crosses a one-way door. Word each one in the repo glossary's terms, never in file paths.
 
-```text
-Q1. <the decision>
-  A. <the shape>. <what it exposes, what it hides, the red flag or the promise it touches>
-  B. <the shape>. <the same>
-  Recommended: <A or B>, because <the reason, with the principle id>. <what would make the other one right>.
-  Or: leave it to the builder.
+The round has the grill's format; the body of a question holds the shapes:
+
+```markdown
+❓ **Q1** - **<the decision>**: <what it settles, in one sentence>
+
+- **A.** <the shape>. <what it exposes, what it hides, the red flag or the promise it touches>
+- **B.** <the shape>. <the same>
+- **Or** leave it to the builder.
+
+➡️ <A or B>, because <the reason, with the principle id>. <what would make the other one right>.
+
+---
 ```
 
 When the user asks to see the shape, show the sketch behind the question.

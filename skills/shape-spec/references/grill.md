@@ -8,21 +8,23 @@ Every decision branches into the decisions that hang off it. The **frontier** is
 
 ## Rounds
 
-Ask the whole frontier in one round, as a numbered message that ends your turn. The user answers in their own words, all the questions at once or a few, and can push back on any of them. A form of buttons turns the interview into a pick among your options; use the harness's question tool only for a round of one question between named options.
+Ask the whole frontier in one round: number each question and give your recommended answer, then wait for the user's answers before the next round. The round is a message that ends your turn, and holds the round only: the mode, the facts found, and the status go before it in a line of their own, or after it. The user answers in their own words, all the questions at once or a few, and can push back on any of them. A form of buttons turns the interview into a pick among your options; use the harness's question tool only for a round of one question between named options.
 
-```text
-Open: <each branch still open, one line each>
+Format a round like so:
 
-Q1. <title>
-<the question, with the options when there are some, and what each one costs>
-Recommended: <your answer, with its reason>
+```markdown
+❓ **Q1** - **<question title>**: <question body, might be multiple paragraphs, including multiple choices>
 
-Q2. <title>
-<the question>
-Recommended: <your answer, with its reason>
+➡️ <your recommended answer>
+
+---
+
+❓ **Q2** - **<question title>**: <question body, might be multiple paragraphs, including multiple choices>
+
+➡️ <your recommended answer>
 ```
 
-- Open each round with the branches still open, so the user sees how far the interview is and what comes next.
+- The recommendation stands on its own line, never inside the body, so the user sees at a glance what a yes accepts.
 - Word each question so "yes" accepts your recommendation.
 - A question whose answer depends on another open question in this round waits for a later round.
 - Dig into each answer. An answer that opens a branch, names a case you had not seen, or hesitates gets its follow-up in the next round, until the branch is settled, not only the question answered.
