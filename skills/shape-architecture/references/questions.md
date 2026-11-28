@@ -18,8 +18,9 @@ When the user asks to see the shape, show the sketch behind the question.
 
 ## Ask only what carries the shape
 
-- **Ask**: the choice between whole shapes, each one-way door, and each trade-off between them. When a shape has a consequence for the product the spec does not settle, such as working offline, ask it as a product question and record the answer under the spec's Decisions.
+- **Ask**: the choice between whole shapes, each one-way door, and each trade-off between them, with what each one costs the product.
 - **Do not ask**: an inner detail a later change undoes cheaply. It goes to Left to the builder, unasked (`never-block-on-the-human`).
+- **Send back**: a consequence for the product the spec does not settle, such as working offline, or what happens to a record when its owner goes. How the app behaves is `shape-spec`'s question, never yours. Name it to the user as an open product decision, leave open the shape decisions that hang off it, ask the rest, and hand over `/shape-spec <issue>` before `/ship`.
 
 ## Every question can be left open
 

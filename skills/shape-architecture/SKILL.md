@@ -39,12 +39,12 @@ Without one, the builder's own design is enough.
    Done when: two screened sketches are saved with their commit, or the one viable shape is saved with the reason no other is.
 
 3. **Grill the shape.** Put the decisions the sketches carry to the user in rounds, as [references/questions.md](references/questions.md) describes. Keep the repo glossary as shape-spec's [domain.md](../shape-spec/references/domain.md) says.
-   Done when: every decision that carries the shape is made by the user or left to the builder, and the user confirmed the whole.
+   Done when: every decision that carries the shape is made by the user, left to the builder, or waits on a product decision sent back to `shape-spec`, and the user confirmed the whole.
 
 4. **Record it.** Check again that no `ship` task is building the spec, then write its Technical decisions as [references/decisions.md](references/decisions.md) shapes them, with the tracker's Edit an issue. ADRs and glossary terms land as domain.md says; a docs PR, when there is one, goes through a verdict and `babysit-pr`, as rule 2 of the constitution says.
    Done when: the issue holds the section, each decision can be checked against a diff, and the issue links the docs PR when there is one.
 
-5. **Hand over.** Give the user the issue link and the next command: `/ship <issue>`.
+5. **Hand over.** Give the user the issue link and the next command: `/ship <issue>`, or `/shape-spec <issue>` when step 3 sent a product decision back, with that decision named.
    Done when: the user has the link and the command.
 
 ## Reply

@@ -28,6 +28,12 @@ Recommended: <your answer, with its reason>
 - Dig into each answer. An answer that opens a branch, names a case you had not seen, or hesitates gets its follow-up in the next round, until the branch is settled, not only the question answered.
 - Each round of answers moves the frontier. Recompute it and ask the next round.
 
+## What the code already does
+
+The design tree of every spec has this branch, and every question about how the app behaves is asked here, never in `shape-architecture`. When the interview starts, spawn a fresh subagent to read the code the feature touches and list the behaviors already there that the feature collides with: data a delete removes with it, a copy that carries a value forward, a default, a total built from every record, a check that blocks the new case. Each one cites its `file:line`.
+
+Each collision that changes what a user sees or loses is a product question on the frontier, worded from the user's side, never from the code's: "a recurring expense keeps charging the person who left", not "the generator copies `paidFor`". A collision that changes nothing a user sees is a fact for the builder: ask nothing. Only the questions that hang off the subagent's findings wait for it.
+
 ## A heavy visual change
 
 When step 1 of the skill found one, two decisions hang off the stories. Visit them once the stories are settled and before the verification branch, since the targets become cases.
