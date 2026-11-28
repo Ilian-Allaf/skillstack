@@ -23,7 +23,7 @@ When the user asks to see the shape, show the sketch behind the question.
 
 ## Every question can be left open
 
-"Leave it to the builder" is an option of every question. A decision the user makes, a yes to your recommendation included, becomes a technical decision that binds `ship`. One left open goes to Left to the builder, and `ship` designs it as if this skill had not run.
+"Leave it to the builder" is an option of every question, written in each one as the format above shows. A decision the user makes, a yes to your recommendation included, becomes a technical decision that binds `ship`. One left open goes to Left to the builder, and `ship` designs it as if this skill had not run.
 
 ## The order of the rounds
 
