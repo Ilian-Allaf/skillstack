@@ -24,7 +24,7 @@ You do not cut the spec into implementation slices for parallel agents. One buil
 
 1. **Pick the mode.** From what the user brings:
    - a loose idea, or a plan with open decisions: **grill**, then **spec**;
-   - a spec issue with an open product decision, as `shape-architecture` sends back: **grill** it, then edit the spec in place;
+   - a spec issue with an open product decision: **grill** it, then edit the spec in place;
    - a conversation that already settled the decisions: **spec** directly;
    - work too big for one session, where the way to the goal is not visible yet: **map**;
    - a map issue: **map**, working its next decision.
@@ -35,7 +35,7 @@ You do not cut the spec into implementation slices for parallel agents. One buil
    Done when: the mode is named to the user with the reason, and whether the change is a heavy visual one.
 
 2. **Grill.** Interview the user in rounds, as [references/grill.md](references/grill.md) describes, and keep the repo's domain model up to date as [references/domain.md](references/domain.md) describes. Facts are your job; decisions are the user's.
-   Done when: no open decision is left, what the code already does included, every story has a journey and every promise its harm, and what cannot be verified is named, all confirmed by the user, a heavy visual change has its design mode and a visual target the user picked, the drivers and formal checks of the area are looked up, the access for any surface without a driver is written down, every resolved term is in the repo glossary, and the user confirmed you share the same understanding.
+   Done when: no open decision is left, every story has a journey and every promise its harm, and what cannot be verified is named, all confirmed by the user, a heavy visual change has its design mode and a visual target the user picked, the drivers and formal checks of the area are looked up, the access for any surface without a driver is written down, every resolved term is in the repo glossary, and the user confirmed you share the same understanding.
 
 3. **Write the spec.** Follow [references/spec.md](references/spec.md): problem, solution, `done_when` agreed with the user, user stories with their journeys, promises, visual targets, what is not verifiable, the seams to test at, decisions, technical decisions, testing decisions, out of scope. Check the seams with the user, then publish it as an issue labeled `spec`.
    The docs PR goes through a verdict and `babysit-pr`, as rule 2 of the constitution says.
